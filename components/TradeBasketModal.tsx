@@ -6,10 +6,10 @@ import { X, Check, AlertCircle, ArrowLeft } from "lucide-react";
 import { basketFor, allocate } from "@/lib/baskets";
 import { loadEtoroSession, type EtoroSession } from "@/lib/etoro-session";
 import { formatUsd } from "@/lib/format";
-import type { Phase } from "@/lib/types";
+import type { InsiderSnapshot } from "@/lib/types";
 
 interface Props {
-  phase: Phase;
+  snapshot: InsiderSnapshot;
   open: boolean;
   onClose: () => void;
 }
@@ -22,7 +22,7 @@ type Step =
   | { kind: "executing" }
   | { kind: "result"; results: Array<{ ticker: string; ok: boolean; message?: string }> };
 
-export function TradeBasketModal({ phase, open, onClose }: Props) {
+export function TradeBasketModal({ snapshot, open, onClose }: Props) {
   const [mounted, setMounted] = useState(false);
   const [amount, setAmount] = useState<number>(500);
   const [step, setStep] = useState<Step>({ kind: "review" });
@@ -57,7 +57,7 @@ export function TradeBasketModal({ phase, open, onClose }: Props) {
 
   if (!open || !mounted) return null;
 
-  const basket = basketFor(phase);
+  const basket = basketFor(snapshot);
   const allocs = allocate(basket, amount);
 
   async function execute() {

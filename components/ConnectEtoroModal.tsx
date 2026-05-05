@@ -133,9 +133,12 @@ export function ConnectEtoroModal({ open, onClose, onConnected }: Props) {
 
           <details className="text-[12px] text-fg-muted">
             <summary className="cursor-pointer hover:text-fg transition-colors">Where do I get these?</summary>
-            <p className="mt-2 leading-relaxed">
-              Log in to <a href="https://www.etoro.com/api/v1" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald">eToro Public API</a> with your eToro account. Generate a key pair under Settings → API. The Private Key shown right after generation cannot be retrieved later.
-            </p>
+            <ol className="mt-2 space-y-1.5 leading-relaxed list-decimal list-inside">
+              <li>Sign in to <a href="https://www.etoro.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald">eToro</a> with your account.</li>
+              <li>Go to <span className="font-mono text-fg">Settings → Trading → Create your API key</span>.</li>
+              <li>Copy both keys when shown — the Private Key only displays once and cannot be retrieved later.</li>
+              <li>Paste them above and click <strong>Test connection</strong>.</li>
+            </ol>
           </details>
 
           {test.kind === "error" && (

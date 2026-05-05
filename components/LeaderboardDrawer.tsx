@@ -59,11 +59,11 @@ export function LeaderboardDrawer({ row, onClose }: Props) {
 
           <div className="grid grid-cols-2 gap-3">
             <Stat label="Conviction" value={`${row.significance} / 100`} mono />
-            <Stat label="Total dollars" value={formatUsd(row.dollars)} mono />
-            <Stat label="Shares" value={formatNum(row.shares)} mono />
-            <Stat label="Avg price / share" value={`$${avgPrice.toFixed(2)}`} mono />
-            <Stat label="% of stake" value={formatPct(row.stakePctChange)} mono />
-            <Stat label="Filings" value={String(row.transactions.length)} mono />
+            <Stat label="Total spent" value={formatUsd(row.dollars)} mono />
+            <Stat label="Shares bought" value={formatNum(row.shares)} mono />
+            <Stat label="Average price" value={`$${avgPrice.toFixed(2)}`} mono />
+            <Stat label="Holding increased" value={`+${Math.abs(row.stakePctChange).toFixed(1)}%`} mono />
+            <Stat label="Trades this week" value={String(row.transactions.length)} mono />
           </div>
 
           <div>

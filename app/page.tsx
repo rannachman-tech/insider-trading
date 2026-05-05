@@ -5,6 +5,7 @@ import { RiskBanner } from "@/components/RiskBanner";
 import { Footer } from "@/components/Footer";
 import { ConvictionDial } from "@/components/ConvictionDial";
 import { NetFlowSpark } from "@/components/NetFlowSpark";
+import { HeroDrivers } from "@/components/HeroDrivers";
 import { InsightsCard } from "@/components/InsightsCard";
 import { TradeBasketCard } from "@/components/TradeBasketCard";
 import { Leaderboard } from "@/components/Leaderboard";
@@ -56,11 +57,11 @@ export default async function HomePage() {
           {/* Top row: title + live status */}
           <div className="mt-6 sm:mt-8 flex items-center justify-between gap-3 flex-wrap">
             <div>
-              <h1 className="text-[22px] sm:text-[26px] font-semibold tracking-tight text-fg">
+              <h1 className="text-[22px] sm:text-[28px] font-semibold tracking-tight text-fg">
                 Are insiders buying their own stock?
               </h1>
-              <p className="mt-1 text-[13px] text-fg-muted max-w-prose">
-                A live read on what corporate insiders are doing with their personal cash — drawn from SEC EDGAR Form 4 filings, filtered for real conviction, and ranked.
+              <p className="mt-1 text-[13px] sm:text-[14px] text-fg-muted max-w-[58ch] leading-relaxed">
+                A weekly read on what CEOs, CFOs and directors are doing with their personal cash. Pulled live from SEC filings, cleaned of routine noise, and ranked by who's buying and how much.
               </p>
             </div>
             <LiveSourcesRow generatedAt={snapshot.generatedAt} sources={snapshot.sources} />
@@ -68,18 +69,19 @@ export default async function HomePage() {
 
           {/* HERO — folded 55/45 */}
           <section className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-4 lg:gap-6 items-stretch">
-            <div className="rounded-lg border border-border bg-surface p-5 sm:p-6 flex flex-col items-center hero-glow">
-              <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-fg-subtle">
-                Insider Conviction Index · S&P 1500 · 7-day rolling
+            <div className="rounded-lg border border-border bg-surface px-5 pt-4 pb-5 sm:px-6 sm:pt-5 sm:pb-6 flex flex-col items-center hero-glow">
+              <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-fg-subtle text-center">
+                Insider Conviction Index · S&amp;P 1500 · last 7 days
               </div>
-              <div className="mt-2 sm:mt-3 w-full max-w-[440px]">
+              <div className="mt-1 sm:mt-2 w-full max-w-[440px]">
                 <ConvictionDial value={snapshot.index} phase={snapshot.phase} />
               </div>
               <NetFlowSpark points={snapshot.history} />
+              <HeroDrivers snapshot={snapshot} />
             </div>
             <div className="flex flex-col gap-4">
               <InsightsCard snapshot={snapshot} className="flex-1" />
-              <TradeBasketCard phase={snapshot.phase} />
+              <TradeBasketCard snapshot={snapshot} />
             </div>
           </section>
 
@@ -108,17 +110,34 @@ export default async function HomePage() {
             <HistoryChart history={snapshot.history} currentIndex={snapshot.index} />
           </div>
 
-          {/* Notes */}
+          {/* How we read the tape */}
           <section className="mt-6 mb-12 rounded-lg border border-border bg-surface-2 p-5 text-[13px] text-fg-muted leading-relaxed">
-            <h3 className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">Notes &amp; method</h3>
-            <p className="mt-2">
-              The Insider Conviction Index blends three signals: net Code-P dollar flow (55%), buyer/seller insider count (25%), and the number of cluster buys with three or more distinct insiders (20%). Code M (option exercise), F (tax withholding), A (grant), and 10b5-1 scheduled trades are excluded. Filings under $25,000 are dropped. Roles are weighted: CEO 1.0, CFO 0.95, President 0.85, Director 0.45.
-            </p>
-            <p className="mt-2">
-              Source data: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=4" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald">SEC EDGAR Form 4 atom feed</a>. Tradability resolved against the eToro public instrument catalog.
+            <h3 className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">How we read the tape</h3>
+            <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <div className="text-fg font-medium text-[13px]">Only real buys count</div>
+                <p className="mt-1 text-[12.5px]">
+                  We only count purchases insiders make on the open market with their own money. Routine grants, tax withholdings and option exercises are filtered out — those aren't conviction signals.
+                </p>
+              </div>
+              <div>
+                <div className="text-fg font-medium text-[13px]">Pre-scheduled sales filtered</div>
+                <p className="mt-1 text-[12.5px]">
+                  Most insider sales follow pre-set schedules and tell you nothing about timing. We strip those out before counting net selling, so the number you see is closer to a real signal.
+                </p>
+              </div>
+              <div>
+                <div className="text-fg font-medium text-[13px]">Roles weighted by access</div>
+                <p className="mt-1 text-[12.5px]">
+                  A CEO buy carries more weight than a director buy because the CEO sees more of what's coming. The conviction score reflects who is buying, not just how much.
+                </p>
+              </div>
+            </div>
+            <p className="mt-4 pt-3 border-t border-border text-[12px]">
+              Source: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=4" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald">SEC EDGAR Form 4 filings</a>, refreshed daily. Trading on eToro requires a valid account; instrument coverage is verified against the eToro public catalog.
               {snapshot.isDemo && (
                 <span className="ml-2 inline-block rounded bg-amber-soft text-amber border border-amber/30 px-1.5 py-0.5 text-[11px] font-mono">
-                  Demo data
+                  Demo data — live ingest scheduled
                 </span>
               )}
             </p>

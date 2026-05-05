@@ -24,20 +24,20 @@ export const PHASE_LABEL: Record<Phase, string> = {
 
 export const PHASE_VERDICT: Record<Phase, string> = {
   "heavy-buying":
-    "Insiders are putting personal cash into their own companies. Cluster buys lead the tape — historically a constructive setup.",
+    "Company executives are spending their own money to buy stock in their own companies — and they're doing it together. When a CEO and CFO both reach for personal cash to buy what they already work for, it tends to be a meaningful signal.",
   balanced:
-    "Mixed signal. Buying and selling roughly cancel out. Use insider activity as confirmation only, not as a standalone trigger.",
+    "Insider buying and selling roughly cancel out this week. There's no clear directional message from inside the boardroom right now. Treat any individual buy as one data point, not a trigger to act.",
   "heavy-selling":
-    "Insiders are net-selling — many are 10b5-1 scheduled, but conviction buying is light. Watch for sector tops and trim where C-suite is exiting.",
+    "More insiders are selling than buying — and not just on pre-scheduled plans. When the people who run companies trim their personal stakes, it's usually about diversification, but it's worth watching where the selling is concentrated.",
 };
 
 export const PHASE_PLAYBOOK: Record<Phase, string> = {
   "heavy-buying":
-    "Mirror the strongest cluster buys: 3+ distinct insiders, CEO/CFO weighted, real cash purchases (Code P only).",
+    "If you're already considering names that show up below, today's tape gives you company. Cluster buys (multiple insiders, same name) are the strongest signal — start there.",
   balanced:
-    "Lean on quality and cluster-buy filtering. Don't fade insiders, but don't lead with them either.",
+    "Don't read insider activity as a standalone buy or sell signal this week. Use it to confirm or question a thesis you already have for a specific name.",
   "heavy-selling":
-    "Trim positions where C-suite is selling outside 10b5-1 plans. Defensive overlays earn their cost here.",
+    "Be more cautious about names where the CEO or CFO is selling. This isn't a panic signal — most insider sales are routine — but the burden of proof on bullish theses is higher.",
 };
 
 export const PHASE_TONE: Record<Phase, "positive" | "neutral" | "negative"> = {

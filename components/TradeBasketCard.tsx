@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { ArrowUpRight, Briefcase } from "lucide-react";
-import type { Phase } from "@/lib/types";
+import type { Phase, InsiderSnapshot } from "@/lib/types";
 import { basketFor } from "@/lib/baskets";
 import { TradeBasketModal } from "./TradeBasketModal";
 
 interface Props {
-  phase: Phase;
+  snapshot: InsiderSnapshot;
   className?: string;
 }
 
@@ -17,9 +17,10 @@ const PHASE_PILL: Record<Phase, string> = {
   "heavy-selling": "bg-crimson-soft text-crimson border-crimson/20",
 };
 
-export function TradeBasketCard({ phase, className = "" }: Props) {
+export function TradeBasketCard({ snapshot, className = "" }: Props) {
   const [open, setOpen] = useState(false);
-  const basket = basketFor(phase);
+  const basket = basketFor(snapshot);
+  const phase = snapshot.phase;
 
   return (
     <>
@@ -35,14 +36,18 @@ export function TradeBasketCard({ phase, className = "" }: Props) {
         </div>
         <h3 className="mt-3 text-base font-semibold text-fg">{basket.title}</h3>
         <p className="mt-1 text-[13px] leading-relaxed text-fg-muted">{basket.thesis}</p>
+        {basket.sourceNote && (
+          <p className="mt-1.5 text-[11px] font-mono text-fg-subtle">{basket.sourceNote}</p>
+        )}
 
         <ul className="mt-3 grid grid-cols-2 gap-1.5">
           {basket.holdings.map((h) => (
             <li
               key={h.ticker}
-              className="flex items-center justify-between rounded border border-border bg-surface-2 px-2 py-1 text-[11px]"
+              className="flex items-center justify-between rounded border border-border bg-surface-2 px-2 py-1.5 text-[12px]"
+              title={h.shortRationale}
             >
-              <span className="font-mono font-medium text-fg">{h.ticker}</span>
+              <span className="font-mono font-semibold text-fg">{h.ticker}</span>
               <span className="font-mono tab-num text-fg-subtle">{h.weight}%</span>
             </li>
           ))}
@@ -57,7 +62,7 @@ export function TradeBasketCard({ phase, className = "" }: Props) {
         </button>
       </section>
 
-      <TradeBasketModal phase={phase} open={open} onClose={() => setOpen(false)} />
+      <TradeBasketModal snapshot={snapshot} open={open} onClose={() => setOpen(false)} />
     </>
   );
 }

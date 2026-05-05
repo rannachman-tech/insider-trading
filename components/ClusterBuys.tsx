@@ -26,16 +26,16 @@ export function ClusterBuys({ clusters }: Props) {
   return (
     <section className="rounded-lg border border-border bg-surface overflow-hidden">
       <header className="px-5 py-4 border-b border-border">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-wrap gap-2">
           <h2 className="text-base font-semibold text-fg flex items-center gap-2">
-            <Users className="h-4 w-4 text-emerald" /> Cluster buys
-            <span className="ml-1 text-[10px] uppercase tracking-[0.18em] font-mono text-emerald bg-emerald-soft px-1.5 py-0.5 rounded">
-              the strongest signal
+            <Users className="h-4 w-4 text-emerald" /> Where multiple insiders bought together
+            <span className="ml-1 text-[10px] uppercase tracking-[0.18em] font-mono text-emerald bg-emerald-soft px-1.5 py-0.5 rounded whitespace-nowrap">
+              strongest signal
             </span>
           </h2>
         </div>
         <p className="mt-1 text-[12px] text-fg-subtle leading-relaxed">
-          3+ distinct insiders buying the same company within 30 days, with personal cash. Academic research (Cohen-Malloy-Pomorski 2012) finds the cleanest abnormal return signal in this exact pattern.
+          When three or more executives or directors at the same company independently spend their own cash buying the same stock within a month, it tends to be the most reliable insider signal in the data.
         </p>
       </header>
 

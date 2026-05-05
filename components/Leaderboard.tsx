@@ -38,13 +38,13 @@ export function Leaderboard({ rows }: Props) {
       <section className="rounded-lg border border-border bg-surface overflow-hidden">
         <header className="px-5 py-4 flex items-center justify-between border-b border-border">
           <div>
-            <h2 className="text-base font-semibold text-fg">Top conviction this week</h2>
+            <h2 className="text-base font-semibold text-fg">This week's biggest insider buys</h2>
             <p className="mt-0.5 text-[12px] text-fg-subtle">
-              Code-P open-market buys only · 10b5-1 plans excluded · ranked by significance
+              Real personal-cash purchases only — pre-scheduled sales and option exercises filtered out. Tap any row for details.
             </p>
           </div>
           <div className="hidden sm:block text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
-            {rows.length} rows
+            {rows.length} buys
           </div>
         </header>
 
@@ -89,7 +89,7 @@ export function Leaderboard({ rows }: Props) {
                     {formatUsd(r.dollars)}
                   </div>
                   <div className="hidden sm:block text-[11px] font-mono tab-num text-fg-subtle">
-                    {formatPct(r.stakePctChange)} of stake
+                    +{Math.abs(r.stakePctChange).toFixed(1)}% to holding
                   </div>
                 </div>
 

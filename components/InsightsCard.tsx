@@ -3,6 +3,7 @@
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import type { InsiderSnapshot } from "@/lib/types";
 import { PHASE_PLAYBOOK } from "@/lib/phase";
+import { Tooltip } from "./Tooltip";
 
 interface Props {
   snapshot: InsiderSnapshot;
@@ -10,9 +11,9 @@ interface Props {
 }
 
 const PHASE_HEADLINE: Record<string, string> = {
-  "heavy-buying": "Insiders are buying.",
-  balanced: "Mixed signal — read carefully.",
-  "heavy-selling": "Insiders are net-selling.",
+  "heavy-buying": "Yes — heavily.",
+  balanced: "Mixed — read carefully.",
+  "heavy-selling": "Mostly selling.",
 };
 
 const PhaseIcon = ({ phase }: { phase: string }) => {
@@ -43,7 +44,7 @@ export function InsightsCard({ snapshot, className = "" }: Props) {
           The read
         </h2>
       </div>
-      <p className="mt-3 text-xl sm:text-2xl font-semibold tracking-tight leading-tight text-fg">
+      <p className="mt-3 text-2xl sm:text-[28px] font-semibold tracking-tight leading-tight text-fg">
         {headline}
       </p>
       <p className="mt-3 text-[15px] leading-relaxed text-fg-muted">
@@ -52,21 +53,27 @@ export function InsightsCard({ snapshot, className = "" }: Props) {
 
       <div className="mt-5 grid grid-cols-2 gap-3 pt-4 border-t border-border">
         <div>
-          <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">Cluster buys (30d)</div>
-          <div className="mt-1 text-2xl font-mono tab-num font-semibold text-fg">
+          <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle flex items-center gap-1">
+            <Tooltip
+              label="Cluster buys"
+              hint="3 or more different insiders buying the same company within 30 days. Academic research finds this is the strongest insider signal."
+            />
+            <span className="text-fg-subtle">(30d)</span>
+          </div>
+          <div className="mt-1 text-[28px] font-mono tab-num font-semibold text-fg leading-none">
             {snapshot.clusterCount}
           </div>
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">Code-P buyers</div>
-          <div className="mt-1 text-2xl font-mono tab-num font-semibold text-fg">
+          <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">Insider buyers (7d)</div>
+          <div className="mt-1 text-[28px] font-mono tab-num font-semibold text-fg leading-none">
             {snapshot.buyCount}
           </div>
         </div>
       </div>
 
       <div className="mt-5 pt-4 border-t border-border">
-        <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">Playbook</div>
+        <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">What this means for you</div>
         <p className="mt-1.5 text-sm text-fg-muted leading-relaxed">{playbook}</p>
       </div>
     </section>

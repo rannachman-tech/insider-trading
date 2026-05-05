@@ -1,20 +1,21 @@
 /**
- * Per-phase tradeable baskets, with instrumentIds pre-resolved from the
- * eToro public catalog (https://api.etorostatic.com/sapi/instrumentsmetadata/V1.1/instruments).
+ * Per-phase tradeable baskets.
  *
- * Editorial logic:
- *   heavy-buying  → "Mirror cluster buys" — equal-weight names with documented
- *                   3+-insider clusters in the last 30d (DKNG, PYPL, ENPH, F).
- *                   In live mode this list is regenerated weekly from snapshot.clusters.
- *   balanced      → "Quality + insider-confidence" tilt — broad market with
- *                   defensive overlay, not a directional bet.
- *   heavy-selling → "Trim & hedge" — defensive, low-beta, gold + duration.
+ * Heavy-buying baskets are now BUILT FROM THE LIVE SNAPSHOT — pulling the top
+ * names from cluster buys + the largest single-name CEO/CFO conviction trade
+ * — so the basket always reflects what the leaderboard above is showing. No
+ * more "NVDA is top conviction but absent from the basket" mismatch.
  *
- * Every instrumentId here was resolved against the public catalog at build
- * time. `npm run verify:baskets` re-checks them on every CI run.
+ * Balanced and heavy-selling baskets remain curated hedge templates: when
+ * insiders aren't telegraphing a tactical bet, you don't want to chase the
+ * most-recent-buy, you want a quality/defensive overlay.
+ *
+ * Every instrumentId is resolved against the live eToro public catalog at
+ * build time and re-validated by scripts/verify-baskets.mjs.
  */
 
-import type { Phase } from "./types";
+import { lookupStock } from "./stock-catalog";
+import type { InsiderSnapshot, Phase, ClusterBuy, LeaderboardRow } from "./types";
 
 export interface BasketHolding {
   ticker: string;
@@ -30,63 +31,21 @@ export interface Basket {
   phase: Phase;
   title: string;
   thesis: string;
+  /** Optional source note ("built from this week's clusters", etc.) */
+  sourceNote?: string;
   holdings: BasketHolding[];
 }
 
-const HEAVY_BUYING: Basket = {
-  phase: "heavy-buying",
-  title: "Mirror cluster buys",
-  thesis:
-    "Names where multiple insiders bought their own stock with personal cash in the last 30 days. Equal-weight, no leverage. Single largest position capped at 30%.",
-  holdings: [
-    {
-      ticker: "DKNG",
-      symbolFull: "DKNG",
-      instrumentId: 7990,
-      name: "DraftKings Inc.",
-      weight: 25,
-      shortRationale: "4 insiders bought, including CEO + CFO",
-      longRationale:
-        "DraftKings had a 4-insider Code-P cluster this month — CEO Jason Robins led, with the CFO and two officers backing him. Net dollar conviction skewed strongly to the C-suite.",
-    },
-    {
-      ticker: "PYPL",
-      symbolFull: "PYPL",
-      instrumentId: 1484,
-      name: "PayPal Holdings, Inc.",
-      weight: 25,
-      shortRationale: "3 insiders, CEO-led",
-      longRationale:
-        "PayPal saw a CEO + CFO + Chief Product Officer cluster. The CEO buy was the largest individual ticket of the cluster window.",
-    },
-    {
-      ticker: "ENPH",
-      symbolFull: "ENPH",
-      instrumentId: 5634,
-      name: "Enphase Energy, Inc.",
-      weight: 25,
-      shortRationale: "CEO + CFO + director",
-      longRationale:
-        "Enphase had a small but role-heavy cluster (CEO, CFO, director) inside a beaten-up sector — the kind of setup that historically produces the strongest cluster-buy returns.",
-    },
-    {
-      ticker: "F",
-      symbolFull: "F",
-      instrumentId: 1112,
-      name: "Ford Motor Company",
-      weight: 25,
-      shortRationale: "CEO + CFO buy",
-      longRationale:
-        "Ford had an unusually clean CEO + CFO cluster — both bought open-market stock above the prior week's average price.",
-    },
-  ],
-};
+/* ------------------------------------------------------------------ */
+/* Curated baskets for balanced + heavy-selling phases.               */
+/* ------------------------------------------------------------------ */
 
-const BALANCED: Basket = {
+const BALANCED_TEMPLATE: Basket = {
   phase: "balanced",
-  title: "Quality + confirmation tilt",
+  title: "Quality with confirmation",
   thesis:
-    "When the insider tape is mixed, lean on quality names with at least one C-suite buy and broad-market exposure. Not a directional call.",
+    "When insiders are split, lean on broad market plus the few quality names where C-suite did buy. This isn't a directional bet.",
+  sourceNote: "Curated hedge template — not regenerated from this week's tape.",
   holdings: [
     {
       ticker: "VTI",
@@ -95,7 +54,7 @@ const BALANCED: Basket = {
       name: "Vanguard Total Stock Market ETF",
       weight: 35,
       shortRationale: "Broad US equity",
-      longRationale: "Total-market core. Balanced phase isn't a stockpicker's tape.",
+      longRationale: "Total-market core. A balanced phase isn't a stockpicker's tape.",
     },
     {
       ticker: "DGRO",
@@ -105,7 +64,7 @@ const BALANCED: Basket = {
       weight: 25,
       shortRationale: "Quality dividend tilt",
       longRationale:
-        "Quality dividend growers screen well during balanced regimes — cheaper than VYM, higher buyback intensity, and on the eToro catalog (VYM is not).",
+        "Quality dividend growers screen well in mixed regimes — cheaper than VYM, with higher buyback intensity.",
     },
     {
       ticker: "WMT",
@@ -113,9 +72,9 @@ const BALANCED: Basket = {
       instrumentId: 1035,
       name: "Walmart Inc.",
       weight: 20,
-      shortRationale: "Rare CFO open-market buy",
+      shortRationale: "Defensive with rare CFO buy",
       longRationale:
-        "Walmart's CFO bought open-market stock for the first time in 4 years. Specific, role-weighted conviction at a defensive name.",
+        "Walmart's CFO bought open-market stock for the first time in 4 years — specific, role-weighted conviction at a defensive name.",
     },
     {
       ticker: "COST",
@@ -123,18 +82,19 @@ const BALANCED: Basket = {
       instrumentId: 1461,
       name: "Costco Wholesale Corporation",
       weight: 20,
-      shortRationale: "Director buy at all-time highs",
+      shortRationale: "Director buy at highs",
       longRationale:
-        "Costco saw its founding director buy open-market shares near all-time highs — directional confidence in spite of valuation.",
+        "Costco saw its founding director buy near all-time highs — directional confidence in spite of valuation.",
     },
   ],
 };
 
-const HEAVY_SELLING: Basket = {
+const HEAVY_SELLING_TEMPLATE: Basket = {
   phase: "heavy-selling",
   title: "Trim and hedge",
   thesis:
-    "When insiders are net-selling outside of 10b5-1 plans, lean defensive. Lower beta, duration, gold. Not a short basket — a hedge.",
+    "When insiders are net-selling outside scheduled plans, lean defensive. Lower beta, duration, gold. This is a hedge, not a short basket.",
+  sourceNote: "Curated hedge template — not regenerated from this week's tape.",
   holdings: [
     {
       ticker: "SHV",
@@ -142,9 +102,8 @@ const HEAVY_SELLING: Basket = {
       instrumentId: 4321,
       name: "iShares Short Treasury Bond ETF",
       weight: 30,
-      shortRationale: "T-Bill cash equivalent",
-      longRationale:
-        "Cash-equivalent yield — earn while you wait. Sub-3-month duration, near-zero rate risk.",
+      shortRationale: "Cash-equivalent yield",
+      longRationale: "Earn while you wait. Sub-3-month duration, near-zero rate risk.",
     },
     {
       ticker: "IAU",
@@ -162,8 +121,7 @@ const HEAVY_SELLING: Basket = {
       name: "iShares MSCI USA Min Vol Factor ETF",
       weight: 25,
       shortRationale: "Low-volatility US",
-      longRationale:
-        "Stay invested but on the low-vol factor — historically outperforms the market in heavy-selling regimes.",
+      longRationale: "Stay invested but on the low-vol factor — historically outperforms in heavy-selling regimes.",
     },
     {
       ticker: "TLT",
@@ -172,33 +130,175 @@ const HEAVY_SELLING: Basket = {
       name: "iShares 20+ Year Treasury Bond ETF",
       weight: 20,
       shortRationale: "Long duration",
-      longRationale:
-        "Duration as a hedge against the recession scenario insider selling sometimes telegraphs.",
+      longRationale: "Duration as a hedge against the recession scenario insider selling sometimes telegraphs.",
     },
   ],
 };
 
-export const BASKETS: Record<Phase, Basket> = {
-  "heavy-buying": HEAVY_BUYING,
-  balanced: BALANCED,
-  "heavy-selling": HEAVY_SELLING,
-};
+/* ------------------------------------------------------------------ */
+/* Heavy-buying basket — built from the live snapshot.                */
+/* ------------------------------------------------------------------ */
 
-export function basketFor(phase: Phase): Basket {
-  return BASKETS[phase];
+interface BuildOpts {
+  /** Max holdings (default 5) */
+  maxHoldings?: number;
+  /** Single-position cap percentage (default 35) */
+  maxWeight?: number;
+  /** Min single-position floor (default 10) */
+  minWeight?: number;
 }
 
-export function allHoldings(): BasketHolding[] {
-  return [
-    ...HEAVY_BUYING.holdings,
-    ...BALANCED.holdings,
-    ...HEAVY_SELLING.holdings,
-  ];
+/**
+ * Compose the heavy-buying basket from the snapshot:
+ *   1. Anchor names = the top cluster buys (3+ insiders) sorted by strength
+ *   2. Single-name lead = the highest-significance CEO/CFO single trade
+ *      that isn't already in the cluster anchors
+ *   3. Weight by significance, normalize to 100, cap concentration
+ *
+ * Falls back to a defensive template only if the snapshot has nothing usable.
+ */
+export function buildHeavyBuyingBasket(
+  snapshot: InsiderSnapshot,
+  opts: BuildOpts = {}
+): Basket {
+  const maxHoldings = opts.maxHoldings ?? 5;
+  const maxWeight = opts.maxWeight ?? 35;
+  const minWeight = opts.minWeight ?? 10;
+
+  const candidates: Array<{
+    ticker: string;
+    company: string;
+    weight: number;
+    shortRationale: string;
+    longRationale: string;
+  }> = [];
+
+  // Pull cluster anchors first (capitalize on the strongest documented signal)
+  for (const c of snapshot.clusters) {
+    if (candidates.length >= maxHoldings) break;
+    candidates.push({
+      ticker: c.ticker,
+      company: c.company,
+      weight: Math.max(1, c.strength),
+      shortRationale: clusterShort(c),
+      longRationale: clusterLong(c),
+    });
+  }
+
+  // Then add top single-name CEO/CFO conviction trades not already covered
+  for (const r of snapshot.leaderboard) {
+    if (candidates.length >= maxHoldings) break;
+    if (candidates.find((x) => x.ticker === r.ticker)) continue;
+    if (r.role !== "CEO" && r.role !== "CFO") continue;
+    candidates.push({
+      ticker: r.ticker,
+      company: r.company,
+      weight: Math.max(1, r.significance),
+      shortRationale: singleShort(r),
+      longRationale: singleLong(r),
+    });
+  }
+
+  // Drop any tickers we don't have a verified eToro instrumentId for
+  const tradeable = candidates
+    .map((c) => ({ ...c, stock: lookupStock(c.ticker) }))
+    .filter((c): c is typeof c & { stock: NonNullable<ReturnType<typeof lookupStock>> } => c.stock !== null);
+
+  if (tradeable.length === 0) {
+    // Defensive fallback — should never hit in normal use
+    return {
+      ...BALANCED_TEMPLATE,
+      phase: "heavy-buying",
+      title: "Mirror cluster buys (no tradeable names yet)",
+      thesis: "We'll regenerate this basket as soon as live ingest produces tradeable names with verified eToro instruments.",
+    };
+  }
+
+  // Normalize weights → sum to 100, respecting concentration caps
+  const totalRaw = tradeable.reduce((s, c) => s + c.weight, 0);
+  let normalized = tradeable.map((c) => ({
+    ...c,
+    weight: Math.max(minWeight, Math.min(maxWeight, (c.weight / totalRaw) * 100)),
+  }));
+  // Re-normalize after caps so weights still sum to 100
+  const sumAfterCaps = normalized.reduce((s, c) => s + c.weight, 0);
+  normalized = normalized.map((c) => ({
+    ...c,
+    weight: Math.round((c.weight / sumAfterCaps) * 100),
+  }));
+  // Drift fix: ensure the rounded weights still sum to exactly 100
+  const drift = 100 - normalized.reduce((s, c) => s + c.weight, 0);
+  if (drift !== 0 && normalized.length) normalized[0].weight += drift;
+
+  const holdings: BasketHolding[] = normalized.map((c) => ({
+    ticker: c.stock.ticker,
+    symbolFull: c.stock.symbolFull,
+    instrumentId: c.stock.instrumentId,
+    name: c.stock.name,
+    weight: c.weight,
+    shortRationale: c.shortRationale,
+    longRationale: c.longRationale,
+  }));
+
+  return {
+    phase: "heavy-buying",
+    title: "Mirror this week's conviction",
+    thesis:
+      "Names where insiders bought their own stock with personal cash — anchored on the strongest cluster buys, augmented by the single largest CEO/CFO trade. No leverage; concentration capped at " + maxWeight + "%.",
+    sourceNote: `Rebuilt from snapshot · ${snapshot.clusters.length} cluster${snapshot.clusters.length === 1 ? "" : "s"}, ${holdings.length} holding${holdings.length === 1 ? "" : "s"}`,
+    holdings,
+  };
+}
+
+const clusterShort = (c: ClusterBuy) => {
+  const ceoOrCfo = c.insiders.some((i) => i.role === "CEO" || i.role === "CFO");
+  if (c.insiderCount >= 4) return `${c.insiderCount} insiders bought together`;
+  if (ceoOrCfo) return `${c.insiderCount} insiders, CEO/CFO led`;
+  return `${c.insiderCount} insiders bought together`;
+};
+
+const clusterLong = (c: ClusterBuy) => {
+  const top = c.insiders[0];
+  return `${c.insiderCount} insiders bought ${c.ticker} in the last 30 days, led by ${top.role === "CEO" || top.role === "CFO" ? "the " + top.role : top.name}. Combined dollar conviction: significant.`;
+};
+
+const singleShort = (r: LeaderboardRow) => {
+  if (r.role === "CEO") return `CEO bought their own company's stock`;
+  if (r.role === "CFO") return `CFO bought their own company's stock`;
+  return `${r.role} buy`;
+};
+
+const singleLong = (r: LeaderboardRow) => {
+  return `${r.insiderName} (${r.officerTitle ?? r.role}) bought ${r.ticker} this week — meaningful personal cash committed.`;
+};
+
+/* ------------------------------------------------------------------ */
+/* Public API                                                         */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Get the right basket for a snapshot. Heavy-buying is dynamic from the
+ * snapshot's actual top conviction names; balanced and heavy-selling
+ * remain curated hedge templates.
+ */
+export function basketFor(snapshot: InsiderSnapshot): Basket {
+  if (snapshot.phase === "heavy-buying") return buildHeavyBuyingBasket(snapshot);
+  if (snapshot.phase === "balanced") return BALANCED_TEMPLATE;
+  return HEAVY_SELLING_TEMPLATE;
+}
+
+/**
+ * All known holdings across the curated baskets — used by the verifier.
+ * The dynamic heavy-buying basket sources from STOCK_CATALOG which is
+ * verified separately in the same script.
+ */
+export function allCuratedHoldings(): BasketHolding[] {
+  return [...BALANCED_TEMPLATE.holdings, ...HEAVY_SELLING_TEMPLATE.holdings];
 }
 
 export function allocate(basket: Basket, amount: number) {
   return basket.holdings.map((h) => ({
     ...h,
-    dollars: Math.round(((h.weight / 100) * amount) * 100) / 100,
+    dollars: Math.round((h.weight / 100) * amount * 100) / 100,
   }));
 }

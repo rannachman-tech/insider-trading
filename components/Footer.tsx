@@ -15,14 +15,14 @@ export function Footer() {
           </div>
           <div>
             <h4 className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
-              Method
+              What we filter out
             </h4>
             <ul className="mt-2 text-[13px] text-fg-muted space-y-1 leading-relaxed">
-              <li>Code-P (open-market) buys only</li>
-              <li>10b5-1 plans excluded</li>
-              <li>$25k minimum threshold</li>
-              <li>Role-weighted ranking</li>
-              <li>30-day cluster window</li>
+              <li>Stock grants and bonuses</li>
+              <li>Option exercises</li>
+              <li>Pre-scheduled sales</li>
+              <li>Tax-withholding sales</li>
+              <li>Anything below $25,000</li>
             </ul>
           </div>
           <div>

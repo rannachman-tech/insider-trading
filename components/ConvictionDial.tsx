@@ -142,16 +142,16 @@ export function ConvictionDial({ value, phase }: Props) {
       {/* Score readout */}
       <text
         x={CENTER_X}
-        y={CENTER_Y - 38}
+        y={CENTER_Y - 30}
         textAnchor="middle"
         className="fill-current text-fg font-mono tab-num"
-        style={{ fontSize: 52, fontWeight: 600, letterSpacing: "-0.02em" }}
+        style={{ fontSize: 64, fontWeight: 600, letterSpacing: "-0.03em" }}
       >
         {clamped}
       </text>
       <text
         x={CENTER_X}
-        y={CENTER_Y - 14}
+        y={CENTER_Y - 4}
         textAnchor="middle"
         className="fill-current text-fg-subtle font-mono"
         style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase" }}
@@ -162,10 +162,10 @@ export function ConvictionDial({ value, phase }: Props) {
       {/* Phase label below */}
       <text
         x={CENTER_X}
-        y={CENTER_Y + 60}
+        y={CENTER_Y + 64}
         textAnchor="middle"
-        className="fill-current text-fg-muted"
-        style={{ fontSize: 13, letterSpacing: "0.04em", fontWeight: 500 }}
+        className="fill-current"
+        style={{ fontSize: 14, letterSpacing: "0.02em", fontWeight: 600, fill: PHASE_NEEDLE[phase] }}
       >
         {PHASE_LABEL_COMPACT[phase]}
       </text>
