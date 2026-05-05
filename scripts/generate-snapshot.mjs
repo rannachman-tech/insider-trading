@@ -1,0 +1,308 @@
+// Self-contained snapshot generator (no TypeScript needed).
+// Mirrors lib/seed.ts + lib/snapshot.ts logic for use in the sandbox.
+//
+//   node scripts/generate-snapshot.mjs
+
+import { writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { join } from "node:path";
+
+const OUT_DIR = join(process.cwd(), "data");
+const OUT_FILE = join(OUT_DIR, "insider-snapshot.json");
+if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });
+
+const ROLE_WEIGHTS = {
+  CEO: 1.0, CFO: 0.95, President: 0.85, COO: 0.75, Chair: 0.7,
+  Director: 0.45, Officer: 0.5, "10%Owner": 0.6, Other: 0.3,
+};
+
+const ROLE_RANK = {
+  CEO: 0, CFO: 1, President: 2, COO: 3, Chair: 4,
+  Officer: 5, "10%Owner": 6, Director: 7, Other: 8,
+};
+
+const SEED = [
+  { ticker: "DKNG", company: "DraftKings Inc.", sector: "Consumer Discretionary",
+    insider: "Robins Jason D", role: "CEO", title: "Chief Executive Officer",
+    daysAgo: 2, shares: 90000, price: 38.40, sharesAfter: 4_120_000 },
+  { ticker: "DKNG", company: "DraftKings Inc.", sector: "Consumer Discretionary",
+    insider: "Park Jason", role: "CFO", title: "Chief Financial Officer",
+    daysAgo: 3, shares: 26000, price: 38.10, sharesAfter: 318_400 },
+  { ticker: "DKNG", company: "DraftKings Inc.", sector: "Consumer Discretionary",
+    insider: "Sadusky Matt", role: "Director", title: "Director",
+    daysAgo: 5, shares: 7800, price: 37.85, sharesAfter: 64_500 },
+  { ticker: "DKNG", company: "DraftKings Inc.", sector: "Consumer Discretionary",
+    insider: "Howe Jocelyn", role: "Officer", title: "Chief People Officer",
+    daysAgo: 6, shares: 5400, price: 37.70, sharesAfter: 41_200 },
+  { ticker: "WMT", company: "Walmart Inc.", sector: "Consumer Staples",
+    insider: "Rainey John David", role: "CFO", title: "Executive Vice President and Chief Financial Officer",
+    daysAgo: 1, shares: 8900, price: 81.20, sharesAfter: 71_400 },
+  { ticker: "NVDA", company: "NVIDIA Corporation", sector: "Information Technology",
+    insider: "Huang Jen-Hsun", role: "CEO", title: "President and CEO",
+    daysAgo: 4, shares: 95000, price: 119.40, sharesAfter: 856_000_000 },
+  { ticker: "COST", company: "Costco Wholesale Corp.", sector: "Consumer Staples",
+    insider: "Sinegal James D", role: "Director", title: "Director (former CEO)",
+    daysAgo: 1, shares: 2200, price: 905.00, sharesAfter: 8_400 },
+  { ticker: "PYPL", company: "PayPal Holdings, Inc.", sector: "Financials",
+    insider: "Chriss Alex", role: "CEO", title: "President and CEO",
+    daysAgo: 3, shares: 28000, price: 70.10, sharesAfter: 410_000 },
+  { ticker: "PYPL", company: "PayPal Holdings, Inc.", sector: "Financials",
+    insider: "Miller Jamie", role: "CFO", title: "Chief Financial Officer",
+    daysAgo: 4, shares: 14000, price: 70.40, sharesAfter: 96_400 },
+  { ticker: "PYPL", company: "PayPal Holdings, Inc.", sector: "Financials",
+    insider: "Wadhwani Suresh", role: "Officer", title: "Chief Product Officer",
+    daysAgo: 6, shares: 8600, price: 69.75, sharesAfter: 52_300 },
+  { ticker: "ENPH", company: "Enphase Energy, Inc.", sector: "Information Technology",
+    insider: "Kothandaraman Badrinarayanan", role: "CEO", title: "President and CEO",
+    daysAgo: 5, shares: 21000, price: 64.20, sharesAfter: 215_000 },
+  { ticker: "ENPH", company: "Enphase Energy, Inc.", sector: "Information Technology",
+    insider: "Martin Mandy", role: "CFO", title: "Chief Financial Officer",
+    daysAgo: 5, shares: 6500, price: 63.95, sharesAfter: 38_400 },
+  { ticker: "ENPH", company: "Enphase Energy, Inc.", sector: "Information Technology",
+    insider: "Rangarajan Raghu", role: "Director", title: "Director",
+    daysAgo: 7, shares: 4200, price: 63.10, sharesAfter: 21_700 },
+  { ticker: "LULU", company: "Lululemon Athletica Inc.", sector: "Consumer Discretionary",
+    insider: "McDonald Calvin", role: "CEO", title: "Chief Executive Officer",
+    daysAgo: 6, shares: 4800, price: 248.00, sharesAfter: 142_300 },
+  { ticker: "UAL", company: "United Airlines Holdings, Inc.", sector: "Industrials",
+    insider: "Hart Scott", role: "Officer", title: "Chief Operations Officer",
+    daysAgo: 2, shares: 6200, price: 92.40, sharesAfter: 38_500 },
+  { ticker: "AFRM", company: "Affirm Holdings, Inc.", sector: "Financials",
+    insider: "Levchin Max", role: "CEO", title: "Founder, CEO and Chair",
+    daysAgo: 3, shares: 18000, price: 51.20, sharesAfter: 8_120_000 },
+  { ticker: "KMI", company: "Kinder Morgan, Inc.", sector: "Energy",
+    insider: "Kim Richard", role: "CFO", title: "Executive Vice President and Chief Financial Officer",
+    daysAgo: 4, shares: 22500, price: 24.10, sharesAfter: 168_900 },
+  { ticker: "BAC", company: "Bank of America Corp.", sector: "Financials",
+    insider: "Bessent Frank P", role: "Director", title: "Director",
+    daysAgo: 5, shares: 9000, price: 41.20, sharesAfter: 24_800 },
+  { ticker: "F", company: "Ford Motor Company", sector: "Consumer Discretionary",
+    insider: "Farley James D Jr.", role: "CEO", title: "President and CEO",
+    daysAgo: 2, shares: 32000, price: 9.85, sharesAfter: 1_320_000 },
+  { ticker: "F", company: "Ford Motor Company", sector: "Consumer Discretionary",
+    insider: "Lawler John", role: "CFO", title: "Chief Financial Officer",
+    daysAgo: 4, shares: 14500, price: 9.92, sharesAfter: 218_400 },
+  { ticker: "CRWD", company: "CrowdStrike Holdings, Inc.", sector: "Information Technology",
+    insider: "Kurtz George R", role: "CEO", title: "President and CEO",
+    daysAgo: 3, shares: 4800, price: 295.00, sharesAfter: 12_840_000 },
+  { ticker: "ABBV", company: "AbbVie Inc.", sector: "Health Care",
+    insider: "Gonzalez Richard A", role: "Chair", title: "Executive Chair",
+    daysAgo: 5, shares: 1800, price: 192.50, sharesAfter: 1_104_500 },
+  { ticker: "SOFI", company: "SoFi Technologies, Inc.", sector: "Financials",
+    insider: "Schwimmer Carlos", role: "Director", title: "Director",
+    daysAgo: 6, shares: 14000, price: 9.10, sharesAfter: 84_300 },
+  { ticker: "META", company: "Meta Platforms, Inc.", sector: "Communication Services",
+    insider: "Olivan Javier", role: "COO", title: "Chief Operating Officer",
+    daysAgo: 1, shares: 8500, price: 502.00, sharesAfter: 192_400, isSell: true },
+  { ticker: "AMZN", company: "Amazon.com, Inc.", sector: "Consumer Discretionary",
+    insider: "Galetti Beth", role: "Officer", title: "SVP People Experience",
+    daysAgo: 3, shares: 4400, price: 187.40, sharesAfter: 41_200, isSell: true },
+  { ticker: "ORCL", company: "Oracle Corporation", sector: "Information Technology",
+    insider: "Gutierrez Brian", role: "Officer", title: "Vice President, Controller",
+    daysAgo: 4, shares: 9200, price: 138.50, sharesAfter: 24_500, isSell: true },
+  { ticker: "TSLA", company: "Tesla, Inc.", sector: "Consumer Discretionary",
+    insider: "Taneja Vaibhav", role: "CFO", title: "Chief Financial Officer",
+    daysAgo: 5, shares: 7000, price: 247.00, sharesAfter: 38_900, isSell: true },
+];
+
+const generatedAt = new Date().toISOString();
+const anchor = new Date(generatedAt).getTime();
+
+// Build raw transactions
+const transactions = SEED.map((s, i) => {
+  const dt = new Date(anchor - s.daysAgo * 86_400_000);
+  const transactionDate = dt.toISOString().slice(0, 10);
+  const filingDate = new Date(anchor - Math.max(0, s.daysAgo - 1) * 86_400_000).toISOString().slice(0, 10);
+  const dollars = s.shares * s.price;
+  return {
+    accession: `SEED-${String(i + 1).padStart(6, "0")}`,
+    ticker: s.ticker, company: s.company, issuerCik: `0000${i + 100000}`, sector: s.sector,
+    insiderName: s.insider, role: s.role, officerTitle: s.title,
+    transactionDate, filingDate,
+    code: s.isSell ? "S" : "P",
+    acquiredDisposed: s.isSell ? "D" : "A",
+    is10b5One: false,
+    shares: s.shares, pricePerShare: s.price, dollars,
+    sharesOwnedAfter: s.sharesAfter,
+    stakePctChange: s.sharesAfter > 0 ? (s.shares / s.sharesAfter) * 100 : 0,
+    ownership: "D",
+  };
+});
+
+// --- Filters
+const isRealBuy = t => t.code === "P" && t.acquiredDisposed === "A" && !t.is10b5One && t.dollars >= 25_000;
+const isRealSell = t => !t.is10b5One && t.dollars >= 25_000 && (t.code === "S" || (t.code === "D" && t.acquiredDisposed === "D"));
+const within = (iso, days) => anchor - new Date(iso).getTime() <= days * 86_400_000;
+
+const realBuys = transactions.filter(t => isRealBuy(t) && within(t.transactionDate, 7));
+const realSells = transactions.filter(t => isRealSell(t) && within(t.transactionDate, 7));
+const clusterWindow = transactions.filter(t => isRealBuy(t) && within(t.transactionDate, 30));
+
+// --- Significance
+function significance(d, role, stake) {
+  if (d <= 0) return 0;
+  const logD = Math.log10(Math.max(1000, d));
+  const dollarFactor = Math.max(0, Math.min(1, (logD - 3) / 5));
+  const roleW = ROLE_WEIGHTS[role] ?? 0.3;
+  const stakeFactor = Math.max(0.6, Math.min(1.4, 1 + Math.min(0.4, stake / 100)));
+  const raw = dollarFactor * roleW * stakeFactor;
+  return Math.round(Math.max(0, Math.min(1, raw)) * 100);
+}
+
+// --- Leaderboard
+const groups = new Map();
+for (const t of realBuys) {
+  const k = `${t.ticker}|${t.insiderName}`;
+  const arr = groups.get(k) ?? [];
+  arr.push(t);
+  groups.set(k, arr);
+}
+const rows = [];
+groups.forEach(txs => {
+  const dollars = txs.reduce((s, t) => s + t.dollars, 0);
+  const shares = txs.reduce((s, t) => s + t.shares, 0);
+  const stakePct = txs.reduce((s, t) => s + t.stakePctChange, 0);
+  const t0 = txs[0];
+  rows.push({
+    rank: 0, ticker: t0.ticker, company: t0.company, sector: t0.sector,
+    insiderName: t0.insiderName, role: t0.role, officerTitle: t0.officerTitle,
+    dollars, shares, avgPricePerShare: shares > 0 ? dollars / shares : 0,
+    stakePctChange: stakePct, significance: significance(dollars, t0.role, stakePct),
+    transactions: txs,
+  });
+});
+rows.sort((a, b) => b.significance - a.significance || b.dollars - a.dollars);
+const leaderboard = rows.slice(0, 20).map((r, i) => ({ ...r, rank: i + 1 }));
+
+// --- Clusters
+const clusterMap = new Map();
+for (const t of clusterWindow) {
+  const arr = clusterMap.get(t.ticker) ?? [];
+  arr.push(t);
+  clusterMap.set(t.ticker, arr);
+}
+const clusters = [];
+clusterMap.forEach((txs, ticker) => {
+  const distinct = new Map();
+  for (const t of txs) {
+    const arr = distinct.get(t.insiderName) ?? [];
+    arr.push(t);
+    distinct.set(t.insiderName, arr);
+  }
+  if (distinct.size < 3) return;
+  const insiders = [...distinct.entries()]
+    .map(([name, list]) => ({
+      name, role: list[0].role, officerTitle: list[0].officerTitle,
+      dollars: list.reduce((s, t) => s + t.dollars, 0),
+    }))
+    .sort((a, b) => ROLE_RANK[a.role] - ROLE_RANK[b.role]);
+  const totalDollars = txs.reduce((s, t) => s + t.dollars, 0);
+  const latestDate = txs.reduce((d, t) => t.transactionDate > d ? t.transactionDate : d, "");
+  const t0 = txs[0];
+  const sizeFactor = Math.max(0, Math.min(1, Math.log10(Math.max(1000, totalDollars)) / 8 - 0.3));
+  const countFactor = Math.min(1, distinct.size / 6);
+  const roleFactor = Math.max(...insiders.map(i => 1 - ROLE_RANK[i.role] / 8));
+  const strength = Math.round(Math.max(0, Math.min(1, 0.4 * sizeFactor + 0.35 * countFactor + 0.25 * roleFactor)) * 100);
+  clusters.push({
+    ticker, company: t0.company, sector: t0.sector,
+    insiderCount: distinct.size, insiders, totalDollars, windowDays: 30, latestDate, strength,
+  });
+});
+clusters.sort((a, b) => b.strength - a.strength || b.totalDollars - a.totalDollars);
+
+// --- Sectors
+const sectorMap = new Map();
+for (const t of realBuys) {
+  const tile = sectorMap.get(t.sector) ?? { sector: t.sector, buyDollars: 0, sellDollars: 0, netRatio: 0, buyCount: 0, sellCount: 0 };
+  tile.buyDollars += t.dollars; tile.buyCount += 1;
+  sectorMap.set(t.sector, tile);
+}
+for (const t of realSells) {
+  const tile = sectorMap.get(t.sector) ?? { sector: t.sector, buyDollars: 0, sellDollars: 0, netRatio: 0, buyCount: 0, sellCount: 0 };
+  tile.sellDollars += t.dollars; tile.sellCount += 1;
+  sectorMap.set(t.sector, tile);
+}
+const sectors = [...sectorMap.values()].map(s => {
+  const total = s.buyDollars + s.sellDollars;
+  return { ...s, netRatio: total > 0 ? (s.buyDollars - s.sellDollars) / total : 0 };
+});
+sectors.sort((a, b) => b.netRatio - a.netRatio);
+
+// --- Index
+const buyDollars = realBuys.reduce((s, t) => s + t.dollars, 0);
+const sellDollars = realSells.reduce((s, t) => s + t.dollars, 0);
+const netDollars = buyDollars - sellDollars;
+const totalD = buyDollars + sellDollars;
+const dollarSig = totalD > 0 ? (buyDollars - sellDollars) / totalD : 0;
+const totalC = realBuys.length + realSells.length;
+const countSig = totalC > 0 ? (realBuys.length - realSells.length) / totalC : 0;
+const clusterSig = Math.min(1, clusters.length / 10);
+const blended = 0.55 * dollarSig + 0.25 * countSig + 0.20 * clusterSig;
+const index = Math.max(0, Math.min(100, Math.round(50 + blended * 50)));
+const phase = index >= 70 ? "heavy-buying" : index >= 40 ? "balanced" : "heavy-selling";
+const verdict =
+  phase === "heavy-buying"
+    ? "Insiders are putting personal cash into their own companies. Cluster buys lead the tape — historically a constructive setup."
+    : phase === "balanced"
+    ? "Mixed signal. Buying and selling roughly cancel out. Use insider activity as confirmation only, not as a standalone trigger."
+    : "Insiders are net-selling — many are 10b5-1 scheduled, but conviction buying is light. Watch for sector tops and trim where C-suite is exiting.";
+
+// --- Indicators
+const fmtNet = n => {
+  const a = Math.abs(n), s = n >= 0 ? "+" : "−";
+  if (a >= 1e9) return `${s}$${(a / 1e9).toFixed(2)}B`;
+  if (a >= 1e6) return `${s}$${(a / 1e6).toFixed(1)}M`;
+  if (a >= 1e3) return `${s}$${(a / 1e3).toFixed(0)}k`;
+  return `${s}$${a.toFixed(0)}`;
+};
+const shortD = n => n >= 1e6 ? `$${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `$${(n / 1e3).toFixed(0)}k` : `$${n.toFixed(0)}`;
+const topRoleBuyer = leaderboard.find(r => r.role === "CEO" || r.role === "CFO");
+const indicators = [
+  { label: "Cluster buys (30d)", value: String(clusters.length),
+    sub: clusters.length === 0 ? "No clusters this month" : `Across ${new Set(clusters.map(c => c.sector)).size} sectors`,
+    tone: clusters.length >= 5 ? "positive" : clusters.length >= 2 ? "neutral" : "warning" },
+  { label: "Net buy/sell ($)", value: fmtNet(netDollars),
+    sub: `${realBuys.length} buys vs ${realSells.length} sells`,
+    tone: netDollars > 0 ? "positive" : netDollars < 0 ? "negative" : "neutral" },
+  { label: "Top conviction (this week)",
+    value: topRoleBuyer ? topRoleBuyer.ticker : leaderboard[0]?.ticker ?? "—",
+    sub: topRoleBuyer ? `${topRoleBuyer.role} · ${shortD(topRoleBuyer.dollars)}`
+      : leaderboard[0] ? `${leaderboard[0].role} · ${shortD(leaderboard[0].dollars)}` : "Tape is quiet",
+    tone: "neutral" },
+  { label: "Sector tilt", value: sectors[0]?.sector ?? "—",
+    sub: sectors[0] ? `Net ratio ${(sectors[0].netRatio * 100).toFixed(0)}%` : "—", tone: "neutral" },
+];
+
+// --- History (deterministic noise)
+let seed = 0xc0ffee;
+const rand = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 0xffffffff; };
+const history = [];
+let v = 50;
+for (let d = 365; d >= 0; d--) {
+  const t = anchor - d * 86_400_000;
+  const noise = (rand() - 0.5) * 4;
+  const drift = d < 60 ? (index - v) * 0.05 : (50 - v) * 0.01;
+  v = Math.max(10, Math.min(95, v + drift + noise));
+  history.push({ date: new Date(t).toISOString().slice(0, 10), index: Math.round(v),
+    netDollars: Math.round((v - 50) * 4_000_000 + (rand() - 0.5) * 12_000_000) });
+}
+if (history.length) history[history.length - 1].index = index;
+
+const sources = [
+  { name: "SEC EDGAR Form 4", ok: true, note: "Demo mode — live ingest scheduled" },
+  { name: "EDGAR ticker map", ok: true, note: "company_tickers.json" },
+  { name: "eToro public catalog", ok: true, note: "instrumentsmetadata V1.1" },
+];
+
+const snapshot = {
+  generatedAt, windowDays: 7, index, phase, verdict, netDollars, buyDollars, sellDollars,
+  buyCount: realBuys.length, sellCount: realSells.length, clusterCount: clusters.length,
+  leaderboard, clusters: clusters.slice(0, 12), sectors, history, indicators, sources, isDemo: true,
+};
+
+writeFileSync(OUT_FILE, JSON.stringify(snapshot, null, 2));
+console.log(`Wrote ${OUT_FILE}`);
+console.log(`  Index: ${index} (${phase})`);
+console.log(`  Leaderboard: ${leaderboard.length}`);
+console.log(`  Clusters: ${clusters.length}`);
+console.log(`  Sectors: ${sectors.length}`);
+console.log(`  History points: ${history.length}`);

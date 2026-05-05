@@ -1,0 +1,2795 @@
+{
+  "generatedAt": "2026-05-05T15:34:18.475Z",
+  "windowDays": 7,
+  "index": 78,
+  "phase": "heavy-buying",
+  "verdict": "Insiders are putting personal cash into their own companies. Cluster buys lead the tape — historically a constructive setup.",
+  "netDollars": 22166325,
+  "buyDollars": 30261085,
+  "sellDollars": 8094760,
+  "buyCount": 22,
+  "sellCount": 4,
+  "clusterCount": 3,
+  "leaderboard": [
+    {
+      "rank": 1,
+      "ticker": "NVDA",
+      "company": "NVIDIA Corporation",
+      "sector": "Information Technology",
+      "insiderName": "Huang Jen-Hsun",
+      "role": "CEO",
+      "officerTitle": "President and CEO",
+      "dollars": 11343000,
+      "shares": 95000,
+      "avgPricePerShare": 119.4,
+      "stakePctChange": 0.011098130841121495,
+      "significance": 81,
+      "transactions": [
+        {
+          "accession": "SEED-000006",
+          "ticker": "NVDA",
+          "company": "NVIDIA Corporation",
+          "issuerCik": "0000100005",
+          "sector": "Information Technology",
+          "insiderName": "Huang Jen-Hsun",
+          "role": "CEO",
+          "officerTitle": "President and CEO",
+          "transactionDate": "2026-05-01",
+          "filingDate": "2026-05-02",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 95000,
+          "pricePerShare": 119.4,
+          "dollars": 11343000,
+          "sharesOwnedAfter": 856000000,
+          "stakePctChange": 0.011098130841121495,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "ticker": "DKNG",
+      "company": "DraftKings Inc.",
+      "sector": "Consumer Discretionary",
+      "insiderName": "Robins Jason D",
+      "role": "CEO",
+      "officerTitle": "Chief Executive Officer",
+      "dollars": 3456000,
+      "shares": 90000,
+      "avgPricePerShare": 38.4,
+      "stakePctChange": 2.1844660194174756,
+      "significance": 72,
+      "transactions": [
+        {
+          "accession": "SEED-000001",
+          "ticker": "DKNG",
+          "company": "DraftKings Inc.",
+          "issuerCik": "0000100000",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Robins Jason D",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "transactionDate": "2026-05-03",
+          "filingDate": "2026-05-04",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 90000,
+          "pricePerShare": 38.4,
+          "dollars": 3456000,
+          "sharesOwnedAfter": 4120000,
+          "stakePctChange": 2.1844660194174756,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "ticker": "PYPL",
+      "company": "PayPal Holdings, Inc.",
+      "sector": "Financials",
+      "insiderName": "Chriss Alex",
+      "role": "CEO",
+      "officerTitle": "President and CEO",
+      "dollars": 1962799.9999999998,
+      "shares": 28000,
+      "avgPricePerShare": 70.1,
+      "stakePctChange": 6.829268292682928,
+      "significance": 70,
+      "transactions": [
+        {
+          "accession": "SEED-000008",
+          "ticker": "PYPL",
+          "company": "PayPal Holdings, Inc.",
+          "issuerCik": "0000100007",
+          "sector": "Financials",
+          "insiderName": "Chriss Alex",
+          "role": "CEO",
+          "officerTitle": "President and CEO",
+          "transactionDate": "2026-05-02",
+          "filingDate": "2026-05-03",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 28000,
+          "pricePerShare": 70.1,
+          "dollars": 1962799.9999999998,
+          "sharesOwnedAfter": 410000,
+          "stakePctChange": 6.829268292682928,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "ticker": "ENPH",
+      "company": "Enphase Energy, Inc.",
+      "sector": "Information Technology",
+      "insiderName": "Kothandaraman Badrinarayanan",
+      "role": "CEO",
+      "officerTitle": "President and CEO",
+      "dollars": 1348200,
+      "shares": 21000,
+      "avgPricePerShare": 64.2,
+      "stakePctChange": 9.767441860465116,
+      "significance": 69,
+      "transactions": [
+        {
+          "accession": "SEED-000011",
+          "ticker": "ENPH",
+          "company": "Enphase Energy, Inc.",
+          "issuerCik": "0000100010",
+          "sector": "Information Technology",
+          "insiderName": "Kothandaraman Badrinarayanan",
+          "role": "CEO",
+          "officerTitle": "President and CEO",
+          "transactionDate": "2026-04-30",
+          "filingDate": "2026-05-01",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 21000,
+          "pricePerShare": 64.2,
+          "dollars": 1348200,
+          "sharesOwnedAfter": 215000,
+          "stakePctChange": 9.767441860465116,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "ticker": "PYPL",
+      "company": "PayPal Holdings, Inc.",
+      "sector": "Financials",
+      "insiderName": "Miller Jamie",
+      "role": "CFO",
+      "officerTitle": "Chief Financial Officer",
+      "dollars": 985600.0000000001,
+      "shares": 14000,
+      "avgPricePerShare": 70.4,
+      "stakePctChange": 14.522821576763487,
+      "significance": 65,
+      "transactions": [
+        {
+          "accession": "SEED-000009",
+          "ticker": "PYPL",
+          "company": "PayPal Holdings, Inc.",
+          "issuerCik": "0000100008",
+          "sector": "Financials",
+          "insiderName": "Miller Jamie",
+          "role": "CFO",
+          "officerTitle": "Chief Financial Officer",
+          "transactionDate": "2026-05-01",
+          "filingDate": "2026-05-02",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 14000,
+          "pricePerShare": 70.4,
+          "dollars": 985600.0000000001,
+          "sharesOwnedAfter": 96400,
+          "stakePctChange": 14.522821576763487,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "ticker": "LULU",
+      "company": "Lululemon Athletica Inc.",
+      "sector": "Consumer Discretionary",
+      "insiderName": "McDonald Calvin",
+      "role": "CEO",
+      "officerTitle": "Chief Executive Officer",
+      "dollars": 1190400,
+      "shares": 4800,
+      "avgPricePerShare": 248,
+      "stakePctChange": 3.3731553056921992,
+      "significance": 64,
+      "transactions": [
+        {
+          "accession": "SEED-000014",
+          "ticker": "LULU",
+          "company": "Lululemon Athletica Inc.",
+          "issuerCik": "0000100013",
+          "sector": "Consumer Discretionary",
+          "insiderName": "McDonald Calvin",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "transactionDate": "2026-04-29",
+          "filingDate": "2026-04-30",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 4800,
+          "pricePerShare": 248,
+          "dollars": 1190400,
+          "sharesOwnedAfter": 142300,
+          "stakePctChange": 3.3731553056921992,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "ticker": "CRWD",
+      "company": "CrowdStrike Holdings, Inc.",
+      "sector": "Information Technology",
+      "insiderName": "Kurtz George R",
+      "role": "CEO",
+      "officerTitle": "President and CEO",
+      "dollars": 1416000,
+      "shares": 4800,
+      "avgPricePerShare": 295,
+      "stakePctChange": 0.037383177570093455,
+      "significance": 63,
+      "transactions": [
+        {
+          "accession": "SEED-000021",
+          "ticker": "CRWD",
+          "company": "CrowdStrike Holdings, Inc.",
+          "issuerCik": "0000100020",
+          "sector": "Information Technology",
+          "insiderName": "Kurtz George R",
+          "role": "CEO",
+          "officerTitle": "President and CEO",
+          "transactionDate": "2026-05-02",
+          "filingDate": "2026-05-03",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 4800,
+          "pricePerShare": 295,
+          "dollars": 1416000,
+          "sharesOwnedAfter": 12840000,
+          "stakePctChange": 0.037383177570093455,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "ticker": "DKNG",
+      "company": "DraftKings Inc.",
+      "sector": "Consumer Discretionary",
+      "insiderName": "Park Jason",
+      "role": "CFO",
+      "officerTitle": "Chief Financial Officer",
+      "dollars": 990600,
+      "shares": 26000,
+      "avgPricePerShare": 38.1,
+      "stakePctChange": 8.165829145728644,
+      "significance": 62,
+      "transactions": [
+        {
+          "accession": "SEED-000002",
+          "ticker": "DKNG",
+          "company": "DraftKings Inc.",
+          "issuerCik": "0000100001",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Park Jason",
+          "role": "CFO",
+          "officerTitle": "Chief Financial Officer",
+          "transactionDate": "2026-05-02",
+          "filingDate": "2026-05-03",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 26000,
+          "pricePerShare": 38.1,
+          "dollars": 990600,
+          "sharesOwnedAfter": 318400,
+          "stakePctChange": 8.165829145728644,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "ticker": "WMT",
+      "company": "Walmart Inc.",
+      "sector": "Consumer Staples",
+      "insiderName": "Rainey John David",
+      "role": "CFO",
+      "officerTitle": "Executive Vice President and Chief Financial Officer",
+      "dollars": 722680,
+      "shares": 8900,
+      "avgPricePerShare": 81.2,
+      "stakePctChange": 12.46498599439776,
+      "significance": 61,
+      "transactions": [
+        {
+          "accession": "SEED-000005",
+          "ticker": "WMT",
+          "company": "Walmart Inc.",
+          "issuerCik": "0000100004",
+          "sector": "Consumer Staples",
+          "insiderName": "Rainey John David",
+          "role": "CFO",
+          "officerTitle": "Executive Vice President and Chief Financial Officer",
+          "transactionDate": "2026-05-04",
+          "filingDate": "2026-05-05",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 8900,
+          "pricePerShare": 81.2,
+          "dollars": 722680,
+          "sharesOwnedAfter": 71400,
+          "stakePctChange": 12.46498599439776,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "ticker": "AFRM",
+      "company": "Affirm Holdings, Inc.",
+      "sector": "Financials",
+      "insiderName": "Levchin Max",
+      "role": "CEO",
+      "officerTitle": "Founder, CEO and Chair",
+      "dollars": 921600,
+      "shares": 18000,
+      "avgPricePerShare": 51.2,
+      "stakePctChange": 0.22167487684729065,
+      "significance": 59,
+      "transactions": [
+        {
+          "accession": "SEED-000016",
+          "ticker": "AFRM",
+          "company": "Affirm Holdings, Inc.",
+          "issuerCik": "0000100015",
+          "sector": "Financials",
+          "insiderName": "Levchin Max",
+          "role": "CEO",
+          "officerTitle": "Founder, CEO and Chair",
+          "transactionDate": "2026-05-02",
+          "filingDate": "2026-05-03",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 18000,
+          "pricePerShare": 51.2,
+          "dollars": 921600,
+          "sharesOwnedAfter": 8120000,
+          "stakePctChange": 0.22167487684729065,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "ticker": "KMI",
+      "company": "Kinder Morgan, Inc.",
+      "sector": "Energy",
+      "insiderName": "Kim Richard",
+      "role": "CFO",
+      "officerTitle": "Executive Vice President and Chief Financial Officer",
+      "dollars": 542250,
+      "shares": 22500,
+      "avgPricePerShare": 24.1,
+      "stakePctChange": 13.321492007104796,
+      "significance": 59,
+      "transactions": [
+        {
+          "accession": "SEED-000017",
+          "ticker": "KMI",
+          "company": "Kinder Morgan, Inc.",
+          "issuerCik": "0000100016",
+          "sector": "Energy",
+          "insiderName": "Kim Richard",
+          "role": "CFO",
+          "officerTitle": "Executive Vice President and Chief Financial Officer",
+          "transactionDate": "2026-05-01",
+          "filingDate": "2026-05-02",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 22500,
+          "pricePerShare": 24.1,
+          "dollars": 542250,
+          "sharesOwnedAfter": 168900,
+          "stakePctChange": 13.321492007104796,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "ticker": "ENPH",
+      "company": "Enphase Energy, Inc.",
+      "sector": "Information Technology",
+      "insiderName": "Martin Mandy",
+      "role": "CFO",
+      "officerTitle": "Chief Financial Officer",
+      "dollars": 415675,
+      "shares": 6500,
+      "avgPricePerShare": 63.95,
+      "stakePctChange": 16.927083333333336,
+      "significance": 58,
+      "transactions": [
+        {
+          "accession": "SEED-000012",
+          "ticker": "ENPH",
+          "company": "Enphase Energy, Inc.",
+          "issuerCik": "0000100011",
+          "sector": "Information Technology",
+          "insiderName": "Martin Mandy",
+          "role": "CFO",
+          "officerTitle": "Chief Financial Officer",
+          "transactionDate": "2026-04-30",
+          "filingDate": "2026-05-01",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 6500,
+          "pricePerShare": 63.95,
+          "dollars": 415675,
+          "sharesOwnedAfter": 38400,
+          "stakePctChange": 16.927083333333336,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "ticker": "F",
+      "company": "Ford Motor Company",
+      "sector": "Consumer Discretionary",
+      "insiderName": "Farley James D Jr.",
+      "role": "CEO",
+      "officerTitle": "President and CEO",
+      "dollars": 315200,
+      "shares": 32000,
+      "avgPricePerShare": 9.85,
+      "stakePctChange": 2.4242424242424243,
+      "significance": 51,
+      "transactions": [
+        {
+          "accession": "SEED-000019",
+          "ticker": "F",
+          "company": "Ford Motor Company",
+          "issuerCik": "0000100018",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Farley James D Jr.",
+          "role": "CEO",
+          "officerTitle": "President and CEO",
+          "transactionDate": "2026-05-03",
+          "filingDate": "2026-05-04",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 32000,
+          "pricePerShare": 9.85,
+          "dollars": 315200,
+          "sharesOwnedAfter": 1320000,
+          "stakePctChange": 2.4242424242424243,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "ticker": "F",
+      "company": "Ford Motor Company",
+      "sector": "Consumer Discretionary",
+      "insiderName": "Lawler John",
+      "role": "CFO",
+      "officerTitle": "Chief Financial Officer",
+      "dollars": 143840,
+      "shares": 14500,
+      "avgPricePerShare": 9.92,
+      "stakePctChange": 6.63919413919414,
+      "significance": 44,
+      "transactions": [
+        {
+          "accession": "SEED-000020",
+          "ticker": "F",
+          "company": "Ford Motor Company",
+          "issuerCik": "0000100019",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Lawler John",
+          "role": "CFO",
+          "officerTitle": "Chief Financial Officer",
+          "transactionDate": "2026-05-01",
+          "filingDate": "2026-05-02",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 14500,
+          "pricePerShare": 9.92,
+          "dollars": 143840,
+          "sharesOwnedAfter": 218400,
+          "stakePctChange": 6.63919413919414,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "ticker": "COST",
+      "company": "Costco Wholesale Corp.",
+      "sector": "Consumer Staples",
+      "insiderName": "Sinegal James D",
+      "role": "Director",
+      "officerTitle": "Director (former CEO)",
+      "dollars": 1991000,
+      "shares": 2200,
+      "avgPricePerShare": 905,
+      "stakePctChange": 26.190476190476193,
+      "significance": 37,
+      "transactions": [
+        {
+          "accession": "SEED-000007",
+          "ticker": "COST",
+          "company": "Costco Wholesale Corp.",
+          "issuerCik": "0000100006",
+          "sector": "Consumer Staples",
+          "insiderName": "Sinegal James D",
+          "role": "Director",
+          "officerTitle": "Director (former CEO)",
+          "transactionDate": "2026-05-04",
+          "filingDate": "2026-05-05",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 2200,
+          "pricePerShare": 905,
+          "dollars": 1991000,
+          "sharesOwnedAfter": 8400,
+          "stakePctChange": 26.190476190476193,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 16,
+      "ticker": "ABBV",
+      "company": "AbbVie Inc.",
+      "sector": "Health Care",
+      "insiderName": "Gonzalez Richard A",
+      "role": "Chair",
+      "officerTitle": "Executive Chair",
+      "dollars": 346500,
+      "shares": 1800,
+      "avgPricePerShare": 192.5,
+      "stakePctChange": 0.16296966953372566,
+      "significance": 36,
+      "transactions": [
+        {
+          "accession": "SEED-000022",
+          "ticker": "ABBV",
+          "company": "AbbVie Inc.",
+          "issuerCik": "0000100021",
+          "sector": "Health Care",
+          "insiderName": "Gonzalez Richard A",
+          "role": "Chair",
+          "officerTitle": "Executive Chair",
+          "transactionDate": "2026-04-30",
+          "filingDate": "2026-05-01",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 1800,
+          "pricePerShare": 192.5,
+          "dollars": 346500,
+          "sharesOwnedAfter": 1104500,
+          "stakePctChange": 0.16296966953372566,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 17,
+      "ticker": "PYPL",
+      "company": "PayPal Holdings, Inc.",
+      "sector": "Financials",
+      "insiderName": "Wadhwani Suresh",
+      "role": "Officer",
+      "officerTitle": "Chief Product Officer",
+      "dollars": 599850,
+      "shares": 8600,
+      "avgPricePerShare": 69.75,
+      "stakePctChange": 16.44359464627151,
+      "significance": 32,
+      "transactions": [
+        {
+          "accession": "SEED-000010",
+          "ticker": "PYPL",
+          "company": "PayPal Holdings, Inc.",
+          "issuerCik": "0000100009",
+          "sector": "Financials",
+          "insiderName": "Wadhwani Suresh",
+          "role": "Officer",
+          "officerTitle": "Chief Product Officer",
+          "transactionDate": "2026-04-29",
+          "filingDate": "2026-04-30",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 8600,
+          "pricePerShare": 69.75,
+          "dollars": 599850,
+          "sharesOwnedAfter": 52300,
+          "stakePctChange": 16.44359464627151,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 18,
+      "ticker": "UAL",
+      "company": "United Airlines Holdings, Inc.",
+      "sector": "Industrials",
+      "insiderName": "Hart Scott",
+      "role": "Officer",
+      "officerTitle": "Chief Operations Officer",
+      "dollars": 572880,
+      "shares": 6200,
+      "avgPricePerShare": 92.4,
+      "stakePctChange": 16.103896103896105,
+      "significance": 32,
+      "transactions": [
+        {
+          "accession": "SEED-000015",
+          "ticker": "UAL",
+          "company": "United Airlines Holdings, Inc.",
+          "issuerCik": "0000100014",
+          "sector": "Industrials",
+          "insiderName": "Hart Scott",
+          "role": "Officer",
+          "officerTitle": "Chief Operations Officer",
+          "transactionDate": "2026-05-03",
+          "filingDate": "2026-05-04",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 6200,
+          "pricePerShare": 92.4,
+          "dollars": 572880,
+          "sharesOwnedAfter": 38500,
+          "stakePctChange": 16.103896103896105,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 19,
+      "ticker": "BAC",
+      "company": "Bank of America Corp.",
+      "sector": "Financials",
+      "insiderName": "Bessent Frank P",
+      "role": "Director",
+      "officerTitle": "Director",
+      "dollars": 370800,
+      "shares": 9000,
+      "avgPricePerShare": 41.2,
+      "stakePctChange": 36.29032258064516,
+      "significance": 32,
+      "transactions": [
+        {
+          "accession": "SEED-000018",
+          "ticker": "BAC",
+          "company": "Bank of America Corp.",
+          "issuerCik": "0000100017",
+          "sector": "Financials",
+          "insiderName": "Bessent Frank P",
+          "role": "Director",
+          "officerTitle": "Director",
+          "transactionDate": "2026-04-30",
+          "filingDate": "2026-05-01",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 9000,
+          "pricePerShare": 41.2,
+          "dollars": 370800,
+          "sharesOwnedAfter": 24800,
+          "stakePctChange": 36.29032258064516,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 20,
+      "ticker": "DKNG",
+      "company": "DraftKings Inc.",
+      "sector": "Consumer Discretionary",
+      "insiderName": "Howe Jocelyn",
+      "role": "Officer",
+      "officerTitle": "Chief People Officer",
+      "dollars": 203580.00000000003,
+      "shares": 5400,
+      "avgPricePerShare": 37.7,
+      "stakePctChange": 13.106796116504855,
+      "significance": 26,
+      "transactions": [
+        {
+          "accession": "SEED-000004",
+          "ticker": "DKNG",
+          "company": "DraftKings Inc.",
+          "issuerCik": "0000100003",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Howe Jocelyn",
+          "role": "Officer",
+          "officerTitle": "Chief People Officer",
+          "transactionDate": "2026-04-29",
+          "filingDate": "2026-04-30",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 5400,
+          "pricePerShare": 37.7,
+          "dollars": 203580.00000000003,
+          "sharesOwnedAfter": 41200,
+          "stakePctChange": 13.106796116504855,
+          "ownership": "D"
+        }
+      ]
+    }
+  ],
+  "clusters": [
+    {
+      "ticker": "DKNG",
+      "company": "DraftKings Inc.",
+      "sector": "Consumer Discretionary",
+      "insiderCount": 4,
+      "insiders": [
+        {
+          "name": "Robins Jason D",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "dollars": 3456000
+        },
+        {
+          "name": "Park Jason",
+          "role": "CFO",
+          "officerTitle": "Chief Financial Officer",
+          "dollars": 990600
+        },
+        {
+          "name": "Howe Jocelyn",
+          "role": "Officer",
+          "officerTitle": "Chief People Officer",
+          "dollars": 203580.00000000003
+        },
+        {
+          "name": "Sadusky Matt",
+          "role": "Director",
+          "officerTitle": "Director",
+          "dollars": 295230
+        }
+      ],
+      "totalDollars": 4945410,
+      "windowDays": 30,
+      "latestDate": "2026-05-03",
+      "strength": 70
+    },
+    {
+      "ticker": "PYPL",
+      "company": "PayPal Holdings, Inc.",
+      "sector": "Financials",
+      "insiderCount": 3,
+      "insiders": [
+        {
+          "name": "Chriss Alex",
+          "role": "CEO",
+          "officerTitle": "President and CEO",
+          "dollars": 1962799.9999999998
+        },
+        {
+          "name": "Miller Jamie",
+          "role": "CFO",
+          "officerTitle": "Chief Financial Officer",
+          "dollars": 985600.0000000001
+        },
+        {
+          "name": "Wadhwani Suresh",
+          "role": "Officer",
+          "officerTitle": "Chief Product Officer",
+          "dollars": 599850
+        }
+      ],
+      "totalDollars": 3548250,
+      "windowDays": 30,
+      "latestDate": "2026-05-02",
+      "strength": 63
+    },
+    {
+      "ticker": "ENPH",
+      "company": "Enphase Energy, Inc.",
+      "sector": "Information Technology",
+      "insiderCount": 3,
+      "insiders": [
+        {
+          "name": "Kothandaraman Badrinarayanan",
+          "role": "CEO",
+          "officerTitle": "President and CEO",
+          "dollars": 1348200
+        },
+        {
+          "name": "Martin Mandy",
+          "role": "CFO",
+          "officerTitle": "Chief Financial Officer",
+          "dollars": 415675
+        },
+        {
+          "name": "Rangarajan Raghu",
+          "role": "Director",
+          "officerTitle": "Director",
+          "dollars": 265020
+        }
+      ],
+      "totalDollars": 2028895,
+      "windowDays": 30,
+      "latestDate": "2026-04-30",
+      "strength": 62
+    }
+  ],
+  "sectors": [
+    {
+      "sector": "Consumer Staples",
+      "buyDollars": 2713680,
+      "sellDollars": 0,
+      "netRatio": 1,
+      "buyCount": 2,
+      "sellCount": 0
+    },
+    {
+      "sector": "Financials",
+      "buyDollars": 4968050,
+      "sellDollars": 0,
+      "netRatio": 1,
+      "buyCount": 6,
+      "sellCount": 0
+    },
+    {
+      "sector": "Industrials",
+      "buyDollars": 572880,
+      "sellDollars": 0,
+      "netRatio": 1,
+      "buyCount": 1,
+      "sellCount": 0
+    },
+    {
+      "sector": "Energy",
+      "buyDollars": 542250,
+      "sellDollars": 0,
+      "netRatio": 1,
+      "buyCount": 1,
+      "sellCount": 0
+    },
+    {
+      "sector": "Health Care",
+      "buyDollars": 346500,
+      "sellDollars": 0,
+      "netRatio": 1,
+      "buyCount": 1,
+      "sellCount": 0
+    },
+    {
+      "sector": "Information Technology",
+      "buyDollars": 14522875,
+      "sellDollars": 1274200,
+      "netRatio": 0.8386789959533648,
+      "buyCount": 4,
+      "sellCount": 1
+    },
+    {
+      "sector": "Consumer Discretionary",
+      "buyDollars": 6594850,
+      "sellDollars": 2553560,
+      "netRatio": 0.44174780098399613,
+      "buyCount": 7,
+      "sellCount": 2
+    },
+    {
+      "sector": "Communication Services",
+      "buyDollars": 0,
+      "sellDollars": 4267000,
+      "netRatio": -1,
+      "buyCount": 0,
+      "sellCount": 1
+    }
+  ],
+  "history": [
+    {
+      "date": "2025-05-05",
+      "index": 49,
+      "netDollars": -5311338
+    },
+    {
+      "date": "2025-05-06",
+      "index": 49,
+      "netDollars": -4760000
+    },
+    {
+      "date": "2025-05-07",
+      "index": 47,
+      "netDollars": -14376178
+    },
+    {
+      "date": "2025-05-08",
+      "index": 46,
+      "netDollars": -20342894
+    },
+    {
+      "date": "2025-05-09",
+      "index": 45,
+      "netDollars": -16951091
+    },
+    {
+      "date": "2025-05-10",
+      "index": 46,
+      "netDollars": -13971899
+    },
+    {
+      "date": "2025-05-11",
+      "index": 47,
+      "netDollars": -13098726
+    },
+    {
+      "date": "2025-05-12",
+      "index": 45,
+      "netDollars": -22021598
+    },
+    {
+      "date": "2025-05-13",
+      "index": 43,
+      "netDollars": -28490889
+    },
+    {
+      "date": "2025-05-14",
+      "index": 45,
+      "netDollars": -19222565
+    },
+    {
+      "date": "2025-05-15",
+      "index": 46,
+      "netDollars": -12056818
+    },
+    {
+      "date": "2025-05-16",
+      "index": 47,
+      "netDollars": -7709891
+    },
+    {
+      "date": "2025-05-17",
+      "index": 49,
+      "netDollars": -687904
+    },
+    {
+      "date": "2025-05-18",
+      "index": 49,
+      "netDollars": -6967643
+    },
+    {
+      "date": "2025-05-19",
+      "index": 50,
+      "netDollars": -1985989
+    },
+    {
+      "date": "2025-05-20",
+      "index": 50,
+      "netDollars": 1937878
+    },
+    {
+      "date": "2025-05-21",
+      "index": 48,
+      "netDollars": -2694800
+    },
+    {
+      "date": "2025-05-22",
+      "index": 50,
+      "netDollars": -1652715
+    },
+    {
+      "date": "2025-05-23",
+      "index": 51,
+      "netDollars": 4260942
+    },
+    {
+      "date": "2025-05-24",
+      "index": 50,
+      "netDollars": 2528743
+    },
+    {
+      "date": "2025-05-25",
+      "index": 52,
+      "netDollars": 7554118
+    },
+    {
+      "date": "2025-05-26",
+      "index": 51,
+      "netDollars": 6475585
+    },
+    {
+      "date": "2025-05-27",
+      "index": 50,
+      "netDollars": 1908911
+    },
+    {
+      "date": "2025-05-28",
+      "index": 50,
+      "netDollars": 5064134
+    },
+    {
+      "date": "2025-05-29",
+      "index": 51,
+      "netDollars": 791381
+    },
+    {
+      "date": "2025-05-30",
+      "index": 50,
+      "netDollars": 1732230
+    },
+    {
+      "date": "2025-05-31",
+      "index": 49,
+      "netDollars": 1165192
+    },
+    {
+      "date": "2025-06-01",
+      "index": 50,
+      "netDollars": 3892841
+    },
+    {
+      "date": "2025-06-02",
+      "index": 51,
+      "netDollars": -2025912
+    },
+    {
+      "date": "2025-06-03",
+      "index": 52,
+      "netDollars": 7462132
+    },
+    {
+      "date": "2025-06-04",
+      "index": 53,
+      "netDollars": 16326089
+    },
+    {
+      "date": "2025-06-05",
+      "index": 54,
+      "netDollars": 21361553
+    },
+    {
+      "date": "2025-06-06",
+      "index": 52,
+      "netDollars": 11349734
+    },
+    {
+      "date": "2025-06-07",
+      "index": 53,
+      "netDollars": 6978982
+    },
+    {
+      "date": "2025-06-08",
+      "index": 55,
+      "netDollars": 19166937
+    },
+    {
+      "date": "2025-06-09",
+      "index": 55,
+      "netDollars": 12623388
+    },
+    {
+      "date": "2025-06-10",
+      "index": 53,
+      "netDollars": 5215955
+    },
+    {
+      "date": "2025-06-11",
+      "index": 51,
+      "netDollars": 6678570
+    },
+    {
+      "date": "2025-06-12",
+      "index": 51,
+      "netDollars": 662335
+    },
+    {
+      "date": "2025-06-13",
+      "index": 53,
+      "netDollars": 12370837
+    },
+    {
+      "date": "2025-06-14",
+      "index": 55,
+      "netDollars": 12362939
+    },
+    {
+      "date": "2025-06-15",
+      "index": 56,
+      "netDollars": 17155440
+    },
+    {
+      "date": "2025-06-16",
+      "index": 57,
+      "netDollars": 29667181
+    },
+    {
+      "date": "2025-06-17",
+      "index": 57,
+      "netDollars": 29717424
+    },
+    {
+      "date": "2025-06-18",
+      "index": 57,
+      "netDollars": 30480563
+    },
+    {
+      "date": "2025-06-19",
+      "index": 58,
+      "netDollars": 34322132
+    },
+    {
+      "date": "2025-06-20",
+      "index": 59,
+      "netDollars": 32257768
+    },
+    {
+      "date": "2025-06-21",
+      "index": 59,
+      "netDollars": 33090296
+    },
+    {
+      "date": "2025-06-22",
+      "index": 58,
+      "netDollars": 36453859
+    },
+    {
+      "date": "2025-06-23",
+      "index": 58,
+      "netDollars": 32755365
+    },
+    {
+      "date": "2025-06-24",
+      "index": 58,
+      "netDollars": 31875053
+    },
+    {
+      "date": "2025-06-25",
+      "index": 58,
+      "netDollars": 31314497
+    },
+    {
+      "date": "2025-06-26",
+      "index": 59,
+      "netDollars": 38025737
+    },
+    {
+      "date": "2025-06-27",
+      "index": 59,
+      "netDollars": 39433300
+    },
+    {
+      "date": "2025-06-28",
+      "index": 57,
+      "netDollars": 26312596
+    },
+    {
+      "date": "2025-06-29",
+      "index": 56,
+      "netDollars": 17010937
+    },
+    {
+      "date": "2025-06-30",
+      "index": 56,
+      "netDollars": 27767775
+    },
+    {
+      "date": "2025-07-01",
+      "index": 57,
+      "netDollars": 29195299
+    },
+    {
+      "date": "2025-07-02",
+      "index": 58,
+      "netDollars": 33507262
+    },
+    {
+      "date": "2025-07-03",
+      "index": 58,
+      "netDollars": 32986619
+    },
+    {
+      "date": "2025-07-04",
+      "index": 56,
+      "netDollars": 26870839
+    },
+    {
+      "date": "2025-07-05",
+      "index": 57,
+      "netDollars": 28280810
+    },
+    {
+      "date": "2025-07-06",
+      "index": 59,
+      "netDollars": 35505772
+    },
+    {
+      "date": "2025-07-07",
+      "index": 57,
+      "netDollars": 24256437
+    },
+    {
+      "date": "2025-07-08",
+      "index": 59,
+      "netDollars": 34488460
+    },
+    {
+      "date": "2025-07-09",
+      "index": 60,
+      "netDollars": 35402979
+    },
+    {
+      "date": "2025-07-10",
+      "index": 58,
+      "netDollars": 35928120
+    },
+    {
+      "date": "2025-07-11",
+      "index": 59,
+      "netDollars": 37824389
+    },
+    {
+      "date": "2025-07-12",
+      "index": 59,
+      "netDollars": 41659532
+    },
+    {
+      "date": "2025-07-13",
+      "index": 60,
+      "netDollars": 45913295
+    },
+    {
+      "date": "2025-07-14",
+      "index": 61,
+      "netDollars": 47188622
+    },
+    {
+      "date": "2025-07-15",
+      "index": 62,
+      "netDollars": 43602332
+    },
+    {
+      "date": "2025-07-16",
+      "index": 60,
+      "netDollars": 43814676
+    },
+    {
+      "date": "2025-07-17",
+      "index": 59,
+      "netDollars": 33001563
+    },
+    {
+      "date": "2025-07-18",
+      "index": 59,
+      "netDollars": 29199432
+    },
+    {
+      "date": "2025-07-19",
+      "index": 60,
+      "netDollars": 42453887
+    },
+    {
+      "date": "2025-07-20",
+      "index": 60,
+      "netDollars": 37954002
+    },
+    {
+      "date": "2025-07-21",
+      "index": 59,
+      "netDollars": 37598060
+    },
+    {
+      "date": "2025-07-22",
+      "index": 58,
+      "netDollars": 32466729
+    },
+    {
+      "date": "2025-07-23",
+      "index": 57,
+      "netDollars": 23984585
+    },
+    {
+      "date": "2025-07-24",
+      "index": 58,
+      "netDollars": 28371154
+    },
+    {
+      "date": "2025-07-25",
+      "index": 60,
+      "netDollars": 41054009
+    },
+    {
+      "date": "2025-07-26",
+      "index": 59,
+      "netDollars": 38834926
+    },
+    {
+      "date": "2025-07-27",
+      "index": 58,
+      "netDollars": 34841056
+    },
+    {
+      "date": "2025-07-28",
+      "index": 59,
+      "netDollars": 34918799
+    },
+    {
+      "date": "2025-07-29",
+      "index": 59,
+      "netDollars": 31495589
+    },
+    {
+      "date": "2025-07-30",
+      "index": 61,
+      "netDollars": 46865195
+    },
+    {
+      "date": "2025-07-31",
+      "index": 63,
+      "netDollars": 49555692
+    },
+    {
+      "date": "2025-08-01",
+      "index": 62,
+      "netDollars": 46371644
+    },
+    {
+      "date": "2025-08-02",
+      "index": 61,
+      "netDollars": 38861988
+    },
+    {
+      "date": "2025-08-03",
+      "index": 59,
+      "netDollars": 32348681
+    },
+    {
+      "date": "2025-08-04",
+      "index": 59,
+      "netDollars": 35852148
+    },
+    {
+      "date": "2025-08-05",
+      "index": 60,
+      "netDollars": 35563177
+    },
+    {
+      "date": "2025-08-06",
+      "index": 60,
+      "netDollars": 46136954
+    },
+    {
+      "date": "2025-08-07",
+      "index": 61,
+      "netDollars": 37348784
+    },
+    {
+      "date": "2025-08-08",
+      "index": 61,
+      "netDollars": 42952127
+    },
+    {
+      "date": "2025-08-09",
+      "index": 59,
+      "netDollars": 34711180
+    },
+    {
+      "date": "2025-08-10",
+      "index": 57,
+      "netDollars": 31324725
+    },
+    {
+      "date": "2025-08-11",
+      "index": 56,
+      "netDollars": 27417877
+    },
+    {
+      "date": "2025-08-12",
+      "index": 55,
+      "netDollars": 14452348
+    },
+    {
+      "date": "2025-08-13",
+      "index": 55,
+      "netDollars": 25765230
+    },
+    {
+      "date": "2025-08-14",
+      "index": 54,
+      "netDollars": 12855221
+    },
+    {
+      "date": "2025-08-15",
+      "index": 54,
+      "netDollars": 12146498
+    },
+    {
+      "date": "2025-08-16",
+      "index": 56,
+      "netDollars": 25298170
+    },
+    {
+      "date": "2025-08-17",
+      "index": 57,
+      "netDollars": 25707376
+    },
+    {
+      "date": "2025-08-18",
+      "index": 58,
+      "netDollars": 31150389
+    },
+    {
+      "date": "2025-08-19",
+      "index": 57,
+      "netDollars": 24529574
+    },
+    {
+      "date": "2025-08-20",
+      "index": 56,
+      "netDollars": 26863577
+    },
+    {
+      "date": "2025-08-21",
+      "index": 55,
+      "netDollars": 19135624
+    },
+    {
+      "date": "2025-08-22",
+      "index": 55,
+      "netDollars": 22758031
+    },
+    {
+      "date": "2025-08-23",
+      "index": 56,
+      "netDollars": 25191952
+    },
+    {
+      "date": "2025-08-24",
+      "index": 55,
+      "netDollars": 14999377
+    },
+    {
+      "date": "2025-08-25",
+      "index": 56,
+      "netDollars": 25523453
+    },
+    {
+      "date": "2025-08-26",
+      "index": 57,
+      "netDollars": 29292386
+    },
+    {
+      "date": "2025-08-27",
+      "index": 57,
+      "netDollars": 29410136
+    },
+    {
+      "date": "2025-08-28",
+      "index": 58,
+      "netDollars": 30887136
+    },
+    {
+      "date": "2025-08-29",
+      "index": 58,
+      "netDollars": 27694505
+    },
+    {
+      "date": "2025-08-30",
+      "index": 56,
+      "netDollars": 25335252
+    },
+    {
+      "date": "2025-08-31",
+      "index": 58,
+      "netDollars": 27762431
+    },
+    {
+      "date": "2025-09-01",
+      "index": 58,
+      "netDollars": 28142751
+    },
+    {
+      "date": "2025-09-02",
+      "index": 58,
+      "netDollars": 38021918
+    },
+    {
+      "date": "2025-09-03",
+      "index": 58,
+      "netDollars": 33361997
+    },
+    {
+      "date": "2025-09-04",
+      "index": 57,
+      "netDollars": 29671250
+    },
+    {
+      "date": "2025-09-05",
+      "index": 55,
+      "netDollars": 20860751
+    },
+    {
+      "date": "2025-09-06",
+      "index": 54,
+      "netDollars": 15296481
+    },
+    {
+      "date": "2025-09-07",
+      "index": 56,
+      "netDollars": 24907203
+    },
+    {
+      "date": "2025-09-08",
+      "index": 55,
+      "netDollars": 26660143
+    },
+    {
+      "date": "2025-09-09",
+      "index": 54,
+      "netDollars": 14493678
+    },
+    {
+      "date": "2025-09-10",
+      "index": 55,
+      "netDollars": 16019021
+    },
+    {
+      "date": "2025-09-11",
+      "index": 57,
+      "netDollars": 30527800
+    },
+    {
+      "date": "2025-09-12",
+      "index": 58,
+      "netDollars": 37177850
+    },
+    {
+      "date": "2025-09-13",
+      "index": 56,
+      "netDollars": 25240324
+    },
+    {
+      "date": "2025-09-14",
+      "index": 57,
+      "netDollars": 33614051
+    },
+    {
+      "date": "2025-09-15",
+      "index": 58,
+      "netDollars": 30285751
+    },
+    {
+      "date": "2025-09-16",
+      "index": 57,
+      "netDollars": 32994203
+    },
+    {
+      "date": "2025-09-17",
+      "index": 58,
+      "netDollars": 28987593
+    },
+    {
+      "date": "2025-09-18",
+      "index": 59,
+      "netDollars": 34039012
+    },
+    {
+      "date": "2025-09-19",
+      "index": 58,
+      "netDollars": 25939874
+    },
+    {
+      "date": "2025-09-20",
+      "index": 60,
+      "netDollars": 40945579
+    },
+    {
+      "date": "2025-09-21",
+      "index": 61,
+      "netDollars": 46525923
+    },
+    {
+      "date": "2025-09-22",
+      "index": 61,
+      "netDollars": 45881837
+    },
+    {
+      "date": "2025-09-23",
+      "index": 60,
+      "netDollars": 39198600
+    },
+    {
+      "date": "2025-09-24",
+      "index": 61,
+      "netDollars": 45978177
+    },
+    {
+      "date": "2025-09-25",
+      "index": 59,
+      "netDollars": 31447051
+    },
+    {
+      "date": "2025-09-26",
+      "index": 57,
+      "netDollars": 33371536
+    },
+    {
+      "date": "2025-09-27",
+      "index": 58,
+      "netDollars": 28534127
+    },
+    {
+      "date": "2025-09-28",
+      "index": 59,
+      "netDollars": 32544575
+    },
+    {
+      "date": "2025-09-29",
+      "index": 59,
+      "netDollars": 29689025
+    },
+    {
+      "date": "2025-09-30",
+      "index": 57,
+      "netDollars": 22497054
+    },
+    {
+      "date": "2025-10-01",
+      "index": 57,
+      "netDollars": 32331259
+    },
+    {
+      "date": "2025-10-02",
+      "index": 59,
+      "netDollars": 37889131
+    },
+    {
+      "date": "2025-10-03",
+      "index": 57,
+      "netDollars": 34368677
+    },
+    {
+      "date": "2025-10-04",
+      "index": 56,
+      "netDollars": 27238219
+    },
+    {
+      "date": "2025-10-05",
+      "index": 54,
+      "netDollars": 13664715
+    },
+    {
+      "date": "2025-10-06",
+      "index": 55,
+      "netDollars": 23483063
+    },
+    {
+      "date": "2025-10-07",
+      "index": 56,
+      "netDollars": 22539773
+    },
+    {
+      "date": "2025-10-08",
+      "index": 56,
+      "netDollars": 27240598
+    },
+    {
+      "date": "2025-10-09",
+      "index": 56,
+      "netDollars": 17483415
+    },
+    {
+      "date": "2025-10-10",
+      "index": 56,
+      "netDollars": 28639940
+    },
+    {
+      "date": "2025-10-11",
+      "index": 58,
+      "netDollars": 35667266
+    },
+    {
+      "date": "2025-10-12",
+      "index": 59,
+      "netDollars": 36826819
+    },
+    {
+      "date": "2025-10-13",
+      "index": 58,
+      "netDollars": 30815351
+    },
+    {
+      "date": "2025-10-14",
+      "index": 60,
+      "netDollars": 35299053
+    },
+    {
+      "date": "2025-10-15",
+      "index": 58,
+      "netDollars": 28115260
+    },
+    {
+      "date": "2025-10-16",
+      "index": 56,
+      "netDollars": 17398940
+    },
+    {
+      "date": "2025-10-17",
+      "index": 55,
+      "netDollars": 22127112
+    },
+    {
+      "date": "2025-10-18",
+      "index": 57,
+      "netDollars": 22109388
+    },
+    {
+      "date": "2025-10-19",
+      "index": 57,
+      "netDollars": 26680065
+    },
+    {
+      "date": "2025-10-20",
+      "index": 57,
+      "netDollars": 30792976
+    },
+    {
+      "date": "2025-10-21",
+      "index": 56,
+      "netDollars": 26503534
+    },
+    {
+      "date": "2025-10-22",
+      "index": 57,
+      "netDollars": 22973030
+    },
+    {
+      "date": "2025-10-23",
+      "index": 58,
+      "netDollars": 32975588
+    },
+    {
+      "date": "2025-10-24",
+      "index": 57,
+      "netDollars": 31474730
+    },
+    {
+      "date": "2025-10-25",
+      "index": 59,
+      "netDollars": 31477745
+    },
+    {
+      "date": "2025-10-26",
+      "index": 57,
+      "netDollars": 22729950
+    },
+    {
+      "date": "2025-10-27",
+      "index": 56,
+      "netDollars": 19986193
+    },
+    {
+      "date": "2025-10-28",
+      "index": 55,
+      "netDollars": 15658926
+    },
+    {
+      "date": "2025-10-29",
+      "index": 54,
+      "netDollars": 16692781
+    },
+    {
+      "date": "2025-10-30",
+      "index": 54,
+      "netDollars": 12713556
+    },
+    {
+      "date": "2025-10-31",
+      "index": 53,
+      "netDollars": 13809119
+    },
+    {
+      "date": "2025-11-01",
+      "index": 55,
+      "netDollars": 18223494
+    },
+    {
+      "date": "2025-11-02",
+      "index": 54,
+      "netDollars": 16837896
+    },
+    {
+      "date": "2025-11-03",
+      "index": 53,
+      "netDollars": 11605685
+    },
+    {
+      "date": "2025-11-04",
+      "index": 51,
+      "netDollars": 4080846
+    },
+    {
+      "date": "2025-11-05",
+      "index": 50,
+      "netDollars": -2321529
+    },
+    {
+      "date": "2025-11-06",
+      "index": 51,
+      "netDollars": 4556448
+    },
+    {
+      "date": "2025-11-07",
+      "index": 51,
+      "netDollars": 3760959
+    },
+    {
+      "date": "2025-11-08",
+      "index": 51,
+      "netDollars": 7495623
+    },
+    {
+      "date": "2025-11-09",
+      "index": 52,
+      "netDollars": 9353648
+    },
+    {
+      "date": "2025-11-10",
+      "index": 50,
+      "netDollars": 2687839
+    },
+    {
+      "date": "2025-11-11",
+      "index": 50,
+      "netDollars": 3189348
+    },
+    {
+      "date": "2025-11-12",
+      "index": 49,
+      "netDollars": -8996863
+    },
+    {
+      "date": "2025-11-13",
+      "index": 51,
+      "netDollars": -2913956
+    },
+    {
+      "date": "2025-11-14",
+      "index": 52,
+      "netDollars": 8781794
+    },
+    {
+      "date": "2025-11-15",
+      "index": 53,
+      "netDollars": 14905856
+    },
+    {
+      "date": "2025-11-16",
+      "index": 51,
+      "netDollars": 8077116
+    },
+    {
+      "date": "2025-11-17",
+      "index": 51,
+      "netDollars": 4385133
+    },
+    {
+      "date": "2025-11-18",
+      "index": 49,
+      "netDollars": -8986902
+    },
+    {
+      "date": "2025-11-19",
+      "index": 47,
+      "netDollars": -6295841
+    },
+    {
+      "date": "2025-11-20",
+      "index": 49,
+      "netDollars": -48845
+    },
+    {
+      "date": "2025-11-21",
+      "index": 49,
+      "netDollars": -786895
+    },
+    {
+      "date": "2025-11-22",
+      "index": 50,
+      "netDollars": 3052730
+    },
+    {
+      "date": "2025-11-23",
+      "index": 50,
+      "netDollars": -3845430
+    },
+    {
+      "date": "2025-11-24",
+      "index": 50,
+      "netDollars": 2344124
+    },
+    {
+      "date": "2025-11-25",
+      "index": 51,
+      "netDollars": 8857314
+    },
+    {
+      "date": "2025-11-26",
+      "index": 52,
+      "netDollars": 14527760
+    },
+    {
+      "date": "2025-11-27",
+      "index": 53,
+      "netDollars": 13052389
+    },
+    {
+      "date": "2025-11-28",
+      "index": 53,
+      "netDollars": 7948957
+    },
+    {
+      "date": "2025-11-29",
+      "index": 52,
+      "netDollars": 7905978
+    },
+    {
+      "date": "2025-11-30",
+      "index": 50,
+      "netDollars": -989038
+    },
+    {
+      "date": "2025-12-01",
+      "index": 51,
+      "netDollars": 9238165
+    },
+    {
+      "date": "2025-12-02",
+      "index": 53,
+      "netDollars": 7817130
+    },
+    {
+      "date": "2025-12-03",
+      "index": 54,
+      "netDollars": 18908108
+    },
+    {
+      "date": "2025-12-04",
+      "index": 56,
+      "netDollars": 20085316
+    },
+    {
+      "date": "2025-12-05",
+      "index": 57,
+      "netDollars": 31529596
+    },
+    {
+      "date": "2025-12-06",
+      "index": 57,
+      "netDollars": 24411168
+    },
+    {
+      "date": "2025-12-07",
+      "index": 56,
+      "netDollars": 27282292
+    },
+    {
+      "date": "2025-12-08",
+      "index": 58,
+      "netDollars": 28072374
+    },
+    {
+      "date": "2025-12-09",
+      "index": 57,
+      "netDollars": 33308167
+    },
+    {
+      "date": "2025-12-10",
+      "index": 57,
+      "netDollars": 30702833
+    },
+    {
+      "date": "2025-12-11",
+      "index": 59,
+      "netDollars": 30988188
+    },
+    {
+      "date": "2025-12-12",
+      "index": 57,
+      "netDollars": 29573219
+    },
+    {
+      "date": "2025-12-13",
+      "index": 58,
+      "netDollars": 27407733
+    },
+    {
+      "date": "2025-12-14",
+      "index": 59,
+      "netDollars": 36847750
+    },
+    {
+      "date": "2025-12-15",
+      "index": 59,
+      "netDollars": 38356211
+    },
+    {
+      "date": "2025-12-16",
+      "index": 57,
+      "netDollars": 28723512
+    },
+    {
+      "date": "2025-12-17",
+      "index": 57,
+      "netDollars": 23857577
+    },
+    {
+      "date": "2025-12-18",
+      "index": 56,
+      "netDollars": 19863453
+    },
+    {
+      "date": "2025-12-19",
+      "index": 56,
+      "netDollars": 22548089
+    },
+    {
+      "date": "2025-12-20",
+      "index": 55,
+      "netDollars": 23710624
+    },
+    {
+      "date": "2025-12-21",
+      "index": 54,
+      "netDollars": 9672408
+    },
+    {
+      "date": "2025-12-22",
+      "index": 53,
+      "netDollars": 8771402
+    },
+    {
+      "date": "2025-12-23",
+      "index": 55,
+      "netDollars": 23944258
+    },
+    {
+      "date": "2025-12-24",
+      "index": 55,
+      "netDollars": 14335833
+    },
+    {
+      "date": "2025-12-25",
+      "index": 53,
+      "netDollars": 13834485
+    },
+    {
+      "date": "2025-12-26",
+      "index": 53,
+      "netDollars": 9956711
+    },
+    {
+      "date": "2025-12-27",
+      "index": 54,
+      "netDollars": 17684290
+    },
+    {
+      "date": "2025-12-28",
+      "index": 53,
+      "netDollars": 9955508
+    },
+    {
+      "date": "2025-12-29",
+      "index": 53,
+      "netDollars": 8828439
+    },
+    {
+      "date": "2025-12-30",
+      "index": 52,
+      "netDollars": 9152544
+    },
+    {
+      "date": "2025-12-31",
+      "index": 53,
+      "netDollars": 16283245
+    },
+    {
+      "date": "2026-01-01",
+      "index": 51,
+      "netDollars": 3344976
+    },
+    {
+      "date": "2026-01-02",
+      "index": 49,
+      "netDollars": -8022957
+    },
+    {
+      "date": "2026-01-03",
+      "index": 47,
+      "netDollars": -8815052
+    },
+    {
+      "date": "2026-01-04",
+      "index": 46,
+      "netDollars": -15551654
+    },
+    {
+      "date": "2026-01-05",
+      "index": 47,
+      "netDollars": -16241797
+    },
+    {
+      "date": "2026-01-06",
+      "index": 49,
+      "netDollars": -10241651
+    },
+    {
+      "date": "2026-01-07",
+      "index": 49,
+      "netDollars": 1426739
+    },
+    {
+      "date": "2026-01-08",
+      "index": 51,
+      "netDollars": 2645128
+    },
+    {
+      "date": "2026-01-09",
+      "index": 53,
+      "netDollars": 12726951
+    },
+    {
+      "date": "2026-01-10",
+      "index": 54,
+      "netDollars": 18852395
+    },
+    {
+      "date": "2026-01-11",
+      "index": 54,
+      "netDollars": 16291169
+    },
+    {
+      "date": "2026-01-12",
+      "index": 53,
+      "netDollars": 15990462
+    },
+    {
+      "date": "2026-01-13",
+      "index": 51,
+      "netDollars": 3291046
+    },
+    {
+      "date": "2026-01-14",
+      "index": 49,
+      "netDollars": -7797781
+    },
+    {
+      "date": "2026-01-15",
+      "index": 49,
+      "netDollars": -2512755
+    },
+    {
+      "date": "2026-01-16",
+      "index": 49,
+      "netDollars": -2992876
+    },
+    {
+      "date": "2026-01-17",
+      "index": 49,
+      "netDollars": -3770931
+    },
+    {
+      "date": "2026-01-18",
+      "index": 48,
+      "netDollars": -11077208
+    },
+    {
+      "date": "2026-01-19",
+      "index": 49,
+      "netDollars": -9158002
+    },
+    {
+      "date": "2026-01-20",
+      "index": 51,
+      "netDollars": 6157130
+    },
+    {
+      "date": "2026-01-21",
+      "index": 49,
+      "netDollars": -5272468
+    },
+    {
+      "date": "2026-01-22",
+      "index": 49,
+      "netDollars": -6798452
+    },
+    {
+      "date": "2026-01-23",
+      "index": 50,
+      "netDollars": 4541931
+    },
+    {
+      "date": "2026-01-24",
+      "index": 50,
+      "netDollars": -1342431
+    },
+    {
+      "date": "2026-01-25",
+      "index": 50,
+      "netDollars": -2172772
+    },
+    {
+      "date": "2026-01-26",
+      "index": 52,
+      "netDollars": 5565816
+    },
+    {
+      "date": "2026-01-27",
+      "index": 51,
+      "netDollars": 615194
+    },
+    {
+      "date": "2026-01-28",
+      "index": 50,
+      "netDollars": 462259
+    },
+    {
+      "date": "2026-01-29",
+      "index": 52,
+      "netDollars": 11221235
+    },
+    {
+      "date": "2026-01-30",
+      "index": 53,
+      "netDollars": 10585891
+    },
+    {
+      "date": "2026-01-31",
+      "index": 52,
+      "netDollars": 6482552
+    },
+    {
+      "date": "2026-02-01",
+      "index": 53,
+      "netDollars": 16248993
+    },
+    {
+      "date": "2026-02-02",
+      "index": 52,
+      "netDollars": 3175969
+    },
+    {
+      "date": "2026-02-03",
+      "index": 51,
+      "netDollars": 867424
+    },
+    {
+      "date": "2026-02-04",
+      "index": 53,
+      "netDollars": 5392270
+    },
+    {
+      "date": "2026-02-05",
+      "index": 54,
+      "netDollars": 19679378
+    },
+    {
+      "date": "2026-02-06",
+      "index": 52,
+      "netDollars": 5059588
+    },
+    {
+      "date": "2026-02-07",
+      "index": 50,
+      "netDollars": -3857408
+    },
+    {
+      "date": "2026-02-08",
+      "index": 50,
+      "netDollars": -6839710
+    },
+    {
+      "date": "2026-02-09",
+      "index": 48,
+      "netDollars": -7641595
+    },
+    {
+      "date": "2026-02-10",
+      "index": 48,
+      "netDollars": -4639350
+    },
+    {
+      "date": "2026-02-11",
+      "index": 47,
+      "netDollars": -10085891
+    },
+    {
+      "date": "2026-02-12",
+      "index": 45,
+      "netDollars": -17894770
+    },
+    {
+      "date": "2026-02-13",
+      "index": 47,
+      "netDollars": -10865604
+    },
+    {
+      "date": "2026-02-14",
+      "index": 47,
+      "netDollars": -15538782
+    },
+    {
+      "date": "2026-02-15",
+      "index": 49,
+      "netDollars": -1696347
+    },
+    {
+      "date": "2026-02-16",
+      "index": 48,
+      "netDollars": -7276755
+    },
+    {
+      "date": "2026-02-17",
+      "index": 49,
+      "netDollars": -1881088
+    },
+    {
+      "date": "2026-02-18",
+      "index": 51,
+      "netDollars": 7100255
+    },
+    {
+      "date": "2026-02-19",
+      "index": 50,
+      "netDollars": -2788827
+    },
+    {
+      "date": "2026-02-20",
+      "index": 51,
+      "netDollars": 2668162
+    },
+    {
+      "date": "2026-02-21",
+      "index": 52,
+      "netDollars": 6016386
+    },
+    {
+      "date": "2026-02-22",
+      "index": 52,
+      "netDollars": 9491119
+    },
+    {
+      "date": "2026-02-23",
+      "index": 54,
+      "netDollars": 20599253
+    },
+    {
+      "date": "2026-02-24",
+      "index": 54,
+      "netDollars": 17802924
+    },
+    {
+      "date": "2026-02-25",
+      "index": 53,
+      "netDollars": 14801845
+    },
+    {
+      "date": "2026-02-26",
+      "index": 54,
+      "netDollars": 15071193
+    },
+    {
+      "date": "2026-02-27",
+      "index": 53,
+      "netDollars": 11400796
+    },
+    {
+      "date": "2026-02-28",
+      "index": 52,
+      "netDollars": 12665620
+    },
+    {
+      "date": "2026-03-01",
+      "index": 51,
+      "netDollars": 4096580
+    },
+    {
+      "date": "2026-03-02",
+      "index": 51,
+      "netDollars": 7169958
+    },
+    {
+      "date": "2026-03-03",
+      "index": 51,
+      "netDollars": 1833461
+    },
+    {
+      "date": "2026-03-04",
+      "index": 51,
+      "netDollars": 9525697
+    },
+    {
+      "date": "2026-03-05",
+      "index": 50,
+      "netDollars": 1965594
+    },
+    {
+      "date": "2026-03-06",
+      "index": 48,
+      "netDollars": -5347852
+    },
+    {
+      "date": "2026-03-07",
+      "index": 50,
+      "netDollars": 314487
+    },
+    {
+      "date": "2026-03-08",
+      "index": 51,
+      "netDollars": -1634900
+    },
+    {
+      "date": "2026-03-09",
+      "index": 53,
+      "netDollars": 18649235
+    },
+    {
+      "date": "2026-03-10",
+      "index": 53,
+      "netDollars": 5512211
+    },
+    {
+      "date": "2026-03-11",
+      "index": 53,
+      "netDollars": 7940015
+    },
+    {
+      "date": "2026-03-12",
+      "index": 56,
+      "netDollars": 27453590
+    },
+    {
+      "date": "2026-03-13",
+      "index": 55,
+      "netDollars": 24521854
+    },
+    {
+      "date": "2026-03-14",
+      "index": 57,
+      "netDollars": 21407241
+    },
+    {
+      "date": "2026-03-15",
+      "index": 57,
+      "netDollars": 29187703
+    },
+    {
+      "date": "2026-03-16",
+      "index": 57,
+      "netDollars": 31106343
+    },
+    {
+      "date": "2026-03-17",
+      "index": 58,
+      "netDollars": 31772415
+    },
+    {
+      "date": "2026-03-18",
+      "index": 59,
+      "netDollars": 42431854
+    },
+    {
+      "date": "2026-03-19",
+      "index": 60,
+      "netDollars": 43367763
+    },
+    {
+      "date": "2026-03-20",
+      "index": 61,
+      "netDollars": 44253777
+    },
+    {
+      "date": "2026-03-21",
+      "index": 61,
+      "netDollars": 49587069
+    },
+    {
+      "date": "2026-03-22",
+      "index": 61,
+      "netDollars": 48800608
+    },
+    {
+      "date": "2026-03-23",
+      "index": 61,
+      "netDollars": 40329830
+    },
+    {
+      "date": "2026-03-24",
+      "index": 63,
+      "netDollars": 46556720
+    },
+    {
+      "date": "2026-03-25",
+      "index": 64,
+      "netDollars": 54893014
+    },
+    {
+      "date": "2026-03-26",
+      "index": 67,
+      "netDollars": 71263877
+    },
+    {
+      "date": "2026-03-27",
+      "index": 66,
+      "netDollars": 65773270
+    },
+    {
+      "date": "2026-03-28",
+      "index": 68,
+      "netDollars": 68825810
+    },
+    {
+      "date": "2026-03-29",
+      "index": 70,
+      "netDollars": 84765907
+    },
+    {
+      "date": "2026-03-30",
+      "index": 72,
+      "netDollars": 91513257
+    },
+    {
+      "date": "2026-03-31",
+      "index": 74,
+      "netDollars": 97935061
+    },
+    {
+      "date": "2026-04-01",
+      "index": 75,
+      "netDollars": 100437089
+    },
+    {
+      "date": "2026-04-02",
+      "index": 73,
+      "netDollars": 96871162
+    },
+    {
+      "date": "2026-04-03",
+      "index": 74,
+      "netDollars": 97606653
+    },
+    {
+      "date": "2026-04-04",
+      "index": 72,
+      "netDollars": 94033848
+    },
+    {
+      "date": "2026-04-05",
+      "index": 74,
+      "netDollars": 93003474
+    },
+    {
+      "date": "2026-04-06",
+      "index": 73,
+      "netDollars": 89435835
+    },
+    {
+      "date": "2026-04-07",
+      "index": 75,
+      "netDollars": 104334931
+    },
+    {
+      "date": "2026-04-08",
+      "index": 77,
+      "netDollars": 105696008
+    },
+    {
+      "date": "2026-04-09",
+      "index": 77,
+      "netDollars": 106166612
+    },
+    {
+      "date": "2026-04-10",
+      "index": 77,
+      "netDollars": 104922370
+    },
+    {
+      "date": "2026-04-11",
+      "index": 79,
+      "netDollars": 114692840
+    },
+    {
+      "date": "2026-04-12",
+      "index": 78,
+      "netDollars": 108718250
+    },
+    {
+      "date": "2026-04-13",
+      "index": 80,
+      "netDollars": 121995977
+    },
+    {
+      "date": "2026-04-14",
+      "index": 79,
+      "netDollars": 114766719
+    },
+    {
+      "date": "2026-04-15",
+      "index": 78,
+      "netDollars": 113748580
+    },
+    {
+      "date": "2026-04-16",
+      "index": 76,
+      "netDollars": 100296447
+    },
+    {
+      "date": "2026-04-17",
+      "index": 75,
+      "netDollars": 99868357
+    },
+    {
+      "date": "2026-04-18",
+      "index": 75,
+      "netDollars": 100060350
+    },
+    {
+      "date": "2026-04-19",
+      "index": 74,
+      "netDollars": 90847573
+    },
+    {
+      "date": "2026-04-20",
+      "index": 74,
+      "netDollars": 99659448
+    },
+    {
+      "date": "2026-04-21",
+      "index": 76,
+      "netDollars": 98369591
+    },
+    {
+      "date": "2026-04-22",
+      "index": 76,
+      "netDollars": 106390873
+    },
+    {
+      "date": "2026-04-23",
+      "index": 77,
+      "netDollars": 106654412
+    },
+    {
+      "date": "2026-04-24",
+      "index": 77,
+      "netDollars": 101786665
+    },
+    {
+      "date": "2026-04-25",
+      "index": 78,
+      "netDollars": 115613386
+    },
+    {
+      "date": "2026-04-26",
+      "index": 80,
+      "netDollars": 114466402
+    },
+    {
+      "date": "2026-04-27",
+      "index": 78,
+      "netDollars": 116376873
+    },
+    {
+      "date": "2026-04-28",
+      "index": 79,
+      "netDollars": 117586121
+    },
+    {
+      "date": "2026-04-29",
+      "index": 79,
+      "netDollars": 113485065
+    },
+    {
+      "date": "2026-04-30",
+      "index": 78,
+      "netDollars": 115156107
+    },
+    {
+      "date": "2026-05-01",
+      "index": 77,
+      "netDollars": 103572786
+    },
+    {
+      "date": "2026-05-02",
+      "index": 78,
+      "netDollars": 112813709
+    },
+    {
+      "date": "2026-05-03",
+      "index": 79,
+      "netDollars": 119276985
+    },
+    {
+      "date": "2026-05-04",
+      "index": 80,
+      "netDollars": 124740333
+    },
+    {
+      "date": "2026-05-05",
+      "index": 78,
+      "netDollars": 119543520
+    }
+  ],
+  "indicators": [
+    {
+      "label": "Cluster buys (30d)",
+      "value": "3",
+      "sub": "Across 3 sectors",
+      "tone": "neutral"
+    },
+    {
+      "label": "Net buy/sell ($)",
+      "value": "+$22.2M",
+      "sub": "22 buys vs 4 sells",
+      "tone": "positive"
+    },
+    {
+      "label": "Top conviction (this week)",
+      "value": "NVDA",
+      "sub": "CEO · $11.3M",
+      "tone": "neutral"
+    },
+    {
+      "label": "Sector tilt",
+      "value": "Consumer Staples",
+      "sub": "Net ratio 100%",
+      "tone": "neutral"
+    }
+  ],
+  "sources": [
+    {
+      "name": "SEC EDGAR Form 4",
+      "ok": true,
+      "note": "Demo mode — live ingest scheduled"
+    },
+    {
+      "name": "EDGAR ticker map",
+      "ok": true,
+      "note": "company_tickers.json"
+    },
+    {
+      "name": "eToro public catalog",
+      "ok": true,
+      "note": "instrumentsmetadata V1.1"
+    }
+  ],
+  "isDemo": true
+}
