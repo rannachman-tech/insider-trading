@@ -1,0 +1,22 @@
+name: Verify
+on:
+  push:
+    paths:
+      - "lib/baskets.ts"
+      - "scripts/verify-baskets.*"
+      - "scripts/simulate-baskets.*"
+  pull_request:
+  workflow_dispatch: {}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm install --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm run verify:baskets
+      - run: npm run simulate:baskets
