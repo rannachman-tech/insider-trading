@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-05T17:05:06.674Z",
+  "generatedAt": "2026-05-05T17:15:06.301Z",
   "windowDays": 7,
   "index": 78,
   "phase": "heavy-buying",
-  "verdict": "Insiders are putting personal cash into their own companies. Cluster buys lead the tape — historically a constructive setup.",
+  "verdict": "Company executives are spending their own money to buy stock in their own companies — and they're doing it together. When a CEO and CFO both reach for personal cash to buy what they already work for, it tends to be a meaningful signal.",
   "netDollars": 22166325,
   "buyDollars": 30261085,
   "sellDollars": 8094760,
@@ -2777,13 +2777,13 @@
   "sources": [
     {
       "name": "SEC EDGAR Form 4",
-      "ok": true,
-      "note": "Public filings · refreshed daily"
+      "ok": false,
+      "note": "Live fetch unavailable — using seed"
     },
     {
       "name": "EDGAR ticker map",
-      "ok": true,
-      "note": "company_tickers.json — issuer→ticker resolution"
+      "ok": false,
+      "note": "Live fetch unavailable — using seed"
     },
     {
       "name": "eToro public catalog",
@@ -2793,11 +2793,11 @@
   ],
   "isDemo": true,
   "filtered": {
-    "grantsAndAwards": 47,
-    "optionExercises": 23,
-    "taxWithholding": 18,
-    "preScheduledSales": 31,
-    "belowThreshold": 9
+    "grantsAndAwards": 0,
+    "optionExercises": 0,
+    "taxWithholding": 0,
+    "preScheduledSales": 0,
+    "belowThreshold": 0
   },
   "recentActivity": [
     {
