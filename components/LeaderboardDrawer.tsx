@@ -63,7 +63,12 @@ export function LeaderboardDrawer({ row, onClose }: Props) {
             <Stat label="Shares bought" value={formatNum(row.shares)} mono />
             <Stat label="Average price" value={`$${avgPrice.toFixed(2)}`} mono />
             <Stat label="Holding increased" value={`+${Math.abs(row.stakePctChange).toFixed(1)}%`} mono />
-            <Stat label="Trades this week" value={String(row.transactions.length)} mono />
+            <Stat
+              label="Now owns"
+              value={formatNum(row.transactions[row.transactions.length - 1]?.sharesOwnedAfter ?? 0)}
+              sub="shares post-trade"
+              mono
+            />
           </div>
 
           <div>
@@ -110,13 +115,14 @@ export function LeaderboardDrawer({ row, onClose }: Props) {
   );
 }
 
-function Stat({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
+function Stat({ label, value, sub, mono }: { label: string; value: string; sub?: string; mono?: boolean }) {
   return (
     <div className="rounded-md border border-border bg-surface-2 px-3 py-2.5">
       <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">{label}</div>
       <div className={`mt-1 text-[15px] font-semibold text-fg ${mono ? "font-mono tab-num" : ""}`}>
         {value}
       </div>
+      {sub && <div className="text-[10px] text-fg-subtle mt-0.5">{sub}</div>}
     </div>
   );
 }

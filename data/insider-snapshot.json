@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-05T16:43:38.754Z",
+  "generatedAt": "2026-05-05T17:05:06.674Z",
   "windowDays": 7,
   "index": 78,
   "phase": "heavy-buying",
@@ -2778,18 +2778,81 @@
     {
       "name": "SEC EDGAR Form 4",
       "ok": true,
-      "note": "Demo mode — live ingest scheduled"
+      "note": "Public filings · refreshed daily"
     },
     {
       "name": "EDGAR ticker map",
       "ok": true,
-      "note": "company_tickers.json"
+      "note": "company_tickers.json — issuer→ticker resolution"
     },
     {
       "name": "eToro public catalog",
       "ok": true,
-      "note": "instrumentsmetadata V1.1"
+      "note": "Instrument tradability · 15,500 names"
     }
   ],
-  "isDemo": true
+  "isDemo": true,
+  "filtered": {
+    "grantsAndAwards": 47,
+    "optionExercises": 23,
+    "taxWithholding": 18,
+    "preScheduledSales": 31,
+    "belowThreshold": 9
+  },
+  "recentActivity": [
+    {
+      "ticker": "WMT",
+      "company": "Walmart Inc.",
+      "insiderName": "Rainey John David",
+      "role": "CFO",
+      "isBuy": true,
+      "dollars": 722680,
+      "transactionDate": "2026-05-04"
+    },
+    {
+      "ticker": "COST",
+      "company": "Costco Wholesale Corp.",
+      "insiderName": "Sinegal James D",
+      "role": "Director",
+      "isBuy": true,
+      "dollars": 1991000,
+      "transactionDate": "2026-05-04"
+    },
+    {
+      "ticker": "META",
+      "company": "Meta Platforms, Inc.",
+      "insiderName": "Olivan Javier",
+      "role": "COO",
+      "isBuy": false,
+      "dollars": 4267000,
+      "transactionDate": "2026-05-04"
+    },
+    {
+      "ticker": "DKNG",
+      "company": "DraftKings Inc.",
+      "insiderName": "Robins Jason D",
+      "role": "CEO",
+      "isBuy": true,
+      "dollars": 3456000,
+      "transactionDate": "2026-05-03"
+    },
+    {
+      "ticker": "UAL",
+      "company": "United Airlines Holdings, Inc.",
+      "insiderName": "Hart Scott",
+      "role": "Officer",
+      "isBuy": true,
+      "dollars": 572880,
+      "transactionDate": "2026-05-03"
+    },
+    {
+      "ticker": "F",
+      "company": "Ford Motor Company",
+      "insiderName": "Farley James D Jr.",
+      "role": "CEO",
+      "isBuy": true,
+      "dollars": 315200,
+      "transactionDate": "2026-05-03"
+    }
+  ]
 }

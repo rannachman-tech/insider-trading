@@ -6,6 +6,8 @@ import { Footer } from "@/components/Footer";
 import { ConvictionDial } from "@/components/ConvictionDial";
 import { NetFlowSpark } from "@/components/NetFlowSpark";
 import { HeroDrivers } from "@/components/HeroDrivers";
+import { RecentActivity } from "@/components/RecentActivity";
+import { FilterTransparency } from "@/components/FilterTransparency";
 import { InsightsCard } from "@/components/InsightsCard";
 import { TradeBasketCard } from "@/components/TradeBasketCard";
 import { Leaderboard } from "@/components/Leaderboard";
@@ -78,6 +80,7 @@ export default async function HomePage() {
               </div>
               <NetFlowSpark points={snapshot.history} />
               <HeroDrivers snapshot={snapshot} />
+              <RecentActivity items={snapshot.recentActivity} />
             </div>
             <div className="flex flex-col gap-4">
               <InsightsCard snapshot={snapshot} className="flex-1" />
@@ -93,6 +96,15 @@ export default async function HomePage() {
           {/* Cluster buys — moment of identity */}
           <div className="mt-6">
             <ClusterBuys clusters={snapshot.clusters} />
+          </div>
+
+          {/* Filter transparency — explain why our counts are smaller than raw EDGAR */}
+          <div className="mt-6">
+            <FilterTransparency
+              filtered={snapshot.filtered}
+              buyCount={snapshot.buyCount}
+              sellCount={snapshot.sellCount}
+            />
           </div>
 
           {/* Leaderboard */}

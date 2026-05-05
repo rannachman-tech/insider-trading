@@ -333,4 +333,3 @@ console.log(`  Leaderboard: ${leaderboard.length}`);
 console.log(`  Clusters: ${clusters.length}`);
 console.log(`  Sectors: ${sectors.length}`);
 console.log(`  History points: ${history.length}`);
-console.log(`  Recent activity: ${allRecent.length}`);

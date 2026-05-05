@@ -251,10 +251,41 @@ export function buildSnapshot(
 
   // ---------- Sources health ----------
   const sources = [
-    { name: "SEC EDGAR Form 4", ok: true, note: "Live atom feed" },
-    { name: "EDGAR ticker map", ok: true, note: "company_tickers.json" },
-    { name: "eToro public catalog", ok: true, note: "instrumentsmetadata V1.1" },
+    { name: "SEC EDGAR Form 4", ok: true, note: "Public filings · refreshed daily" },
+    { name: "EDGAR ticker map", ok: true, note: "company_tickers.json — issuer→ticker resolution" },
+    { name: "eToro public catalog", ok: true, note: "Instrument tradability · 15,500 names" },
   ];
+
+  // ---------- Filter transparency ----------
+  // Count what was excluded BEFORE the isRealBuy/isRealSell filter so users
+  // can see the cleanup discipline.
+  const filtered = {
+    grantsAndAwards: transactions.filter((t) => t.code === "A").length,
+    optionExercises: transactions.filter((t) => t.code === "M" || t.code === "X").length,
+    taxWithholding: transactions.filter((t) => t.code === "F").length,
+    preScheduledSales: transactions.filter((t) => t.is10b5One && (t.code === "S" || t.code === "P")).length,
+    belowThreshold: transactions.filter(
+      (t) =>
+        (t.code === "P" || t.code === "S") &&
+        !t.is10b5One &&
+        t.dollars > 0 &&
+        t.dollars < 25_000
+    ).length,
+  };
+
+  // ---------- Recent activity ----------
+  const recentActivity = [...realBuys, ...realSells]
+    .sort((a, b) => b.transactionDate.localeCompare(a.transactionDate))
+    .slice(0, 6)
+    .map((t) => ({
+      ticker: t.ticker,
+      company: t.company,
+      insiderName: t.insiderName,
+      role: t.role,
+      isBuy: t.code === "P",
+      dollars: t.dollars,
+      transactionDate: t.transactionDate,
+    }));
 
   return {
     generatedAt: opts.generatedAt,
@@ -275,6 +306,8 @@ export function buildSnapshot(
     indicators,
     sources,
     isDemo: opts.isDemo ?? false,
+    filtered,
+    recentActivity,
   };
 }
 

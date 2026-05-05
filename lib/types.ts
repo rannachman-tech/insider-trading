@@ -164,4 +164,27 @@ export interface InsiderSnapshot {
   sources: Array<{ name: string; ok: boolean; note?: string }>;
   /** Demo mode flag — true if this snapshot was generated from synthetic data */
   isDemo: boolean;
+  /** Filter transparency — counts of what was excluded from the headline numbers */
+  filtered: {
+    /** Code-A grants, RSU vests etc */
+    grantsAndAwards: number;
+    /** Code-M / Code-X option exercises */
+    optionExercises: number;
+    /** Code-F tax-withholding sales */
+    taxWithholding: number;
+    /** 10b5-1 pre-scheduled trades */
+    preScheduledSales: number;
+    /** Buys/sells under the $25k floor */
+    belowThreshold: number;
+  };
+  /** Recent activity strip — last N significant filings, newest first */
+  recentActivity: Array<{
+    ticker: string;
+    company: string;
+    insiderName: string;
+    role: InsiderRole;
+    isBuy: boolean;
+    dollars: number;
+    transactionDate: string;
+  }>;
 }
