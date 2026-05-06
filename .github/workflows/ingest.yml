@@ -7,7 +7,7 @@ on:
 jobs:
   ingest:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     permissions:
       contents: write
     steps:
@@ -16,14 +16,18 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
       - run: npm install --no-audit --no-fund
-      - run: npm run ingest
+      - name: Ingest live EDGAR Form 4 filings
+        env:
+          EDGAR_CONTACT: ${{ secrets.EDGAR_CONTACT || 'ranna@etoro.com' }}
+          EDGAR_COUNT: "400"
+        run: npm run ingest
       - name: Commit snapshot if changed
         run: |
           if [[ -n "$(git status --porcelain data/insider-snapshot.json)" ]]; then
             git config user.name "compass-bot"
             git config user.email "bot@compass.etoro.com"
             git add data/insider-snapshot.json
-            git commit -m "data: refresh insider snapshot"
+            git commit -m "data: refresh insider snapshot (auto)"
             git push
           else
             echo "No changes to snapshot"
