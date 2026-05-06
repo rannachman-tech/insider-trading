@@ -16,38 +16,52 @@ import { SectorHeatmap } from "@/components/SectorHeatmap";
 import { IndicatorsRow } from "@/components/IndicatorsRow";
 import { HistoryChart } from "@/components/HistoryChart";
 import { LiveSourcesRow } from "@/components/LiveSourcesRow";
-import { buildSeedHistory, buildSeedTransactions } from "@/lib/seed";
-import { buildSnapshot } from "@/lib/snapshot";
 import type { InsiderSnapshot } from "@/lib/types";
 
 export const revalidate = 1800; // 30 min
 
-async function loadSnapshot(): Promise<InsiderSnapshot> {
+async function loadSnapshot(): Promise<InsiderSnapshot | null> {
   const snapshotPath = path.join(process.cwd(), "data", "insider-snapshot.json");
   try {
     const buf = await fs.readFile(snapshotPath, "utf8");
     return JSON.parse(buf) as InsiderSnapshot;
   } catch {
-    // Fallback — build a fresh seeded snapshot
-    const generatedAt = new Date().toISOString();
-    const txs = buildSeedTransactions(generatedAt);
-    const s = buildSnapshot(txs, {
-      generatedAt,
-      windowDays: 7,
-      clusterWindowDays: 30,
-      clusterMinInsiders: 3,
-      isDemo: true,
-    });
-    s.history = buildSeedHistory(generatedAt, s.index);
-    s.sources = s.sources.map((src) =>
-      src.name.includes("EDGAR") ? { ...src, note: "Demo mode — live ingest scheduled" } : src
-    );
-    return s;
+    // No snapshot yet — render an empty state.
+    // We deliberately do NOT fall back to seed data; the badge in the methodology
+    // section was the only thing keeping us honest, and real data is now the only
+    // path. Run `npm run ingest` (locally) or trigger the GitHub Actions workflow.
+    return null;
   }
+}
+
+function EmptyState() {
+  return (
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
+      <div className="rounded-lg border border-border bg-surface p-8 text-center">
+        <h2 className="text-lg font-semibold text-fg">No snapshot yet</h2>
+        <p className="mt-2 text-[13.5px] text-fg-muted leading-relaxed max-w-prose mx-auto">
+          The latest EDGAR ingest hasn't run. Trigger the <span className="font-mono">Ingest EDGAR Form 4</span> workflow on GitHub, or run <span className="font-mono">npm run ingest</span> locally, to populate the dashboard.
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default async function HomePage() {
   const snapshot = await loadSnapshot();
+
+  if (!snapshot) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <RiskBanner />
+        <Header />
+        <main className="flex-1">
+          <EmptyState />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -146,12 +160,7 @@ export default async function HomePage() {
               </div>
             </div>
             <p className="mt-4 pt-3 border-t border-border text-[12px]">
-              Source: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=4" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald">SEC EDGAR Form 4 filings</a>, refreshed daily. Trading on eToro requires a valid account; instrument coverage is verified against the eToro public catalog.
-              {snapshot.isDemo && (
-                <span className="ml-2 inline-block rounded bg-amber-soft text-amber border border-amber/30 px-1.5 py-0.5 text-[11px] font-mono">
-                  Demo data — live ingest scheduled
-                </span>
-              )}
+              Source: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=4" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald">SEC EDGAR Form 4 filings</a>, refreshed daily by an automated workflow. Trading on eToro requires a valid account; instrument coverage is verified against the eToro public catalog.
             </p>
           </section>
         </div>

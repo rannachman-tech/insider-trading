@@ -19,6 +19,33 @@ export function HistoryChart({ history, currentIndex }: Props) {
   const [hover, setHover] = useState<number | null>(null);
   if (!history.length) return null;
 
+  // Need at least ~3 points before the chart reads as a meaningful timeseries.
+  // Before then, show an "accumulating" empty state — the daily ingest fills
+  // this in over time.
+  if (history.length < 3) {
+    return (
+      <section className="rounded-lg border border-border bg-surface p-5">
+        <header className="flex items-center justify-between mb-3">
+          <div>
+            <h2 className="text-base font-semibold text-fg">12-month history</h2>
+            <p className="mt-0.5 text-[12px] text-fg-subtle">
+              The daily ingest is building a real timeseries from each run.
+            </p>
+          </div>
+          <div className="text-right">
+            <div className="font-mono tab-num text-2xl font-semibold text-fg leading-none">{currentIndex}</div>
+            <div className="mt-0.5 text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">today</div>
+          </div>
+        </header>
+        <div className="rounded-md border border-dashed border-border bg-surface-2 px-4 py-8 text-center">
+          <p className="text-[13px] text-fg-muted leading-relaxed">
+            Today is point <strong className="text-fg font-mono tab-num">{history.length}</strong>. The chart fills in as the ingest runs each day — check back tomorrow.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
   const points = history;
   const xStep = (W - PAD_X * 2) / (points.length - 1);
   const yScale = (v: number) => PAD_TOP + ((100 - v) / 100) * (H - PAD_TOP - PAD_BOTTOM);

@@ -8,9 +8,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "lint": "next lint",
-    "ingest": "tsx scripts/ingest-edgar.ts",
-    "seed": "tsx scripts/seed-snapshot.ts",
-    "verify:baskets": "tsx scripts/verify-baskets.ts",
+    "ingest": "node scripts/ingest-live.mjs",
+    "verify:baskets": "node scripts/verify-baskets.mjs",
     "simulate:baskets": "tsx scripts/simulate-baskets.ts"
   },
   "dependencies": {
