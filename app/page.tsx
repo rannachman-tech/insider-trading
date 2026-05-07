@@ -109,7 +109,10 @@ export default async function HomePage() {
               <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-fg-subtle text-center">
                 Insider Conviction Index · S&amp;P 1500 · last 7 days
               </div>
-              <div className="mt-1 sm:mt-2 w-full max-w-[440px]">
+              {/* Dial sized down ~20% from the original 440px so the gauge
+                  supports rather than dominates the hero. ScoreDrivers and
+                  the spark below stay at 440px width. */}
+              <div className="mt-1 sm:mt-2 w-full max-w-[360px]">
                 <ConvictionDial value={snapshot.index} phase={snapshot.phase} />
               </div>
               <ScoreDrivers snapshot={snapshot} />

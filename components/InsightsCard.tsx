@@ -41,11 +41,11 @@ export function InsightsCard({ snapshot, className = "" }: Props) {
       <p className="mt-3 text-2xl sm:text-[28px] font-semibold tracking-tight leading-tight text-fg">
         {headline}
       </p>
-      <p className="mt-3 text-[15px] leading-relaxed text-fg-muted">
-        {snapshot.verdict}
-      </p>
+      {/* The longer verdict paragraph that used to live here was removed —
+          TodaysRead now carries the dynamic narrative under the hero, so we
+          avoid saying the same thing in two places. */}
 
-      <div className="mt-5 grid grid-cols-2 gap-3 pt-4 border-t border-border">
+      <div className="mt-5 grid grid-cols-2 gap-3">
         <div>
           <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle flex items-center gap-1">
             <Tooltip
