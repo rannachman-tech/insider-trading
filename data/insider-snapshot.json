@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-05-07T13:57:41.796Z",
+  "generatedAt": "2026-05-07T14:16:25.850Z",
   "windowDays": 7,
-  "index": 40,
+  "index": 60,
   "phase": "balanced",
   "verdict": "Insider buying and selling roughly cancel out this week. There's no clear directional message from inside the boardroom right now. Treat any individual buy as one data point, not a trigger to act.",
-  "netDollars": -209313927.4475999,
-  "buyDollars": 72900174.5576,
-  "sellDollars": 282214102.0051999,
-  "buyCount": 17,
-  "sellCount": 21,
+  "netDollars": 63952734.16759999,
+  "buyDollars": 72287676.3676,
+  "sellDollars": 8334942.2,
+  "buyCount": 13,
+  "sellCount": 11,
   "clusterCount": 0,
   "leaderboard": [
     {
@@ -329,80 +329,6 @@
     },
     {
       "rank": 5,
-      "ticker": "ONEW",
-      "company": "OneWater Marine Inc.",
-      "sector": "Consumer Discretionary",
-      "insiderName": "Singleton Philip Austin Jr.",
-      "role": "Chair",
-      "officerTitle": "Executive Chairman",
-      "dollars": 238598.40000000002,
-      "shares": 21930,
-      "avgPricePerShare": 10.88,
-      "stakePctChange": 2.735041455895118,
-      "significance": 34,
-      "transactions": [
-        {
-          "accession": "0001772921-26-000039",
-          "ticker": "ONEW",
-          "company": "OneWater Marine Inc.",
-          "issuerCik": "0001772921",
-          "sector": "Consumer Discretionary",
-          "insiderName": "Singleton Philip Austin Jr.",
-          "role": "Chair",
-          "officerTitle": "Executive Chairman",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 21930,
-          "pricePerShare": 10.88,
-          "dollars": 238598.40000000002,
-          "sharesOwnedAfter": 801816,
-          "stakePctChange": 2.735041455895118,
-          "ownership": "I"
-        }
-      ]
-    },
-    {
-      "rank": 6,
-      "ticker": "BRK.B",
-      "company": "BERKSHIRE HATHAWAY INC",
-      "sector": "Financials",
-      "insiderName": "O'Sullivan Michael J.",
-      "role": "Officer",
-      "officerTitle": "See Remarks",
-      "dollars": 225623.79,
-      "shares": 483,
-      "avgPricePerShare": 467.13,
-      "stakePctChange": 79.18032786885246,
-      "significance": 33,
-      "transactions": [
-        {
-          "accession": "0001193125-26-209661",
-          "ticker": "BRK.B",
-          "company": "BERKSHIRE HATHAWAY INC",
-          "issuerCik": "0001067983",
-          "sector": "Financials",
-          "insiderName": "O'Sullivan Michael J.",
-          "role": "Officer",
-          "officerTitle": "See Remarks",
-          "transactionDate": "2026-05-06",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 483,
-          "pricePerShare": 467.13,
-          "dollars": 225623.79,
-          "sharesOwnedAfter": 610,
-          "stakePctChange": 79.18032786885246,
-          "ownership": "I"
-        }
-      ]
-    },
-    {
-      "rank": 7,
       "ticker": "AMG",
       "company": "AFFILIATED MANAGERS GROUP, INC.",
       "sector": "Financials",
@@ -435,76 +361,6 @@
           "ownership": "D"
         }
       ]
-    },
-    {
-      "rank": 8,
-      "ticker": "BRO",
-      "company": "BROWN &amp; BROWN, INC.",
-      "sector": "Financials",
-      "insiderName": "PROCTOR H PALMER JR",
-      "role": "Director",
-      "dollars": 114200,
-      "shares": 2000,
-      "avgPricePerShare": 57.1,
-      "stakePctChange": 4.19982780705991,
-      "significance": 19,
-      "transactions": [
-        {
-          "accession": "0001193125-26-209308",
-          "ticker": "BRO",
-          "company": "BROWN &amp; BROWN, INC.",
-          "issuerCik": "0000079282",
-          "sector": "Financials",
-          "insiderName": "PROCTOR H PALMER JR",
-          "role": "Director",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 2000,
-          "pricePerShare": 57.1,
-          "dollars": 114200,
-          "sharesOwnedAfter": 47621,
-          "stakePctChange": 4.19982780705991,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 9,
-      "ticker": "PATK",
-      "company": "PATRICK INDUSTRIES INC",
-      "sector": "Unclassified",
-      "insiderName": "Augsburger Blake",
-      "role": "Director",
-      "dollars": 34076,
-      "shares": 400,
-      "avgPricePerShare": 85.19,
-      "stakePctChange": 18.823529411764707,
-      "significance": 16,
-      "transactions": [
-        {
-          "accession": "0001380659-26-000006",
-          "ticker": "PATK",
-          "company": "PATRICK INDUSTRIES INC",
-          "issuerCik": "0000076605",
-          "sector": "Unclassified",
-          "insiderName": "Augsburger Blake",
-          "role": "Director",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 400,
-          "pricePerShare": 85.19,
-          "dollars": 34076,
-          "sharesOwnedAfter": 2125,
-          "stakePctChange": 18.823529411764707,
-          "ownership": "D"
-        }
-      ]
     }
   ],
   "clusters": [],
@@ -519,10 +375,10 @@
     },
     {
       "sector": "Financials",
-      "buyDollars": 1118984.49,
+      "buyDollars": 779160.7,
       "sellDollars": 0,
       "netRatio": 1,
-      "buyCount": 6,
+      "buyCount": 4,
       "sellCount": 0
     },
     {
@@ -534,20 +390,12 @@
       "sellCount": 0
     },
     {
-      "sector": "Consumer Discretionary",
-      "buyDollars": 238598.40000000002,
-      "sellDollars": 0,
-      "netRatio": 1,
-      "buyCount": 1,
-      "sellCount": 0
-    },
-    {
       "sector": "Unclassified",
-      "buyDollars": 34076,
-      "sellDollars": 282214102.0051999,
-      "netRatio": -0.9997585387424582,
-      "buyCount": 1,
-      "sellCount": 21
+      "buyDollars": 0,
+      "sellDollars": 8334942.2,
+      "netRatio": -1,
+      "buyCount": 0,
+      "sellCount": 11
     }
   ],
   "history": [
@@ -2373,8 +2221,8 @@
     },
     {
       "date": "2026-05-07",
-      "index": 40,
-      "netDollars": -209313927.4475999
+      "index": 60,
+      "netDollars": 63952734.16759999
     }
   ],
   "indicators": [
@@ -2386,9 +2234,9 @@
     },
     {
       "label": "Net buy/sell ($)",
-      "value": "−$209.3M",
-      "sub": "17 buys vs 21 sells",
-      "tone": "negative"
+      "value": "+$64.0M",
+      "sub": "13 buys vs 11 sells",
+      "tone": "positive"
     },
     {
       "label": "Top conviction (this week)",
@@ -2407,7 +2255,7 @@
     {
       "name": "SEC EDGAR Form 4",
       "ok": true,
-      "note": "Live · 213 filings parsed"
+      "note": "Live · 86 filings parsed"
     },
     {
       "name": "EDGAR ticker map",
@@ -2422,11 +2270,11 @@
   ],
   "isDemo": false,
   "filtered": {
-    "grantsAndAwards": 63,
-    "optionExercises": 23,
-    "taxWithholding": 23,
-    "preScheduledSales": 46,
-    "belowThreshold": 4
+    "grantsAndAwards": 15,
+    "optionExercises": 11,
+    "taxWithholding": 10,
+    "preScheduledSales": 16,
+    "belowThreshold": 2
   },
   "recentActivity": [
     {
@@ -2457,31 +2305,31 @@
       "transactionDate": "2026-05-06"
     },
     {
-      "ticker": "BRK.B",
-      "company": "BERKSHIRE HATHAWAY INC",
-      "insiderName": "O'Sullivan Michael J.",
-      "role": "Officer",
+      "ticker": "RLYB",
+      "company": "Rallybio Corp",
+      "insiderName": "ADAR1 Capital Management, LLC",
+      "role": "10%Owner",
       "isBuy": true,
-      "dollars": 225623.79,
-      "transactionDate": "2026-05-06"
+      "dollars": 491259.55559999996,
+      "transactionDate": "2026-05-05"
     },
     {
-      "ticker": "PKST",
-      "company": "Peakstone Realty Trust",
-      "insiderName": "BITAR JAVIER F",
-      "role": "CFO",
-      "isBuy": false,
-      "dollars": 3847683,
-      "transactionDate": "2026-05-06"
-    },
-    {
-      "ticker": "RSI",
-      "company": "Rush Street Interactive, Inc.",
-      "insiderName": "BLUHM NEIL",
+      "ticker": "ARE",
+      "company": "ALEXANDRIA REAL ESTATE EQUITIES, INC.",
+      "insiderName": "MARCUS JOEL S",
       "role": "Chair",
-      "isBuy": false,
-      "dollars": 34223904,
-      "transactionDate": "2026-05-06"
+      "isBuy": true,
+      "dollars": 86377.18000000001,
+      "transactionDate": "2026-05-05"
+    },
+    {
+      "ticker": "ARE",
+      "company": "ALEXANDRIA REAL ESTATE EQUITIES, INC.",
+      "insiderName": "MARCUS JOEL S",
+      "role": "Chair",
+      "isBuy": true,
+      "dollars": 163856.31999999998,
+      "transactionDate": "2026-05-05"
     }
   ]
 }
