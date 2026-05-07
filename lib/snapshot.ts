@@ -8,6 +8,7 @@
 import {
   cappedDollars,
   computeIndex,
+  dedupeGroupFilings,
   isRealBuy,
   isRealSell,
   normalizeInsiderIdentity,
@@ -72,9 +73,21 @@ export function buildSnapshot(
   const inCluster = (t: InsiderTransaction) =>
     within(t.transactionDate, clusterWindowDays, anchor);
 
-  const realBuys = transactions.filter((t) => isRealBuy(t) && inWindow(t));
-  const realSells = transactions.filter((t) => isRealSell(t) && inWindow(t));
-  const clusterBuysWindow = transactions.filter((t) => isRealBuy(t) && inCluster(t));
+  // Group-filing dedup: when a Schedule 13D group reports a trade, every
+  // member of the group files a Form 4 for the same underlying transaction.
+  // Without this, "General Atlantic LP" and "General Atlantic GenPar (Bermuda)"
+  // both show up with identical $34.66M numbers. Fingerprint by accession +
+  // economics so the same trade event counts once regardless of how many
+  // group members reported it.
+  const realBuys = dedupeGroupFilings(
+    transactions.filter((t) => isRealBuy(t) && inWindow(t))
+  );
+  const realSells = dedupeGroupFilings(
+    transactions.filter((t) => isRealSell(t) && inWindow(t))
+  );
+  const clusterBuysWindow = dedupeGroupFilings(
+    transactions.filter((t) => isRealBuy(t) && inCluster(t))
+  );
 
   // ---------- Leaderboard ----------
   // Group by ticker × NORMALIZED insider identity so the same person filing

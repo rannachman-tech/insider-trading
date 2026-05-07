@@ -54,6 +54,23 @@ function normalizeInsiderIdentity(name) {
   return tokens.sort().join(" ");
 }
 
+// Group-filing fingerprint: same accession + ticker + date + economics =
+// the same trade reported by multiple Schedule 13D group members. Dedup.
+function transactionFingerprint(t) {
+  return [t.accession, t.ticker, t.transactionDate, t.shares, t.pricePerShare, t.code, t.acquiredDisposed].join("|");
+}
+function dedupeGroupFilings(txs) {
+  const seen = new Set();
+  const out = [];
+  for (const t of txs) {
+    const fp = transactionFingerprint(t);
+    if (seen.has(fp)) continue;
+    seen.add(fp);
+    out.push(t);
+  }
+  return out;
+}
+
 function lastWeekdays(n) {
   const out = [];
   const d = new Date();
@@ -368,13 +385,14 @@ function buildSnapshot(transactions) {
   const isRealBuy = (t) => t.code === "P" && t.acquiredDisposed === "A" && !t.is10b5One && t.dollars >= 25_000;
   const isRealSell = (t) => !t.is10b5One && t.dollars >= 25_000 && (t.code === "S" || (t.code === "D" && t.acquiredDisposed === "D"));
 
-  let realBuys = transactions.filter((t) => isRealBuy(t) && within(t.transactionDate, windowDays));
+  // Group-filing dedup before any aggregation
+  let realBuys = dedupeGroupFilings(transactions.filter((t) => isRealBuy(t) && within(t.transactionDate, windowDays)));
   if (realBuys.length < 10) {
     windowDays = 30;
-    realBuys = transactions.filter((t) => isRealBuy(t) && within(t.transactionDate, windowDays));
+    realBuys = dedupeGroupFilings(transactions.filter((t) => isRealBuy(t) && within(t.transactionDate, windowDays)));
   }
-  const realSells = transactions.filter((t) => isRealSell(t) && within(t.transactionDate, windowDays));
-  const clusterWindow = transactions.filter((t) => isRealBuy(t) && within(t.transactionDate, 30));
+  const realSells = dedupeGroupFilings(transactions.filter((t) => isRealSell(t) && within(t.transactionDate, windowDays)));
+  const clusterWindow = dedupeGroupFilings(transactions.filter((t) => isRealBuy(t) && within(t.transactionDate, 30)));
 
   const significance = (d, role, stake) => {
     if (d <= 0) return 0;

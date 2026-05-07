@@ -313,6 +313,42 @@ export function cappedDollars(dollars: number): number {
   return Math.min(dollars, PER_TX_DOLLAR_CAP);
 }
 
+/**
+ * Fingerprint a transaction for group-filing deduplication.
+ *
+ * Schedule 13D group filings cause the same trade to be reported by multiple
+ * filers (e.g., a PE fund LP + its GP both file Form 4s for the same buy).
+ * The transactions share an accession number AND identical trade economics —
+ * same date, share count, price, ticker.
+ *
+ * Two transactions with the same fingerprint are the same event reported
+ * by different group members. Count them once.
+ */
+export function transactionFingerprint(t: InsiderTransaction): string {
+  return [
+    t.accession,
+    t.ticker,
+    t.transactionDate,
+    t.shares,
+    t.pricePerShare,
+    t.code,
+    t.acquiredDisposed,
+  ].join("|");
+}
+
+/** Dedupe a list of transactions by fingerprint, keeping the first occurrence. */
+export function dedupeGroupFilings(txs: InsiderTransaction[]): InsiderTransaction[] {
+  const seen = new Set<string>();
+  const out: InsiderTransaction[] = [];
+  for (const t of txs) {
+    const fp = transactionFingerprint(t);
+    if (seen.has(fp)) continue;
+    seen.add(fp);
+    out.push(t);
+  }
+  return out;
+}
+
 /* ------------------------------------------------------------------ */
 /* Entity normalization — beneficial-owner identity for cluster dedup */
 /* ------------------------------------------------------------------ */
