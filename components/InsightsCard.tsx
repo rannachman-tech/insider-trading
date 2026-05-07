@@ -2,19 +2,13 @@
 
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import type { InsiderSnapshot } from "@/lib/types";
-import { PHASE_PLAYBOOK } from "@/lib/phase";
+import { PHASE_HEADLINE, PHASE_PLAYBOOK } from "@/lib/phase";
 import { Tooltip } from "./Tooltip";
 
 interface Props {
   snapshot: InsiderSnapshot;
   className?: string;
 }
-
-const PHASE_HEADLINE: Record<string, string> = {
-  "heavy-buying": "Yes — heavily.",
-  balanced: "Mixed — read carefully.",
-  "heavy-selling": "Mostly selling.",
-};
 
 const PhaseIcon = ({ phase }: { phase: string }) => {
   const cls = "h-4 w-4";

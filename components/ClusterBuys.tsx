@@ -4,6 +4,7 @@ import { Users, ArrowUpRight } from "lucide-react";
 import type { ClusterBuy } from "@/lib/types";
 import { formatUsd, formatDate } from "@/lib/format";
 import { ConvictionBar } from "./ConvictionBar";
+import { Tooltip } from "./Tooltip";
 
 interface Props {
   clusters: ClusterBuy[];

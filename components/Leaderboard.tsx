@@ -6,6 +6,7 @@ import type { LeaderboardRow } from "@/lib/types";
 import { formatUsd, formatPct, formatDate } from "@/lib/format";
 import { ConvictionBar } from "./ConvictionBar";
 import { LeaderboardDrawer } from "./LeaderboardDrawer";
+import { Tooltip } from "./Tooltip";
 
 interface Props {
   rows: LeaderboardRow[];
@@ -37,13 +38,27 @@ export function Leaderboard({ rows }: Props) {
     <>
       <section className="rounded-lg border border-border bg-surface overflow-hidden">
         <header className="px-5 py-4 flex items-center justify-between border-b border-border">
-          <div>
+          <div className="min-w-0">
             <h2 className="text-base font-semibold text-fg">This week's biggest insider buys</h2>
-            <p className="mt-0.5 text-[12px] text-fg-subtle">
-              Real personal-cash purchases only — pre-scheduled sales and option exercises filtered out. Tap any row for details.
+            <p className="mt-0.5 text-[12px] text-fg-subtle leading-relaxed">
+              <Tooltip
+                label="Open-market purchases"
+                hint="When an insider spends their own personal cash to buy their company's stock on the open market — the strongest insider conviction signal there is."
+              />
+              {" "}only. We exclude{" "}
+              <Tooltip
+                label="pre-scheduled sales"
+                hint="10b5-1 plans are sale schedules set months in advance, often automatic. They tell you nothing about timing or insider conviction."
+              />
+              ,{" "}
+              <Tooltip
+                label="option exercises"
+                hint="Cash-out moves where an insider converts options to shares — usually followed by an immediate sale. Not new buying."
+              />
+              {" "}and stock grants. Tap any row for details.
             </p>
           </div>
-          <div className="hidden sm:block text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
+          <div className="hidden sm:block text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle shrink-0 ml-3">
             {rows.length} buys
           </div>
         </header>

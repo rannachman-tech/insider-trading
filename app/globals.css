@@ -13,12 +13,13 @@
   --fg: 24 24 27;
   --fg-muted: 82 82 91;
   --fg-subtle: 113 113 122;
-  --emerald: 16 145 102;
-  --emerald-soft: 220 245 235;
-  --amber: 194 124 14;
-  --amber-soft: 254 243 222;
-  --crimson: 196 50 50;
-  --crimson-soft: 254 226 226;
+  --emerald: 22 137 99;
+  --emerald-soft: 224 244 235;
+  --amber: 178 119 28;
+  --amber-soft: 252 241 222;
+  /* Softer crimson — used for "cautious" not "alarm". Was 196,50,50. */
+  --crimson: 175 75 75;
+  --crimson-soft: 250 232 232;
   color-scheme: light;
 }
 
@@ -31,12 +32,13 @@
   --fg: 240 240 245;
   --fg-muted: 161 161 170;
   --fg-subtle: 113 113 122;
-  --emerald: 52 199 145;
-  --emerald-soft: 16 60 45;
-  --amber: 230 168 55;
-  --amber-soft: 70 50 18;
-  --crimson: 234 100 100;
-  --crimson-soft: 70 25 25;
+  --emerald: 64 184 138;
+  --emerald-soft: 16 56 42;
+  --amber: 218 162 60;
+  --amber-soft: 64 48 18;
+  /* Softer crimson in dark too. Was 234,100,100. */
+  --crimson: 210 120 120;
+  --crimson-soft: 64 28 28;
   color-scheme: dark;
 }
 

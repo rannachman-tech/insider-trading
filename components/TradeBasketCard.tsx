@@ -17,6 +17,12 @@ const PHASE_PILL: Record<Phase, string> = {
   "heavy-selling": "bg-crimson-soft text-crimson border-crimson/20",
 };
 
+const PHASE_PILL_LABEL: Record<Phase, string> = {
+  "heavy-buying": "Strong buying",
+  balanced: "Mixed signal",
+  "heavy-selling": "Cautious regime",
+};
+
 export function TradeBasketCard({ snapshot, className = "" }: Props) {
   const [open, setOpen] = useState(false);
   const basket = basketFor(snapshot);
@@ -28,10 +34,10 @@ export function TradeBasketCard({ snapshot, className = "" }: Props) {
         <div className="flex items-center gap-2">
           <Briefcase className="h-4 w-4 text-fg-muted" aria-hidden />
           <span className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
-            Phase basket
+            Educational allocation
           </span>
           <span className={`ml-auto text-[10px] font-medium px-1.5 py-0.5 rounded border ${PHASE_PILL[phase]}`}>
-            {phase === "heavy-buying" ? "Heavy buying" : phase === "balanced" ? "Balanced" : "Heavy selling"}
+            {PHASE_PILL_LABEL[phase]}
           </span>
         </div>
         <h3 className="mt-3 text-base font-semibold text-fg">{basket.title}</h3>
@@ -57,9 +63,12 @@ export function TradeBasketCard({ snapshot, className = "" }: Props) {
           onClick={() => setOpen(true)}
           className="mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-md bg-fg text-bg px-4 py-2.5 text-[13px] font-semibold hover:opacity-90 transition-opacity"
         >
-          Trade this basket on eToro
+          Explore this allocation on eToro
           <ArrowUpRight className="h-3.5 w-3.5" />
         </button>
+        <p className="mt-2 text-[10.5px] text-fg-subtle leading-relaxed text-center">
+          Educational illustration. Not personalised advice. You decide whether and how much to allocate.
+        </p>
       </section>
 
       <TradeBasketModal snapshot={snapshot} open={open} onClose={() => setOpen(false)} />

@@ -231,7 +231,7 @@ export function TradeBasketModal({ snapshot, open, onClose }: Props) {
                 disabled={!session || amount < 10}
                 className="px-4 py-2 rounded-md bg-fg text-bg text-[13px] font-semibold hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                {session ? "Continue" : "Connect eToro to continue"}
+                {session ? "Review allocation" : "Connect eToro to continue"}
               </button>
             </>
           )}
@@ -244,7 +244,7 @@ export function TradeBasketModal({ snapshot, open, onClose }: Props) {
                 onClick={execute}
                 className="px-4 py-2 rounded-md bg-emerald text-white text-[13px] font-semibold hover:opacity-90 transition-opacity"
               >
-                Execute on eToro
+                I understand — place these orders
               </button>
             </>
           )}

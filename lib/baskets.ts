@@ -42,10 +42,10 @@ export interface Basket {
 
 const BALANCED_TEMPLATE: Basket = {
   phase: "balanced",
-  title: "Quality with confirmation",
+  title: "Educational allocation · mixed-signal regime",
   thesis:
-    "When insiders are split, lean on broad market plus the few quality names where C-suite did buy. This isn't a directional bet.",
-  sourceNote: "Curated hedge template — not regenerated from this week's tape.",
+    "An illustrative diversified holding for periods when insider activity sends a mixed signal. Not personalised advice, not a recommendation — a teaching example showing what a quality-tilted, broad-market exposure typically looks like.",
+  sourceNote: "Curated educational template — not regenerated from this week's tape.",
   holdings: [
     {
       ticker: "VTI",
@@ -91,10 +91,10 @@ const BALANCED_TEMPLATE: Basket = {
 
 const HEAVY_SELLING_TEMPLATE: Basket = {
   phase: "heavy-selling",
-  title: "Trim and hedge",
+  title: "Educational allocation · cautious regime",
   thesis:
-    "When insiders are net-selling outside scheduled plans, lean defensive. Lower beta, duration, gold. This is a hedge, not a short basket.",
-  sourceNote: "Curated hedge template — not regenerated from this week's tape.",
+    "An illustrative defensive-tilt holding for periods when insiders are broadly net-selling. Not personalised advice — a teaching example of how a defensive overlay (cash, gold, low-volatility, duration) is typically constructed during cautious regimes.",
+  sourceNote: "Curated educational template — not regenerated from this week's tape.",
   holdings: [
     {
       ticker: "SHV",
@@ -242,9 +242,9 @@ export function buildHeavyBuyingBasket(
 
   return {
     phase: "heavy-buying",
-    title: "Mirror this week's conviction",
+    title: "This week's most-bought-by-insiders names",
     thesis:
-      "Names where insiders bought their own stock with personal cash — anchored on the strongest cluster buys, augmented by the single largest CEO/CFO trade. No leverage; concentration capped at " + maxWeight + "%.",
+      "Names where multiple insiders bought their own stock with personal cash this week — anchored on the strongest cluster buys, augmented by the single largest CEO/CFO trade. Equal-weight illustration, no leverage, concentration capped at " + maxWeight + "%. Educational only — not personalised advice.",
     sourceNote: `Rebuilt from snapshot · ${snapshot.clusters.length} cluster${snapshot.clusters.length === 1 ? "" : "s"}, ${holdings.length} holding${holdings.length === 1 ? "" : "s"}`,
     holdings,
   };

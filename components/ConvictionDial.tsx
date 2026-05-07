@@ -44,9 +44,9 @@ const PHASE_NEEDLE: Record<Phase, string> = {
 };
 
 const PHASE_LABEL_COMPACT: Record<Phase, string> = {
-  "heavy-buying": "Heavy buying",
-  balanced: "Balanced",
-  "heavy-selling": "Heavy selling",
+  "heavy-buying": "Strong buying",
+  balanced: "Mixed",
+  "heavy-selling": "Cautious",
 };
 
 export function ConvictionDial({ value, phase }: Props) {

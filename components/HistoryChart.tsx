@@ -19,9 +19,20 @@ export function HistoryChart({ history, currentIndex }: Props) {
   const [hover, setHover] = useState<number | null>(null);
   if (!history.length) return null;
 
+  // Compute percentile rank of currentIndex within the full series. This is
+  // the framing the reviewer flagged as essential — "20th percentile of the
+  // last year" is dramatically less alarming than "you're at 22 in a chart
+  // with a giant red zone".
+  const sorted = [...history.map((p) => p.index)].sort((a, b) => a - b);
+  const rank = sorted.findIndex((v) => v >= currentIndex);
+  const percentile = sorted.length > 0
+    ? Math.max(1, Math.min(99, Math.round(((rank < 0 ? sorted.length : rank) / sorted.length) * 100)))
+    : 50;
+  const yearMin = sorted[0] ?? currentIndex;
+  const yearMax = sorted[sorted.length - 1] ?? currentIndex;
+  const median = sorted[Math.floor(sorted.length / 2)] ?? currentIndex;
+
   // Need at least ~3 points before the chart reads as a meaningful timeseries.
-  // Before then, show an "accumulating" empty state — the daily ingest fills
-  // this in over time.
   if (history.length < 3) {
     return (
       <section className="rounded-lg border border-border bg-surface p-5">
@@ -81,14 +92,16 @@ export function HistoryChart({ history, currentIndex }: Props) {
 
   return (
     <section className="rounded-lg border border-border bg-surface p-5">
-      <header className="flex items-center justify-between mb-3">
-        <div>
+      <header className="flex items-center justify-between mb-3 gap-4 flex-wrap">
+        <div className="min-w-0">
           <h2 className="text-base font-semibold text-fg">12-month history</h2>
-          <p className="mt-0.5 text-[12px] text-fg-subtle">
-            Conviction reading day by day. Coloured bands show where each phase sits.
+          <p className="mt-0.5 text-[12px] text-fg-subtle leading-relaxed">
+            Today's reading is in the{" "}
+            <strong className="text-fg font-mono tab-num">{ordinal(percentile)} percentile</strong>{" "}
+            of the past year (range {yearMin}–{yearMax}, median {median}). Coloured bands show where each phase sits.
           </p>
         </div>
-        <div className="text-right">
+        <div className="text-right shrink-0">
           <div className="font-mono tab-num text-2xl font-semibold text-fg leading-none">{currentIndex}</div>
           <div className="mt-0.5 text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
             today
@@ -201,4 +214,10 @@ function monthLabel(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
   return d.toLocaleString("en-US", { month: "short", year: "2-digit", timeZone: "UTC" });
+}
+
+function ordinal(n: number): string {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }

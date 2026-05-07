@@ -8,6 +8,8 @@ import { NetFlowSpark } from "@/components/NetFlowSpark";
 import { HeroDrivers } from "@/components/HeroDrivers";
 import { RecentActivity } from "@/components/RecentActivity";
 import { FilterTransparency } from "@/components/FilterTransparency";
+import { ScoreExplainer } from "@/components/ScoreExplainer";
+import { ReadingCautions } from "@/components/ReadingCautions";
 import { InsightsCard } from "@/components/InsightsCard";
 import { TradeBasketCard } from "@/components/TradeBasketCard";
 import { Leaderboard } from "@/components/Leaderboard";
@@ -102,9 +104,19 @@ export default async function HomePage() {
             </div>
           </section>
 
+          {/* Score explainer — surface the math + academic basis */}
+          <div className="mt-6">
+            <ScoreExplainer snapshot={snapshot} />
+          </div>
+
           {/* Indicators row */}
           <div className="mt-6">
             <IndicatorsRow indicators={snapshot.indicators} />
+          </div>
+
+          {/* Reading cautions — pre-empt the panic-sell instinct */}
+          <div className="mt-6">
+            <ReadingCautions />
           </div>
 
           {/* Cluster buys — moment of identity */}
