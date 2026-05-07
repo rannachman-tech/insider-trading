@@ -54,8 +54,11 @@ export function LiveSourcesRow({ generatedAt, sources }: Props) {
               </li>
             ))}
           </ul>
-          <div className="mt-3 pt-2 border-t border-border text-[11px] text-fg-subtle font-sans leading-relaxed">
-            All sources are public and free. We don't use any paid data feeds.
+          <div className="mt-3 pt-2 border-t border-border space-y-2 text-[11px] text-fg-subtle font-sans leading-relaxed">
+            <p>
+              <strong className="text-fg font-medium">Filing lag:</strong> insiders have up to two business days to file a Form 4 after a trade. The dashboard reflects disclosed activity, not real-time positioning.
+            </p>
+            <p>All sources are public and free. We don't use any paid data feeds.</p>
           </div>
         </div>
       )}

@@ -5,17 +5,18 @@ import { RiskBanner } from "@/components/RiskBanner";
 import { Footer } from "@/components/Footer";
 import { ConvictionDial } from "@/components/ConvictionDial";
 import { NetFlowSpark } from "@/components/NetFlowSpark";
-import { HeroDrivers } from "@/components/HeroDrivers";
-import { RecentActivity } from "@/components/RecentActivity";
 import { FilterTransparency } from "@/components/FilterTransparency";
 import { ScoreExplainer } from "@/components/ScoreExplainer";
 import { ReadingCautions } from "@/components/ReadingCautions";
 import { StrongestSignal } from "@/components/StrongestSignal";
 import { WhyItMatters } from "@/components/WhyItMatters";
+import { ScoreDrivers } from "@/components/ScoreDrivers";
+import { TopSignals } from "@/components/TopSignals";
+import { TimeHorizonNote } from "@/components/TimeHorizonNote";
+import { TodaysRead } from "@/components/TodaysRead";
 import { InsightsCard } from "@/components/InsightsCard";
 import { TradeBasketCard } from "@/components/TradeBasketCard";
 import { Leaderboard } from "@/components/Leaderboard";
-import { ClusterBuys } from "@/components/ClusterBuys";
 import { SectorHeatmap } from "@/components/SectorHeatmap";
 import { IndicatorsRow } from "@/components/IndicatorsRow";
 import { HistoryChart } from "@/components/HistoryChart";
@@ -30,10 +31,6 @@ async function loadSnapshot(): Promise<InsiderSnapshot | null> {
     const buf = await fs.readFile(snapshotPath, "utf8");
     return JSON.parse(buf) as InsiderSnapshot;
   } catch {
-    // No snapshot yet — render an empty state.
-    // We deliberately do NOT fall back to seed data; the badge in the methodology
-    // section was the only thing keeping us honest, and real data is now the only
-    // path. Run `npm run ingest` (locally) or trigger the GitHub Actions workflow.
     return null;
   }
 }
@@ -51,6 +48,21 @@ function EmptyState() {
   );
 }
 
+/**
+ * Page structure follows a 4-tier hierarchy:
+ *
+ *   Tier 1 — core insight (always visible, prominent):
+ *     Hero (dial + score drivers + spark) · Today's Read · Strongest Signal · Top Signals
+ *
+ *   Tier 2 — action layer (data tables):
+ *     Leaderboard · Sector heatmap
+ *
+ *   Tier 3 — understanding (lighter visual weight):
+ *     Indicators row · Why It Matters · Reading Cautions
+ *
+ *   Tier 4 — reference (collapsed/light):
+ *     Score explainer (default closed) · Filter transparency · 12-month chart · methodology footer
+ */
 export default async function HomePage() {
   const snapshot = await loadSnapshot();
 
@@ -87,6 +99,10 @@ export default async function HomePage() {
             <LiveSourcesRow generatedAt={snapshot.generatedAt} sources={snapshot.sources} />
           </div>
 
+          <TimeHorizonNote />
+
+          {/* ─────────────── TIER 1 — core insight ─────────────── */}
+
           {/* HERO — folded 55/45 */}
           <section className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-4 lg:gap-6 items-stretch">
             <div className="rounded-lg border border-border bg-surface px-5 pt-4 pb-5 sm:px-6 sm:pt-5 sm:pb-6 flex flex-col items-center hero-glow">
@@ -96,9 +112,8 @@ export default async function HomePage() {
               <div className="mt-1 sm:mt-2 w-full max-w-[440px]">
                 <ConvictionDial value={snapshot.index} phase={snapshot.phase} />
               </div>
+              <ScoreDrivers snapshot={snapshot} />
               <NetFlowSpark points={snapshot.history} />
-              <HeroDrivers snapshot={snapshot} />
-              <RecentActivity items={snapshot.recentActivity} />
             </div>
             <div className="flex flex-col gap-4">
               <InsightsCard snapshot={snapshot} className="flex-1" />
@@ -106,38 +121,49 @@ export default async function HomePage() {
             </div>
           </section>
 
-          {/* Today's strongest signal — academically-strongest pattern up top */}
+          {/* "So what" auto-narrative line — under the hero, above the prioritized signals */}
           <div className="mt-6">
+            <TodaysRead snapshot={snapshot} />
+          </div>
+
+          {/* Today's strongest signal — cluster headline */}
+          <div className="mt-4">
             <StrongestSignal snapshot={snapshot} />
           </div>
 
-          {/* Score explainer — surface the math + academic basis (default open) */}
-          <div className="mt-6">
-            <ScoreExplainer snapshot={snapshot} />
+          {/* Top signals to investigate — prioritization layer */}
+          <div className="mt-4">
+            <TopSignals snapshot={snapshot} />
           </div>
 
-          {/* Indicators row */}
+          {/* ─────────────── TIER 2 — action layer ─────────────── */}
+
+          <div className="mt-10">
+            <Leaderboard rows={snapshot.leaderboard} />
+          </div>
+
           <div className="mt-6">
+            <SectorHeatmap sectors={snapshot.sectors} />
+          </div>
+
+          {/* ─────────────── TIER 3 — understanding ─────────────── */}
+
+          <div className="mt-10">
             <IndicatorsRow indicators={snapshot.indicators} />
           </div>
 
-          {/* Why insider buying matters — the intuition retail users need */}
-          <div className="mt-6">
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
             <WhyItMatters />
-          </div>
-
-          {/* Reading cautions — pre-empt the panic-sell instinct */}
-          <div className="mt-6">
             <ReadingCautions />
           </div>
 
-          {/* Cluster buys — moment of identity */}
-          <div className="mt-6">
-            <ClusterBuys clusters={snapshot.clusters} />
+          {/* ─────────────── TIER 4 — reference ─────────────── */}
+
+          <div className="mt-10">
+            <ScoreExplainer snapshot={snapshot} />
           </div>
 
-          {/* Filter transparency — explain why our counts are smaller than raw EDGAR */}
-          <div className="mt-6">
+          <div className="mt-4">
             <FilterTransparency
               filtered={snapshot.filtered}
               buyCount={snapshot.buyCount}
@@ -145,65 +171,41 @@ export default async function HomePage() {
             />
           </div>
 
-          {/* Leaderboard */}
-          <div className="mt-6">
-            <Leaderboard rows={snapshot.leaderboard} />
-          </div>
-
-          {/* Sector heatmap */}
-          <div className="mt-6">
-            <SectorHeatmap sectors={snapshot.sectors} />
-          </div>
-
-          {/* Deep history */}
-          <div className="mt-6">
+          <div className="mt-4">
             <HistoryChart history={snapshot.history} currentIndex={snapshot.index} />
           </div>
 
-          {/* How we read the tape */}
-          <section className="mt-6 mb-12 rounded-lg border border-border bg-surface-2 p-5 text-[13px] text-fg-muted leading-relaxed">
-            <h3 className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">How we read the tape</h3>
-            <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <div className="text-fg font-medium text-[13px]">Only real buys count</div>
-                <p className="mt-1 text-[12.5px]">
-                  We only count purchases insiders make on the open market with their own money. Routine grants, tax withholdings and option exercises are filtered out — those aren't conviction signals.
-                </p>
-              </div>
-              <div>
-                <div className="text-fg font-medium text-[13px]">Pre-scheduled sales filtered</div>
-                <p className="mt-1 text-[12.5px]">
-                  Most insider sales follow pre-set schedules and tell you nothing about timing. We strip those out before counting net selling, so the number you see is closer to a real signal.
-                </p>
-              </div>
-              <div>
-                <div className="text-fg font-medium text-[13px]">Roles weighted by access</div>
-                <p className="mt-1 text-[12.5px]">
-                  A CEO buy carries more weight than a director buy because the CEO sees more of what's coming. The conviction score reflects who is buying, not just how much.
-                </p>
-              </div>
+          {/* Compact methodology footer — reading windows + source only.
+              Filter discipline already lives in FilterTransparency above. */}
+          <section className="mt-4 mb-12 rounded-lg border border-border bg-surface-2 px-5 py-4 text-[12.5px] text-fg-muted leading-relaxed">
+            <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle mb-2">
+              Reading windows used on this page
             </div>
-
-            <div className="mt-4 pt-3 border-t border-border">
-              <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle mb-2">Reading windows used on this page</div>
-              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-1.5 text-[12.5px]">
-                <li>
-                  <span className="font-mono tab-num text-fg">7 days</span>
-                  <span className="text-fg-subtle"> · leaderboard, net flow, headline index</span>
-                </li>
-                <li>
-                  <span className="font-mono tab-num text-fg">30 days</span>
-                  <span className="text-fg-subtle"> · cluster-buy detection</span>
-                </li>
-                <li>
-                  <span className="font-mono tab-num text-fg">12 months</span>
-                  <span className="text-fg-subtle"> · history chart, percentile context</span>
-                </li>
-              </ul>
-            </div>
-
-            <p className="mt-4 pt-3 border-t border-border text-[12px]">
-              Source: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=4" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald">SEC EDGAR Form 4 filings</a>, refreshed daily by an automated workflow. Trading on eToro requires a valid account; instrument coverage is verified against the eToro public catalog.
+            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-1">
+              <li>
+                <span className="font-mono tab-num text-fg">7 days</span>
+                <span className="text-fg-subtle"> · leaderboard, net flow, headline index</span>
+              </li>
+              <li>
+                <span className="font-mono tab-num text-fg">30 days</span>
+                <span className="text-fg-subtle"> · cluster-buy detection</span>
+              </li>
+              <li>
+                <span className="font-mono tab-num text-fg">12 months</span>
+                <span className="text-fg-subtle"> · history chart, percentile context</span>
+              </li>
+            </ul>
+            <p className="mt-3 pt-3 border-t border-border text-[12px]">
+              Source:{" "}
+              <a
+                href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-emerald"
+              >
+                SEC EDGAR Form 4 filings
+              </a>
+              , refreshed daily. Instrument coverage verified against the eToro public catalog.
             </p>
           </section>
         </div>

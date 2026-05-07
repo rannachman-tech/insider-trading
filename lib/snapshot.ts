@@ -9,6 +9,7 @@ import {
   computeIndex,
   isRealBuy,
   isRealSell,
+  roleWeightedBuyIntensity,
   significanceScore,
 } from "./edgar";
 import { phaseFor, PHASE_VERDICT } from "./phase";
@@ -207,12 +208,14 @@ export function buildSnapshot(
   const buyDollars = realBuys.reduce((s, t) => s + t.dollars, 0);
   const sellDollars = realSells.reduce((s, t) => s + t.dollars, 0);
   const netDollars = buyDollars - sellDollars;
+  const roleIntensity = roleWeightedBuyIntensity(realBuys);
   const idx = computeIndex({
     buyDollars,
     sellDollars,
     buyCount: realBuys.length,
     sellCount: realSells.length,
     clusterCount: clusters.length,
+    roleWeightedBuyIntensity: roleIntensity,
   });
   const phase = phaseFor(idx);
 

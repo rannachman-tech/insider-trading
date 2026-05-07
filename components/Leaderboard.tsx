@@ -25,8 +25,11 @@ const ROLE_BADGE: Record<string, string> = {
   Other: "bg-surface-2 text-fg-muted border-border",
 };
 
+const DEFAULT_VISIBLE = 12;
+
 export function Leaderboard({ rows }: Props) {
   const [open, setOpen] = useState<LeaderboardRow | null>(null);
+  const [showAll, setShowAll] = useState(false);
   if (!rows.length) {
     return (
       <section className="rounded-lg border border-border bg-surface p-6 text-center text-fg-muted">
@@ -34,6 +37,8 @@ export function Leaderboard({ rows }: Props) {
       </section>
     );
   }
+  const visibleRows = showAll ? rows : rows.slice(0, DEFAULT_VISIBLE);
+  const hiddenCount = Math.max(0, rows.length - DEFAULT_VISIBLE);
 
   return (
     <>
@@ -65,7 +70,7 @@ export function Leaderboard({ rows }: Props) {
         </header>
 
         <ul className="divide-y divide-border">
-          {rows.map((r) => (
+          {visibleRows.map((r) => (
             <li key={`${r.ticker}-${r.insiderName}`}>
               <button
                 onClick={() => setOpen(r)}
@@ -122,6 +127,17 @@ export function Leaderboard({ rows }: Props) {
             </li>
           ))}
         </ul>
+        {hiddenCount > 0 && (
+          <div className="border-t border-border px-5 py-3 flex items-center justify-center">
+            <button
+              onClick={() => setShowAll((v) => !v)}
+              className="inline-flex items-center gap-1.5 text-[12.5px] text-fg-muted hover:text-fg transition-colors font-medium"
+            >
+              {showAll ? "Show top 12 only" : `Show all ${rows.length} buys (${hiddenCount} more)`}
+              <ChevronRight className={`h-3.5 w-3.5 transition-transform ${showAll ? "rotate-90" : "rotate-0"}`} />
+            </button>
+          </div>
+        )}
       </section>
 
       <LeaderboardDrawer row={open} onClose={() => setOpen(null)} />

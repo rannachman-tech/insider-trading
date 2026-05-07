@@ -457,7 +457,15 @@ function buildSnapshot(transactions) {
   const totalC = realBuys.length + realSells.length;
   const countSig = totalC > 0 ? (realBuys.length - realSells.length) / totalC : 0;
   const clusterSig = Math.min(1, clusters.length / 10);
-  const blended = 0.55 * dollarSig + 0.25 * countSig + 0.20 * clusterSig;
+
+  // Role-weighted CEO/CFO buy intensity (sum of significance scores)
+  const roleIntensity = realBuys
+    .filter((t) => t.role === "CEO" || t.role === "CFO")
+    .reduce((sum, t) => sum + significance(t.dollars, t.role, t.stakePctChange), 0);
+  const roleSig = Math.min(1, roleIntensity / 400);
+
+  // Rebalanced weights: net flow 30, clusters 30, role buys 20, count 20
+  const blended = 0.30 * dollarSig + 0.30 * clusterSig + 0.20 * roleSig + 0.20 * countSig;
   const index = Math.max(0, Math.min(100, Math.round(50 + blended * 50)));
   const phase = index >= 70 ? "heavy-buying" : index >= 40 ? "balanced" : "heavy-selling";
   const verdict =

@@ -11,7 +11,7 @@ import { AlertCircle } from "lucide-react";
  */
 export function ReadingCautions() {
   return (
-    <section className="rounded-lg border border-amber/25 bg-amber-soft px-5 py-4">
+    <section className="rounded-lg border border-border bg-surface-2 px-5 py-4 h-full">
       <div className="flex items-start gap-2.5">
         <AlertCircle className="h-4 w-4 text-amber mt-0.5 flex-shrink-0" aria-hidden />
         <div>

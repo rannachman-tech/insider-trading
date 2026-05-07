@@ -17,22 +17,30 @@ interface Props {
  * Sits below the hero, above the indicators row.
  */
 export function ScoreExplainer({ snapshot }: Props) {
-  // Default-open: methodology should be visible, not hidden behind a click.
-  // The user can still collapse it if they want.
-  const [open, setOpen] = useState(true);
+  // Default-closed but with a live summary in the trigger row, so users see
+  // the methodology summary at a glance and only expand the full breakdown
+  // when they want the academic table + filtering details.
+  const [open, setOpen] = useState(false);
 
   const totalDollars = snapshot.buyDollars + snapshot.sellDollars;
-  const dollarComponent =
-    totalDollars > 0 ? ((snapshot.buyDollars - snapshot.sellDollars) / totalDollars) * 0.55 : 0;
+  const dollarSig =
+    totalDollars > 0 ? (snapshot.buyDollars - snapshot.sellDollars) / totalDollars : 0;
   const totalCount = snapshot.buyCount + snapshot.sellCount;
-  const countComponent =
-    totalCount > 0 ? ((snapshot.buyCount - snapshot.sellCount) / totalCount) * 0.25 : 0;
-  const clusterComponent = Math.min(1, snapshot.clusterCount / 10) * 0.2;
+  const countSig =
+    totalCount > 0 ? (snapshot.buyCount - snapshot.sellCount) / totalCount : 0;
+  const clusterSig = Math.min(1, snapshot.clusterCount / 10);
+  // Role-weighted intensity is reconstructed from the leaderboard for display.
+  // Live ingest sums significance scores for CEO/CFO real buys.
+  const roleIntensity = snapshot.leaderboard
+    .filter((r) => r.role === "CEO" || r.role === "CFO")
+    .reduce((s, r) => s + r.significance, 0);
+  const roleSig = Math.min(1, roleIntensity / 400);
 
-  // Convert the raw -1..+1 components to their contribution in 0–100 space
-  const dollarContrib = Math.round(dollarComponent * 50);
-  const countContrib = Math.round(countComponent * 50);
-  const clusterContrib = Math.round(clusterComponent * 50);
+  // Convert raw -1..+1 components into 0-100-space contribution
+  const dollarContrib = Math.round(dollarSig * 0.30 * 50);
+  const clusterContrib = Math.round(clusterSig * 0.30 * 50);
+  const roleContrib = Math.round(roleSig * 0.20 * 50);
+  const countContrib = Math.round(countSig * 0.20 * 50);
   const baseline = 50;
 
   return (
@@ -42,12 +50,16 @@ export function ScoreExplainer({ snapshot }: Props) {
         className="w-full flex items-center justify-between px-5 py-3.5 text-left hover:bg-surface-2 transition-colors"
         aria-expanded={open}
       >
-        <div className="flex items-center gap-2.5">
-          <BookOpen className="h-4 w-4 text-fg-muted" aria-hidden />
-          <div>
-            <div className="text-[13px] font-semibold text-fg">How this score is built</div>
-            <div className="text-[11.5px] text-fg-subtle mt-0.5">
-              The math behind today's <span className="font-mono tab-num">{snapshot.index}</span>, plus the research it's grounded in.
+        <div className="flex items-center gap-2.5 min-w-0">
+          <BookOpen className="h-4 w-4 text-fg-muted flex-shrink-0" aria-hidden />
+          <div className="min-w-0">
+            <div className="text-[13px] font-semibold text-fg">Methodology &amp; research</div>
+            <div className="text-[11.5px] text-fg-subtle mt-0.5 truncate">
+              Score = baseline 50{" "}
+              <span className="text-fg-muted font-mono tab-num">{dollarContrib >= 0 ? "+" : ""}{dollarContrib} flow</span>{" "}
+              <span className="text-fg-muted font-mono tab-num">+{clusterContrib} clusters</span>{" "}
+              <span className="text-fg-muted font-mono tab-num">+{roleContrib} CEO/CFO</span>{" "}
+              <span className="text-fg-muted font-mono tab-num">{countContrib >= 0 ? "+" : ""}{countContrib} breadth</span> = <span className="text-fg font-mono tab-num font-semibold">{snapshot.index}</span>
             </div>
           </div>
         </div>
@@ -68,23 +80,28 @@ export function ScoreExplainer({ snapshot }: Props) {
               <Row label="Baseline (neutral starting point)" value={baseline} signed={false} />
               <Row
                 label="Net dollar flow — buys vs sells"
-                sub={`${formatUsd(snapshot.buyDollars)} buys vs ${formatUsd(snapshot.sellDollars)} sells · 55% weight`}
+                sub={`${formatUsd(snapshot.buyDollars)} buys vs ${formatUsd(snapshot.sellDollars)} sells · 30% weight`}
                 value={dollarContrib}
               />
               <Row
-                label="Buyer vs seller count"
-                sub={`${snapshot.buyCount} buyers vs ${snapshot.sellCount} sellers · 25% weight`}
-                value={countContrib}
+                label="Cluster buys"
+                sub={`${snapshot.clusterCount} cluster${snapshot.clusterCount === 1 ? "" : "s"} (3+ insiders, same name, 30 days) · 30% weight`}
+                value={clusterContrib}
               />
               <Row
-                label="Cluster buys"
-                sub={`${snapshot.clusterCount} cluster${snapshot.clusterCount === 1 ? "" : "s"} (3+ insiders, same name, 30 days) · 20% weight`}
-                value={clusterContrib}
+                label="CEO/CFO buy intensity"
+                sub={`Role-weighted purchases by C-suite officers · 20% weight`}
+                value={roleContrib}
+              />
+              <Row
+                label="Buyer vs seller count"
+                sub={`${snapshot.buyCount} buyers vs ${snapshot.sellCount} sellers · 20% weight`}
+                value={countContrib}
               />
               <Row label="Today" value={snapshot.index} signed={false} bold />
             </div>
             <p className="mt-2 text-[11.5px] text-fg-subtle leading-relaxed">
-              Trades are also role-weighted before they enter these aggregates: a CEO buy carries more weight than a director buy, which carries more than a 10% owner adjustment. Pre-scheduled sales (10b5-1 plans) are excluded entirely.
+              We weight cluster buys and CEO/CFO purchases heavily because peer-reviewed studies find they carry the strongest signal. Net dollar flow is a stabilizer, not the dominant input — sells are noisier than buys (diversification, taxes, liquidity), so they shouldn't drive the headline. Pre-scheduled sales (10b5-1 plans) are excluded entirely.
             </p>
           </div>
 

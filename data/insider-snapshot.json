@@ -1,218 +1,18 @@
 {
-  "generatedAt": "2026-05-07T11:56:08.671Z",
+  "generatedAt": "2026-05-07T13:57:41.796Z",
   "windowDays": 7,
-  "index": 22,
-  "phase": "heavy-selling",
-  "verdict": "More insiders are selling than buying — and not just on pre-scheduled plans. When the people who run companies trim their personal stakes, it's usually about diversification, but it's worth watching where the selling is concentrated.",
-  "netDollars": -624135422.0662999,
-  "buyDollars": 128992099.36920004,
-  "sellDollars": 753127521.4354999,
-  "buyCount": 30,
-  "sellCount": 182,
+  "index": 40,
+  "phase": "balanced",
+  "verdict": "Insider buying and selling roughly cancel out this week. There's no clear directional message from inside the boardroom right now. Treat any individual buy as one data point, not a trigger to act.",
+  "netDollars": -209313927.4475999,
+  "buyDollars": 72900174.5576,
+  "sellDollars": 282214102.0051999,
+  "buyCount": 17,
+  "sellCount": 21,
   "clusterCount": 0,
   "leaderboard": [
     {
       "rank": 1,
-      "ticker": "COAG",
-      "company": "Hemab Therapeutics Holdings, Inc.",
-      "sector": "Health Care",
-      "insiderName": "RA CAPITAL MANAGEMENT, L.P.",
-      "role": "10%Owner",
-      "officerTitle": "",
-      "dollars": 52222945.65,
-      "shares": 2840429,
-      "avgPricePerShare": 18.38558388539196,
-      "stakePctChange": 81.65073608156624,
-      "significance": 79,
-      "transactions": [
-        {
-          "accession": "0001231919-26-000457",
-          "ticker": "COAG",
-          "company": "Hemab Therapeutics Holdings, Inc.",
-          "issuerCik": "0002114044",
-          "sector": "Health Care",
-          "insiderName": "RA CAPITAL MANAGEMENT, L.P.",
-          "role": "10%Owner",
-          "officerTitle": "",
-          "transactionDate": "2026-05-04",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 2541250,
-          "pricePerShare": 18,
-          "dollars": 45742500,
-          "sharesOwnedAfter": 6149096,
-          "stakePctChange": 41.327212975695936,
-          "ownership": "I"
-        },
-        {
-          "accession": "0001231919-26-000457",
-          "ticker": "COAG",
-          "company": "Hemab Therapeutics Holdings, Inc.",
-          "issuerCik": "0002114044",
-          "sector": "Health Care",
-          "insiderName": "RA CAPITAL MANAGEMENT, L.P.",
-          "role": "10%Owner",
-          "officerTitle": "",
-          "transactionDate": "2026-05-04",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 133750,
-          "pricePerShare": 18,
-          "dollars": 2407500,
-          "sharesOwnedAfter": 354938,
-          "stakePctChange": 37.682637531061765,
-          "ownership": "I"
-        },
-        {
-          "accession": "0001231919-26-000457",
-          "ticker": "COAG",
-          "company": "Hemab Therapeutics Holdings, Inc.",
-          "issuerCik": "0002114044",
-          "sector": "Health Care",
-          "insiderName": "RA CAPITAL MANAGEMENT, L.P.",
-          "role": "10%Owner",
-          "officerTitle": "",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 87143,
-          "pricePerShare": 24.59,
-          "dollars": 2142846.37,
-          "sharesOwnedAfter": 6236239,
-          "stakePctChange": 1.3973646616173627,
-          "ownership": "I"
-        },
-        {
-          "accession": "0001231919-26-000457",
-          "ticker": "COAG",
-          "company": "Hemab Therapeutics Holdings, Inc.",
-          "issuerCik": "0002114044",
-          "sector": "Health Care",
-          "insiderName": "RA CAPITAL MANAGEMENT, L.P.",
-          "role": "10%Owner",
-          "officerTitle": "",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 10268,
-          "pricePerShare": 25,
-          "dollars": 256700,
-          "sharesOwnedAfter": 6246507,
-          "stakePctChange": 0.1643798686209749,
-          "ownership": "I"
-        },
-        {
-          "accession": "0001231919-26-000457",
-          "ticker": "COAG",
-          "company": "Hemab Therapeutics Holdings, Inc.",
-          "issuerCik": "0002114044",
-          "sector": "Health Care",
-          "insiderName": "RA CAPITAL MANAGEMENT, L.P.",
-          "role": "10%Owner",
-          "officerTitle": "",
-          "transactionDate": "2026-05-06",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 14611,
-          "pricePerShare": 23.77,
-          "dollars": 347303.47,
-          "sharesOwnedAfter": 6261118,
-          "stakePctChange": 0.23336087899956526,
-          "ownership": "I"
-        },
-        {
-          "accession": "0001231919-26-000457",
-          "ticker": "COAG",
-          "company": "Hemab Therapeutics Holdings, Inc.",
-          "issuerCik": "0002114044",
-          "sector": "Health Care",
-          "insiderName": "RA CAPITAL MANAGEMENT, L.P.",
-          "role": "10%Owner",
-          "officerTitle": "",
-          "transactionDate": "2026-05-06",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 53407,
-          "pricePerShare": 24.83,
-          "dollars": 1326095.8099999998,
-          "sharesOwnedAfter": 6314525,
-          "stakePctChange": 0.8457801655706486,
-          "ownership": "I"
-        }
-      ]
-    },
-    {
-      "rank": 2,
-      "ticker": "NSP",
-      "company": "INSPERITY, INC.",
-      "sector": "Communication Services",
-      "insiderName": "SARVADI PAUL J",
-      "role": "CEO",
-      "officerTitle": "Chairman of the Board &amp; CEO",
-      "dollars": 2861235.58,
-      "shares": 99600,
-      "avgPricePerShare": 28.727264859437753,
-      "stakePctChange": 14.78927276417069,
-      "significance": 79,
-      "transactions": [
-        {
-          "accession": "0001000753-26-000053",
-          "ticker": "NSP",
-          "company": "INSPERITY, INC.",
-          "issuerCik": "0001000753",
-          "sector": "Communication Services",
-          "insiderName": "SARVADI PAUL J",
-          "role": "CEO",
-          "officerTitle": "Chairman of the Board &amp; CEO",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 50057,
-          "pricePerShare": 28.2,
-          "dollars": 1411607.4,
-          "sharesOwnedAfter": 649727,
-          "stakePctChange": 7.704312734425383,
-          "ownership": "D"
-        },
-        {
-          "accession": "0001000753-26-000053",
-          "ticker": "NSP",
-          "company": "INSPERITY, INC.",
-          "issuerCik": "0001000753",
-          "sector": "Communication Services",
-          "insiderName": "SARVADI PAUL J",
-          "role": "CEO",
-          "officerTitle": "Chairman of the Board &amp; CEO",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 49543,
-          "pricePerShare": 29.26,
-          "dollars": 1449628.1800000002,
-          "sharesOwnedAfter": 699270,
-          "stakePctChange": 7.084960029745306,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 3,
       "ticker": "ALKT",
       "company": "ALKAMI TECHNOLOGY, INC.",
       "sector": "Communication Services",
@@ -291,7 +91,7 @@
       ]
     },
     {
-      "rank": 4,
+      "rank": 2,
       "ticker": "ALKT",
       "company": "ALKAMI TECHNOLOGY, INC.",
       "sector": "Communication Services",
@@ -370,44 +170,7 @@
       ]
     },
     {
-      "rank": 5,
-      "ticker": "WTW",
-      "company": "WILLIS TOWERS WATSON PLC",
-      "sector": "Financials",
-      "insiderName": "Clarke Lucy",
-      "role": "President",
-      "officerTitle": "President of Risk &amp; Broking",
-      "dollars": 499340.04000000004,
-      "shares": 1896,
-      "avgPricePerShare": 263.365,
-      "stakePctChange": 8.346006042138614,
-      "significance": 50,
-      "transactions": [
-        {
-          "accession": "0001140536-26-000141",
-          "ticker": "WTW",
-          "company": "WILLIS TOWERS WATSON PLC",
-          "issuerCik": "0001140536",
-          "sector": "Financials",
-          "insiderName": "Clarke Lucy",
-          "role": "President",
-          "officerTitle": "President of Risk &amp; Broking",
-          "transactionDate": "2026-05-06",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 1896,
-          "pricePerShare": 263.365,
-          "dollars": 499340.04000000004,
-          "sharesOwnedAfter": 22717.453,
-          "stakePctChange": 8.346006042138614,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 6,
+      "rank": 3,
       "ticker": "RLYB",
       "company": "Rallybio Corp",
       "sector": "Health Care",
@@ -486,44 +249,7 @@
       ]
     },
     {
-      "rank": 7,
-      "ticker": "FCPT",
-      "company": "Four Corners Property Trust, Inc.",
-      "sector": "Financials",
-      "insiderName": "Lenehan William H",
-      "role": "CEO",
-      "officerTitle": "President and CEO",
-      "dollars": 99918.6016,
-      "shares": 3961,
-      "avgPricePerShare": 25.2256,
-      "stakePctChange": 0.5106381881561849,
-      "significance": 40,
-      "transactions": [
-        {
-          "accession": "0001193125-26-209121",
-          "ticker": "FCPT",
-          "company": "Four Corners Property Trust, Inc.",
-          "issuerCik": "0001650132",
-          "sector": "Financials",
-          "insiderName": "Lenehan William H",
-          "role": "CEO",
-          "officerTitle": "President and CEO",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 3961,
-          "pricePerShare": 25.2256,
-          "dollars": 99918.6016,
-          "sharesOwnedAfter": 775696,
-          "stakePctChange": 0.5106381881561849,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 8,
+      "rank": 4,
       "ticker": "ARE",
       "company": "ALEXANDRIA REAL ESTATE EQUITIES, INC.",
       "sector": "Financials",
@@ -602,7 +328,7 @@
       ]
     },
     {
-      "rank": 9,
+      "rank": 5,
       "ticker": "ONEW",
       "company": "OneWater Marine Inc.",
       "sector": "Consumer Discretionary",
@@ -639,7 +365,7 @@
       ]
     },
     {
-      "rank": 10,
+      "rank": 6,
       "ticker": "BRK.B",
       "company": "BERKSHIRE HATHAWAY INC",
       "sector": "Financials",
@@ -676,7 +402,7 @@
       ]
     },
     {
-      "rank": 11,
+      "rank": 7,
       "ticker": "AMG",
       "company": "AFFILIATED MANAGERS GROUP, INC.",
       "sector": "Financials",
@@ -711,42 +437,7 @@
       ]
     },
     {
-      "rank": 12,
-      "ticker": "MSBI",
-      "company": "Midland States Bancorp, Inc.",
-      "sector": "Financials",
-      "insiderName": "Franklin Travis",
-      "role": "Director",
-      "dollars": 248988.13999999998,
-      "shares": 9400,
-      "avgPricePerShare": 26.4881,
-      "stakePctChange": 100,
-      "significance": 30,
-      "transactions": [
-        {
-          "accession": "0001466026-26-000053",
-          "ticker": "MSBI",
-          "company": "Midland States Bancorp, Inc.",
-          "issuerCik": "0001466026",
-          "sector": "Financials",
-          "insiderName": "Franklin Travis",
-          "role": "Director",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 9400,
-          "pricePerShare": 26.4881,
-          "dollars": 248988.13999999998,
-          "sharesOwnedAfter": 9400,
-          "stakePctChange": 100,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 13,
+      "rank": 8,
       "ticker": "BRO",
       "company": "BROWN &amp; BROWN, INC.",
       "sector": "Financials",
@@ -781,42 +472,7 @@
       ]
     },
     {
-      "rank": 14,
-      "ticker": "CCI",
-      "company": "CROWN CASTLE INC.",
-      "sector": "Financials",
-      "insiderName": "Stephens Kevin A",
-      "role": "Director",
-      "dollars": 73996.8,
-      "shares": 820,
-      "avgPricePerShare": 90.24000000000001,
-      "stakePctChange": 3.426088409793599,
-      "significance": 17,
-      "transactions": [
-        {
-          "accession": "0001834017-26-000007",
-          "ticker": "CCI",
-          "company": "CROWN CASTLE INC.",
-          "issuerCik": "0001051470",
-          "sector": "Financials",
-          "insiderName": "Stephens Kevin A",
-          "role": "Director",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 820,
-          "pricePerShare": 90.24,
-          "dollars": 73996.8,
-          "sharesOwnedAfter": 23934,
-          "stakePctChange": 3.426088409793599,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 15,
+      "rank": 9,
       "ticker": "PATK",
       "company": "PATRICK INDUSTRIES INC",
       "sector": "Unclassified",
@@ -849,67 +505,32 @@
           "ownership": "D"
         }
       ]
-    },
-    {
-      "rank": 16,
-      "ticker": "PATK",
-      "company": "PATRICK INDUSTRIES INC",
-      "sector": "Unclassified",
-      "insiderName": "Filer Matthew S",
-      "role": "Other",
-      "dollars": 85500,
-      "shares": 1000,
-      "avgPricePerShare": 85.5,
-      "stakePctChange": 4.626630887387805,
-      "significance": 12,
-      "transactions": [
-        {
-          "accession": "0001974819-26-000008",
-          "ticker": "PATK",
-          "company": "PATRICK INDUSTRIES INC",
-          "issuerCik": "0000076605",
-          "sector": "Unclassified",
-          "insiderName": "Filer Matthew S",
-          "role": "Other",
-          "transactionDate": "2026-05-05",
-          "filingDate": "2026-05-06",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 1000,
-          "pricePerShare": 85.5,
-          "dollars": 85500,
-          "sharesOwnedAfter": 21614,
-          "stakePctChange": 4.626630887387805,
-          "ownership": "D"
-        }
-      ]
     }
   ],
   "clusters": [],
   "sectors": [
     {
       "sector": "Health Care",
-      "buyDollars": 54401613.9576,
+      "buyDollars": 2178668.3076,
       "sellDollars": 0,
       "netRatio": 1,
-      "buyCount": 9,
+      "buyCount": 3,
       "sellCount": 0
     },
     {
       "sector": "Financials",
-      "buyDollars": 2041228.0716,
+      "buyDollars": 1118984.49,
       "sellDollars": 0,
       "netRatio": 1,
-      "buyCount": 10,
+      "buyCount": 6,
       "sellCount": 0
     },
     {
       "sector": "Communication Services",
-      "buyDollars": 72191082.94000001,
+      "buyDollars": 69329847.36,
       "sellDollars": 0,
       "netRatio": 1,
-      "buyCount": 8,
+      "buyCount": 6,
       "sellCount": 0
     },
     {
@@ -922,11 +543,11 @@
     },
     {
       "sector": "Unclassified",
-      "buyDollars": 119576,
-      "sellDollars": 753127521.4354999,
-      "netRatio": -0.9996825052485244,
-      "buyCount": 2,
-      "sellCount": 182
+      "buyDollars": 34076,
+      "sellDollars": 282214102.0051999,
+      "netRatio": -0.9997585387424582,
+      "buyCount": 1,
+      "sellCount": 21
     }
   ],
   "history": [
@@ -2752,8 +2373,8 @@
     },
     {
       "date": "2026-05-07",
-      "index": 22,
-      "netDollars": -624135422.0662999
+      "index": 40,
+      "netDollars": -209313927.4475999
     }
   ],
   "indicators": [
@@ -2765,14 +2386,14 @@
     },
     {
       "label": "Net buy/sell ($)",
-      "value": "−$624.1M",
-      "sub": "30 buys vs 182 sells",
+      "value": "−$209.3M",
+      "sub": "17 buys vs 21 sells",
       "tone": "negative"
     },
     {
       "label": "Top conviction (this week)",
-      "value": "NSP",
-      "sub": "CEO · $2.9M",
+      "value": "ALKT",
+      "sub": "10%Owner · $34.7M",
       "tone": "neutral"
     },
     {
@@ -2786,7 +2407,7 @@
     {
       "name": "SEC EDGAR Form 4",
       "ok": true,
-      "note": "Live · 817 filings parsed"
+      "note": "Live · 213 filings parsed"
     },
     {
       "name": "EDGAR ticker map",
@@ -2801,11 +2422,11 @@
   ],
   "isDemo": false,
   "filtered": {
-    "grantsAndAwards": 152,
-    "optionExercises": 114,
-    "taxWithholding": 67,
-    "preScheduledSales": 190,
-    "belowThreshold": 27
+    "grantsAndAwards": 63,
+    "optionExercises": 23,
+    "taxWithholding": 23,
+    "preScheduledSales": 46,
+    "belowThreshold": 4
   },
   "recentActivity": [
     {
@@ -2845,21 +2466,21 @@
       "transactionDate": "2026-05-06"
     },
     {
-      "ticker": "WTW",
-      "company": "WILLIS TOWERS WATSON PLC",
-      "insiderName": "Clarke Lucy",
-      "role": "President",
-      "isBuy": true,
-      "dollars": 499340.04000000004,
+      "ticker": "PKST",
+      "company": "Peakstone Realty Trust",
+      "insiderName": "BITAR JAVIER F",
+      "role": "CFO",
+      "isBuy": false,
+      "dollars": 3847683,
       "transactionDate": "2026-05-06"
     },
     {
-      "ticker": "COAG",
-      "company": "Hemab Therapeutics Holdings, Inc.",
-      "insiderName": "RA CAPITAL MANAGEMENT, L.P.",
-      "role": "10%Owner",
-      "isBuy": true,
-      "dollars": 347303.47,
+      "ticker": "RSI",
+      "company": "Rush Street Interactive, Inc.",
+      "insiderName": "BLUHM NEIL",
+      "role": "Chair",
+      "isBuy": false,
+      "dollars": 34223904,
       "transactionDate": "2026-05-06"
     }
   ]

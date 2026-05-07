@@ -110,34 +110,76 @@ export function significanceScore(input: {
 /**
  * Insiders Activity Compass Index 0–100.
  *
- * Combines:
- *   1. Net Code-P buy/sell dollar ratio (the bedrock signal)
- *   2. Number of cluster buys in window (the high-conviction overlay)
- *   3. Buyer/seller insider count balance
+ * Combines four signals, weighted toward the academically-strongest patterns:
+ *   1. Net dollar flow      (30%) — the bedrock bidirectional signal
+ *   2. Cluster buys         (30%) — the strongest documented insider edge
+ *   3. Role-weighted buys   (20%) — CEO/CFO open-market purchase intensity
+ *   4. Buyer/seller count   (20%) — breadth/balance
  *
- * Calibrated to read 50 = neutral, ≥70 = "heavy buying", <40 = "heavy selling".
+ * Why this split (vs the previous 55/25/20):
+ *   - Sells are noisier than buys (diversification, taxes, liquidity), so
+ *     dollar flow shouldn't dominate the headline.
+ *   - Clusters and CEO/CFO buys carry the published-research edge, so they
+ *     deserve more weight.
+ *
+ * Calibrated to read 50 = neutral, ≥70 = "strong buying", <40 = "cautious".
  */
 export function computeIndex(stats: {
-  buyDollars: number; // sum of code-P A purchases
-  sellDollars: number; // sum of code-P D / code-S non-10b5-1 sales
+  buyDollars: number;
+  sellDollars: number;
   buyCount: number;
   sellCount: number;
   clusterCount: number;
+  /** Sum of significance scores for CEO + CFO real buys — see roleWeightedBuyIntensity */
+  roleWeightedBuyIntensity?: number;
 }): number {
   const totalDollars = stats.buyDollars + stats.sellDollars;
-  // Dollar component on -1..+1
   const dollarSignal =
     totalDollars > 0 ? (stats.buyDollars - stats.sellDollars) / totalDollars : 0;
+
   const totalCount = stats.buyCount + stats.sellCount;
   const countSignal =
     totalCount > 0 ? (stats.buyCount - stats.sellCount) / totalCount : 0;
-  // Cluster component: 0 → 0, 5 clusters → ~0.5, 10+ clusters → 1
+
+  // Cluster signal: 0 → 0, 5 clusters → ~0.5, 10+ → 1
   const clusterSignal = Math.min(1, stats.clusterCount / 10);
 
-  // Weighted blend, then map -1..+1 → 0..100
-  const blended = 0.55 * dollarSignal + 0.25 * countSignal + 0.20 * clusterSignal;
+  // Role-weighted buy intensity: 0 → 0, 200 → ~0.5, 400+ → 1
+  // (200 ≈ two CEO buys at ~$1M each, or one $5M CEO buy)
+  const roleSignal = Math.min(1, (stats.roleWeightedBuyIntensity ?? 0) / 400);
+
+  // Weighted blend, then map -1..+1 → 0..100. Note: cluster + role are
+  // strictly positive (no negative side), so they only push the score up.
+  const blended =
+    0.30 * dollarSignal +
+    0.30 * clusterSignal +
+    0.20 * roleSignal +
+    0.20 * countSignal;
   const idx = Math.round(50 + blended * 50);
   return Math.max(0, Math.min(100, idx));
+}
+
+/**
+ * Sum the significance scores of all CEO + CFO real buys in the window.
+ * Used as the role-weighted-buy term in computeIndex().
+ */
+export function roleWeightedBuyIntensity(
+  realBuys: Array<{ role: InsiderRole; dollars: number; stakePctChange: number; is10b5One: boolean }>
+): number {
+  return realBuys
+    .filter((t) => t.role === "CEO" || t.role === "CFO")
+    .reduce(
+      (sum, t) =>
+        sum +
+        significanceScore({
+          dollars: t.dollars,
+          role: t.role,
+          stakePctChange: t.stakePctChange,
+          is10b5One: t.is10b5One,
+          isCodeP: true,
+        }),
+      0
+    );
 }
 
 /* ------------------------------------------------------------------ */

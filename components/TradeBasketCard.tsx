@@ -25,6 +25,14 @@ const PHASE_PILL_LABEL: Record<Phase, string> = {
 
 export function TradeBasketCard({ snapshot, className = "" }: Props) {
   const [open, setOpen] = useState(false);
+
+  // Conditional rendering: the basket only feels honest when we have a real
+  // data-derived selection. That means strong-buying phase + at least one
+  // cluster. In any other state we hide the card entirely so the page real
+  // estate goes to the dynamic signals (Top Signals panel) above.
+  const eligible = snapshot.phase === "heavy-buying" && snapshot.clusters.length >= 1;
+  if (!eligible) return null;
+
   const basket = basketFor(snapshot);
   const phase = snapshot.phase;
 
