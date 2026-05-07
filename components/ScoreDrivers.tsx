@@ -39,6 +39,15 @@ export function ScoreDrivers({ snapshot }: Props) {
     { label: "Breadth", value: countContrib, max: 10 },
   ];
 
+  // Cognitive-dissonance guard: when net flow is strongly negative but the
+  // headline says mixed/cautious (because clusters or role-buys offset),
+  // surface a one-line clarifier so users don't think the model is broken.
+  const sellHeavyButHeadlineMixed =
+    dollarContrib <= -6 && snapshot.index >= 35 && snapshot.index < 60;
+  // Inverse: heavy buying flow but no clusters to back it up.
+  const buyHeavyButNoClusters =
+    dollarContrib >= 6 && snapshot.clusterCount === 0 && snapshot.index < 70;
+
   return (
     <div className="mt-3 w-full max-w-[440px]">
       <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle text-center mb-1.5">
@@ -72,6 +81,25 @@ export function ScoreDrivers({ snapshot }: Props) {
           );
         })}
       </div>
+
+      {/* "Why this matters despite X" clarifier — closes the trust gap when
+          the chips look bearish but the headline doesn't. */}
+      {(sellHeavyButHeadlineMixed || buyHeavyButNoClusters) && (
+        <p className="mt-2 text-[11px] text-fg-subtle leading-relaxed text-center px-1">
+          {sellHeavyButHeadlineMixed && (
+            <>
+              <strong className="text-fg-muted font-medium">Why despite the red:</strong>{" "}
+              Most insider sales are diversification, taxes or scheduled plans — we down-weight them, which is why the headline holds. The score is structured to follow conviction, not panic.
+            </>
+          )}
+          {buyHeavyButNoClusters && (
+            <>
+              <strong className="text-fg-muted font-medium">Why not stronger:</strong>{" "}
+              Net buying is positive but no cluster (3+ insiders, same name) has formed yet — and clusters are where the academic edge actually lives. The score waits for confirmation.
+            </>
+          )}
+        </p>
+      )}
     </div>
   );
 }

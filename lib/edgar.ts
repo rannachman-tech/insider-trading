@@ -299,6 +299,71 @@ export function isRealBuy(t: InsiderTransaction, minDollars = 25_000): boolean {
 }
 
 /**
+ * Per-transaction dollar cap used when summing for the index. The leaderboard
+ * still shows the un-capped real dollar amount; only the aggregate signal is
+ * capped, so a single $50M founder sale can't dominate the headline reading.
+ *
+ * $5M chosen empirically: above the median for cluster-buy magnitudes in
+ * Cohen-Malloy-Pomorski, below where founder/10%-owner block trades dominate.
+ */
+export const PER_TX_DOLLAR_CAP = 5_000_000;
+
+/** Apply the cap when summing for the index. */
+export function cappedDollars(dollars: number): number {
+  return Math.min(dollars, PER_TX_DOLLAR_CAP);
+}
+
+/* ------------------------------------------------------------------ */
+/* Entity normalization — beneficial-owner identity for cluster dedup */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Trust / vehicle suffix tokens that the same beneficial owner often files
+ * under as separate entities. Stripping these collapses "Smith John Q." vs
+ * "Smith John Q Family Trust" vs "Smith John Q Foundation" to one identity.
+ */
+const TRUST_SUFFIX_TOKENS = new Set([
+  "trust", "trusts", "tr", "trustee",
+  "foundation", "fdn",
+  "llc", "lp", "llp", "ltd",
+  "inc", "corp", "co", "company",
+  "family", "estate", "revocable", "irrevocable",
+  "holdings", "holding", "capital",
+  "ira", "iii", "iv", "ii", "jr", "sr",
+]);
+
+/**
+ * Normalize a reporting-owner name into a stable identity key.
+ *
+ * Steps:
+ *   1. Lowercase, strip punctuation
+ *   2. Tokenize on whitespace
+ *   3. Drop trust/vehicle suffix tokens
+ *   4. Sort tokens alphabetically (handles "Last First" vs "First Last")
+ *   5. Re-join
+ *
+ * Examples:
+ *   "Smith John Q."                 → "john q smith"
+ *   "Smith John Q Family Trust"     → "john q smith"
+ *   "John Q Smith Foundation"       → "john q smith"
+ *   "Buffett Warren E"              → "buffett e warren"
+ *
+ * Returns a string suitable as a Map key. Two transactions with the same
+ * normalized identity are very likely the same beneficial owner filing
+ * under different vehicles.
+ */
+export function normalizeInsiderIdentity(name: string): string {
+  if (!name) return "";
+  const cleaned = name
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const tokens = cleaned.split(" ").filter((t) => t && !TRUST_SUFFIX_TOKENS.has(t));
+  return tokens.sort().join(" ");
+}
+
+/**
  * "Real" insider sell = Code S non-10b5-1, or Code P/D disposition,
  * dollars >= threshold.
  */

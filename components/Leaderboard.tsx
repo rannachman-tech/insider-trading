@@ -26,6 +26,9 @@ const ROLE_BADGE: Record<string, string> = {
 };
 
 const DEFAULT_VISIBLE = 12;
+// LOW = significance < 40 (matches ConvictionBadge thresholds).
+// Default view hides LOW rows so the user's first read is HIGH + MED only.
+const LOW_CONVICTION_THRESHOLD = 40;
 
 export function Leaderboard({ rows }: Props) {
   const [open, setOpen] = useState<LeaderboardRow | null>(null);
@@ -37,8 +40,11 @@ export function Leaderboard({ rows }: Props) {
       </section>
     );
   }
-  const visibleRows = showAll ? rows : rows.slice(0, DEFAULT_VISIBLE);
-  const hiddenCount = Math.max(0, rows.length - DEFAULT_VISIBLE);
+  const strongRows = rows.filter((r) => r.significance >= LOW_CONVICTION_THRESHOLD);
+  const baseRows = strongRows.length > 0 ? strongRows : rows; // never hide everything
+  const visibleRows = showAll ? rows : baseRows.slice(0, DEFAULT_VISIBLE);
+  const hiddenCount = Math.max(0, rows.length - visibleRows.length);
+  const hiddenLowCount = rows.length - strongRows.length;
 
   return (
     <>
@@ -64,8 +70,9 @@ export function Leaderboard({ rows }: Props) {
               {" "}and stock grants. Tap any row for details.
             </p>
           </div>
-          <div className="hidden sm:block text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle shrink-0 ml-3">
-            {rows.length} buys
+          <div className="hidden sm:block text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle shrink-0 ml-3 text-right leading-tight">
+            <div>{visibleRows.length} stronger signals</div>
+            <div className="opacity-60 normal-case tracking-normal">{rows.length} total this week</div>
           </div>
         </header>
 
@@ -108,6 +115,11 @@ export function Leaderboard({ rows }: Props) {
                 <div className="text-right">
                   <div className="font-mono tab-num text-sm font-semibold text-fg">
                     {formatUsd(r.dollars)}
+                    {r.transactions.length > 1 && (
+                      <span className="ml-1.5 text-[10px] font-mono uppercase tracking-[0.1em] text-fg-subtle font-medium">
+                        · {r.transactions.length} buys
+                      </span>
+                    )}
                   </div>
                   <div className="hidden sm:block text-[11px] font-mono tab-num text-fg-subtle">
                     +{Math.abs(r.stakePctChange).toFixed(1)}% to holding
@@ -133,7 +145,11 @@ export function Leaderboard({ rows }: Props) {
               onClick={() => setShowAll((v) => !v)}
               className="inline-flex items-center gap-1.5 text-[12.5px] text-fg-muted hover:text-fg transition-colors font-medium"
             >
-              {showAll ? "Show top 12 only" : `Show all ${rows.length} buys (${hiddenCount} more)`}
+              {showAll
+                ? "Show stronger signals only"
+                : hiddenLowCount > 0
+                ? `Show all ${rows.length} buys (incl. ${hiddenLowCount} low-conviction)`
+                : `Show all ${rows.length} buys (${hiddenCount} more)`}
               <ChevronRight className={`h-3.5 w-3.5 transition-transform ${showAll ? "rotate-90" : "rotate-0"}`} />
             </button>
           </div>

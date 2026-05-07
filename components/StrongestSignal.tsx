@@ -76,10 +76,10 @@ export function StrongestSignal({ snapshot }: Props) {
           <p className="mt-1.5 text-[13px] text-fg-muted leading-relaxed">
             We're watching for moments when 3 or more insiders at the same company independently buy the stock with personal cash within a 30-day window. Academic research finds this specific pattern carries the highest predictive signal — but it doesn't happen every week. When it does, it'll be the top story on this page.
           </p>
-          <div className="mt-2 flex items-center gap-1.5 text-[11px] text-fg-subtle">
-            <Info className="h-3 w-3" aria-hidden />
+          <div className="mt-2 flex items-start gap-1.5 text-[11px] text-fg-subtle">
+            <Info className="h-3 w-3 flex-shrink-0 mt-0.5" aria-hidden />
             <span>
-              {snapshot.buyCount} individual insider buys this week were not part of clusters.
+              {snapshot.buyCount} individual insider buys this week were not part of clusters. <strong className="text-fg-muted font-medium">Two filings from the same person doesn't qualify</strong> — clusters require three different beneficial owners at the same company.
             </span>
           </div>
         </div>

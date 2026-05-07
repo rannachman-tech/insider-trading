@@ -37,6 +37,23 @@ const ROLE_RANK = {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Trust / vehicle suffix tokens — collapse "Smith John Q." vs
+// "Smith John Q Family Trust" to one beneficial-owner identity.
+const TRUST_SUFFIX_TOKENS = new Set([
+  "trust","trusts","tr","trustee","foundation","fdn",
+  "llc","lp","llp","ltd","inc","corp","co","company",
+  "family","estate","revocable","irrevocable",
+  "holdings","holding","capital","ira",
+  "iii","iv","ii","jr","sr",
+]);
+
+function normalizeInsiderIdentity(name) {
+  if (!name) return "";
+  const cleaned = name.toLowerCase().replace(/[^a-z0-9\s]/g," ").replace(/\s+/g," ").trim();
+  const tokens = cleaned.split(" ").filter((t) => t && !TRUST_SUFFIX_TOKENS.has(t));
+  return tokens.sort().join(" ");
+}
+
 function lastWeekdays(n) {
   const out = [];
   const d = new Date();
@@ -369,10 +386,13 @@ function buildSnapshot(transactions) {
     return Math.round(Math.max(0, Math.min(1, raw)) * 100);
   };
 
+  // Group by ticker × normalized identity so multi-vehicle filings of the
+  // same person collapse into one row (e.g. personal + trust + foundation).
   const groups = new Map();
   for (const t of realBuys) {
     if (!t.ticker) continue;
-    const k = `${t.ticker}|${t.insiderName}`;
+    const identity = normalizeInsiderIdentity(t.insiderName) || t.insiderName;
+    const k = `${t.ticker}|${identity}`;
     const arr = groups.get(k) ?? [];
     arr.push(t);
     groups.set(k, arr);
@@ -382,7 +402,11 @@ function buildSnapshot(transactions) {
     const dollars = txs.reduce((s, t) => s + t.dollars, 0);
     const shares = txs.reduce((s, t) => s + t.shares, 0);
     const stakePct = txs.reduce((s, t) => s + t.stakePctChange, 0);
-    const t0 = txs[0];
+    // Pick the longest-form name as canonical display
+    const t0 = txs.reduce((best, t) =>
+      (t.insiderName?.length ?? 0) > (best.insiderName?.length ?? 0) ? t : best,
+      txs[0]
+    );
     rows.push({
       rank: 0, ticker: t0.ticker, company: t0.company, sector: t0.sector,
       insiderName: t0.insiderName, role: t0.role, officerTitle: t0.officerTitle,
@@ -405,13 +429,27 @@ function buildSnapshot(transactions) {
   }
   const clusters = [];
   clusterMap.forEach((txs, ticker) => {
-    const distinct = new Map();
+    // Bucket by normalized beneficial-owner identity to dedup
+    // trust/foundation/personal-vehicle filings of the same person.
+    const byIdentity = new Map();
     for (const t of txs) {
-      const arr = distinct.get(t.insiderName) ?? [];
+      const id = normalizeInsiderIdentity(t.insiderName) || t.insiderName;
+      const arr = byIdentity.get(id) ?? [];
       arr.push(t);
-      distinct.set(t.insiderName, arr);
+      byIdentity.set(id, arr);
     }
-    if (distinct.size < 3) return;
+    if (byIdentity.size < 3) return;
+    // Re-aggregate to canonical display names
+    const distinct = new Map();
+    byIdentity.forEach((bucket) => {
+      const canonical = bucket.reduce(
+        (best, t) => (t.insiderName.length > best.length ? t.insiderName : best),
+        ""
+      );
+      const arr = distinct.get(canonical) ?? [];
+      arr.push(...bucket);
+      distinct.set(canonical, arr);
+    });
     const insiders = [...distinct.entries()]
       .map(([name, list]) => ({
         name, role: list[0].role, officerTitle: list[0].officerTitle,
@@ -449,16 +487,29 @@ function buildSnapshot(transactions) {
   });
   sectors.sort((a, b) => b.netRatio - a.netRatio);
 
+  // Per-transaction cap for INDEX computation. Display sums (leaderboard,
+  // total dollar UX) remain uncapped. $5M cap stops a single founder block
+  // sale from dominating the headline reading.
+  const PER_TX_DOLLAR_CAP = 5_000_000;
+  const capDollars = (n) => Math.min(n, PER_TX_DOLLAR_CAP);
+
   const buyDollars = realBuys.reduce((s, t) => s + t.dollars, 0);
   const sellDollars = realSells.reduce((s, t) => s + t.dollars, 0);
   const netDollars = buyDollars - sellDollars;
-  const totalD = buyDollars + sellDollars;
-  const dollarSig = totalD > 0 ? (buyDollars - sellDollars) / totalD : 0;
+
+  // Capped sums for the index calculation only
+  const cappedBuy = realBuys.reduce((s, t) => s + capDollars(t.dollars), 0);
+  const cappedSell = realSells.reduce((s, t) => s + capDollars(t.dollars), 0);
+  const totalCapped = cappedBuy + cappedSell;
+  const dollarSig = totalCapped > 0 ? (cappedBuy - cappedSell) / totalCapped : 0;
+
   const totalC = realBuys.length + realSells.length;
   const countSig = totalC > 0 ? (realBuys.length - realSells.length) / totalC : 0;
   const clusterSig = Math.min(1, clusters.length / 10);
 
-  // Role-weighted CEO/CFO buy intensity (sum of significance scores)
+  // Role-weighted CEO/CFO buy intensity (sum of significance scores).
+  // Significance already de-emphasizes mega-dollar buys via log scaling, so
+  // the per-tx cap doesn't double-apply here.
   const roleIntensity = realBuys
     .filter((t) => t.role === "CEO" || t.role === "CFO")
     .reduce((sum, t) => sum + significance(t.dollars, t.role, t.stakePctChange), 0);

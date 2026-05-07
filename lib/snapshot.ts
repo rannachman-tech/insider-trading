@@ -6,9 +6,11 @@
  */
 
 import {
+  cappedDollars,
   computeIndex,
   isRealBuy,
   isRealSell,
+  normalizeInsiderIdentity,
   roleWeightedBuyIntensity,
   significanceScore,
 } from "./edgar";
@@ -75,10 +77,14 @@ export function buildSnapshot(
   const clusterBuysWindow = transactions.filter((t) => isRealBuy(t) && inCluster(t));
 
   // ---------- Leaderboard ----------
+  // Group by ticker × NORMALIZED insider identity so the same person filing
+  // through multiple vehicles (personal + trust + foundation) collapses into
+  // one row showing "2 buys · $34.6M total" rather than appearing twice.
   type Key = string;
   const groups = new Map<Key, InsiderTransaction[]>();
   for (const t of realBuys) {
-    const key = `${t.ticker}|${t.insiderName}`;
+    const identity = normalizeInsiderIdentity(t.insiderName) || t.insiderName;
+    const key = `${t.ticker}|${identity}`;
     const existing = groups.get(key);
     if (existing) existing.push(t);
     else groups.set(key, [t]);
@@ -89,7 +95,11 @@ export function buildSnapshot(
     const totalDollars = txs.reduce((s, t) => s + t.dollars, 0);
     const totalShares = txs.reduce((s, t) => s + t.shares, 0);
     const avgPrice = totalShares > 0 ? totalDollars / totalShares : 0;
-    const t0 = txs[0];
+    // Use the longest-form display name from the bucket (typically the most
+    // identifying — e.g. "Smith John Q Family Trust" > "Smith John Q.")
+    const t0 = txs.reduce((best, t) =>
+      t.insiderName.length > best.insiderName.length ? t : best
+    );
     const stakePctChange = txs.reduce((s, t) => s + t.stakePctChange, 0);
     const significance = significanceScore({
       dollars: totalDollars,
@@ -127,13 +137,30 @@ export function buildSnapshot(
   }
   const clusters: ClusterBuy[] = [];
   clusterMap.forEach((txs, ticker) => {
-    const distinctNames = new Map<string, InsiderTransaction[]>();
+    // Bucket by NORMALIZED identity so the same beneficial owner filing
+    // through trust/foundation/personal vehicles counts as one insider,
+    // not three. The display name remains the raw rptOwnerName so the UI
+    // doesn't surface our normalization.
+    const distinctIdentities = new Map<string, InsiderTransaction[]>();
     for (const t of txs) {
-      const list = distinctNames.get(t.insiderName) ?? [];
+      const identity = normalizeInsiderIdentity(t.insiderName) || t.insiderName;
+      const list = distinctIdentities.get(identity) ?? [];
       list.push(t);
-      distinctNames.set(t.insiderName, list);
+      distinctIdentities.set(identity, list);
     }
-    if (distinctNames.size < clusterMin) return;
+    if (distinctIdentities.size < clusterMin) return;
+    // Pull the canonical display name (longest-form, since longer names
+    // typically include more identifying context) per identity bucket.
+    const distinctNames = new Map<string, InsiderTransaction[]>();
+    distinctIdentities.forEach((bucket) => {
+      const canonicalName = bucket.reduce(
+        (best, t) => (t.insiderName.length > best.length ? t.insiderName : best),
+        ""
+      );
+      const list = distinctNames.get(canonicalName) ?? [];
+      list.push(...bucket);
+      distinctNames.set(canonicalName, list);
+    });
     const insiders = Array.from(distinctNames.entries())
       .map(([name, list]) => ({
         name,
@@ -205,13 +232,18 @@ export function buildSnapshot(
   sectors.sort((a, b) => b.netRatio - a.netRatio);
 
   // ---------- Index + verdict ----------
+  // Display sums are uncapped — leaderboard / total dollar UX stays honest.
   const buyDollars = realBuys.reduce((s, t) => s + t.dollars, 0);
   const sellDollars = realSells.reduce((s, t) => s + t.dollars, 0);
   const netDollars = buyDollars - sellDollars;
+  // Index inputs use per-transaction caps so a single founder block-sale can't
+  // distort the headline reading. See PER_TX_DOLLAR_CAP in lib/edgar.ts.
+  const cappedBuyDollars = realBuys.reduce((s, t) => s + cappedDollars(t.dollars), 0);
+  const cappedSellDollars = realSells.reduce((s, t) => s + cappedDollars(t.dollars), 0);
   const roleIntensity = roleWeightedBuyIntensity(realBuys);
   const idx = computeIndex({
-    buyDollars,
-    sellDollars,
+    buyDollars: cappedBuyDollars,
+    sellDollars: cappedSellDollars,
     buyCount: realBuys.length,
     sellCount: realSells.length,
     clusterCount: clusters.length,

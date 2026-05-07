@@ -120,6 +120,27 @@ export function ScoreExplainer({ snapshot }: Props) {
             </ul>
           </div>
 
+          {/* Methodology safeguards */}
+          <div className="pt-3 border-t border-border">
+            <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle mb-2">
+              Methodology safeguards
+            </div>
+            <div className="space-y-2.5 text-[12.5px] text-fg-muted leading-relaxed">
+              <div>
+                <strong className="text-fg font-medium">$5M per-transaction cap on the index.</strong>{" "}
+                When summing dollar flow for the headline reading, any single transaction is capped at $5M. A founder unloading $50M in a liquidity event would otherwise distort the score. The leaderboard still shows real, uncapped dollar amounts — only the aggregate signal is capped.
+              </div>
+              <div>
+                <strong className="text-fg font-medium">Beneficial-owner deduplication for clusters.</strong>{" "}
+                The same person often files under multiple vehicles — personal, family trust, foundation, holding company. We normalize names (strip vehicle suffixes, sort tokens) so one beneficial owner across three trusts counts as one insider in cluster detection, not three.
+              </div>
+              <div>
+                <strong className="text-fg font-medium">No market-cap normalization, intentionally.</strong>{" "}
+                Cohen-Malloy-Pomorski found the un-normalized signal carries more edge — small-cap insider activity is part of why the signal works there. We don't divide by market cap.
+              </div>
+            </div>
+          </div>
+
           {/* Academic findings table */}
           <div className="pt-3 border-t border-border">
             <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle mb-2">
