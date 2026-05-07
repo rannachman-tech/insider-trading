@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-05-07T14:16:25.850Z",
+  "generatedAt": "2026-05-07T14:46:23.791Z",
   "windowDays": 7,
-  "index": 60,
+  "index": 58,
   "phase": "balanced",
   "verdict": "Insider buying and selling roughly cancel out this week. There's no clear directional message from inside the boardroom right now. Treat any individual buy as one data point, not a trigger to act.",
-  "netDollars": 63952734.16759999,
+  "netDollars": 61969287.76759999,
   "buyDollars": 72287676.3676,
-  "sellDollars": 8334942.2,
+  "sellDollars": 10318388.6,
   "buyCount": 13,
-  "sellCount": 11,
+  "sellCount": 12,
   "clusterCount": 0,
   "leaderboard": [
     {
@@ -392,10 +392,10 @@
     {
       "sector": "Unclassified",
       "buyDollars": 0,
-      "sellDollars": 8334942.2,
+      "sellDollars": 10318388.6,
       "netRatio": -1,
       "buyCount": 0,
-      "sellCount": 11
+      "sellCount": 12
     }
   ],
   "history": [
@@ -2221,8 +2221,8 @@
     },
     {
       "date": "2026-05-07",
-      "index": 60,
-      "netDollars": 63952734.16759999
+      "index": 58,
+      "netDollars": 61969287.76759999
     }
   ],
   "indicators": [
@@ -2234,8 +2234,8 @@
     },
     {
       "label": "Net buy/sell ($)",
-      "value": "+$64.0M",
-      "sub": "13 buys vs 11 sells",
+      "value": "+$62.0M",
+      "sub": "13 buys vs 12 sells",
       "tone": "positive"
     },
     {
@@ -2255,7 +2255,7 @@
     {
       "name": "SEC EDGAR Form 4",
       "ok": true,
-      "note": "Live · 86 filings parsed"
+      "note": "Live · 110 filings parsed"
     },
     {
       "name": "EDGAR ticker map",
@@ -2270,10 +2270,10 @@
   ],
   "isDemo": false,
   "filtered": {
-    "grantsAndAwards": 15,
-    "optionExercises": 11,
-    "taxWithholding": 10,
-    "preScheduledSales": 16,
+    "grantsAndAwards": 25,
+    "optionExercises": 15,
+    "taxWithholding": 13,
+    "preScheduledSales": 21,
     "belowThreshold": 2
   },
   "recentActivity": [
