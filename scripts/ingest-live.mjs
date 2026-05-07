@@ -24,7 +24,11 @@ const HEADERS = {
 
 const DAYS_BACK = parseInt(process.env.EDGAR_DAYS ?? "5", 10);
 const MAX_FILINGS = parseInt(process.env.EDGAR_MAX ?? "6000", 10);
-const CONCURRENCY = 6;
+// Concurrency dropped from 6 to 3 + longer pause between batches. SEC fair-use
+// is 10 req/sec but their throttling is aggressive and once you trip it the
+// whole IP gets HTTP 429 for 10+ minutes. Slower-but-safer is the right
+// default. Override with EDGAR_CONCURRENCY if you need to push it.
+const CONCURRENCY = parseInt(process.env.EDGAR_CONCURRENCY ?? "3", 10);
 
 const ROLE_WEIGHTS = {
   CEO: 1.0, CFO: 0.95, President: 0.85, COO: 0.75, Chair: 0.7,
@@ -54,10 +58,13 @@ function normalizeInsiderIdentity(name) {
   return tokens.sort().join(" ");
 }
 
-// Group-filing fingerprint: same accession + ticker + date + economics =
-// the same trade reported by multiple Schedule 13D group members. Dedup.
+// Group-filing fingerprint: identical economics (ticker + date + shares +
+// price + code) = the same trade reported by multiple Schedule 13D group
+// members. We INTENTIONALLY exclude accession — each group member files
+// their own Form 4 with their own accession number, so including it would
+// fail to dedup the case we're trying to catch.
 function transactionFingerprint(t) {
-  return [t.accession, t.ticker, t.transactionDate, t.shares, t.pricePerShare, t.code, t.acquiredDisposed].join("|");
+  return [t.ticker, t.transactionDate, t.shares, t.pricePerShare, t.code, t.acquiredDisposed].join("|");
 }
 function dedupeGroupFilings(txs) {
   const seen = new Set();
@@ -105,6 +112,12 @@ async function fetchDailyIndex(d) {
   const res = await fetch(url, { headers: HEADERS });
   if (!res.ok) {
     if (res.status === 404) return [];
+    if (res.status === 429) {
+      console.error(`\n  ${ymd(d)}: HTTP 429 — SEC has rate-limited your IP.`);
+      console.error("  This is a blanket block, not a per-endpoint cap.");
+      console.error("  Wait 30+ minutes before retrying. Don't re-run repeatedly — that resets the timer.\n");
+      process.exit(2);
+    }
     console.warn(`  ${ymd(d)}: HTTP ${res.status}`);
     return [];
   }
@@ -246,7 +259,9 @@ async function processBatch(entries) {
       const progress = Math.round((i / entries.length) * 100);
       console.log(`  ...${progress}% (${i}/${entries.length}) ${out.length} transactions so far`);
     }
-    await sleep(120);
+    // 3 concurrent + 250ms gap = ~12 req/sec peak, ~6 req/sec sustained — well
+    // below SEC's 10 req/sec threshold even after factoring in retry-on-fail.
+    await sleep(250);
   }
   return out;
 }

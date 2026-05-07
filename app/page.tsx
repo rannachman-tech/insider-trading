@@ -11,7 +11,11 @@ import { ReadingCautions } from "@/components/ReadingCautions";
 import { StrongestSignal } from "@/components/StrongestSignal";
 import { WhyItMatters } from "@/components/WhyItMatters";
 import { ScoreDrivers } from "@/components/ScoreDrivers";
-import { TopSignals } from "@/components/TopSignals";
+// TopSignals removed — the leaderboard's significance ranking + HIGH/MED/LOW
+// badges + LOW-hidden default now provide the same prioritization with no
+// duplication. Component file kept in repo for a future v2 reincarnation
+// when there's enough historical data to surface genuinely newsworthy
+// patterns (first-time CEO buys, unusual size vs history, etc.).
 import { TimeHorizonNote } from "@/components/TimeHorizonNote";
 import { TodaysRead } from "@/components/TodaysRead";
 import { InsightsCard } from "@/components/InsightsCard";
@@ -132,11 +136,6 @@ export default async function HomePage() {
           {/* Today's strongest signal — cluster headline */}
           <div className="mt-4">
             <StrongestSignal snapshot={snapshot} />
-          </div>
-
-          {/* Top signals to investigate — prioritization layer */}
-          <div className="mt-4">
-            <TopSignals snapshot={snapshot} />
           </div>
 
           {/* ─────────────── TIER 2 — action layer ─────────────── */}

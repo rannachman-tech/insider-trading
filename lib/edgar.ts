@@ -317,16 +317,19 @@ export function cappedDollars(dollars: number): number {
  * Fingerprint a transaction for group-filing deduplication.
  *
  * Schedule 13D group filings cause the same trade to be reported by multiple
- * filers (e.g., a PE fund LP + its GP both file Form 4s for the same buy).
- * The transactions share an accession number AND identical trade economics —
- * same date, share count, price, ticker.
+ * filers (e.g., "General Atlantic, L.P." + "General Atlantic GenPar (Bermuda),
+ * L.P." both file Form 4s for the same buy). Each group member files their
+ * OWN Form 4 with their OWN accession number — so we can't include accession
+ * in the dedup key. We fingerprint purely on trade economics:
  *
- * Two transactions with the same fingerprint are the same event reported
- * by different group members. Count them once.
+ *   ticker + date + shares + price + code + acquired/disposed
+ *
+ * The probability of two unrelated insiders buying the exact same number of
+ * shares of the same stock on the same day at the same price is astronomical,
+ * so identical economics = same event by definition.
  */
 export function transactionFingerprint(t: InsiderTransaction): string {
   return [
-    t.accession,
     t.ticker,
     t.transactionDate,
     t.shares,
