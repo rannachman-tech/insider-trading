@@ -5,6 +5,7 @@ import { ChevronRight, Crown } from "lucide-react";
 import type { LeaderboardRow } from "@/lib/types";
 import { formatUsd, formatPct, formatDate } from "@/lib/format";
 import { ConvictionBar } from "./ConvictionBar";
+import { ConvictionBadge } from "./ConvictionBadge";
 import { LeaderboardDrawer } from "./LeaderboardDrawer";
 import { Tooltip } from "./Tooltip";
 
@@ -108,10 +109,14 @@ export function Leaderboard({ rows }: Props) {
                   </div>
                 </div>
 
-                {/* Conviction bar — hidden on small */}
-                <div className="hidden sm:flex items-center gap-2 min-w-0 w-[120px]">
-                  <ConvictionBar value={r.significance} />
-                  <ChevronRight className="h-4 w-4 text-fg-subtle flex-shrink-0" aria-hidden />
+                {/* Conviction badge + bar — bar hidden on small */}
+                <div className="flex items-center gap-2 min-w-0 sm:w-[150px] justify-end">
+                  <ConvictionBadge value={r.significance} />
+                  <div className="hidden sm:flex items-center gap-2 flex-1 min-w-0">
+                    <ConvictionBar value={r.significance} />
+                    <ChevronRight className="h-4 w-4 text-fg-subtle flex-shrink-0" aria-hidden />
+                  </div>
+                  <ChevronRight className="sm:hidden h-4 w-4 text-fg-subtle flex-shrink-0" aria-hidden />
                 </div>
               </button>
             </li>

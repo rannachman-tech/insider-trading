@@ -17,7 +17,9 @@ interface Props {
  * Sits below the hero, above the indicators row.
  */
 export function ScoreExplainer({ snapshot }: Props) {
-  const [open, setOpen] = useState(false);
+  // Default-open: methodology should be visible, not hidden behind a click.
+  // The user can still collapse it if they want.
+  const [open, setOpen] = useState(true);
 
   const totalDollars = snapshot.buyDollars + snapshot.sellDollars;
   const dollarComponent =
@@ -101,50 +103,108 @@ export function ScoreExplainer({ snapshot }: Props) {
             </ul>
           </div>
 
-          {/* Academic basis */}
+          {/* Academic findings table */}
           <div className="pt-3 border-t border-border">
             <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle mb-2">
-              Why these signals — academic basis
+              What published research has found
             </div>
-            <div className="space-y-2 text-[12.5px] text-fg-muted leading-relaxed">
-              <p>
-                The cluster-buy signal is the strongest documented retail-accessible insider edge.
-                Cohen, Malloy &amp; Pomorski (2012) found that <strong className="text-fg font-medium">non-routine</strong> insider purchases — exactly what we filter for here — predict abnormal returns of roughly 6–10% over the following 12 months.
-              </p>
-              <p>
-                Lakonishok &amp; Lee (2001), the canonical earlier study, found similar magnitudes for cluster-buy patterns in small- and mid-cap names. Both studies emphasize that the signal lives in <em>buys</em>, not sells — sells are dominated by diversification, taxes, and scheduled plans.
-              </p>
-              <p className="text-[11.5px] text-fg-subtle pt-1">
-                References:{" "}
-                <a
-                  href="https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.2012.01740.x"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-emerald inline-flex items-center gap-0.5"
-                >
-                  Cohen, Malloy &amp; Pomorski 2012
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-                {" · "}
-                <a
-                  href="https://academic.oup.com/rfs/article-abstract/14/1/79/1599129"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-emerald inline-flex items-center gap-0.5"
-                >
-                  Lakonishok &amp; Lee 2001
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-              </p>
+            <p className="text-[12px] text-fg-muted leading-relaxed mb-3">
+              These are findings from peer-reviewed academic studies — not our own backtests. Magnitudes are averages across thousands of trades over multi-decade samples, not predictions for any individual position.
+            </p>
+            <div className="rounded-md border border-border overflow-hidden">
+              <div className="grid grid-cols-[1fr_auto] gap-x-3 px-3.5 py-2.5 bg-surface-2 border-b border-border text-[10.5px] uppercase tracking-[0.16em] font-mono text-fg-subtle">
+                <div>Signal pattern</div>
+                <div className="text-right">Reported abnormal return</div>
+              </div>
+              <FindingRow
+                pattern="3+ insider cluster, non-routine buys"
+                source="Cohen-Malloy-Pomorski 2012"
+                ret="+6 to +10%"
+                horizon="12 months"
+                tone="positive"
+              />
+              <FindingRow
+                pattern="Single CEO open-market purchase ≥ $500k"
+                source="Lakonishok-Lee 2001"
+                ret="+4 to +6%"
+                horizon="12 months"
+                tone="positive"
+              />
+              <FindingRow
+                pattern="Director or 10% owner buys"
+                source="Lakonishok-Lee 2001"
+                ret="+1 to +3%"
+                horizon="12 months"
+                tone="neutral"
+              />
+              <FindingRow
+                pattern="Insider net-selling regimes (non-10b5-1)"
+                source="Cohen-Malloy-Pomorski 2012"
+                ret="−1 to −3%"
+                horizon="12 months relative"
+                tone="negative"
+              />
             </div>
+            <p className="mt-3 text-[11.5px] text-fg-subtle leading-relaxed">
+              References:{" "}
+              <a
+                href="https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.2012.01740.x"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-emerald inline-flex items-center gap-0.5"
+              >
+                Cohen, Malloy &amp; Pomorski 2012
+                <ExternalLink className="h-3 w-3" />
+              </a>
+              {" · "}
+              <a
+                href="https://academic.oup.com/rfs/article-abstract/14/1/79/1599129"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-emerald inline-flex items-center gap-0.5"
+              >
+                Lakonishok &amp; Lee 2001
+                <ExternalLink className="h-3 w-3" />
+              </a>
+              . Both studies emphasize the signal lives in <em>buys</em>, not sells — sells are dominated by diversification, taxes and scheduled plans.
+            </p>
           </div>
 
           <div className="pt-3 border-t border-border text-[11px] text-fg-subtle leading-relaxed">
-            Insider data is one signal among many. Past relationships do not guarantee future returns. We do not run our own backtests on this dashboard — we point to peer-reviewed published findings and let you weigh the evidence yourself.
+            <strong className="text-fg-muted font-medium">Important:</strong> we do not run our own backtests on this dashboard. The numbers above come directly from peer-reviewed published research. Insider data is one signal among many; past relationships do not guarantee future returns.
           </div>
         </div>
       )}
     </section>
+  );
+}
+
+function FindingRow({
+  pattern,
+  source,
+  ret,
+  horizon,
+  tone,
+}: {
+  pattern: string;
+  source: string;
+  ret: string;
+  horizon: string;
+  tone: "positive" | "neutral" | "negative";
+}) {
+  const toneClass =
+    tone === "positive" ? "text-emerald" : tone === "negative" ? "text-crimson" : "text-fg-muted";
+  return (
+    <div className="grid grid-cols-[1fr_auto] gap-x-3 px-3.5 py-2.5 border-t border-border first:border-t-0">
+      <div className="min-w-0">
+        <div className="text-[12.5px] text-fg leading-tight">{pattern}</div>
+        <div className="text-[10.5px] text-fg-subtle mt-0.5">{source}</div>
+      </div>
+      <div className="text-right">
+        <div className={`font-mono tab-num text-[13px] font-semibold ${toneClass}`}>{ret}</div>
+        <div className="text-[10.5px] text-fg-subtle mt-0.5">{horizon}</div>
+      </div>
+    </div>
   );
 }
 

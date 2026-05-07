@@ -10,6 +10,8 @@ import { RecentActivity } from "@/components/RecentActivity";
 import { FilterTransparency } from "@/components/FilterTransparency";
 import { ScoreExplainer } from "@/components/ScoreExplainer";
 import { ReadingCautions } from "@/components/ReadingCautions";
+import { StrongestSignal } from "@/components/StrongestSignal";
+import { WhyItMatters } from "@/components/WhyItMatters";
 import { InsightsCard } from "@/components/InsightsCard";
 import { TradeBasketCard } from "@/components/TradeBasketCard";
 import { Leaderboard } from "@/components/Leaderboard";
@@ -104,7 +106,12 @@ export default async function HomePage() {
             </div>
           </section>
 
-          {/* Score explainer — surface the math + academic basis */}
+          {/* Today's strongest signal — academically-strongest pattern up top */}
+          <div className="mt-6">
+            <StrongestSignal snapshot={snapshot} />
+          </div>
+
+          {/* Score explainer — surface the math + academic basis (default open) */}
           <div className="mt-6">
             <ScoreExplainer snapshot={snapshot} />
           </div>
@@ -112,6 +119,11 @@ export default async function HomePage() {
           {/* Indicators row */}
           <div className="mt-6">
             <IndicatorsRow indicators={snapshot.indicators} />
+          </div>
+
+          {/* Why insider buying matters — the intuition retail users need */}
+          <div className="mt-6">
+            <WhyItMatters />
           </div>
 
           {/* Reading cautions — pre-empt the panic-sell instinct */}
@@ -171,6 +183,25 @@ export default async function HomePage() {
                 </p>
               </div>
             </div>
+
+            <div className="mt-4 pt-3 border-t border-border">
+              <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle mb-2">Reading windows used on this page</div>
+              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-1.5 text-[12.5px]">
+                <li>
+                  <span className="font-mono tab-num text-fg">7 days</span>
+                  <span className="text-fg-subtle"> · leaderboard, net flow, headline index</span>
+                </li>
+                <li>
+                  <span className="font-mono tab-num text-fg">30 days</span>
+                  <span className="text-fg-subtle"> · cluster-buy detection</span>
+                </li>
+                <li>
+                  <span className="font-mono tab-num text-fg">12 months</span>
+                  <span className="text-fg-subtle"> · history chart, percentile context</span>
+                </li>
+              </ul>
+            </div>
+
             <p className="mt-4 pt-3 border-t border-border text-[12px]">
               Source: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=4" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald">SEC EDGAR Form 4 filings</a>, refreshed daily by an automated workflow. Trading on eToro requires a valid account; instrument coverage is verified against the eToro public catalog.
             </p>
