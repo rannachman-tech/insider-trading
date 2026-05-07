@@ -117,7 +117,7 @@ export function Leaderboard({ rows }: Props) {
                     {formatUsd(r.dollars)}
                     {r.transactions.length > 1 && (
                       <span className="ml-1.5 text-[10px] font-mono uppercase tracking-[0.1em] text-fg-subtle font-medium">
-                        · {r.transactions.length} buys
+                        · {r.transactions.length} buys in {accumulationDays(r.transactions)}d
                       </span>
                     )}
                   </div>
@@ -159,4 +159,17 @@ export function Leaderboard({ rows }: Props) {
       <LeaderboardDrawer row={open} onClose={() => setOpen(null)} />
     </>
   );
+}
+
+/**
+ * Number of calendar days spanned by a row's transactions, inclusive.
+ * Used to render "2 buys in 3d" so the user sees accumulation over time,
+ * not just a count.
+ */
+function accumulationDays(txs: { transactionDate: string }[]): number {
+  if (txs.length < 2) return 1;
+  const dates = txs.map((t) => new Date(t.transactionDate).getTime()).filter(Number.isFinite);
+  if (!dates.length) return 1;
+  const span = (Math.max(...dates) - Math.min(...dates)) / 86_400_000;
+  return Math.max(1, Math.round(span) + 1);
 }
