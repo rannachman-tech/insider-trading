@@ -211,8 +211,14 @@ export function buildSnapshot(
   clusters.sort((a, b) => b.strength - a.strength || b.totalDollars - a.totalDollars);
 
   // ---------- Sector heatmap ----------
+  // "Unclassified" is a parser fallback (we couldn't resolve the issuer's
+  // SIC → GICS sector) — not a real industry. Drop it entirely so it doesn't
+  // dominate the heatmap with hundreds of rolled-up sells from disparate
+  // companies that happen to share "we don't know what sector this is in".
+  const isRealSector = (s: string) => s && s !== "Unclassified";
   const sectorMap = new Map<string, SectorTile>();
   for (const t of realBuys) {
+    if (!isRealSector(t.sector)) continue;
     const tile = sectorMap.get(t.sector) ?? {
       sector: t.sector,
       buyDollars: 0,
@@ -226,6 +232,7 @@ export function buildSnapshot(
     sectorMap.set(t.sector, tile);
   }
   for (const t of realSells) {
+    if (!isRealSector(t.sector)) continue;
     const tile = sectorMap.get(t.sector) ?? {
       sector: t.sector,
       buyDollars: 0,
@@ -289,12 +296,22 @@ export function buildSnapshot(
         : "Tape is quiet",
       tone: "neutral",
     },
-    {
-      label: "Sector tilt",
-      value: sectors[0]?.sector ?? "—",
-      sub: sectors[0] ? `Net ratio ${(sectors[0].netRatio * 100).toFixed(0)}%` : "—",
-      tone: "neutral",
-    },
+    (() => {
+      // Pick the headline sector ONLY from sectors with ≥3 trades.
+      // SectorHeatmap demotes <3-trade sectors to a "low-confidence"
+      // footnote — the indicator should never surface one of those as
+      // "the hottest sector" since 1-trade readings are noise.
+      const confidentSectors = sectors.filter((s) => s.buyCount + s.sellCount >= 3);
+      const top = confidentSectors[0];
+      return {
+        label: "Sector tilt",
+        value: top?.sector ?? "—",
+        sub: top
+          ? `Net ratio ${(top.netRatio * 100).toFixed(0)}%`
+          : "Too few sector trades to draw a tilt",
+        tone: "neutral",
+      } as IndicatorTile;
+    })(),
   ];
 
   // ---------- Sources health ----------

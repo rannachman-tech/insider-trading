@@ -186,6 +186,24 @@ export function roleWeightedBuyIntensity(
 /* XML parser — minimal, regex-based, no external deps.               */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Decode the small set of XML entities that EDGAR uses. Officer titles like
+ * "Chairman of the Board &amp; CEO" need this — without it, the literal
+ * "&amp;" leaks into the UI.
+ */
+export function unescapeXml(s: string | undefined): string | undefined {
+  if (s == null) return s;
+  return s
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, '"')
+    .replace(/&apos;/gi, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/&#34;/g, '"')
+    .replace(/&nbsp;/gi, " ");
+}
+
 const xmlText = (xml: string, tag: string): string | undefined => {
   const re = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, "i");
   const m = xml.match(re);
@@ -221,15 +239,15 @@ export function parseForm4(
   const issuer = xmlText(xml, "issuer") ?? "";
   const issuerCik = xmlText(issuer, "issuerCik") ?? "";
   const ticker = (xmlText(issuer, "issuerTradingSymbol") ?? "").toUpperCase();
-  const company = xmlText(issuer, "issuerName") ?? "";
+  const company = unescapeXml(xmlText(issuer, "issuerName")) ?? "";
 
   const owner = xmlText(xml, "reportingOwner") ?? "";
-  const insiderName = xmlText(owner, "rptOwnerName") ?? "";
+  const insiderName = unescapeXml(xmlText(owner, "rptOwnerName")) ?? "";
   const rel = xmlText(owner, "reportingOwnerRelationship") ?? "";
   const isOfficer = xmlBool(rel, "isOfficer");
   const isDirector = xmlBool(rel, "isDirector");
   const isTenPercentOwner = xmlBool(rel, "isTenPercentOwner");
-  const officerTitle = xmlText(rel, "officerTitle") ?? undefined;
+  const officerTitle = unescapeXml(xmlText(rel, "officerTitle")) ?? undefined;
   const role = classifyRole({ isOfficer, isDirector, isTenPercentOwner, officerTitle });
 
   const is10b5One = xmlBool(xml, "aff10b5One");

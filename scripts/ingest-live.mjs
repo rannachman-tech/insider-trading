@@ -58,6 +58,22 @@ function normalizeInsiderIdentity(name) {
   return tokens.sort().join(" ");
 }
 
+// Decode the XML entities EDGAR uses in officer titles, insider names, etc.
+// Without this, "&amp;" leaks through to the UI in titles like
+// "Chairman of the Board &amp; CEO".
+function unescapeXml(s) {
+  if (s == null) return s;
+  return String(s)
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, '"')
+    .replace(/&apos;/gi, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/&#34;/g, '"')
+    .replace(/&nbsp;/gi, " ");
+}
+
 // Group-filing fingerprint: identical economics (ticker + date + shares +
 // price + code) = the same trade reported by multiple Schedule 13D group
 // members. We INTENTIONALLY exclude accession — each group member files
@@ -177,14 +193,14 @@ function parseForm4(xml, meta) {
   const issuer = xmlText(xml, "issuer") ?? "";
   const issuerCik = xmlText(issuer, "issuerCik") ?? "";
   const ticker = (xmlText(issuer, "issuerTradingSymbol") ?? "").toUpperCase();
-  const company = xmlText(issuer, "issuerName") ?? "";
+  const company = unescapeXml(xmlText(issuer, "issuerName")) ?? "";
   const owner = xmlText(xml, "reportingOwner") ?? "";
-  const insiderName = xmlText(owner, "rptOwnerName") ?? "";
+  const insiderName = unescapeXml(xmlText(owner, "rptOwnerName")) ?? "";
   const rel = xmlText(owner, "reportingOwnerRelationship") ?? "";
   const isOfficer = xmlBool(rel, "isOfficer");
   const isDirector = xmlBool(rel, "isDirector");
   const isTenPercentOwner = xmlBool(rel, "isTenPercentOwner");
-  const officerTitle = xmlText(rel, "officerTitle") ?? undefined;
+  const officerTitle = unescapeXml(xmlText(rel, "officerTitle")) ?? undefined;
   const role = classifyRole({ isOfficer, isDirector, isTenPercentOwner, officerTitle });
   const is10b5One = xmlBool(xml, "aff10b5One");
   const out = [];
@@ -503,13 +519,17 @@ function buildSnapshot(transactions) {
   });
   clusters.sort((a, b) => b.strength - a.strength || b.totalDollars - a.totalDollars);
 
+  // Drop "Unclassified" (parser fallback) from the heatmap entirely.
+  const isRealSector = (s) => s && s !== "Unclassified";
   const sectorMap = new Map();
   for (const t of realBuys) {
+    if (!isRealSector(t.sector)) continue;
     const tile = sectorMap.get(t.sector) ?? { sector: t.sector, buyDollars: 0, sellDollars: 0, netRatio: 0, buyCount: 0, sellCount: 0 };
     tile.buyDollars += t.dollars; tile.buyCount += 1;
     sectorMap.set(t.sector, tile);
   }
   for (const t of realSells) {
+    if (!isRealSector(t.sector)) continue;
     const tile = sectorMap.get(t.sector) ?? { sector: t.sector, buyDollars: 0, sellDollars: 0, netRatio: 0, buyCount: 0, sellCount: 0 };
     tile.sellDollars += t.dollars; tile.sellCount += 1;
     sectorMap.set(t.sector, tile);
@@ -580,8 +600,17 @@ function buildSnapshot(transactions) {
       sub: topRoleBuyer ? `${topRoleBuyer.role} · ${shortD(topRoleBuyer.dollars)}`
         : leaderboard[0] ? `${leaderboard[0].role} · ${shortD(leaderboard[0].dollars)}` : "Tape is quiet",
       tone: "neutral" },
-    { label: "Sector tilt", value: sectors[0]?.sector ?? "—",
-      sub: sectors[0] ? `Net ratio ${(sectors[0].netRatio * 100).toFixed(0)}%` : "—", tone: "neutral" },
+    (() => {
+      // Hottest sector only from high-confidence sectors (≥3 trades).
+      const confident = sectors.filter((s) => s.buyCount + s.sellCount >= 3);
+      const top = confident[0];
+      return {
+        label: "Sector tilt",
+        value: top?.sector ?? "—",
+        sub: top ? `Net ratio ${(top.netRatio * 100).toFixed(0)}%` : "Too few sector trades to draw a tilt",
+        tone: "neutral",
+      };
+    })(),
   ];
 
   const today = generatedAt.slice(0, 10);

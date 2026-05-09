@@ -107,8 +107,11 @@ export default async function HomePage() {
 
           {/* ─────────────── TIER 1 — core insight ─────────────── */}
 
-          {/* HERO — folded 55/45 */}
-          <section className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-4 lg:gap-6 items-stretch">
+          {/* HERO — folded 55/45. items-start (not items-stretch) so the
+              right column sizes to its own content; the dial+drivers+spark
+              stack on the left can be much taller without leaving white
+              space below the InsightsCard on the right. */}
+          <section className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-4 lg:gap-6 items-start">
             <div className="rounded-lg border border-border bg-surface px-5 pt-4 pb-5 sm:px-6 sm:pt-5 sm:pb-6 flex flex-col items-center hero-glow">
               <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-fg-subtle text-center">
                 Insider Conviction Index · S&amp;P 1500 · last 7 days
@@ -123,7 +126,7 @@ export default async function HomePage() {
               <NetFlowSpark points={snapshot.history} />
             </div>
             <div className="flex flex-col gap-4">
-              <InsightsCard snapshot={snapshot} className="flex-1" />
+              <InsightsCard snapshot={snapshot} />
               <TradeBasketCard snapshot={snapshot} />
             </div>
           </section>
