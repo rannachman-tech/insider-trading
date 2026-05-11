@@ -613,8 +613,13 @@ function buildSnapshot(transactions) {
     })(),
   ];
 
+  // History — REAL DATA ONLY. Each ingest appends today's index + netDollars.
+  // We never fabricate points to fill the chart; the UI components show an
+  // "accumulating" empty state when history is sparse.
   const today = generatedAt.slice(0, 10);
-  const previousHistory = loadPreviousHistory().filter((p) => p.date !== today);
+  const previousHistory = loadPreviousHistory()
+    .filter((p) => p.date !== today)
+    .filter((p) => !p.synthetic); // drop any pre-existing synthetic points
   const history = [...previousHistory, { date: today, index, netDollars }]
     .sort((a, b) => a.date.localeCompare(b.date))
     .slice(-365);

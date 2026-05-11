@@ -11,6 +11,7 @@ import { ReadingCautions } from "@/components/ReadingCautions";
 import { StrongestSignal } from "@/components/StrongestSignal";
 import { WhyItMatters } from "@/components/WhyItMatters";
 import { ScoreDrivers } from "@/components/ScoreDrivers";
+import { HistoryPercentile } from "@/components/HistoryPercentile";
 // TopSignals removed — the leaderboard's significance ranking + HIGH/MED/LOW
 // badges + LOW-hidden default now provide the same prioritization with no
 // duplication. Component file kept in repo for a future v2 reincarnation
@@ -23,7 +24,10 @@ import { TradeBasketCard } from "@/components/TradeBasketCard";
 import { Leaderboard } from "@/components/Leaderboard";
 import { SectorHeatmap } from "@/components/SectorHeatmap";
 import { IndicatorsRow } from "@/components/IndicatorsRow";
-import { HistoryChart } from "@/components/HistoryChart";
+// HistoryChart removed — overlapped with NetFlowSpark (same data, same window).
+// Component file retained for a v2 reincarnation once we have >=12 months of
+// real data and can repurpose it as a phase-distribution view.
+// import { HistoryChart } from "@/components/HistoryChart";
 import { LiveSourcesRow } from "@/components/LiveSourcesRow";
 import type { InsiderSnapshot } from "@/lib/types";
 
@@ -122,6 +126,7 @@ export default async function HomePage() {
               <div className="mt-1 sm:mt-2 w-full max-w-[360px]">
                 <ConvictionDial value={snapshot.index} phase={snapshot.phase} />
               </div>
+              <HistoryPercentile snapshot={snapshot} />
               <ScoreDrivers snapshot={snapshot} />
               <NetFlowSpark points={snapshot.history} />
             </div>
@@ -176,9 +181,9 @@ export default async function HomePage() {
             />
           </div>
 
-          <div className="mt-4">
-            <HistoryChart history={snapshot.history} currentIndex={snapshot.index} />
-          </div>
+          {/* HistoryChart was here — removed because NetFlowSpark already
+              covers the same time window with the same source data. The
+              percentile context now lives inline under the dial. */}
 
           {/* Compact methodology footer — reading windows + source only.
               Filter discipline already lives in FilterTransparency above. */}
@@ -196,8 +201,8 @@ export default async function HomePage() {
                 <span className="text-fg-subtle"> · cluster-buy detection</span>
               </li>
               <li>
-                <span className="font-mono tab-num text-fg">12 months</span>
-                <span className="text-fg-subtle"> · history chart, percentile context</span>
+                <span className="font-mono tab-num text-fg">60 days</span>
+                <span className="text-fg-subtle"> · net-flow chart, percentile context</span>
               </li>
             </ul>
             <p className="mt-3 pt-3 border-t border-border text-[12px]">

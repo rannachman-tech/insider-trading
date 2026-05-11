@@ -1,8 +1,10 @@
 "use client";
 
-import { Zap, Users, Crown, Info } from "lucide-react";
+import { useState } from "react";
+import { Zap, Users, Crown, Info, ArrowUpRight } from "lucide-react";
 import type { InsiderSnapshot } from "@/lib/types";
 import { formatUsd, formatDate } from "@/lib/format";
+import { TradeSingleModal } from "./TradeSingleModal";
 
 interface Props {
   snapshot: InsiderSnapshot;
@@ -93,6 +95,13 @@ function ClusterCallout({ cluster: top }: { cluster: NonNullable<InsiderSnapshot
           <div className="mt-2 text-[11px] font-mono tab-num text-fg-subtle">
             Latest filing {formatDate(top.latestDate, { withYear: true })} · cluster strength {top.strength}/100
           </div>
+          <div className="mt-3">
+            <PrimaryCta
+              ticker={top.ticker}
+              variant="cluster"
+              rationale={`${top.insiderCount} insiders bought ${top.ticker} in the last 30 days — combined ${formatUsd(top.totalDollars)}. Cluster buys are the strongest documented insider signal.`}
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -156,9 +165,56 @@ function SingleNameCallout({
               No cluster (3+ insiders, same name) has formed this week. When one does, it'll replace this as the primary signal.
             </span>
           </div>
+          <div className="mt-3">
+            <PrimaryCta
+              ticker={row.ticker}
+              variant="single"
+              rationale={`${row.insiderName} (${row.officerTitle ?? row.role}) bought ${formatUsd(row.dollars)} of ${row.ticker} this week — a +${Math.abs(row.stakePctChange).toFixed(1)}% increase to their existing stake.`}
+            />
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * Single primary call-to-action used by both Cluster and Single-name
+ * callouts. Always visible, no matter the phase. Opens the one-click
+ * trade modal — Review → Confirm → Execute → Result, same eToro Public
+ * API integration as the basket card. Falls back to a plain link inside
+ * the modal when the ticker isn't in our verified instrument catalog.
+ */
+function PrimaryCta({
+  ticker,
+  variant,
+  rationale,
+}: {
+  ticker: string;
+  variant: "cluster" | "single";
+  rationale?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const tone =
+    variant === "cluster"
+      ? "bg-emerald text-white border-emerald hover:opacity-90"
+      : "bg-fg text-bg border-fg hover:opacity-90";
+  return (
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        className={`inline-flex items-center gap-1.5 rounded-md border px-4 py-2 text-[13px] font-semibold transition-opacity ${tone}`}
+      >
+        Buy {ticker} on eToro
+        <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+      </button>
+      <TradeSingleModal
+        ticker={ticker}
+        rationale={rationale}
+        open={open}
+        onClose={() => setOpen(false)}
+      />
+    </>
   );
 }
 

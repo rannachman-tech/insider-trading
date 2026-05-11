@@ -32,15 +32,16 @@ export function HistoryChart({ history, currentIndex }: Props) {
   const yearMax = sorted[sorted.length - 1] ?? currentIndex;
   const median = sorted[Math.floor(sorted.length / 2)] ?? currentIndex;
 
-  // Need at least ~3 points before the chart reads as a meaningful timeseries.
-  if (history.length < 3) {
+  // Need ~30 points before a 12-month chart reads as meaningful. Below
+  // that we show an "accumulating" empty state — never synthetic data.
+  if (history.length < 30) {
     return (
       <section className="rounded-lg border border-border bg-surface p-5">
         <header className="flex items-center justify-between mb-3">
           <div>
             <h2 className="text-base font-semibold text-fg">12-month history</h2>
             <p className="mt-0.5 text-[12px] text-fg-subtle">
-              The daily ingest is building a real timeseries from each run.
+              Built from real daily ingests only — no synthetic data fills the gap.
             </p>
           </div>
           <div className="text-right">
@@ -50,7 +51,8 @@ export function HistoryChart({ history, currentIndex }: Props) {
         </header>
         <div className="rounded-md border border-dashed border-border bg-surface-2 px-4 py-8 text-center">
           <p className="text-[13px] text-fg-muted leading-relaxed">
-            Today is point <strong className="text-fg font-mono tab-num">{history.length}</strong>. The chart fills in as the ingest runs each day — check back tomorrow.
+            <strong className="text-fg font-medium">{history.length} day{history.length === 1 ? "" : "s"} of real data accumulated so far.</strong>
+            {" "}The chart needs about 30 days of history before percentile context becomes meaningful — keep checking back as the daily ingest fills it in.
           </p>
         </div>
       </section>

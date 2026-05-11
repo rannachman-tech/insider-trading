@@ -14,9 +14,32 @@ interface Props {
  * zero baseline, axis labels, and hover tooltip. Bars above midline = net
  * buying, below = net selling.
  */
+// Below this many real history points, render an "accumulating" empty
+// state instead of a misleading-looking sparse chart.
+const MIN_POINTS_TO_RENDER = 14;
+
 export function NetFlowSpark({ points, days = 60 }: Props) {
   const [hover, setHover] = useState<number | null>(null);
   if (!points.length) return null;
+
+  // Honest empty state during the data-accumulation period.
+  if (points.length < MIN_POINTS_TO_RENDER) {
+    return (
+      <div className="w-full mt-3 max-w-[440px]">
+        <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-fg-subtle font-mono mb-1">
+          <span>Net flow · last {days} days</span>
+          <span>building</span>
+        </div>
+        <div className="rounded-md border border-dashed border-border bg-surface-2 px-3 py-3 text-center">
+          <p className="text-[11.5px] text-fg-subtle leading-relaxed">
+            <strong className="text-fg-muted font-medium">{points.length} day{points.length === 1 ? "" : "s"} of real data so far.</strong>
+            {" "}This chart fills in as the daily ingest accumulates — no synthetic baseline.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   const slice = points.slice(-days);
   const w = 440;
   const h = 80;

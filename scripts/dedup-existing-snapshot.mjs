@@ -202,6 +202,28 @@ if (Array.isArray(snapshot.indicators)) {
   }
 }
 
+// 6. Drop ALL synthetic / wrong-scale history points.
+//    Principle: only real historical data. No fakes, no fillers.
+//    Anything older than ~7 days back from today in this snapshot was generated
+//    by the original seed (wrong scale, ±$10M vs real ±$2.7B). Drop it.
+//    The UI components handle sparse history gracefully with an "accumulating"
+//    empty state — that's the honest read.
+const histBefore = Array.isArray(snapshot.history) ? snapshot.history.length : 0;
+let oldPointsDropped = 0;
+if (Array.isArray(snapshot.history) && snapshot.history.length > 0) {
+  const today = snapshot.generatedAt.slice(0, 10);
+  const cutoff = new Date(today);
+  cutoff.setUTCDate(cutoff.getUTCDate() - 7);
+  const cutoffIso = cutoff.toISOString().slice(0, 10);
+  const before = snapshot.history.length;
+  // Keep only: real recent points (no synthetic tag) within the last 7 days
+  snapshot.history = snapshot.history
+    .filter((p) => !p.synthetic)
+    .filter((p) => p.date >= cutoffIso)
+    .sort((a, b) => a.date.localeCompare(b.date));
+  oldPointsDropped = before - snapshot.history.length;
+}
+
 writeFileSync(FILE, JSON.stringify(snapshot, null, 2));
 console.log("Snapshot rewritten:");
 console.log(`  Leaderboard rows: ${beforeCount} → ${after.length} (${removedRows} merged)`);
@@ -210,3 +232,4 @@ console.log(`  Cluster insider lists touched: ${clustersChanged}`);
 console.log(`  Sectors filtered (Unclassified): ${sectorRemoved}`);
 console.log(`  XML entities decoded across leaderboard, clusters, recentActivity`);
 console.log(`  Sector tilt indicator re-picked from high-confidence sectors`);
+console.log(`  History points: ${histBefore} → ${snapshot.history?.length ?? 0} (only real recent points kept; ${oldPointsDropped} stale/synthetic dropped)`);
