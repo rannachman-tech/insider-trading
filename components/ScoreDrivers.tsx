@@ -48,6 +48,19 @@ export function ScoreDrivers({ snapshot }: Props) {
   const buyHeavyButNoClusters =
     dollarContrib >= 6 && snapshot.clusterCount === 0 && snapshot.index < 70;
 
+  // Compose the dynamic "why" body so the line refers to today's actual
+  // signal mix instead of a generic explainer. Reviewer feedback: the
+  // reconciliation should sit immediately under the score with one
+  // specific sentence ("cluster activity lifted it, broad selling held
+  // it"), not the generic one we had before.
+  const ceoCfoBuys = snapshot.leaderboard.filter(
+    (r) => r.role === "CEO" || r.role === "CFO"
+  ).length;
+  const liftPieces: string[] = [];
+  if (clusterContrib > 0) liftPieces.push(`${snapshot.clusterCount} cluster ${snapshot.clusterCount === 1 ? "buy" : "buys"}`);
+  if (roleContrib > 0) liftPieces.push(`${ceoCfoBuys} C-suite buyer${ceoCfoBuys === 1 ? "" : "s"}`);
+  const liftSummary = liftPieces.length ? liftPieces.join(" and ") : "selective bullish activity";
+
   return (
     <div className="mt-3 w-full max-w-[440px]">
       <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle text-center mb-1.5">
@@ -82,14 +95,16 @@ export function ScoreDrivers({ snapshot }: Props) {
         })}
       </div>
 
-      {/* "Why this matters despite X" clarifier — closes the trust gap when
-          the chips look bearish but the headline doesn't. */}
+      {/* "Why this matters despite X" clarifier — closes the trust gap
+          when the chips look bearish but the headline doesn't. The body
+          names today's actual cluster + CEO/CFO count so the reader sees
+          the real cross-current, not a generic explainer. */}
       {(sellHeavyButHeadlineMixed || buyHeavyButNoClusters) && (
         <p className="mt-2 text-[11px] text-fg-subtle leading-relaxed text-center px-1">
           {sellHeavyButHeadlineMixed && (
             <>
-              <strong className="text-fg-muted font-medium">Why despite the red:</strong>{" "}
-              Most insider sales are diversification, taxes or scheduled plans — we down-weight them, which is why the headline holds. The score is structured to follow conviction, not panic.
+              <strong className="text-fg-muted font-medium">Why the score stays neutral:</strong>{" "}
+              {liftSummary} lifted it materially, but broad market-wide selling — most of it diversification or scheduled — held the index near 50. Read the leaderboard, not the headline number.
             </>
           )}
           {buyHeavyButNoClusters && (

@@ -18,6 +18,7 @@ import { HistoryPercentile } from "@/components/HistoryPercentile";
 // when there's enough historical data to surface genuinely newsworthy
 // patterns (first-time CEO buys, unusual size vs history, etc.).
 import { TimeHorizonNote } from "@/components/TimeHorizonNote";
+import { SinceLastVisit } from "@/components/SinceLastVisit";
 import { TodaysRead } from "@/components/TodaysRead";
 import { InsightsCard } from "@/components/InsightsCard";
 import { TradeBasketCard } from "@/components/TradeBasketCard";
@@ -108,6 +109,10 @@ export default async function HomePage() {
           </div>
 
           <TimeHorizonNote />
+
+          {/* Retention hook — surfaces clusters/leaderboard tickers new
+              since the user's last visit, dismissable, per-device only. */}
+          <SinceLastVisit snapshot={snapshot} />
 
           {/* ─────────────── TIER 1 — core insight ─────────────── */}
 

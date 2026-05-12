@@ -52,10 +52,19 @@ export function SectorHeatmap({ sectors }: Props) {
           const bg = `rgb(var(--${tone}-soft) / ${opacity})`;
           const fg = `rgb(var(--${tone}))`;
           const totalDollars = s.buyDollars + s.sellDollars;
+          // Confidence weighting — a +100% on 3 trades visually overstates
+          // its signal vs +100% on 9 trades. Scale opacity (not the number)
+          // so the data is honest while the rendering reflects how much we
+          // should trust it. Saturation reaches 1.0 at ~10 trades.
+          const confidence = Math.min(1, total / 10);
+          // Below ~0.5 confidence (≤5 trades), we'd render the tile faded.
+          const tileOpacity = 0.55 + 0.45 * confidence;
           return (
             <li
               key={s.sector}
               className="rounded-md border border-border overflow-hidden"
+              style={{ opacity: tileOpacity }}
+              title={total < 5 ? `${total} trades — low-confidence reading` : undefined}
             >
               <div className="px-3.5 py-3 bg-surface-2">
                 <div className="flex items-start justify-between gap-2">
@@ -63,6 +72,9 @@ export function SectorHeatmap({ sectors }: Props) {
                     <div className="text-[13px] font-medium text-fg truncate">{s.sector}</div>
                     <div className="mt-0.5 text-[11px] font-mono tab-num text-fg-subtle">
                       {s.buyCount} buy{s.buyCount === 1 ? "" : "s"} · {s.sellCount} sell{s.sellCount === 1 ? "" : "s"}
+                      {total < 5 && (
+                        <span className="ml-1.5 text-fg-subtle opacity-75">· low n</span>
+                      )}
                     </div>
                   </div>
                   <div
@@ -78,12 +90,12 @@ export function SectorHeatmap({ sectors }: Props) {
                   {s.netRatio >= 0 ? (
                     <div
                       className="absolute top-0 h-full rounded-full"
-                      style={{ background: `rgb(var(--emerald))`, left: "50%", width: `${(s.netRatio * 50).toFixed(1)}%` }}
+                      style={{ background: `rgb(var(--emerald))`, left: "50%", width: `${(s.netRatio * 50).toFixed(1)}%`, opacity: 0.55 + 0.45 * confidence }}
                     />
                   ) : (
                     <div
                       className="absolute top-0 h-full rounded-full"
-                      style={{ background: `rgb(var(--crimson))`, right: "50%", width: `${(Math.abs(s.netRatio) * 50).toFixed(1)}%` }}
+                      style={{ background: `rgb(var(--crimson))`, right: "50%", width: `${(Math.abs(s.netRatio) * 50).toFixed(1)}%`, opacity: 0.55 + 0.45 * confidence }}
                     />
                   )}
                 </div>

@@ -261,6 +261,12 @@ function tradeRationaleFor(group: SignalGroup): string {
 }
 
 function SingleInsiderDetail({ row }: { row: LeaderboardRow }) {
+  // Group fills by transaction date — keeps the abstraction at "day"
+  // rather than "filing", which is what the user thinks in. The raw
+  // per-filing list is preserved in a collapsed expander so power users
+  // can still drill in.
+  const byDay = groupByDay(row.transactions);
+  const hasManyFilings = row.transactions.length >= 4;
   return (
     <>
       <div>
@@ -275,22 +281,129 @@ function SingleInsiderDetail({ row }: { row: LeaderboardRow }) {
         </div>
       </div>
 
-      <div>
-        <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle mb-2">
-          Filings ({row.transactions.length})
+      {hasManyFilings ? (
+        <DayTimeline byDay={byDay} totalFilings={row.transactions.length} />
+      ) : (
+        <div>
+          <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle mb-2">
+            Filings ({row.transactions.length})
+          </div>
+          <ul className="space-y-2">
+            {row.transactions.map((t) => (
+              <li key={t.accession} className="flex items-center justify-between gap-3 text-[13px] py-1.5 border-b border-border last:border-0">
+                <span className="text-fg-muted">{formatDate(t.transactionDate, { withYear: true })}</span>
+                <span className="font-mono tab-num text-fg">{formatNum(t.shares)} sh @ ${t.pricePerShare.toFixed(2)}</span>
+                <span className="font-mono tab-num text-fg font-medium">{formatUsd(t.dollars)}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="space-y-2">
-          {row.transactions.map((t) => (
-            <li key={t.accession} className="flex items-center justify-between gap-3 text-[13px] py-1.5 border-b border-border last:border-0">
-              <span className="text-fg-muted">{formatDate(t.transactionDate, { withYear: true })}</span>
-              <span className="font-mono tab-num text-fg">{formatNum(t.shares)} sh @ ${t.pricePerShare.toFixed(2)}</span>
-              <span className="font-mono tab-num text-fg font-medium">{formatUsd(t.dollars)}</span>
+      )}
+    </>
+  );
+}
+
+/**
+ * Day-level summary of an accumulation pattern. Each row shows one trading
+ * day with the day's total dollars and a min/max price range — far more
+ * scannable than 12 raw filings. Raw filings are still available behind a
+ * <details> expander so power users can drill down.
+ */
+function DayTimeline({
+  byDay,
+  totalFilings,
+}: {
+  byDay: DayBucket[];
+  totalFilings: number;
+}) {
+  const maxDayDollars = Math.max(1, ...byDay.map((d) => d.dollars));
+  return (
+    <div>
+      <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle mb-2">
+        Accumulation by day ({byDay.length} day{byDay.length === 1 ? "" : "s"} · {totalFilings} filings)
+      </div>
+      <ul className="space-y-2">
+        {byDay.map((d) => {
+          const widthPct = (d.dollars / maxDayDollars) * 100;
+          return (
+            <li key={d.date} className="space-y-1">
+              <div className="flex items-baseline justify-between gap-3 text-[13px]">
+                <span className="text-fg font-medium">{formatDate(d.date, { withYear: true })}</span>
+                <span className="text-[11.5px] text-fg-subtle font-mono tab-num">
+                  {d.fillCount} fill{d.fillCount === 1 ? "" : "s"} · {priceRange(d.minPrice, d.maxPrice)}
+                </span>
+                <span className="font-mono tab-num text-fg font-semibold">{formatUsd(d.dollars)}</span>
+              </div>
+              <div className="h-1 rounded-full bg-surface-2 overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-emerald/70"
+                  style={{ width: `${Math.max(4, widthPct)}%` }}
+                />
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <details className="mt-3 text-[12px] text-fg-muted">
+        <summary className="cursor-pointer text-fg-subtle hover:text-fg-muted">
+          View {totalFilings} raw filings
+        </summary>
+        <ul className="mt-2 space-y-1.5">
+          {byDay.flatMap((d) => d.txs).map((t) => (
+            <li
+              key={t.accession}
+              className="flex items-center justify-between gap-3 text-[12px] py-1 border-b border-border/60 last:border-0"
+            >
+              <span className="text-fg-subtle">{formatDate(t.transactionDate, { withYear: true })}</span>
+              <span className="font-mono tab-num text-fg-muted">
+                {formatNum(t.shares)} sh @ ${t.pricePerShare.toFixed(2)}
+              </span>
+              <span className="font-mono tab-num text-fg">{formatUsd(t.dollars)}</span>
             </li>
           ))}
         </ul>
-      </div>
-    </>
+      </details>
+    </div>
   );
+}
+
+interface DayBucket {
+  date: string;
+  fillCount: number;
+  dollars: number;
+  minPrice: number;
+  maxPrice: number;
+  txs: LeaderboardRow["transactions"];
+}
+
+function groupByDay(txs: LeaderboardRow["transactions"]): DayBucket[] {
+  const map = new Map<string, DayBucket>();
+  for (const t of txs) {
+    const date = t.transactionDate;
+    const b = map.get(date);
+    if (b) {
+      b.fillCount += 1;
+      b.dollars += t.dollars;
+      b.minPrice = Math.min(b.minPrice, t.pricePerShare);
+      b.maxPrice = Math.max(b.maxPrice, t.pricePerShare);
+      b.txs.push(t);
+    } else {
+      map.set(date, {
+        date,
+        fillCount: 1,
+        dollars: t.dollars,
+        minPrice: t.pricePerShare,
+        maxPrice: t.pricePerShare,
+        txs: [t],
+      });
+    }
+  }
+  return [...map.values()].sort((a, b) => a.date.localeCompare(b.date));
+}
+
+function priceRange(min: number, max: number): string {
+  if (Math.abs(max - min) < 0.01) return `@ $${min.toFixed(2)}`;
+  return `$${min.toFixed(2)}–$${max.toFixed(2)}`;
 }
 
 function MultiInsiderDetail({ rows }: { rows: LeaderboardRow[] }) {
