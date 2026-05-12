@@ -54,6 +54,17 @@ export interface SignalGroup {
    * "cluster" by the same definition used in snapshot.clusters.
    */
   isCluster: boolean;
+  /**
+   * True when a single insider has built a position through repeated
+   * buying — distinct from a cluster, but the second-strongest insider
+   * signal type (Lakonishok & Lee 2001 on buying intensity).
+   *
+   * Threshold: 1 insider × (≥5 transactions OR ≥$5M total) in ≤10 days.
+   * The dollar floor catches the "one big stakeholder built a $46M
+   * position over a week" case (WGS, etc.) even if the buy count is
+   * lower than 5.
+   */
+  isAccumulation: boolean;
 }
 
 /** Aggregate rows by ticker, ranked by lead-insider significance desc. */
@@ -87,6 +98,16 @@ export function aggregateByTicker(rows: LeaderboardRow[]): SignalGroup[] {
       "Other" as InsiderRole
     );
 
+    const isCluster = sorted.length >= 3;
+    // Accumulation = single insider building a position through repeated
+    // buying within a tight window. Don't double-label: a cluster IS a
+    // cluster, not an accumulation pattern.
+    const isAccumulation =
+      !isCluster &&
+      sorted.length === 1 &&
+      daysSpan <= 10 &&
+      (allTxs.length >= 5 || totalDollars >= 5_000_000);
+
     groups.push({
       rank: 0, // assigned after sort
       ticker,
@@ -101,7 +122,8 @@ export function aggregateByTicker(rows: LeaderboardRow[]): SignalGroup[] {
       totalDollars,
       topRole,
       significance: lead.significance,
-      isCluster: sorted.length >= 3,
+      isCluster,
+      isAccumulation,
     });
   }
 

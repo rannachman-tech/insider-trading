@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { X, ExternalLink, Users, ArrowUpRight, BookOpen } from "lucide-react";
+import { X, ExternalLink, Users, ArrowUpRight, BookOpen, TrendingUp } from "lucide-react";
 import type { LeaderboardRow } from "@/lib/types";
 import type { SignalGroup } from "@/lib/aggregate";
 import { formatUsd, formatPct, formatDate, formatNum } from "@/lib/format";
@@ -61,6 +61,12 @@ export function LeaderboardDrawer({ group, onClose }: Props) {
                     cluster
                   </span>
                 )}
+                {group.isAccumulation && (
+                  <span className="inline-flex items-center gap-1 text-[10px] font-medium px-1.5 py-0.5 rounded bg-amber-soft text-amber border border-amber/20">
+                    <TrendingUp className="h-3 w-3" aria-hidden />
+                    accumulation
+                  </span>
+                )}
               </div>
               <div className="mt-0.5 text-[14px] text-fg-muted truncate">{group.company}</div>
             </div>
@@ -89,7 +95,20 @@ export function LeaderboardDrawer({ group, onClose }: Props) {
               />
               <Stat label="Total spent" value={formatUsd(group.totalDollars)} mono />
               <Stat label="Buys" value={`${group.buyCount}`} sub={`in ${group.daysSpan} day${group.daysSpan === 1 ? "" : "s"}`} mono />
-              <Stat label="Insiders" value={`${group.insiderCount}`} sub={isCluster ? "cluster threshold" : group.insiderCount === 1 ? "single insider" : "multi-insider"} mono />
+              <Stat
+                label="Insiders"
+                value={`${group.insiderCount}`}
+                sub={
+                  isCluster
+                    ? "cluster threshold"
+                    : group.isAccumulation
+                    ? "accumulation pattern"
+                    : group.insiderCount === 1
+                    ? "single insider"
+                    : "multi-insider"
+                }
+                mono
+              />
             </div>
 
             {/* "Why this matters" — historical context for the specific
@@ -195,6 +214,20 @@ function whyBody(group: SignalGroup): string {
   if (group.insiderCount === 2) {
     return "Two insiders buying independently is a partial cluster — it raises the bar above noise but doesn't yet meet the 3-insider threshold where academic returns turn most reliable.";
   }
+  // Single-insider — but is it accumulation?
+  if (group.isAccumulation) {
+    const role = group.lead.role;
+    const intensity = group.buyCount >= 5
+      ? `${group.buyCount} separate buys across ${group.daysSpan} day${group.daysSpan === 1 ? "" : "s"}`
+      : `${formatUsd(group.totalDollars)} deployed across ${group.daysSpan} day${group.daysSpan === 1 ? "" : "s"}`;
+    if (role === "10%Owner") {
+      return `Sustained accumulation by a 10%+ owner — ${intensity}. Large-stake holders adding to their position with this kind of intensity historically signals confidence in fundamentals (Lakonishok & Lee 2001 on buying intensity).`;
+    }
+    if (role === "CEO" || role === "CFO") {
+      return `Sustained accumulation by the ${role} — ${intensity}. Repeated open-market purchases by a single C-suite officer is one of the strongest single-insider signals, even without cluster confirmation.`;
+    }
+    return `Sustained accumulation by a single insider — ${intensity}. Repeated buying in a short window is academia's second-strongest insider signal type after multi-insider clusters.`;
+  }
   const role = group.lead.role;
   if (role === "CEO" || role === "CFO") {
     return `${role} open-market purchases are the role most consistently linked to forward returns in published research. The signal weakens without cluster confirmation, but a single C-suite name remains worth a thesis check.`;
@@ -221,6 +254,9 @@ function tradeRationaleFor(group: SignalGroup): string {
     return `2 insiders bought ${group.ticker} independently — partial cluster confirmation, combined ${formatUsd(group.totalDollars)}.`;
   }
   const r = group.lead;
+  if (group.isAccumulation) {
+    return `${r.insiderName} (${r.officerTitle ?? r.role}) accumulated ${formatUsd(group.totalDollars)} of ${group.ticker} across ${group.buyCount} buys in ${group.daysSpan} day${group.daysSpan === 1 ? "" : "s"} — sustained accumulation pattern.`;
+  }
   return `${r.insiderName} (${r.officerTitle ?? r.role}) bought ${formatUsd(r.dollars)} of ${group.ticker} — a +${Math.abs(r.stakePctChange).toFixed(1)}% increase to their stake.`;
 }
 
@@ -350,6 +386,9 @@ function headlineFor(group: SignalGroup): string {
     return `Two insiders bought independently — partial cluster confirmation but still below the 3-insider threshold that historically carries the most signal.`;
   }
   const lead = group.lead;
+  if (group.isAccumulation) {
+    return `Sustained accumulation — ${group.buyCount} open-market buys totalling ${formatUsd(group.totalDollars)} across ${group.daysSpan} day${group.daysSpan === 1 ? "" : "s"}. Repeated buying by one insider is academia's second-strongest insider signal type after multi-insider clusters.`;
+  }
   if (lead.role === "CEO" || lead.role === "CFO") {
     return `${lead.role} buying their own company's stock${lead.dollars >= 1_000_000 ? ` — ${formatUsd(lead.dollars)} of personal cash deployed` : ""}${lead.stakePctChange >= 5 ? ` — ${formatPct(lead.stakePctChange)} increase to existing stake.` : "."}`;
   }

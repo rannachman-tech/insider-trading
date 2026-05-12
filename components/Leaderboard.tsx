@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ChevronRight, Crown, Users } from "lucide-react";
+import { ChevronRight, Crown, Users, TrendingUp } from "lucide-react";
 import type { LeaderboardRow } from "@/lib/types";
 import { aggregateByTicker, type SignalGroup } from "@/lib/aggregate";
 import { formatUsd } from "@/lib/format";
@@ -123,7 +123,7 @@ export function Leaderboard({ rows }: Props) {
 }
 
 function SignalRow({ group, onOpen }: { group: SignalGroup; onOpen: () => void }) {
-  const { ticker, company, lead, insiderCount, buyCount, daysSpan, totalDollars, topRole, significance, rank, isCluster } = group;
+  const { ticker, company, lead, insiderCount, buyCount, daysSpan, totalDollars, topRole, significance, rank, isCluster, isAccumulation } = group;
 
   // "Lead role-led" label: when there's only one insider, just show the role.
   // When there are several, lead with the top role + "-led" so the user
@@ -157,6 +157,12 @@ function SignalRow({ group, onOpen }: { group: SignalGroup; onOpen: () => void }
             <span className="inline-flex items-center gap-1 text-[10px] font-medium px-1.5 py-0.5 rounded bg-emerald-soft text-emerald border border-emerald/20">
               <Users className="h-3 w-3" aria-hidden />
               cluster
+            </span>
+          )}
+          {isAccumulation && (
+            <span className="inline-flex items-center gap-1 text-[10px] font-medium px-1.5 py-0.5 rounded bg-amber-soft text-amber border border-amber/20">
+              <TrendingUp className="h-3 w-3" aria-hidden />
+              accumulation
             </span>
           )}
         </div>

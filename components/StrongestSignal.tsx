@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Zap, Users, Crown, Info, ArrowUpRight } from "lucide-react";
+import { Zap, Users, Crown, Info, ArrowUpRight, TrendingUp } from "lucide-react";
 import type { InsiderSnapshot } from "@/lib/types";
+import { aggregateByTicker } from "@/lib/aggregate";
 import { formatUsd, formatDate } from "@/lib/format";
 import { TradeSingleModal } from "./TradeSingleModal";
 
@@ -15,9 +16,10 @@ interface Props {
  *
  * Priority cascade:
  *   1. Strongest cluster (3+ insiders, same name, 30 days) — highest published edge
- *   2. CEO/CFO open-market buy with the highest conviction score
- *   3. Largest single-trade conviction by significance (any role)
- *   4. Empty state only if there are zero real buys this week
+ *   2. Sustained accumulation by a single insider (≥5 buys or ≥$5M in ≤10 days)
+ *   3. CEO/CFO open-market buy with the highest conviction score
+ *   4. Largest single-trade conviction by significance (any role)
+ *   5. Empty state only if there are zero real buys this week
  *
  * Eliminates the "no cluster activity this week" dead-air state. The user
  * always gets one story to anchor on at the top of the page.
@@ -30,7 +32,16 @@ export function StrongestSignal({ snapshot }: Props) {
     return <ClusterCallout cluster={topCluster} />;
   }
 
-  // 2. Otherwise: highest-conviction single-name story
+  // 2. Otherwise: check for a sustained accumulation pattern (single
+  // insider building a position with intensity). When present, this
+  // outranks any one-shot single-name buy.
+  const groups = aggregateByTicker(snapshot.leaderboard);
+  const topAccumulation = groups.find((g) => g.isAccumulation);
+  if (topAccumulation) {
+    return <AccumulationCallout group={topAccumulation} />;
+  }
+
+  // 3. Otherwise: highest-conviction single-name story
   const ceoCfoLead = snapshot.leaderboard.find(
     (r) => r.role === "CEO" || r.role === "CFO"
   );
@@ -245,6 +256,83 @@ function researchContext(insiderCount: number): string {
   return `Multi-insider clusters (3+) are the strongest documented insider signal. Single-name purchases carry far less weight on average.`;
 }
 
+/**
+ * Sustained-accumulation callout — one insider building a position with
+ * intensity. Different signal type from a cluster (one buyer, many fills)
+ * but a real signal nonetheless. Amber styling, distinct from emerald
+ * cluster styling, so the user reads them as different categories.
+ */
+function AccumulationCallout({ group }: { group: ReturnType<typeof aggregateByTicker>[number] }) {
+  const lead = group.lead;
+  const intensityText = group.buyCount >= 5
+    ? `${group.buyCount} open-market buys across ${group.daysSpan} day${group.daysSpan === 1 ? "" : "s"}`
+    : `${formatUsd(group.totalDollars)} deployed across ${group.daysSpan} day${group.daysSpan === 1 ? "" : "s"}`;
+  const roleLine = (() => {
+    if (lead.role === "CEO" || lead.role === "CFO") {
+      return `Repeated C-suite open-market purchases — the role most consistently linked to forward returns in academic research.`;
+    }
+    if (lead.role === "10%Owner") {
+      return `Large-stake holders adding to their position with this intensity historically signals confidence in fundamentals.`;
+    }
+    return `Repeated buying by one insider is the second-strongest insider signal type after multi-insider clusters.`;
+  })();
+  return (
+    <section className="rounded-lg border border-amber/30 bg-amber-soft px-5 py-4">
+      <div className="flex items-start gap-3">
+        <div className="flex-shrink-0 grid place-items-center w-9 h-9 rounded-full bg-amber/15 text-amber">
+          <TrendingUp className="h-4 w-4" aria-hidden />
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-[10px] uppercase tracking-[0.18em] font-mono text-amber">
+              Today's primary signal
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.16em] font-mono text-fg-subtle">
+              · sustained accumulation
+            </span>
+          </div>
+          <h3 className="mt-1.5 text-[17px] sm:text-[19px] font-semibold tracking-tight text-fg leading-snug">
+            <span className="font-mono">{group.ticker}</span> · {lead.role} accumulated {formatUsd(group.totalDollars)} of their own stock
+          </h3>
+          <p className="mt-1.5 text-[13px] text-fg-muted leading-relaxed">
+            <strong className="text-fg font-medium">{lead.role}</strong>{" "}{shortName(lead.insiderName)} bought {intensityText}{lead.stakePctChange >= 5 ? `, lifting their stake by +${lead.stakePctChange.toFixed(0)}%` : ""}. {roleLine}
+          </p>
+          <div className="mt-2 text-[11px] font-mono tab-num text-fg-subtle">
+            Latest filing {formatDate(group.latestDate, { withYear: true })} · {convictionBand(group.significance)} ({group.significance}/100)
+          </div>
+
+          <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="rounded-md border border-amber/20 bg-amber-soft/40 px-3 py-2.5">
+              <div className="text-[9.5px] uppercase tracking-[0.16em] font-mono text-amber font-semibold">
+                Ranked #1 because
+              </div>
+              <p className="mt-1 text-[12px] text-fg leading-relaxed">
+                No multi-insider cluster on the tape this week, but {group.buyCount} buys in {group.daysSpan} day{group.daysSpan === 1 ? "" : "s"} from a single insider deploys more conviction than any one-shot single-name trade — accumulation intensity is its own documented signal.
+              </p>
+            </div>
+            <div className="rounded-md border border-amber/20 bg-amber-soft/40 px-3 py-2.5">
+              <div className="text-[9.5px] uppercase tracking-[0.16em] font-mono text-amber font-semibold">
+                Academic context
+              </div>
+              <p className="mt-1 text-[12px] text-fg leading-relaxed">
+                Lakonishok &amp; Lee (2001) documented that insider buying <em>intensity</em> — same insider, multiple purchases, short window — predicts above-market returns even outside multi-insider clusters.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-3">
+            <PrimaryCta
+              ticker={group.ticker}
+              variant="accumulation"
+              rationale={`${lead.insiderName} (${lead.officerTitle ?? lead.role}) accumulated ${formatUsd(group.totalDollars)} of ${group.ticker} across ${group.buyCount} buys in ${group.daysSpan} day${group.daysSpan === 1 ? "" : "s"} — sustained accumulation pattern.`}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function SingleNameCallout({
   row,
   hasCEO,
@@ -328,13 +416,15 @@ function PrimaryCta({
   rationale,
 }: {
   ticker: string;
-  variant: "cluster" | "single";
+  variant: "cluster" | "accumulation" | "single";
   rationale?: string;
 }) {
   const [open, setOpen] = useState(false);
   const tone =
     variant === "cluster"
       ? "bg-emerald text-white border-emerald hover:opacity-90"
+      : variant === "accumulation"
+      ? "bg-amber text-white border-amber hover:opacity-90"
       : "bg-fg text-bg border-fg hover:opacity-90";
   return (
     <>
