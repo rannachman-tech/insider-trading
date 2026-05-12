@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-05-12T08:45:40.429Z",
+  "generatedAt": "2026-05-12T16:56:51.992Z",
   "windowDays": 7,
-  "index": 48,
+  "index": 54,
   "phase": "balanced",
   "verdict": "Insider buying and selling roughly cancel out this week. There's no clear directional message from inside the boardroom right now. Treat any individual buy as one data point, not a trigger to act.",
-  "netDollars": -1375649361.7169096,
-  "buyDollars": 146650031.38298956,
-  "sellDollars": 1522299393.0998993,
-  "buyCount": 87,
-  "sellCount": 328,
-  "clusterCount": 2,
+  "netDollars": -2305833010.364881,
+  "buyDollars": 187019340.0775164,
+  "sellDollars": 2492852350.4423976,
+  "buyCount": 131,
+  "sellCount": 555,
+  "clusterCount": 7,
   "leaderboard": [
     {
       "rank": 1,
@@ -268,6 +268,43 @@
     },
     {
       "rank": 2,
+      "ticker": "SRAD",
+      "company": "Sportradar Group AG",
+      "sector": "Communication Services",
+      "insiderName": "Koerl Carsten",
+      "role": "CEO",
+      "officerTitle": "Chief Executive Officer",
+      "dollars": 2128735.49,
+      "shares": 157801,
+      "avgPricePerShare": 13.490000000000002,
+      "stakePctChange": 5.684324583683498,
+      "significance": 70,
+      "transactions": [
+        {
+          "accession": "0001104659-26-057135",
+          "ticker": "SRAD",
+          "company": "Sportradar Group AG",
+          "issuerCik": "0001836470",
+          "sector": "Communication Services",
+          "insiderName": "Koerl Carsten",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "transactionDate": "2026-05-06",
+          "filingDate": "2026-05-07",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 157801,
+          "pricePerShare": 13.49,
+          "dollars": 2128735.49,
+          "sharesOwnedAfter": 2776073,
+          "stakePctChange": 5.684324583683498,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 3,
       "ticker": "PLSE",
       "company": "PULSE BIOSCIENCES, INC.",
       "sector": "Unclassified",
@@ -304,7 +341,7 @@
       ]
     },
     {
-      "rank": 3,
+      "rank": 4,
       "ticker": "ODTX",
       "company": "Odyssey Therapeutics, Inc.",
       "sector": "Health Care",
@@ -379,10 +416,10 @@
       ]
     },
     {
-      "rank": 4,
+      "rank": 5,
       "ticker": "AGBK",
       "company": "AGI Inc",
-      "sector": "Financials",
+      "sector": "Unclassified",
       "insiderName": "TESTA MARCIANO",
       "role": "CEO",
       "officerTitle": "Chairman and CEO",
@@ -397,7 +434,7 @@
           "ticker": "AGBK",
           "company": "AGI Inc",
           "issuerCik": "0002081206",
-          "sector": "Financials",
+          "sector": "Unclassified",
           "insiderName": "TESTA MARCIANO",
           "role": "CEO",
           "officerTitle": "Chairman and CEO",
@@ -416,7 +453,65 @@
       ]
     },
     {
-      "rank": 5,
+      "rank": 6,
+      "ticker": "PAM",
+      "company": "Pampa Energy Inc.",
+      "sector": "Utilities",
+      "insiderName": "Mariani Gustavo",
+      "role": "President",
+      "officerTitle": "Vice President",
+      "dollars": 4060500,
+      "shares": 50000,
+      "avgPricePerShare": 81.21,
+      "stakePctChange": 3.167393533015822,
+      "significance": 63,
+      "transactions": [
+        {
+          "accession": "0002028917-26-000002",
+          "ticker": "PAM",
+          "company": "Pampa Energy Inc.",
+          "issuerCik": "0001469395",
+          "sector": "Utilities",
+          "insiderName": "Mariani Gustavo",
+          "role": "President",
+          "officerTitle": "Vice President",
+          "transactionDate": "2026-05-07",
+          "filingDate": "2026-05-08",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 25000,
+          "pricePerShare": 81.4,
+          "dollars": 2035000.0000000002,
+          "sharesOwnedAfter": 1566184,
+          "stakePctChange": 1.5962364575298944,
+          "ownership": "D"
+        },
+        {
+          "accession": "0002028917-26-000002",
+          "ticker": "PAM",
+          "company": "Pampa Energy Inc.",
+          "issuerCik": "0001469395",
+          "sector": "Utilities",
+          "insiderName": "Mariani Gustavo",
+          "role": "President",
+          "officerTitle": "Vice President",
+          "transactionDate": "2026-05-08",
+          "filingDate": "2026-05-08",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 25000,
+          "pricePerShare": 81.02,
+          "dollars": 2025500,
+          "sharesOwnedAfter": 1591184,
+          "stakePctChange": 1.5711570754859274,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 7,
       "ticker": "MOBI",
       "company": "Mobia Medical, Inc.",
       "sector": "Unclassified",
@@ -471,7 +566,7 @@
       ]
     },
     {
-      "rank": 6,
+      "rank": 8,
       "ticker": "OLED",
       "company": "UNIVERSAL DISPLAY CORP \\PA\\",
       "sector": "Information Technology",
@@ -550,7 +645,7 @@
       ]
     },
     {
-      "rank": 7,
+      "rank": 9,
       "ticker": "NONE",
       "company": "Audax Private Credit Fund, LLC",
       "sector": "Unclassified",
@@ -605,7 +700,7 @@
       ]
     },
     {
-      "rank": 8,
+      "rank": 10,
       "ticker": "LZ",
       "company": "LEGALZOOM.COM, INC.",
       "sector": "Communication Services",
@@ -642,7 +737,7 @@
       ]
     },
     {
-      "rank": 9,
+      "rank": 11,
       "ticker": "ATRA",
       "company": "Atara Biotherapeutics, Inc.",
       "sector": "Health Care",
@@ -679,7 +774,7 @@
       ]
     },
     {
-      "rank": 10,
+      "rank": 12,
       "ticker": "TFIN",
       "company": "Triumph Financial, Inc.",
       "sector": "Financials",
@@ -716,7 +811,44 @@
       ]
     },
     {
-      "rank": 11,
+      "rank": 13,
+      "ticker": "BCML",
+      "company": "BayCom Corp",
+      "sector": "Financials",
+      "insiderName": "Black William J",
+      "role": "Chair",
+      "officerTitle": "Executive Vice Chair",
+      "dollars": 802310.78,
+      "shares": 26549,
+      "avgPricePerShare": 30.220000000000002,
+      "stakePctChange": 80.25210084033614,
+      "significance": 57,
+      "transactions": [
+        {
+          "accession": "0001437749-26-015575",
+          "ticker": "BCML",
+          "company": "BayCom Corp",
+          "issuerCik": "0001730984",
+          "sector": "Financials",
+          "insiderName": "Black William J",
+          "role": "Chair",
+          "officerTitle": "Executive Vice Chair",
+          "transactionDate": "2026-05-06",
+          "filingDate": "2026-05-07",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 26549,
+          "pricePerShare": 30.22,
+          "dollars": 802310.78,
+          "sharesOwnedAfter": 33082,
+          "stakePctChange": 80.25210084033614,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 14,
       "ticker": "PSN",
       "company": "PARSONS CORP",
       "sector": "Communication Services",
@@ -774,10 +906,10 @@
       ]
     },
     {
-      "rank": 12,
+      "rank": 15,
       "ticker": "LW",
       "company": "Lamb Weston Holdings, Inc.",
-      "sector": "Consumer Staples",
+      "sector": "Unclassified",
       "insiderName": "Gray James D",
       "role": "CFO",
       "officerTitle": "Chief Financial Officer",
@@ -792,7 +924,7 @@
           "ticker": "LW",
           "company": "Lamb Weston Holdings, Inc.",
           "issuerCik": "0001679273",
-          "sector": "Consumer Staples",
+          "sector": "Unclassified",
           "insiderName": "Gray James D",
           "role": "CFO",
           "officerTitle": "Chief Financial Officer",
@@ -813,7 +945,7 @@
           "ticker": "LW",
           "company": "Lamb Weston Holdings, Inc.",
           "issuerCik": "0001679273",
-          "sector": "Consumer Staples",
+          "sector": "Unclassified",
           "insiderName": "Gray James D",
           "role": "CFO",
           "officerTitle": "Chief Financial Officer",
@@ -832,7 +964,65 @@
       ]
     },
     {
-      "rank": 13,
+      "rank": 16,
+      "ticker": "SOFI",
+      "company": "SoFi Technologies, Inc.",
+      "sector": "Financials",
+      "insiderName": "Noto Anthony",
+      "role": "CEO",
+      "officerTitle": "Chief Executive Officer",
+      "dollars": 498549.50450000004,
+      "shares": 31423,
+      "avgPricePerShare": 15.865751344556536,
+      "stakePctChange": 0.26320155896077846,
+      "significance": 54,
+      "transactions": [
+        {
+          "accession": "0001613438-26-000012",
+          "ticker": "SOFI",
+          "company": "SoFi Technologies, Inc.",
+          "issuerCik": "0001818874",
+          "sector": "Financials",
+          "insiderName": "Noto Anthony",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 15545,
+          "pricePerShare": 16.0039,
+          "dollars": 248780.62550000002,
+          "sharesOwnedAfter": 11946619,
+          "stakePctChange": 0.1301204968535449,
+          "ownership": "D"
+        },
+        {
+          "accession": "0001613438-26-000010",
+          "ticker": "SOFI",
+          "company": "SoFi Technologies, Inc.",
+          "issuerCik": "0001818874",
+          "sector": "Financials",
+          "insiderName": "Noto Anthony",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "transactionDate": "2026-05-08",
+          "filingDate": "2026-05-08",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 15878,
+          "pricePerShare": 15.7305,
+          "dollars": 249768.879,
+          "sharesOwnedAfter": 11931074,
+          "stakePctChange": 0.13308106210723358,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 17,
       "ticker": "TXO",
       "company": "TXO Partners, L.P.",
       "sector": "Materials",
@@ -907,7 +1097,44 @@
       ]
     },
     {
-      "rank": 14,
+      "rank": 18,
+      "ticker": "EXE",
+      "company": "EXPAND ENERGY Corp",
+      "sector": "Unclassified",
+      "insiderName": "Teunissen Marcel",
+      "role": "CFO",
+      "officerTitle": "EVP & CFO",
+      "dollars": 192860,
+      "shares": 2000,
+      "avgPricePerShare": 96.43,
+      "stakePctChange": 21.872265966754156,
+      "significance": 53,
+      "transactions": [
+        {
+          "accession": "0001730935-26-000009",
+          "ticker": "EXE",
+          "company": "EXPAND ENERGY Corp",
+          "issuerCik": "0000895126",
+          "sector": "Unclassified",
+          "insiderName": "Teunissen Marcel",
+          "role": "CFO",
+          "officerTitle": "EVP & CFO",
+          "transactionDate": "2026-05-07",
+          "filingDate": "2026-05-07",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 2000,
+          "pricePerShare": 96.43,
+          "dollars": 192860,
+          "sharesOwnedAfter": 9144,
+          "stakePctChange": 21.872265966754156,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 19,
       "ticker": "ODTX",
       "company": "Odyssey Therapeutics, Inc.",
       "sector": "Health Care",
@@ -942,267 +1169,119 @@
       ]
     },
     {
-      "rank": 15,
-      "ticker": "PLSE",
-      "company": "PULSE BIOSCIENCES, INC.",
-      "sector": "Unclassified",
-      "insiderName": "DUGGAN ROBERT W",
-      "role": "10%Owner",
-      "dollars": 12999987.770000001,
-      "shares": 660233,
-      "avgPricePerShare": 19.69,
-      "stakePctChange": 1.369453175142087,
-      "significance": 50,
-      "transactions": [
-        {
-          "accession": "0001437749-26-016188",
-          "ticker": "PLSE",
-          "company": "PULSE BIOSCIENCES, INC.",
-          "issuerCik": "0001625101",
-          "sector": "Unclassified",
-          "insiderName": "DUGGAN ROBERT W",
-          "role": "10%Owner",
-          "transactionDate": "2026-05-11",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 660233,
-          "pricePerShare": 19.69,
-          "dollars": 12999987.770000001,
-          "sharesOwnedAfter": 48211433,
-          "stakePctChange": 1.369453175142087,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 16,
-      "ticker": "DXC",
-      "company": "DXC Technology Co",
-      "sector": "Communication Services",
-      "insiderName": "FERNANDEZ RAUL J",
-      "role": "CEO",
-      "officerTitle": "President and CEO",
-      "dollars": 249504.75,
-      "shares": 28050,
-      "avgPricePerShare": 8.895,
-      "stakePctChange": 3.3232583238228806,
-      "significance": 50,
-      "transactions": [
-        {
-          "accession": "0001688568-26-000023",
-          "ticker": "DXC",
-          "company": "DXC Technology Co",
-          "issuerCik": "0001688568",
-          "sector": "Communication Services",
-          "insiderName": "FERNANDEZ RAUL J",
-          "role": "CEO",
-          "officerTitle": "President and CEO",
-          "transactionDate": "2026-05-11",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 28050,
-          "pricePerShare": 8.895,
-          "dollars": 249504.75,
-          "sharesOwnedAfter": 844051.147,
-          "stakePctChange": 3.3232583238228806,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 17,
-      "ticker": "SOFI",
-      "company": "SoFi Technologies, Inc.",
-      "sector": "Financials",
-      "insiderName": "Noto Anthony",
-      "role": "CEO",
-      "officerTitle": "Chief Executive Officer",
-      "dollars": 248780.62550000002,
-      "shares": 15545,
-      "avgPricePerShare": 16.0039,
-      "stakePctChange": 0.1301204968535449,
-      "significance": 48,
-      "transactions": [
-        {
-          "accession": "0001613438-26-000012",
-          "ticker": "SOFI",
-          "company": "SoFi Technologies, Inc.",
-          "issuerCik": "0001818874",
-          "sector": "Financials",
-          "insiderName": "Noto Anthony",
-          "role": "CEO",
-          "officerTitle": "Chief Executive Officer",
-          "transactionDate": "2026-05-11",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 15545,
-          "pricePerShare": 16.0039,
-          "dollars": 248780.62550000002,
-          "sharesOwnedAfter": 11946619,
-          "stakePctChange": 0.1301204968535449,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 18,
-      "ticker": "MOBI",
-      "company": "Mobia Medical, Inc.",
-      "sector": "Unclassified",
-      "insiderName": "Tansey Casey M",
-      "role": "10%Owner",
-      "dollars": 999990,
-      "shares": 66666,
-      "avgPricePerShare": 15,
-      "stakePctChange": 28.571306121749267,
-      "significance": 46,
-      "transactions": [
-        {
-          "accession": "0001628280-26-033820",
-          "ticker": "MOBI",
-          "company": "Mobia Medical, Inc.",
-          "issuerCik": "0001489993",
-          "sector": "Unclassified",
-          "insiderName": "Tansey Casey M",
-          "role": "10%Owner",
-          "transactionDate": "2026-05-11",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 66666,
-          "pricePerShare": 15,
-          "dollars": 999990,
-          "sharesOwnedAfter": 233332,
-          "stakePctChange": 28.571306121749267,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 19,
-      "ticker": "EVTC",
-      "company": "EVERTEC, Inc.",
-      "sector": "Communication Services",
-      "insiderName": "Castrillo-Salgado Joaquin A.",
-      "role": "COO",
-      "officerTitle": "Senior EVP & COO",
-      "dollars": 454705.89999999997,
-      "shares": 20000,
-      "avgPricePerShare": 22.735294999999997,
-      "stakePctChange": 14.401949568658917,
-      "significance": 46,
-      "transactions": [
-        {
-          "accession": "0001750247-26-000004",
-          "ticker": "EVTC",
-          "company": "EVERTEC, Inc.",
-          "issuerCik": "0001559865",
-          "sector": "Communication Services",
-          "insiderName": "Castrillo-Salgado Joaquin A.",
-          "role": "COO",
-          "officerTitle": "Senior EVP & COO",
-          "transactionDate": "2026-05-08",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 12862,
-          "pricePerShare": 22.03,
-          "dollars": 283349.86,
-          "sharesOwnedAfter": 136849,
-          "stakePctChange": 9.398680297261945,
-          "ownership": "D"
-        },
-        {
-          "accession": "0001750247-26-000004",
-          "ticker": "EVTC",
-          "company": "EVERTEC, Inc.",
-          "issuerCik": "0001559865",
-          "sector": "Communication Services",
-          "insiderName": "Castrillo-Salgado Joaquin A.",
-          "role": "COO",
-          "officerTitle": "Senior EVP & COO",
-          "transactionDate": "2026-05-08",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 1675,
-          "pricePerShare": 22.95,
-          "dollars": 38441.25,
-          "sharesOwnedAfter": 138524,
-          "stakePctChange": 1.2091767491553809,
-          "ownership": "D"
-        },
-        {
-          "accession": "0001750247-26-000004",
-          "ticker": "EVTC",
-          "company": "EVERTEC, Inc.",
-          "issuerCik": "0001559865",
-          "sector": "Communication Services",
-          "insiderName": "Castrillo-Salgado Joaquin A.",
-          "role": "COO",
-          "officerTitle": "Senior EVP & COO",
-          "transactionDate": "2026-05-08",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 5463,
-          "pricePerShare": 24.33,
-          "dollars": 132914.78999999998,
-          "sharesOwnedAfter": 143987,
-          "stakePctChange": 3.7940925222415913,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
       "rank": 20,
-      "ticker": "OTAI",
-      "company": "Starlink AI Acquisition Corp",
-      "sector": "Financials",
-      "insiderName": "JKapital Ltd.",
+      "ticker": "ALKT",
+      "company": "ALKAMI TECHNOLOGY, INC.",
+      "sector": "Communication Services",
+      "insiderName": "GENERAL ATLANTIC, L.P.",
       "role": "10%Owner",
       "officerTitle": "",
-      "dollars": 2215000,
-      "shares": 221500,
-      "avgPricePerShare": 10,
-      "stakePctChange": 7.153237526239302,
-      "significance": 43,
+      "dollars": 14048558.36,
+      "shares": 844772,
+      "avgPricePerShare": 16.63,
+      "stakePctChange": 4.842211914093287,
+      "significance": 52,
       "transactions": [
         {
-          "accession": "0001493152-26-022185",
-          "ticker": "OTAI",
-          "company": "Starlink AI Acquisition Corp",
-          "issuerCik": "0002094076",
-          "sector": "Financials",
-          "insiderName": "JKapital Ltd.",
+          "accession": "0000950142-26-001306",
+          "ticker": "ALKT",
+          "company": "ALKAMI TECHNOLOGY, INC.",
+          "issuerCik": "0001529274",
+          "sector": "Communication Services",
+          "insiderName": "GENERAL ATLANTIC, L.P.",
           "role": "10%Owner",
           "officerTitle": "",
-          "transactionDate": "2026-05-07",
-          "filingDate": "2026-05-11",
+          "transactionDate": "2026-05-06",
+          "filingDate": "2026-05-06",
           "code": "P",
           "acquiredDisposed": "A",
           "is10b5One": false,
-          "shares": 221500,
-          "pricePerShare": 10,
-          "dollars": 2215000,
-          "sharesOwnedAfter": 3096500,
-          "stakePctChange": 7.153237526239302,
-          "ownership": "D"
+          "shares": 844772,
+          "pricePerShare": 16.63,
+          "dollars": 14048558.36,
+          "sharesOwnedAfter": 17445994,
+          "stakePctChange": 4.842211914093287,
+          "ownership": "I"
         }
       ]
     }
   ],
   "clusters": [
+    {
+      "ticker": "PATK",
+      "company": "PATRICK INDUSTRIES INC",
+      "sector": "Unclassified",
+      "insiderCount": 5,
+      "insiders": [
+        {
+          "name": "NEMETH ANDY L",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "dollars": 880000
+        },
+        {
+          "name": "Roeder Charles R",
+          "role": "President",
+          "officerTitle": "President - RV",
+          "dollars": 505018.47500000003
+        },
+        {
+          "name": "Augsburger Blake",
+          "role": "Director",
+          "dollars": 34076
+        },
+        {
+          "name": "WELCH M SCOTT",
+          "role": "Director",
+          "dollars": 882250
+        },
+        {
+          "name": "Filer Matthew S",
+          "role": "Other",
+          "dollars": 85500
+        }
+      ],
+      "totalDollars": 2386844.475,
+      "windowDays": 30,
+      "latestDate": "2026-05-05",
+      "strength": 74
+    },
+    {
+      "ticker": "MMSI",
+      "company": "MERIT MEDICAL SYSTEMS INC",
+      "sector": "Unclassified",
+      "insiderCount": 4,
+      "insiders": [
+        {
+          "name": "Aronson Martha Goldberg",
+          "role": "CEO",
+          "officerTitle": "President and CEO",
+          "dollars": 120880
+        },
+        {
+          "name": "Parra Raul Jr.",
+          "role": "CFO",
+          "officerTitle": "CFO AND TREASURER",
+          "dollars": 91515
+        },
+        {
+          "name": "Lloyd Brian G.",
+          "role": "Officer",
+          "officerTitle": "CHIEF LEGAL OFFICER, SECRETARY",
+          "dollars": 125250
+        },
+        {
+          "name": "Voigt Michel J.",
+          "role": "Officer",
+          "officerTitle": "CHIEF HUMAN RESOURCES OFFICER",
+          "dollars": 136462.5
+        }
+      ],
+      "totalDollars": 474107.5,
+      "windowDays": 30,
+      "latestDate": "2026-05-07",
+      "strength": 65
+    },
     {
       "ticker": "MOBI",
       "company": "Mobia Medical, Inc.",
@@ -1272,6 +1351,87 @@
       "windowDays": 30,
       "latestDate": "2026-05-11",
       "strength": 55
+    },
+    {
+      "ticker": "NONE",
+      "company": "Audax Private Credit Fund, LLC",
+      "sector": "Unclassified",
+      "insiderCount": 3,
+      "insiders": [
+        {
+          "name": "Audax Private Credit Business, LP",
+          "role": "10%Owner",
+          "dollars": 17234875.433412
+        },
+        {
+          "name": "RICHERSON HERBERT ELMER",
+          "role": "Director",
+          "dollars": 100060.95
+        },
+        {
+          "name": "GS FUND HOLDINGS, L.L.C.",
+          "role": "Other",
+          "dollars": 25000000.00674
+        }
+      ],
+      "totalDollars": 42334936.390152,
+      "windowDays": 30,
+      "latestDate": "2026-05-08",
+      "strength": 50
+    },
+    {
+      "ticker": "GEHC",
+      "company": "GE HealthCare Technologies Inc.",
+      "sector": "Unclassified",
+      "insiderCount": 3,
+      "insiders": [
+        {
+          "name": "Yang Watkin Phoebe L.",
+          "role": "Director",
+          "dollars": 63006.3
+        },
+        {
+          "name": "CULP H LAWRENCE JR",
+          "role": "Director",
+          "dollars": 5000076.0315000005
+        },
+        {
+          "name": "Stromberg William J",
+          "role": "Director",
+          "dollars": 61689.2
+        }
+      ],
+      "totalDollars": 5124771.5315000005,
+      "windowDays": 30,
+      "latestDate": "2026-05-08",
+      "strength": 42
+    },
+    {
+      "ticker": "POOL",
+      "company": "POOL CORP",
+      "sector": "Consumer Discretionary",
+      "insiderCount": 3,
+      "insiders": [
+        {
+          "name": "Hope James D",
+          "role": "Director",
+          "dollars": 90208.56
+        },
+        {
+          "name": "PEREZ DE LA MESA MANUEL J",
+          "role": "Director",
+          "dollars": 1900000
+        },
+        {
+          "name": "STOKELY JOHN E",
+          "role": "Director",
+          "dollars": 193065
+        }
+      ],
+      "totalDollars": 2183273.56,
+      "windowDays": 30,
+      "latestDate": "2026-05-07",
+      "strength": 40
     }
   ],
   "sectors": [
@@ -1285,67 +1445,59 @@
     },
     {
       "sector": "Materials",
-      "buyDollars": 9836533.712000001,
+      "buyDollars": 9580612.712000001,
       "sellDollars": 0,
       "netRatio": 1,
-      "buyCount": 6,
-      "sellCount": 0
-    },
-    {
-      "sector": "Financials",
-      "buyDollars": 3588802.4125,
-      "sellDollars": 0,
-      "netRatio": 1,
-      "buyCount": 9,
+      "buyCount": 4,
       "sellCount": 0
     },
     {
       "sector": "Communication Services",
-      "buyDollars": 2543347.95,
+      "buyDollars": 18684911.8,
       "sellDollars": 0,
       "netRatio": 1,
-      "buyCount": 9,
-      "sellCount": 0
-    },
-    {
-      "sector": "Utilities",
-      "buyDollars": 221483.75,
-      "sellDollars": 0,
-      "netRatio": 1,
-      "buyCount": 2,
-      "sellCount": 0
-    },
-    {
-      "sector": "Consumer Staples",
-      "buyDollars": 518565,
-      "sellDollars": 0,
-      "netRatio": 1,
-      "buyCount": 3,
+      "buyCount": 10,
       "sellCount": 0
     },
     {
       "sector": "Consumer Discretionary",
-      "buyDollars": 47593812.92,
+      "buyDollars": 50292907.862600006,
       "sellDollars": 675001.394,
-      "netRatio": 0.972031573445788,
-      "buyCount": 14,
+      "netRatio": 0.9735126904813113,
+      "buyCount": 18,
       "sellCount": 4
     },
     {
       "sector": "Health Care",
-      "buyDollars": 36312835.71,
+      "buyDollars": 38339315.3864268,
       "sellDollars": 3165020.985,
-      "netRatio": 0.8396558856043034,
-      "buyCount": 12,
+      "netRatio": 0.8474848046394052,
+      "buyCount": 15,
+      "sellCount": 1
+    },
+    {
+      "sector": "Financials",
+      "buyDollars": 9933694.2865,
+      "sellDollars": 1337994.12,
+      "netRatio": 0.7625920675329483,
+      "buyCount": 8,
+      "sellCount": 2
+    },
+    {
+      "sector": "Utilities",
+      "buyDollars": 4060500,
+      "sellDollars": 6033600,
+      "netRatio": -0.1954706214521354,
+      "buyCount": 2,
       "sellCount": 1
     },
     {
       "sector": "Industrials",
       "buyDollars": 450651.5,
-      "sellDollars": 4098804.51,
-      "netRatio": -0.8018877426182652,
+      "sellDollars": 153098804.51,
+      "netRatio": -0.9941302103998252,
       "buyCount": 2,
-      "sellCount": 1
+      "sellCount": 2
     }
   ],
   "history": [
@@ -1626,27 +1778,27 @@
     },
     {
       "date": "2026-05-12",
-      "index": 48,
-      "netDollars": -1375649361.7169096
+      "index": 54,
+      "netDollars": -2305833010.364881
     }
   ],
   "indicators": [
     {
       "label": "Cluster buys (30d)",
-      "value": "2",
-      "sub": "Across 2 sectors",
-      "tone": "neutral"
+      "value": "7",
+      "sub": "Across 3 sectors",
+      "tone": "positive"
     },
     {
       "label": "Net buy/sell ($)",
-      "value": "−$1.38B",
-      "sub": "87 buys vs 328 sells",
+      "value": "−$2.31B",
+      "sub": "131 buys vs 555 sells",
       "tone": "negative"
     },
     {
       "label": "Top conviction (this week)",
-      "value": "PLSE",
-      "sub": "CEO · $295k",
+      "value": "SRAD",
+      "sub": "CEO · $2.1M",
       "tone": "neutral"
     },
     {
@@ -1660,7 +1812,7 @@
     {
       "name": "SEC EDGAR Form 4",
       "ok": true,
-      "note": "Live · 2,177 filings parsed"
+      "note": "Live · 5,262 filings parsed"
     },
     {
       "name": "EDGAR ticker map",
@@ -1675,11 +1827,11 @@
   ],
   "isDemo": false,
   "filtered": {
-    "grantsAndAwards": 592,
-    "optionExercises": 265,
-    "taxWithholding": 173,
-    "preScheduledSales": 407,
-    "belowThreshold": 98
+    "grantsAndAwards": 1324,
+    "optionExercises": 677,
+    "taxWithholding": 455,
+    "preScheduledSales": 1074,
+    "belowThreshold": 220
   },
   "recentActivity": [
     {

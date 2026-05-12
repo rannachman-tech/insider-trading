@@ -1,16 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Insider Signal — Are insiders buying their own stock?",
   description:
-    "A clean read on what corporate insiders are doing with their own money — drawn live from SEC EDGAR Form 4 filings. One number, a leaderboard, and a cluster-buy lens.",
+    "Spots real insider buying from SEC filings. Trade it on eToro. Drawn live from EDGAR Form 4 filings, filtered for real conviction, ranked by cluster and accumulation patterns.",
   metadataBase: new URL("https://insidersignal.etoro.com"),
   openGraph: {
     title: "Insider Signal",
-    description: "Are insiders buying their own stock?",
+    description: "Spots real insider buying from SEC filings. Trade it on eToro.",
     type: "website",
   },
+};
+
+// Next.js 14 wants themeColor in the viewport export, not metadata.
+export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fafaf9" },
     { media: "(prefers-color-scheme: dark)", color: "#0c0d10" },

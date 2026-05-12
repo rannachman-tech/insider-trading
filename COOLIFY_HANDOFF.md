@@ -95,12 +95,12 @@ No API keys needed — SEC EDGAR is fully public, no auth, no token. eToro Publi
 ## First deploy procedure
 
 1. Create the volume `insider-signal-data` in Coolify (empty).
-2. Deploy the **web app** first. It boots and shows the empty state because the volume has no snapshot yet — expected.
-3. Confirm `GET https://<final-domain>/` returns 200.
-4. Deploy the **scheduled task**.
-5. **Run the scheduled task once manually** from Coolify's UI. The first run walks ~7 weekdays of SEC daily-index files (3-10 minutes depending on SEC's response time).
-6. Refresh the web app — the conviction meter, primary signal, leaderboard, and sector heatmap all render with real data.
-7. Verify the next automatic run lands at 06:00 UTC the following day. Done.
+2. Deploy the **web app** first. The Docker entrypoint seeds the empty volume with the snapshot baked into the image at build time (60 days of real history + the latest leaderboard), so the page renders with full data immediately. Confirm `GET https://<final-domain>/` returns 200 and the leaderboard / primary signal are visible.
+3. Deploy the **scheduled task**.
+4. **Run the scheduled task once manually** from Coolify's UI to confirm SEC reachability + that the cron can write to the volume. Takes 3-10 minutes. After it completes, refresh the web app — same data plus today's incremental update.
+5. Verify the next automatic run lands at 06:00 UTC the following day. Done.
+
+The seed-on-first-deploy step only fires when the volume is empty — once the cron has written real data, it never reseeds. So the seeded snapshot from the image is purely a "no empty-state on day 1" convenience, not a permanent override.
 
 ---
 
