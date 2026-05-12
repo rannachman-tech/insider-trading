@@ -1,0 +1,22 @@
+# Keep the Docker build context small (~10 MB instead of 200+).
+node_modules
+.next
+.git
+.github
+out
+dist
+*.tsbuildinfo
+
+# Don't bake the local backfill cache into the image — it's ~57k XML
+# files, several hundred MB. Coolify's persistent volume will hold the
+# snapshot output (~5 MB JSON); the raw cache is dev-only.
+data/.backfill-cache
+
+# Markdown / docs / screenshots aren't needed at runtime.
+*.md
+*.pdf
+*.png
+*.jpg
+
+# Local env files — never bake secrets into the image.
+.env*

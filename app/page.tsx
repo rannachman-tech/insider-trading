@@ -38,7 +38,12 @@ import { IndicatorsRow } from "@/components/IndicatorsRow";
 import { LiveSourcesRow } from "@/components/LiveSourcesRow";
 import type { InsiderSnapshot } from "@/lib/types";
 
-export const revalidate = 1800; // 30 min
+// Runtime data loading — the Coolify cron writes data/insider-snapshot.json
+// to a shared persistent volume, and the web app reads it on each request.
+// force-dynamic + revalidate=0 means volume updates appear immediately
+// without a rebuild. Vercel preview behaves the same; just no volume.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 async function loadSnapshot(): Promise<InsiderSnapshot | null> {
   const snapshotPath = path.join(process.cwd(), "data", "insider-snapshot.json");
