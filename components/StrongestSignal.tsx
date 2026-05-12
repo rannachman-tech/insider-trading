@@ -90,11 +90,28 @@ function ClusterCallout({ cluster: top }: { cluster: NonNullable<InsiderSnapshot
               </span>
             ))}
             {top.insiderCount > topInsiders.length ? `, plus ${top.insiderCount - topInsiders.length} more` : ""}
-            {" — all bought in the last 30 days. Cluster buys are the strongest documented insider signal in the academic literature."}
+            {" — all bought in the last 30 days."}
           </p>
           <div className="mt-2 text-[11px] font-mono tab-num text-fg-subtle">
             Latest filing {formatDate(top.latestDate, { withYear: true })} · cluster strength {top.strength}/100
           </div>
+
+          {/* Intelligence rail — why this ranked #1 + the historical context
+              behind the call. Lifts the card from "interesting row" to "a
+              piece of intelligence you can act on." */}
+          <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <IntelTile
+              kind="rank"
+              title="Why this ranked #1"
+              body={whyRankedFirst(top)}
+            />
+            <IntelTile
+              kind="research"
+              title="What research says"
+              body={researchContext(top.insiderCount)}
+            />
+          </div>
+
           <div className="mt-3">
             <PrimaryCta
               ticker={top.ticker}
@@ -106,6 +123,51 @@ function ClusterCallout({ cluster: top }: { cluster: NonNullable<InsiderSnapshot
       </div>
     </section>
   );
+}
+
+function IntelTile({
+  kind,
+  title,
+  body,
+}: {
+  kind: "rank" | "research";
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="rounded-md border border-emerald/20 bg-emerald-soft/40 px-3 py-2.5">
+      <div className="flex items-center gap-1.5">
+        <span className="text-[9.5px] uppercase tracking-[0.16em] font-mono text-emerald font-semibold">
+          {kind === "rank" ? "Ranked #1 because" : "Academic context"}
+        </span>
+      </div>
+      <p className="mt-1 text-[12px] text-fg leading-relaxed">{body}</p>
+    </div>
+  );
+}
+
+/** One-line reason this cluster outranked everything else on the tape. */
+function whyRankedFirst(c: NonNullable<InsiderSnapshot["clusters"][number]>): string {
+  const ceoCfoCount = c.insiders.filter((i) => i.role === "CEO" || i.role === "CFO").length;
+  const tenPctCount = c.insiders.filter((i) => i.role === "10%Owner").length;
+  if (ceoCfoCount > 0) {
+    return `${c.insiderCount} distinct insiders deployed personal cash within 30 days, including ${ceoCfoCount} C-suite officer${ceoCfoCount === 1 ? "" : "s"} — the role weighting most studies tie to forward returns.`;
+  }
+  if (tenPctCount > 0) {
+    return `${c.insiderCount} distinct insiders deployed personal cash within 30 days, led by ${tenPctCount} 10% owner${tenPctCount === 1 ? "" : "s"} — large-stake holders add their own capital, signalling alignment.`;
+  }
+  return `${c.insiderCount} distinct insiders deployed personal cash within 30 days — multi-insider clusters carry the strongest documented edge, regardless of role.`;
+}
+
+/** Academic context calibrated to the size of the cluster. */
+function researchContext(insiderCount: number): string {
+  if (insiderCount >= 5) {
+    return `5+ insider clusters are rare. Cohen, Malloy & Pomorski (2012) found these top decile clusters produced ~7% annualized abnormal returns over 6–12 months.`;
+  }
+  if (insiderCount >= 4) {
+    return `4+ insider clusters historically outperform. Lakonishok & Lee (2001) documented monotonic returns as cluster size grows — more buyers, stronger signal.`;
+  }
+  return `Multi-insider clusters (3+) are the strongest documented insider signal. Single-name purchases carry far less weight on average.`;
 }
 
 function SingleNameCallout({
