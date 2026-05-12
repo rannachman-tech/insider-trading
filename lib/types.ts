@@ -1,5 +1,5 @@
 /**
- * Domain types for Insiders Activity Compass.
+ * Domain types for Insider Signal.
  *
  * The product's central editorial decision lives here: a "real" insider buy is
  * Code P (open-market purchase with personal cash). Everything else is noise

@@ -8,7 +8,7 @@ export function Footer() {
               About
             </h4>
             <p className="mt-2 text-[13px] text-fg-muted leading-relaxed">
-              When a CEO, CFO or director buys their own company's stock with personal cash on the open market, they're signalling something the market hasn't priced in yet. Insiders Activity Compass watches those filings live from the SEC, throws out the routine noise — grants, options, pre-scheduled sales — and ranks who's really buying and how strongly.
+              When a CEO, CFO or director buys their own company's stock with personal cash on the open market, they're signalling something the market hasn't priced in yet. Insider Signal watches those filings live from the SEC, throws out the routine noise — grants, options, pre-scheduled sales — and ranks who's really buying and how strongly.
             </p>
           </div>
           <div>
@@ -42,7 +42,7 @@ export function Footer() {
 
         <div className="mt-8 pt-6 border-t border-border text-[11px] text-fg-subtle leading-relaxed space-y-2">
           <p>
-            Insiders Activity Compass is provided for educational purposes only and does not constitute investment advice. Insider activity is one signal among many. Past insider purchases do not predict future returns. Trading involves risk, including the loss of capital.
+            Insider Signal is provided for educational purposes only and does not constitute investment advice. Insider activity is one signal among many. Past insider purchases do not predict future returns. Trading involves risk, including the loss of capital.
           </p>
           <p>
             Form 4 filings are filed with a delay of up to two business days. The Insider Conviction Index is a heuristic — read the source filings on EDGAR before making decisions.

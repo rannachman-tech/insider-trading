@@ -1,6 +1,6 @@
-# Insiders Activity Compass — Coolify Deployment Guide
+# Insider Signal — Coolify Deployment Guide
 
-Handoff for hosting the Insiders Activity Compass app on eToro infrastructure via Coolify. Tight checklist below — should be set up top-to-bottom without follow-up questions.
+Handoff for hosting the Insider Signal app on eToro infrastructure via Coolify. Tight checklist below — should be set up top-to-bottom without follow-up questions.
 
 ---
 
@@ -19,7 +19,7 @@ The web app reads the snapshot on every request. No rebuild when data refreshes.
 
 ## Repo
 
-- **GitHub:** `https://github.com/<eToro-org>/InsidersActivityCompass`
+- **GitHub:** `https://github.com/<eToro-org>/InsiderSignal`
 - **Branch:** `main`
 - **Build pack:** Dockerfile (already in the repo root)
 - **Stack:** Next.js 14 + TypeScript + Tailwind
@@ -31,10 +31,10 @@ The web app reads the snapshot on every request. No rebuild when data refreshes.
 | Setting | Value |
 |---|---|
 | Type | Application |
-| Source | `<eToro-org>/InsidersActivityCompass`, branch `main` |
+| Source | `<eToro-org>/InsiderSignal`, branch `main` |
 | Build pack | Dockerfile |
 | Port | `3000` |
-| Domain | `<final-domain>` (e.g. `compass.etoro.com`) |
+| Domain | `<final-domain>` (e.g. `insidersignal.etoro.com`) |
 | Health check path | `/` |
 | Memory | 512 MB |
 | CPU | 0.5 vCPU |
@@ -43,7 +43,7 @@ The web app reads the snapshot on every request. No rebuild when data refreshes.
 
 | Volume name | Mount path | Notes |
 |---|---|---|
-| `compass-data` | `/app/data` | Shared with the cron task. Persistent. Holds `insider-snapshot.json` (~5 MB JSON). |
+| `insider-signal-data` | `/app/data` | Shared with the cron task. Persistent. Holds `insider-snapshot.json` (~5 MB JSON). |
 
 **Environment variables:**
 
@@ -71,7 +71,7 @@ The web app reads the snapshot on every request. No rebuild when data refreshes.
 
 | Volume name | Mount path |
 |---|---|
-| `compass-data` | `/app/data` |
+| `insider-signal-data` | `/app/data` |
 
 **Environment variables:**
 
@@ -86,7 +86,7 @@ No API keys needed — SEC EDGAR is fully public, no auth, no token. eToro Publi
 
 ## What Ran needs to confirm
 
-- **Final domain.** Suggestions: `compass.etoro.com`, `insiders.etoro.com`, `signal.etoro.com`.
+- **Final domain.** Suggestions: `insidersignal.etoro.com`, `insiders.etoro.com`, `signal.etoro.com`.
 - Coolify host can reach `https://www.sec.gov` (SEC EDGAR for Form 4 daily-index files).
 - Coolify host can reach `https://api.etorostatic.com/sapi/instrumentsmetadata/V1.1/instruments` — used at runtime to resolve ticker → instrumentId when the user trades a non-catalog ticker (one-time fetch per request, cached 1h in memory).
 
@@ -94,7 +94,7 @@ No API keys needed — SEC EDGAR is fully public, no auth, no token. eToro Publi
 
 ## First deploy procedure
 
-1. Create the volume `compass-data` in Coolify (empty).
+1. Create the volume `insider-signal-data` in Coolify (empty).
 2. Deploy the **web app** first. It boots and shows the empty state because the volume has no snapshot yet — expected.
 3. Confirm `GET https://<final-domain>/` returns 200.
 4. Deploy the **scheduled task**.
@@ -148,7 +148,7 @@ If Coolify ever has an outage:
 ## Contact
 
 - **Owner:** Ran Nachman — ranna@etoro.com
-- **Source repo:** `<eToro-org>/InsidersActivityCompass`
+- **Source repo:** `<eToro-org>/InsiderSignal`
 - **Approx. SLO:** best-effort. Data refreshes daily; if a refresh is missed, the previous snapshot is still served. No on-call expected.
 
 ---

@@ -13,7 +13,7 @@ import type {
 
 /** Required by SEC EDGAR — every request must declare a contact User-Agent. */
 export const EDGAR_USER_AGENT =
-  "Insiders Activity Compass research@insiders.compass.etoro.com";
+  "Insider Signal research@insidersignal.etoro.com";
 
 export const EDGAR_HEADERS = {
   "User-Agent": EDGAR_USER_AGENT,
@@ -108,7 +108,7 @@ export function significanceScore(input: {
 /* ------------------------------------------------------------------ */
 
 /**
- * Insiders Activity Compass Index 0–100.
+ * Insider Conviction Index 0–100.
  *
  * Combines four signals, weighted toward the academically-strongest patterns:
  *   1. Net dollar flow      (30%) — the bedrock bidirectional signal

@@ -24,7 +24,7 @@ const CACHE_DIR = join(ROOT, "data", ".backfill-cache");
 if (!existsSync(CACHE_DIR)) mkdirSync(CACHE_DIR, { recursive: true });
 
 const CONTACT = process.env.EDGAR_CONTACT || "ranna@etoro.com";
-const USER_AGENT = `Insiders Activity Compass ${CONTACT}`;
+const USER_AGENT = `Insider Signal ${CONTACT}`;
 const HEADERS = {
   "User-Agent": USER_AGENT,
   Accept: "application/xml,text/html,*/*;q=0.8",

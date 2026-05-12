@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Compass, Sun, Moon } from "lucide-react";
+import { Radar, Sun, Moon } from "lucide-react";
 import { ConnectEtoroBadge } from "./ConnectEtoroBadge";
 
 export function Header() {
@@ -25,11 +25,11 @@ export function Header() {
         <div className="h-14 flex items-center justify-between gap-3">
           <a href="/" className="flex items-center gap-2.5 group">
             <div className="grid place-items-center w-8 h-8 rounded-md bg-fg text-bg group-hover:bg-emerald group-hover:text-white transition-colors">
-              <Compass className="h-4 w-4" />
+              <Radar className="h-4 w-4" />
             </div>
             <div className="leading-tight">
               <div className="text-[15px] font-semibold tracking-tight text-fg">
-                Insiders Activity Compass
+                Insider Signal
               </div>
               <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
                 Are insiders buying their own stock?

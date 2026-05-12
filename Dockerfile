@@ -1,4 +1,4 @@
-# Insiders Activity Compass — production Docker image.
+# Insider Signal — production Docker image.
 #
 # Coolify builds and runs this image. Same image is reused for the
 # scheduled task that calls `npm run ingest` on a cron — different

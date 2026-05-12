@@ -1,7 +1,7 @@
-# Insiders Activity Compass — Migration to eToro Org + Coolify
+# Insider Signal — Migration to eToro Org + Coolify
 
 Goal: move from `github.com/rannachman-tech/insider-trading` (personal, public)
-to `github.com/<eToro-org>/InsidersActivityCompass` (corporate, private), then
+to `github.com/<eToro-org>/InsiderSignal` (corporate, private), then
 deploy to `*.etoro.com` via Coolify.
 
 Today (post-migration prep): the app is ready. Dockerfile, .dockerignore,
@@ -17,7 +17,7 @@ all in place. Pushed to `rannachman-tech/insider-trading@main`.
 1. Go to GitHub → **+** (top-right) → **Import a repository**.
 2. Source URL: `https://github.com/rannachman-tech/insider-trading`
 3. Owner: pick the eToro org from the dropdown (e.g. `eToro-AI-Foundry`).
-4. New repo name: **`InsidersActivityCompass`** (PascalCase, matches the
+4. New repo name: **`InsiderSignal`** (PascalCase, matches the
    Daily Digest convention).
 5. Visibility: **Private**.
 6. Click **Begin import**. Takes 30-90 seconds.

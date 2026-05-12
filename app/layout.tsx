@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Insiders Activity Compass — Are insiders buying their own stock?",
+  title: "Insider Signal — Are insiders buying their own stock?",
   description:
     "A clean read on what corporate insiders are doing with their own money — drawn live from SEC EDGAR Form 4 filings. One number, a leaderboard, and a cluster-buy lens.",
-  metadataBase: new URL("https://insiders.compass.etoro.com"),
+  metadataBase: new URL("https://insidersignal.etoro.com"),
   openGraph: {
-    title: "Insiders Activity Compass",
+    title: "Insider Signal",
     description: "Are insiders buying their own stock?",
     type: "website",
   },
