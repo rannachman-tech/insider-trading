@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { X, Check, AlertCircle, ArrowLeft, ArrowUpRight, ExternalLink } from "lucide-react";
+import { X, Check, AlertCircle, ArrowLeft, ExternalLink } from "lucide-react";
 import { lookupStock } from "@/lib/stock-catalog";
 import { loadEtoroSession, type EtoroSession } from "@/lib/etoro-session";
 import { formatUsd } from "@/lib/format";
@@ -67,10 +67,14 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
 
   if (!open || !mounted) return null;
 
+  // Pre-verified catalog hit is nice-to-have (gives us a real company name
+  // for the Review screen). When we don't have one, the server resolves
+  // the ticker against eToro's public catalog at trade time.
   const stock = lookupStock(ticker);
+  const displayName = stock?.name ?? ticker;
 
   async function execute() {
-    if (!session || !stock) return;
+    if (!session) return;
     setStep({ kind: "executing" });
     try {
       const res = await fetch("/api/etoro/trade-basket", {
@@ -80,7 +84,9 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
           apiKey: session.apiKey,
           userKey: session.userKey,
           env: session.env,
-          basket: [{ ticker, instrumentId: stock.instrumentId, amount }],
+          // instrumentId is optional — server resolves from public catalog
+          // when omitted, so any EDGAR-surfaced ticker can trade in-app.
+          basket: [{ ticker, instrumentId: stock?.instrumentId, amount }],
         }),
       });
       const j = (await res.json()) as { ok: boolean; results: Array<{ ticker: string; ok: boolean; message?: string }> };
@@ -121,41 +127,10 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
           )}
         </header>
 
-        {/* Ticker not in our pre-verified instrumentId catalog → open the
-            full eToro trade ticket on etoro.com as the primary CTA. Same
-            destination the user would land on if they searched in eToro
-            directly; just framed as a positive action, not a fallback. */}
-        {!stock && (
-          <div className="px-5 py-5 space-y-4">
-            <div>
-              <div className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
-                Trade ticket
-              </div>
-              <p className="mt-1.5 text-[13.5px] text-fg leading-relaxed">
-                Open <span className="font-mono font-semibold">{ticker}</span> on eToro to set your amount and place the order. You'll land on the live ticker page with the buy modal one click away.
-              </p>
-              {rationale && (
-                <p className="mt-2 text-[12.5px] text-fg-muted leading-relaxed border-l-2 border-border pl-3">
-                  {rationale}
-                </p>
-              )}
-            </div>
-            <a
-              href={`https://www.etoro.com/markets/${ticker.toLowerCase()}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md bg-fg text-bg px-4 py-2.5 text-[13px] font-semibold hover:opacity-90 transition-opacity"
-            >
-              Trade {ticker} on eToro
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-            <p className="text-[11px] text-fg-subtle leading-relaxed">
-              We only place in-app orders for tickers in our pre-verified instrumentId catalog. For everything else, the eToro market page is the canonical place to trade — same execution path, same prices.
-            </p>
-          </div>
-        )}
-
-        {stock && !session && (
+        {/* Any ticker, in-app: instrumentId is resolved server-side against
+            the eToro public catalog at trade time. The only gate is whether
+            the user is connected. */}
+        {!session && (
           <div className="px-5 py-5 space-y-4">
             <div className="flex items-start gap-2 rounded-md border border-amber/30 bg-amber-soft px-3 py-2.5 text-[13px] text-fg leading-relaxed">
               <AlertCircle className="h-4 w-4 text-amber mt-0.5 flex-shrink-0" />
@@ -178,13 +153,13 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
           </div>
         )}
 
-        {stock && session && step.kind === "review" && (
+        {session && step.kind === "review" && (
           <div className="px-5 py-4 space-y-4">
             <div>
               <div className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
                 Buying
               </div>
-              <div className="mt-1 text-[15px] text-fg">{stock.name}</div>
+              <div className="mt-1 text-[15px] text-fg">{displayName}</div>
               {rationale && (
                 <p className="mt-1.5 text-[12.5px] text-fg-muted leading-relaxed">{rationale}</p>
               )}
@@ -224,11 +199,11 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
           </div>
         )}
 
-        {stock && session && step.kind === "confirm" && (
+        {session && step.kind === "confirm" && (
           <div className="px-5 py-4 space-y-3">
             <p className="text-[13px] text-fg-muted leading-relaxed">
               You're about to buy <strong className="text-fg">{formatUsd(amount)}</strong> of{" "}
-              <span className="font-mono font-semibold text-fg">{ticker}</span> ({stock.name}) on your{" "}
+              <span className="font-mono font-semibold text-fg">{ticker}</span> ({displayName}) on your{" "}
               <strong className="text-fg">{session.env === "demo" ? "Virtual" : "Real"}</strong> eToro portfolio.
             </p>
             <div className="rounded-md border border-border bg-surface-2 px-3 py-2.5 text-[13px] flex items-center justify-between">
@@ -268,7 +243,7 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
         )}
 
         <footer className="px-5 py-4 border-t border-border flex items-center justify-end gap-2">
-          {stock && session && step.kind === "review" && (
+          {session && step.kind === "review" && (
             <>
               <button onClick={onClose} className="px-3 py-2 rounded-md text-[13px] text-fg-muted hover:text-fg">
                 Cancel
@@ -282,7 +257,7 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
               </button>
             </>
           )}
-          {stock && session && step.kind === "confirm" && (
+          {session && step.kind === "confirm" && (
             <>
               <button onClick={() => setStep({ kind: "review" })} className="px-3 py-2 rounded-md text-[13px] text-fg-muted hover:text-fg">
                 Back
@@ -303,7 +278,7 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
               Done
             </button>
           )}
-          {(!stock || !session) && step.kind === "review" && (
+          {!session && step.kind === "review" && (
             <button onClick={onClose} className="px-3 py-2 rounded-md text-[13px] text-fg-muted hover:text-fg">
               Close
             </button>
