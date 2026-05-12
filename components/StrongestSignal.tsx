@@ -93,8 +93,12 @@ function ClusterCallout({ cluster: top }: { cluster: NonNullable<InsiderSnapshot
             {" — all bought in the last 30 days."}
           </p>
           <div className="mt-2 text-[11px] font-mono tab-num text-fg-subtle">
-            Latest filing {formatDate(top.latestDate, { withYear: true })} · cluster strength {top.strength}/100
+            Latest filing {formatDate(top.latestDate, { withYear: true })} · cluster strength {top.strength}/100 · {convictionBand(top.strength)}
           </div>
+
+          {/* Cluster progression strip — visual coordination, not just text.
+              Each insider is a chip; together they read as a buying sequence. */}
+          <ClusterProgression cluster={top} />
 
           {/* Intelligence rail — why this ranked #1 + the historical context
               behind the call. Lifts the card from "interesting row" to "a
@@ -157,6 +161,77 @@ function whyRankedFirst(c: NonNullable<InsiderSnapshot["clusters"][number]>): st
     return `${c.insiderCount} distinct insiders deployed personal cash within 30 days, led by ${tenPctCount} 10% owner${tenPctCount === 1 ? "" : "s"} — large-stake holders add their own capital, signalling alignment.`;
   }
   return `${c.insiderCount} distinct insiders deployed personal cash within 30 days — multi-insider clusters carry the strongest documented edge, regardless of role.`;
+}
+
+/**
+ * Horizontal strip showing each insider as a coloured chip + dollar size.
+ * Reads as a buying sequence: who's in the cluster, in what role, with
+ * what conviction. Three insiders feel like a wave, not a checklist.
+ */
+function ClusterProgression({
+  cluster,
+}: {
+  cluster: NonNullable<InsiderSnapshot["clusters"][number]>;
+}) {
+  // Show up to 5 insiders inline; "+N more" pill if longer
+  const display = cluster.insiders.slice(0, 5);
+  const overflow = cluster.insiders.length - display.length;
+  return (
+    <div className="mt-3 rounded-md border border-emerald/20 bg-emerald-soft/40 px-3 py-2.5">
+      <div className="text-[9.5px] uppercase tracking-[0.16em] font-mono text-emerald font-semibold mb-2">
+        Cluster composition
+      </div>
+      <div className="flex items-center gap-2 flex-wrap">
+        {display.map((i, idx) => (
+          <div
+            key={idx}
+            className="flex items-center gap-1.5 rounded-full bg-surface border border-emerald/25 pl-1 pr-2.5 py-0.5"
+          >
+            <span className="grid place-items-center w-5 h-5 rounded-full bg-emerald/15 text-emerald font-mono text-[9.5px] font-semibold">
+              {initialsFor(i.name)}
+            </span>
+            <span className="text-[11px] text-fg font-medium">
+              {shortRole(i.role)}
+            </span>
+            <span className="text-[10.5px] font-mono tab-num text-fg-subtle">
+              {compactUsd(i.dollars)}
+            </span>
+          </div>
+        ))}
+        {overflow > 0 && (
+          <div className="rounded-full bg-emerald/10 border border-emerald/25 px-2.5 py-1 text-[10.5px] text-emerald font-medium">
+            +{overflow} more
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function shortRole(role: string): string {
+  if (role === "10%Owner") return "10% Owner";
+  return role;
+}
+
+function initialsFor(name: string): string {
+  const parts = (name ?? "").split(/\s+/).filter(Boolean);
+  if (!parts.length) return "?";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
+}
+
+function compactUsd(n: number): string {
+  if (n >= 1e9) return `$${(n / 1e9).toFixed(1)}B`;
+  if (n >= 1e6) return `$${(n / 1e6).toFixed(1)}M`;
+  if (n >= 1e3) return `$${Math.round(n / 1e3)}k`;
+  return `$${Math.round(n)}`;
+}
+
+function convictionBand(score: number): string {
+  if (score >= 75) return "high-conviction";
+  if (score >= 55) return "strong setup";
+  if (score >= 40) return "emerging signal";
+  return "watch list";
 }
 
 /** Academic context calibrated to the size of the cluster. */
