@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "next lint",
     "ingest": "node scripts/ingest-live.mjs",
+    "backfill": "node scripts/backfill-history.mjs",
     "verify:baskets": "node scripts/verify-baskets.mjs",
     "simulate:baskets": "tsx scripts/simulate-baskets.ts"
   },

@@ -1,18 +1,385 @@
 {
-  "generatedAt": "2026-05-12T08:21:44.046Z",
+  "generatedAt": "2026-05-12T08:45:40.429Z",
   "windowDays": 7,
-  "index": 40,
+  "index": 48,
   "phase": "balanced",
   "verdict": "Insider buying and selling roughly cancel out this week. There's no clear directional message from inside the boardroom right now. Treat any individual buy as one data point, not a trigger to act.",
-  "netDollars": -127173343.74238798,
-  "buyDollars": 26325292.743411995,
-  "sellDollars": 153498636.48579997,
-  "buyCount": 22,
-  "sellCount": 67,
-  "clusterCount": 0,
+  "netDollars": -1375649361.7169096,
+  "buyDollars": 146650031.38298956,
+  "sellDollars": 1522299393.0998993,
+  "buyCount": 87,
+  "sellCount": 328,
+  "clusterCount": 2,
   "leaderboard": [
     {
       "rank": 1,
+      "ticker": "WGS",
+      "company": "GeneDx Holdings Corp.",
+      "sector": "Consumer Discretionary",
+      "insiderName": "Meister Keith A.",
+      "role": "10%Owner",
+      "dollars": 46785262.92,
+      "shares": 1204615,
+      "avgPricePerShare": 38.83835326639632,
+      "stakePctChange": 31.084155265984236,
+      "significance": 73,
+      "transactions": [
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-07",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 128181,
+          "pricePerShare": 35.46,
+          "dollars": 4545298.26,
+          "sharesOwnedAfter": 3356331,
+          "stakePctChange": 3.819081014357642,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-07",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 14786,
+          "pricePerShare": 36.33,
+          "dollars": 537175.38,
+          "sharesOwnedAfter": 3371117,
+          "stakePctChange": 0.4386083307105627,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-07",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 123393,
+          "pricePerShare": 37.6,
+          "dollars": 4639576.8,
+          "sharesOwnedAfter": 3494510,
+          "stakePctChange": 3.531052994554315,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-07",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 116412,
+          "pricePerShare": 38.46,
+          "dollars": 4477205.5200000005,
+          "sharesOwnedAfter": 3610922,
+          "stakePctChange": 3.223885755494026,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-07",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 94356,
+          "pricePerShare": 39.39,
+          "dollars": 3716682.84,
+          "sharesOwnedAfter": 3705278,
+          "stakePctChange": 2.546529572140066,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-07",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 56630,
+          "pricePerShare": 40.46,
+          "dollars": 2291249.8000000003,
+          "sharesOwnedAfter": 3761908,
+          "stakePctChange": 1.505353134632745,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-08",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 15745,
+          "pricePerShare": 38,
+          "dollars": 598310,
+          "sharesOwnedAfter": 3777653,
+          "stakePctChange": 0.4167931781982093,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-08",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 3396,
+          "pricePerShare": 38.7,
+          "dollars": 131425.2,
+          "sharesOwnedAfter": 3781049,
+          "stakePctChange": 0.08981634461759158,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-08",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 79144,
+          "pricePerShare": 40.67,
+          "dollars": 3218786.48,
+          "sharesOwnedAfter": 3860193,
+          "stakePctChange": 2.0502601812914536,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-08",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 73104,
+          "pricePerShare": 41.15,
+          "dollars": 3008229.6,
+          "sharesOwnedAfter": 3933297,
+          "stakePctChange": 1.8585934395495687,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 246734,
+          "pricePerShare": 38.91,
+          "dollars": 9600419.94,
+          "sharesOwnedAfter": 4180031,
+          "stakePctChange": 5.9026834968448805,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001011438-26-000276",
+          "ticker": "WGS",
+          "company": "GeneDx Holdings Corp.",
+          "issuerCik": "0001818331",
+          "sector": "Consumer Discretionary",
+          "insiderName": "Meister Keith A.",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 252734,
+          "pricePerShare": 39.65,
+          "dollars": 10020903.1,
+          "sharesOwnedAfter": 4432765,
+          "stakePctChange": 5.701497823593175,
+          "ownership": "I"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "ticker": "PLSE",
+      "company": "PULSE BIOSCIENCES, INC.",
+      "sector": "Unclassified",
+      "insiderName": "LAVIOLETTE PAUL A",
+      "role": "CEO",
+      "officerTitle": "Chief Executive Officer",
+      "dollars": 295350,
+      "shares": 15000,
+      "avgPricePerShare": 19.69,
+      "stakePctChange": 100,
+      "significance": 69,
+      "transactions": [
+        {
+          "accession": "0001437749-26-016190",
+          "ticker": "PLSE",
+          "company": "PULSE BIOSCIENCES, INC.",
+          "issuerCik": "0001625101",
+          "sector": "Unclassified",
+          "insiderName": "LAVIOLETTE PAUL A",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 15000,
+          "pricePerShare": 19.69,
+          "dollars": 295350,
+          "sharesOwnedAfter": 15000,
+          "stakePctChange": 100,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "ticker": "ODTX",
+      "company": "Odyssey Therapeutics, Inc.",
+      "sector": "Health Care",
+      "insiderName": "SR ONE CAPITAL MANAGEMENT, LLC",
+      "role": "10%Owner",
+      "dollars": 9999990,
+      "shares": 555555,
+      "avgPricePerShare": 18,
+      "stakePctChange": 55.057480557315486,
+      "significance": 67,
+      "transactions": [
+        {
+          "accession": "0001193125-26-217656",
+          "ticker": "ODTX",
+          "company": "Odyssey Therapeutics, Inc.",
+          "issuerCik": "0001882782",
+          "sector": "Health Care",
+          "insiderName": "SR ONE CAPITAL MANAGEMENT, LLC",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 222222,
+          "pricePerShare": 18,
+          "dollars": 3999996,
+          "sharesOwnedAfter": 1831383,
+          "stakePctChange": 12.134108485226738,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001193125-26-217656",
+          "ticker": "ODTX",
+          "company": "Odyssey Therapeutics, Inc.",
+          "issuerCik": "0001882782",
+          "sector": "Health Care",
+          "insiderName": "SR ONE CAPITAL MANAGEMENT, LLC",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 133333,
+          "pricePerShare": 18,
+          "dollars": 2399994,
+          "sharesOwnedAfter": 574314,
+          "stakePctChange": 23.216045577854626,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001193125-26-217656",
+          "ticker": "ODTX",
+          "company": "Odyssey Therapeutics, Inc.",
+          "issuerCik": "0001882782",
+          "sector": "Health Care",
+          "insiderName": "SR ONE CAPITAL MANAGEMENT, LLC",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 200000,
+          "pricePerShare": 18,
+          "dollars": 3600000,
+          "sharesOwnedAfter": 1014851,
+          "stakePctChange": 19.707326494234128,
+          "ownership": "I"
+        }
+      ]
+    },
+    {
+      "rank": 4,
       "ticker": "AGBK",
       "company": "AGI Inc",
       "sector": "Financials",
@@ -49,7 +416,62 @@
       ]
     },
     {
-      "rank": 2,
+      "rank": 5,
+      "ticker": "MOBI",
+      "company": "Mobia Medical, Inc.",
+      "sector": "Unclassified",
+      "insiderName": "HARRINGTON WILLIAM T",
+      "role": "10%Owner",
+      "dollars": 7999995,
+      "shares": 533333,
+      "avgPricePerShare": 15,
+      "stakePctChange": 32.27957738255875,
+      "significance": 62,
+      "transactions": [
+        {
+          "accession": "0001628280-26-033811",
+          "ticker": "MOBI",
+          "company": "Mobia Medical, Inc.",
+          "issuerCik": "0001489993",
+          "sector": "Unclassified",
+          "insiderName": "HARRINGTON WILLIAM T",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 266666,
+          "pricePerShare": 15,
+          "dollars": 3999990,
+          "sharesOwnedAfter": 2006716,
+          "stakePctChange": 13.288676623896952,
+          "ownership": "I"
+        },
+        {
+          "accession": "0001628280-26-033811",
+          "ticker": "MOBI",
+          "company": "Mobia Medical, Inc.",
+          "issuerCik": "0001489993",
+          "sector": "Unclassified",
+          "insiderName": "HARRINGTON WILLIAM T",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 266667,
+          "pricePerShare": 15,
+          "dollars": 4000005,
+          "sharesOwnedAfter": 1404183,
+          "stakePctChange": 18.990900758661798,
+          "ownership": "I"
+        }
+      ]
+    },
+    {
+      "rank": 6,
       "ticker": "OLED",
       "company": "UNIVERSAL DISPLAY CORP \\PA\\",
       "sector": "Information Technology",
@@ -128,7 +550,7 @@
       ]
     },
     {
-      "rank": 3,
+      "rank": 7,
       "ticker": "NONE",
       "company": "Audax Private Credit Fund, LLC",
       "sector": "Unclassified",
@@ -183,7 +605,44 @@
       ]
     },
     {
-      "rank": 4,
+      "rank": 8,
+      "ticker": "LZ",
+      "company": "LEGALZOOM.COM, INC.",
+      "sector": "Communication Services",
+      "insiderName": "Stibel Jeffrey M",
+      "role": "CEO",
+      "officerTitle": "Chief Executive Officer",
+      "dollars": 768987.5,
+      "shares": 125000,
+      "avgPricePerShare": 6.1519,
+      "stakePctChange": 4.229246832040368,
+      "significance": 60,
+      "transactions": [
+        {
+          "accession": "0001334852-26-000007",
+          "ticker": "LZ",
+          "company": "LEGALZOOM.COM, INC.",
+          "issuerCik": "0001286139",
+          "sector": "Communication Services",
+          "insiderName": "Stibel Jeffrey M",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 125000,
+          "pricePerShare": 6.1519,
+          "dollars": 768987.5,
+          "sharesOwnedAfter": 2955609,
+          "stakePctChange": 4.229246832040368,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 9,
       "ticker": "ATRA",
       "company": "Atara Biotherapeutics, Inc.",
       "sector": "Health Care",
@@ -220,7 +679,414 @@
       ]
     },
     {
-      "rank": 5,
+      "rank": 10,
+      "ticker": "TFIN",
+      "company": "Triumph Financial, Inc.",
+      "sector": "Financials",
+      "insiderName": "Ritterbusch Todd",
+      "role": "President",
+      "officerTitle": "President - TBK Bank, SSB",
+      "dollars": 469070.00000000006,
+      "shares": 7000,
+      "avgPricePerShare": 67.01,
+      "stakePctChange": 30.696369058059993,
+      "significance": 59,
+      "transactions": [
+        {
+          "accession": "0001628280-26-033503",
+          "ticker": "TFIN",
+          "company": "Triumph Financial, Inc.",
+          "issuerCik": "0001539638",
+          "sector": "Financials",
+          "insiderName": "Ritterbusch Todd",
+          "role": "President",
+          "officerTitle": "President - TBK Bank, SSB",
+          "transactionDate": "2026-05-08",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 7000,
+          "pricePerShare": 67.01,
+          "dollars": 469070.00000000006,
+          "sharesOwnedAfter": 22804,
+          "stakePctChange": 30.696369058059993,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "ticker": "PSN",
+      "company": "PARSONS CORP",
+      "sector": "Communication Services",
+      "insiderName": "Smith Carey A.",
+      "role": "CEO",
+      "officerTitle": "President & CEO",
+      "dollars": 624645,
+      "shares": 12500,
+      "avgPricePerShare": 49.9716,
+      "stakePctChange": 2.1743063724204053,
+      "significance": 57,
+      "transactions": [
+        {
+          "accession": "0001193125-26-216914",
+          "ticker": "PSN",
+          "company": "PARSONS CORP",
+          "issuerCik": "0000275880",
+          "sector": "Communication Services",
+          "insiderName": "Smith Carey A.",
+          "role": "CEO",
+          "officerTitle": "President & CEO",
+          "transactionDate": "2026-05-08",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 12000,
+          "pricePerShare": 49.94,
+          "dollars": 599280,
+          "sharesOwnedAfter": 574876,
+          "stakePctChange": 2.087406675526548,
+          "ownership": "D"
+        },
+        {
+          "accession": "0001193125-26-216914",
+          "ticker": "PSN",
+          "company": "PARSONS CORP",
+          "issuerCik": "0000275880",
+          "sector": "Communication Services",
+          "insiderName": "Smith Carey A.",
+          "role": "CEO",
+          "officerTitle": "President & CEO",
+          "transactionDate": "2026-05-08",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 500,
+          "pricePerShare": 50.73,
+          "dollars": 25365,
+          "sharesOwnedAfter": 575376,
+          "stakePctChange": 0.08689969689385724,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "ticker": "LW",
+      "company": "Lamb Weston Holdings, Inc.",
+      "sector": "Consumer Staples",
+      "insiderName": "Gray James D",
+      "role": "CFO",
+      "officerTitle": "Chief Financial Officer",
+      "dollars": 409225,
+      "shares": 10000,
+      "avgPricePerShare": 40.9225,
+      "stakePctChange": 14.892465063626542,
+      "significance": 57,
+      "transactions": [
+        {
+          "accession": "0001699728-26-000010",
+          "ticker": "LW",
+          "company": "Lamb Weston Holdings, Inc.",
+          "issuerCik": "0001679273",
+          "sector": "Consumer Staples",
+          "insiderName": "Gray James D",
+          "role": "CFO",
+          "officerTitle": "Chief Financial Officer",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 5000,
+          "pricePerShare": 40.945,
+          "dollars": 204725,
+          "sharesOwnedAfter": 64741,
+          "stakePctChange": 7.723081200475741,
+          "ownership": "D"
+        },
+        {
+          "accession": "0001699728-26-000010",
+          "ticker": "LW",
+          "company": "Lamb Weston Holdings, Inc.",
+          "issuerCik": "0001679273",
+          "sector": "Consumer Staples",
+          "insiderName": "Gray James D",
+          "role": "CFO",
+          "officerTitle": "Chief Financial Officer",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 5000,
+          "pricePerShare": 40.9,
+          "dollars": 204500,
+          "sharesOwnedAfter": 69741,
+          "stakePctChange": 7.1693838631508005,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "ticker": "TXO",
+      "company": "TXO Partners, L.P.",
+      "sector": "Materials",
+      "insiderName": "SIMPSON BOB R",
+      "role": "10%Owner",
+      "dollars": 9456495.712000001,
+      "shares": 750000,
+      "avgPricePerShare": 12.608660949333334,
+      "stakePctChange": 10.267823262843562,
+      "significance": 53,
+      "transactions": [
+        {
+          "accession": "0001182684-26-000003",
+          "ticker": "TXO",
+          "company": "TXO Partners, L.P.",
+          "issuerCik": "0001559432",
+          "sector": "Materials",
+          "insiderName": "SIMPSON BOB R",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-07",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 87635,
+          "pricePerShare": 12.4343,
+          "dollars": 1089679.8805,
+          "sharesOwnedAfter": 6837635,
+          "stakePctChange": 1.2816565961768944,
+          "ownership": "D"
+        },
+        {
+          "accession": "0001182684-26-000003",
+          "ticker": "TXO",
+          "company": "TXO Partners, L.P.",
+          "issuerCik": "0001559432",
+          "sector": "Materials",
+          "insiderName": "SIMPSON BOB R",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-08",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 162365,
+          "pricePerShare": 12.5031,
+          "dollars": 2030065.8315,
+          "sharesOwnedAfter": 7000000,
+          "stakePctChange": 2.3195,
+          "ownership": "D"
+        },
+        {
+          "accession": "0001182684-26-000003",
+          "ticker": "TXO",
+          "company": "TXO Partners, L.P.",
+          "issuerCik": "0001559432",
+          "sector": "Materials",
+          "insiderName": "SIMPSON BOB R",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 500000,
+          "pricePerShare": 12.6735,
+          "dollars": 6336750,
+          "sharesOwnedAfter": 7500000,
+          "stakePctChange": 6.666666666666667,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "ticker": "ODTX",
+      "company": "Odyssey Therapeutics, Inc.",
+      "sector": "Health Care",
+      "insiderName": "Li Nan (LN)",
+      "role": "Director",
+      "dollars": 19999998,
+      "shares": 1111111,
+      "avgPricePerShare": 18,
+      "stakePctChange": 33.331503433611836,
+      "significance": 52,
+      "transactions": [
+        {
+          "accession": "0001193125-26-217593",
+          "ticker": "ODTX",
+          "company": "Odyssey Therapeutics, Inc.",
+          "issuerCik": "0001882782",
+          "sector": "Health Care",
+          "insiderName": "Li Nan (LN)",
+          "role": "Director",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 1111111,
+          "pricePerShare": 18,
+          "dollars": 19999998,
+          "sharesOwnedAfter": 3333516,
+          "stakePctChange": 33.331503433611836,
+          "ownership": "I"
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "ticker": "PLSE",
+      "company": "PULSE BIOSCIENCES, INC.",
+      "sector": "Unclassified",
+      "insiderName": "DUGGAN ROBERT W",
+      "role": "10%Owner",
+      "dollars": 12999987.770000001,
+      "shares": 660233,
+      "avgPricePerShare": 19.69,
+      "stakePctChange": 1.369453175142087,
+      "significance": 50,
+      "transactions": [
+        {
+          "accession": "0001437749-26-016188",
+          "ticker": "PLSE",
+          "company": "PULSE BIOSCIENCES, INC.",
+          "issuerCik": "0001625101",
+          "sector": "Unclassified",
+          "insiderName": "DUGGAN ROBERT W",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 660233,
+          "pricePerShare": 19.69,
+          "dollars": 12999987.770000001,
+          "sharesOwnedAfter": 48211433,
+          "stakePctChange": 1.369453175142087,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 16,
+      "ticker": "DXC",
+      "company": "DXC Technology Co",
+      "sector": "Communication Services",
+      "insiderName": "FERNANDEZ RAUL J",
+      "role": "CEO",
+      "officerTitle": "President and CEO",
+      "dollars": 249504.75,
+      "shares": 28050,
+      "avgPricePerShare": 8.895,
+      "stakePctChange": 3.3232583238228806,
+      "significance": 50,
+      "transactions": [
+        {
+          "accession": "0001688568-26-000023",
+          "ticker": "DXC",
+          "company": "DXC Technology Co",
+          "issuerCik": "0001688568",
+          "sector": "Communication Services",
+          "insiderName": "FERNANDEZ RAUL J",
+          "role": "CEO",
+          "officerTitle": "President and CEO",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 28050,
+          "pricePerShare": 8.895,
+          "dollars": 249504.75,
+          "sharesOwnedAfter": 844051.147,
+          "stakePctChange": 3.3232583238228806,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 17,
+      "ticker": "SOFI",
+      "company": "SoFi Technologies, Inc.",
+      "sector": "Financials",
+      "insiderName": "Noto Anthony",
+      "role": "CEO",
+      "officerTitle": "Chief Executive Officer",
+      "dollars": 248780.62550000002,
+      "shares": 15545,
+      "avgPricePerShare": 16.0039,
+      "stakePctChange": 0.1301204968535449,
+      "significance": 48,
+      "transactions": [
+        {
+          "accession": "0001613438-26-000012",
+          "ticker": "SOFI",
+          "company": "SoFi Technologies, Inc.",
+          "issuerCik": "0001818874",
+          "sector": "Financials",
+          "insiderName": "Noto Anthony",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 15545,
+          "pricePerShare": 16.0039,
+          "dollars": 248780.62550000002,
+          "sharesOwnedAfter": 11946619,
+          "stakePctChange": 0.1301204968535449,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 18,
+      "ticker": "MOBI",
+      "company": "Mobia Medical, Inc.",
+      "sector": "Unclassified",
+      "insiderName": "Tansey Casey M",
+      "role": "10%Owner",
+      "dollars": 999990,
+      "shares": 66666,
+      "avgPricePerShare": 15,
+      "stakePctChange": 28.571306121749267,
+      "significance": 46,
+      "transactions": [
+        {
+          "accession": "0001628280-26-033820",
+          "ticker": "MOBI",
+          "company": "Mobia Medical, Inc.",
+          "issuerCik": "0001489993",
+          "sector": "Unclassified",
+          "insiderName": "Tansey Casey M",
+          "role": "10%Owner",
+          "transactionDate": "2026-05-11",
+          "filingDate": "2026-05-11",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 66666,
+          "pricePerShare": 15,
+          "dollars": 999990,
+          "sharesOwnedAfter": 233332,
+          "stakePctChange": 28.571306121749267,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 19,
       "ticker": "EVTC",
       "company": "EVERTEC, Inc.",
       "sector": "Communication Services",
@@ -299,1964 +1165,190 @@
       ]
     },
     {
-      "rank": 6,
-      "ticker": "ATEC",
-      "company": "Alphatec Holdings, Inc.",
-      "sector": "Unclassified",
-      "insiderName": "Valentine Keith",
-      "role": "Director",
+      "rank": 20,
+      "ticker": "OTAI",
+      "company": "Starlink AI Acquisition Corp",
+      "sector": "Financials",
+      "insiderName": "JKapital Ltd.",
+      "role": "10%Owner",
       "officerTitle": "",
-      "dollars": 996192.3500000001,
-      "shares": 135000,
-      "avgPricePerShare": 7.379202592592593,
-      "stakePctChange": 73.89526975191326,
-      "significance": 38,
+      "dollars": 2215000,
+      "shares": 221500,
+      "avgPricePerShare": 10,
+      "stakePctChange": 7.153237526239302,
+      "significance": 43,
       "transactions": [
         {
-          "accession": "0001289408-26-000002",
-          "ticker": "ATEC",
-          "company": "Alphatec Holdings, Inc.",
-          "issuerCik": "0001350653",
-          "sector": "Unclassified",
-          "insiderName": "Valentine Keith",
-          "role": "Director",
+          "accession": "0001493152-26-022185",
+          "ticker": "OTAI",
+          "company": "Starlink AI Acquisition Corp",
+          "issuerCik": "0002094076",
+          "sector": "Financials",
+          "insiderName": "JKapital Ltd.",
+          "role": "10%Owner",
           "officerTitle": "",
           "transactionDate": "2026-05-07",
           "filingDate": "2026-05-11",
           "code": "P",
           "acquiredDisposed": "A",
           "is10b5One": false,
-          "shares": 56153,
-          "pricePerShare": 7.49,
-          "dollars": 420585.97000000003,
-          "sharesOwnedAfter": 153424,
-          "stakePctChange": 36.599880070914594,
-          "ownership": "D"
-        },
-        {
-          "accession": "0001289408-26-000002",
-          "ticker": "ATEC",
-          "company": "Alphatec Holdings, Inc.",
-          "issuerCik": "0001350653",
-          "sector": "Unclassified",
-          "insiderName": "Valentine Keith",
-          "role": "Director",
-          "officerTitle": "",
-          "transactionDate": "2026-05-08",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 43847,
-          "pricePerShare": 7.54,
-          "dollars": 330606.38,
-          "sharesOwnedAfter": 197271,
-          "stakePctChange": 22.226784474149774,
-          "ownership": "D"
-        },
-        {
-          "accession": "0001289408-26-000002",
-          "ticker": "ATEC",
-          "company": "Alphatec Holdings, Inc.",
-          "issuerCik": "0001350653",
-          "sector": "Unclassified",
-          "insiderName": "Valentine Keith",
-          "role": "Director",
-          "officerTitle": "",
-          "transactionDate": "2026-05-11",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 35000,
-          "pricePerShare": 7,
-          "dollars": 245000,
-          "sharesOwnedAfter": 232271,
-          "stakePctChange": 15.068605206848895,
+          "shares": 221500,
+          "pricePerShare": 10,
+          "dollars": 2215000,
+          "sharesOwnedAfter": 3096500,
+          "stakePctChange": 7.153237526239302,
           "ownership": "D"
         }
       ]
-    },
+    }
+  ],
+  "clusters": [
     {
-      "rank": 7,
-      "ticker": "ACEL",
-      "company": "Accel Entertainment, Inc.",
-      "sector": "Consumer Discretionary",
-      "insiderName": "WARDINSKI BRUCE D",
-      "role": "Director",
-      "dollars": 577500,
-      "shares": 50000,
-      "avgPricePerShare": 11.55,
-      "stakePctChange": 100,
-      "significance": 35,
-      "transactions": [
-        {
-          "accession": "0001272017-26-000010",
-          "ticker": "ACEL",
-          "company": "Accel Entertainment, Inc.",
-          "issuerCik": "0001698991",
-          "sector": "Consumer Discretionary",
-          "insiderName": "WARDINSKI BRUCE D",
-          "role": "Director",
-          "transactionDate": "2026-05-11",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 50000,
-          "pricePerShare": 11.55,
-          "dollars": 577500,
-          "sharesOwnedAfter": 50000,
-          "stakePctChange": 100,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 8,
-      "ticker": "NCLH",
-      "company": "Norwegian Cruise Line Holdings Ltd.",
+      "ticker": "MOBI",
+      "company": "Mobia Medical, Inc.",
       "sector": "Unclassified",
-      "insiderName": "Byng-Thorne Zillah",
-      "role": "Director",
-      "officerTitle": "",
-      "dollars": 521394.21,
-      "shares": 29467,
-      "avgPricePerShare": 17.69417348220043,
-      "stakePctChange": 42.35706137229307,
-      "significance": 34,
-      "transactions": [
+      "insiderCount": 5,
+      "insiders": [
         {
-          "accession": "0001104659-26-058286",
-          "ticker": "NCLH",
-          "company": "Norwegian Cruise Line Holdings Ltd.",
-          "issuerCik": "0001513761",
-          "sector": "Unclassified",
-          "insiderName": "Byng-Thorne Zillah",
-          "role": "Director",
-          "officerTitle": "",
-          "transactionDate": "2026-05-07",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 25015,
-          "pricePerShare": 17.67,
-          "dollars": 442015.05000000005,
-          "sharesOwnedAfter": 99811,
-          "stakePctChange": 25.062367875284288,
-          "ownership": "D"
+          "name": "Leavitt Chase C.",
+          "role": "Officer",
+          "officerTitle": "See Remarks",
+          "dollars": 45000
         },
         {
-          "accession": "0001104659-26-058286",
-          "ticker": "NCLH",
-          "company": "Norwegian Cruise Line Holdings Ltd.",
-          "issuerCik": "0001513761",
-          "sector": "Unclassified",
-          "insiderName": "Byng-Thorne Zillah",
-          "role": "Director",
-          "officerTitle": "",
-          "transactionDate": "2026-05-07",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 4452,
-          "pricePerShare": 17.83,
-          "dollars": 79379.15999999999,
-          "sharesOwnedAfter": 25742,
-          "stakePctChange": 17.29469349700878,
-          "ownership": "I"
-        }
-      ]
-    },
-    {
-      "rank": 9,
-      "ticker": "LAW",
-      "company": "CS Disco, Inc.",
-      "sector": "Communication Services",
-      "insiderName": "Friedrichsen Eric",
-      "role": "CEO",
-      "officerTitle": "Chief Executive Officer",
-      "dollars": 35730,
-      "shares": 9000,
-      "avgPricePerShare": 3.97,
-      "stakePctChange": 0.5932089440089852,
-      "significance": 31,
-      "transactions": [
+          "name": "HARRINGTON WILLIAM T",
+          "role": "10%Owner",
+          "dollars": 7999995
+        },
         {
-          "accession": "0001625641-26-000112",
-          "ticker": "LAW",
-          "company": "CS Disco, Inc.",
-          "issuerCik": "0001625641",
-          "sector": "Communication Services",
-          "insiderName": "Friedrichsen Eric",
-          "role": "CEO",
-          "officerTitle": "Chief Executive Officer",
-          "transactionDate": "2026-05-08",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 9000,
-          "pricePerShare": 3.97,
-          "dollars": 35730,
-          "sharesOwnedAfter": 1517172,
-          "stakePctChange": 0.5932089440089852,
-          "ownership": "D"
+          "name": "Tansey Casey M",
+          "role": "10%Owner",
+          "dollars": 999990
+        },
+        {
+          "name": "Lucchese Cynthia L",
+          "role": "Director",
+          "dollars": 1875000
+        },
+        {
+          "name": "Mead Dana G Jr.",
+          "role": "Director",
+          "dollars": 105000
         }
-      ]
+      ],
+      "totalDollars": 11024985,
+      "windowDays": 30,
+      "latestDate": "2026-05-11",
+      "strength": 62
     },
     {
-      "rank": 10,
       "ticker": "ODTX",
       "company": "Odyssey Therapeutics, Inc.",
       "sector": "Health Care",
-      "insiderName": "Chu Shelley",
-      "role": "Director",
-      "dollars": 199998,
-      "shares": 11111,
-      "avgPricePerShare": 18,
-      "stakePctChange": 100,
-      "significance": 29,
-      "transactions": [
+      "insiderCount": 4,
+      "insiders": [
         {
-          "accession": "0001193125-26-217589",
-          "ticker": "ODTX",
-          "company": "Odyssey Therapeutics, Inc.",
-          "issuerCik": "0001882782",
-          "sector": "Health Care",
-          "insiderName": "Chu Shelley",
-          "role": "Director",
-          "transactionDate": "2026-05-11",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 11111,
-          "pricePerShare": 18,
-          "dollars": 199998,
-          "sharesOwnedAfter": 11111,
-          "stakePctChange": 100,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 11,
-      "ticker": "TXO",
-      "company": "TXO Partners, L.P.",
-      "sector": "Materials",
-      "insiderName": "ADAMS WILLIAM H III",
-      "role": "Director",
-      "dollars": 124117,
-      "shares": 10000,
-      "avgPricePerShare": 12.4117,
-      "stakePctChange": 7.754883637971012,
-      "significance": 20,
-      "transactions": [
+          "name": "SR ONE CAPITAL MANAGEMENT, LLC",
+          "role": "10%Owner",
+          "dollars": 9999990
+        },
         {
-          "accession": "0001182695-26-000001",
-          "ticker": "TXO",
-          "company": "TXO Partners, L.P.",
-          "issuerCik": "0001559432",
-          "sector": "Materials",
-          "insiderName": "ADAMS WILLIAM H III",
+          "name": "Chu Shelley",
           "role": "Director",
-          "transactionDate": "2026-05-08",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 10000,
-          "pricePerShare": 12.4117,
-          "dollars": 124117,
-          "sharesOwnedAfter": 128951,
-          "stakePctChange": 7.754883637971012,
-          "ownership": "D"
-        }
-      ]
-    },
-    {
-      "rank": 12,
-      "ticker": "AVTR",
-      "company": "Avantor, Inc.",
-      "sector": "Unclassified",
-      "insiderName": "LUCIER GREGORY T",
-      "role": "Director",
-      "dollars": 83200,
-      "shares": 10000,
-      "avgPricePerShare": 8.32,
-      "stakePctChange": 16.666666666666664,
-      "significance": 20,
-      "transactions": [
+          "dollars": 199998
+        },
         {
-          "accession": "0001628280-26-033605",
-          "ticker": "AVTR",
-          "company": "Avantor, Inc.",
-          "issuerCik": "0001722482",
-          "sector": "Unclassified",
-          "insiderName": "LUCIER GREGORY T",
+          "name": "LEIDEN JEFFREY M",
           "role": "Director",
-          "transactionDate": "2026-05-08",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 10000,
-          "pricePerShare": 8.32,
-          "dollars": 83200,
-          "sharesOwnedAfter": 60000,
-          "stakePctChange": 16.666666666666664,
-          "ownership": "I"
-        }
-      ]
-    },
-    {
-      "rank": 13,
-      "ticker": "BETR",
-      "company": "Better Home & Finance Holding Co",
-      "sector": "Financials",
-      "insiderName": "Talwar Harit",
-      "role": "Director",
-      "dollars": 91290,
-      "shares": 3000,
-      "avgPricePerShare": 30.43,
-      "stakePctChange": 7.55705577107159,
-      "significance": 19,
-      "transactions": [
+          "dollars": 100000
+        },
         {
-          "accession": "0001401336-26-000014",
-          "ticker": "BETR",
-          "company": "Better Home & Finance Holding Co",
-          "issuerCik": "0001835856",
-          "sector": "Financials",
-          "insiderName": "Talwar Harit",
+          "name": "Li Nan (LN)",
           "role": "Director",
-          "transactionDate": "2026-05-08",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 3000,
-          "pricePerShare": 30.43,
-          "dollars": 91290,
-          "sharesOwnedAfter": 39698,
-          "stakePctChange": 7.55705577107159,
-          "ownership": "D"
+          "dollars": 19999998
         }
-      ]
-    },
-    {
-      "rank": 14,
-      "ticker": "XRN",
-      "company": "Chiron Real Estate Inc.",
-      "sector": "Financials",
-      "insiderName": "Crowley Paula",
-      "role": "Director",
-      "officerTitle": "",
-      "dollars": 34000,
-      "shares": 1000,
-      "avgPricePerShare": 34,
-      "stakePctChange": 100,
-      "significance": 19,
-      "transactions": [
-        {
-          "accession": "0001104659-26-058865",
-          "ticker": "XRN",
-          "company": "Chiron Real Estate Inc.",
-          "issuerCik": "0001533615",
-          "sector": "Financials",
-          "insiderName": "Crowley Paula",
-          "role": "Director",
-          "officerTitle": "",
-          "transactionDate": "2026-05-11",
-          "filingDate": "2026-05-11",
-          "code": "P",
-          "acquiredDisposed": "A",
-          "is10b5One": false,
-          "shares": 1000,
-          "pricePerShare": 34,
-          "dollars": 34000,
-          "sharesOwnedAfter": 1000,
-          "stakePctChange": 100,
-          "ownership": "I"
-        }
-      ]
+      ],
+      "totalDollars": 30299986,
+      "windowDays": 30,
+      "latestDate": "2026-05-11",
+      "strength": 55
     }
   ],
-  "clusters": [],
   "sectors": [
     {
       "sector": "Information Technology",
-      "buyDollars": 1027770,
+      "buyDollars": 1372804.5,
       "sellDollars": 0,
       "netRatio": 1,
-      "buyCount": 3,
+      "buyCount": 6,
       "sellCount": 0
     },
     {
       "sector": "Materials",
-      "buyDollars": 124117,
+      "buyDollars": 9836533.712000001,
       "sellDollars": 0,
       "netRatio": 1,
-      "buyCount": 1,
+      "buyCount": 6,
       "sellCount": 0
     },
     {
       "sector": "Financials",
-      "buyDollars": 325554.4,
+      "buyDollars": 3588802.4125,
       "sellDollars": 0,
       "netRatio": 1,
-      "buyCount": 3,
+      "buyCount": 9,
       "sellCount": 0
     },
     {
       "sector": "Communication Services",
-      "buyDollars": 490435.89999999997,
+      "buyDollars": 2543347.95,
       "sellDollars": 0,
       "netRatio": 1,
-      "buyCount": 4,
+      "buyCount": 9,
       "sellCount": 0
     },
     {
-      "sector": "Health Care",
-      "buyDollars": 4944253.45,
-      "sellDollars": 3165020.985,
-      "netRatio": 0.21940710963249083,
+      "sector": "Utilities",
+      "buyDollars": 221483.75,
+      "sellDollars": 0,
+      "netRatio": 1,
       "buyCount": 2,
-      "sellCount": 1
+      "sellCount": 0
+    },
+    {
+      "sector": "Consumer Staples",
+      "buyDollars": 518565,
+      "sellDollars": 0,
+      "netRatio": 1,
+      "buyCount": 3,
+      "sellCount": 0
     },
     {
       "sector": "Consumer Discretionary",
-      "buyDollars": 577500,
+      "buyDollars": 47593812.92,
       "sellDollars": 675001.394,
-      "netRatio": -0.07784533771145646,
-      "buyCount": 1,
+      "netRatio": 0.972031573445788,
+      "buyCount": 14,
       "sellCount": 4
+    },
+    {
+      "sector": "Health Care",
+      "buyDollars": 36312835.71,
+      "sellDollars": 3165020.985,
+      "netRatio": 0.8396558856043034,
+      "buyCount": 12,
+      "sellCount": 1
+    },
+    {
+      "sector": "Industrials",
+      "buyDollars": 450651.5,
+      "sellDollars": 4098804.51,
+      "netRatio": -0.8018877426182652,
+      "buyCount": 2,
+      "sellCount": 1
     }
   ],
   "history": [
-    {
-      "date": "2025-05-13",
-      "index": 43,
-      "netDollars": -28490889
-    },
-    {
-      "date": "2025-05-14",
-      "index": 45,
-      "netDollars": -19222565
-    },
-    {
-      "date": "2025-05-15",
-      "index": 46,
-      "netDollars": -12056818
-    },
-    {
-      "date": "2025-05-16",
-      "index": 47,
-      "netDollars": -7709891
-    },
-    {
-      "date": "2025-05-17",
-      "index": 49,
-      "netDollars": -687904
-    },
-    {
-      "date": "2025-05-18",
-      "index": 49,
-      "netDollars": -6967643
-    },
-    {
-      "date": "2025-05-19",
-      "index": 50,
-      "netDollars": -1985989
-    },
-    {
-      "date": "2025-05-20",
-      "index": 50,
-      "netDollars": 1937878
-    },
-    {
-      "date": "2025-05-21",
-      "index": 48,
-      "netDollars": -2694800
-    },
-    {
-      "date": "2025-05-22",
-      "index": 50,
-      "netDollars": -1652715
-    },
-    {
-      "date": "2025-05-23",
-      "index": 51,
-      "netDollars": 4260942
-    },
-    {
-      "date": "2025-05-24",
-      "index": 50,
-      "netDollars": 2528743
-    },
-    {
-      "date": "2025-05-25",
-      "index": 52,
-      "netDollars": 7554118
-    },
-    {
-      "date": "2025-05-26",
-      "index": 51,
-      "netDollars": 6475585
-    },
-    {
-      "date": "2025-05-27",
-      "index": 50,
-      "netDollars": 1908911
-    },
-    {
-      "date": "2025-05-28",
-      "index": 50,
-      "netDollars": 5064134
-    },
-    {
-      "date": "2025-05-29",
-      "index": 51,
-      "netDollars": 791381
-    },
-    {
-      "date": "2025-05-30",
-      "index": 50,
-      "netDollars": 1732230
-    },
-    {
-      "date": "2025-05-31",
-      "index": 49,
-      "netDollars": 1165192
-    },
-    {
-      "date": "2025-06-01",
-      "index": 50,
-      "netDollars": 3892841
-    },
-    {
-      "date": "2025-06-02",
-      "index": 51,
-      "netDollars": -2025912
-    },
-    {
-      "date": "2025-06-03",
-      "index": 52,
-      "netDollars": 7462132
-    },
-    {
-      "date": "2025-06-04",
-      "index": 53,
-      "netDollars": 16326089
-    },
-    {
-      "date": "2025-06-05",
-      "index": 54,
-      "netDollars": 21361553
-    },
-    {
-      "date": "2025-06-06",
-      "index": 52,
-      "netDollars": 11349734
-    },
-    {
-      "date": "2025-06-07",
-      "index": 53,
-      "netDollars": 6978982
-    },
-    {
-      "date": "2025-06-08",
-      "index": 55,
-      "netDollars": 19166937
-    },
-    {
-      "date": "2025-06-09",
-      "index": 55,
-      "netDollars": 12623388
-    },
-    {
-      "date": "2025-06-10",
-      "index": 53,
-      "netDollars": 5215955
-    },
-    {
-      "date": "2025-06-11",
-      "index": 51,
-      "netDollars": 6678570
-    },
-    {
-      "date": "2025-06-12",
-      "index": 51,
-      "netDollars": 662335
-    },
-    {
-      "date": "2025-06-13",
-      "index": 53,
-      "netDollars": 12370837
-    },
-    {
-      "date": "2025-06-14",
-      "index": 55,
-      "netDollars": 12362939
-    },
-    {
-      "date": "2025-06-15",
-      "index": 56,
-      "netDollars": 17155440
-    },
-    {
-      "date": "2025-06-16",
-      "index": 57,
-      "netDollars": 29667181
-    },
-    {
-      "date": "2025-06-17",
-      "index": 57,
-      "netDollars": 29717424
-    },
-    {
-      "date": "2025-06-18",
-      "index": 57,
-      "netDollars": 30480563
-    },
-    {
-      "date": "2025-06-19",
-      "index": 58,
-      "netDollars": 34322132
-    },
-    {
-      "date": "2025-06-20",
-      "index": 59,
-      "netDollars": 32257768
-    },
-    {
-      "date": "2025-06-21",
-      "index": 59,
-      "netDollars": 33090296
-    },
-    {
-      "date": "2025-06-22",
-      "index": 58,
-      "netDollars": 36453859
-    },
-    {
-      "date": "2025-06-23",
-      "index": 58,
-      "netDollars": 32755365
-    },
-    {
-      "date": "2025-06-24",
-      "index": 58,
-      "netDollars": 31875053
-    },
-    {
-      "date": "2025-06-25",
-      "index": 58,
-      "netDollars": 31314497
-    },
-    {
-      "date": "2025-06-26",
-      "index": 59,
-      "netDollars": 38025737
-    },
-    {
-      "date": "2025-06-27",
-      "index": 59,
-      "netDollars": 39433300
-    },
-    {
-      "date": "2025-06-28",
-      "index": 57,
-      "netDollars": 26312596
-    },
-    {
-      "date": "2025-06-29",
-      "index": 56,
-      "netDollars": 17010937
-    },
-    {
-      "date": "2025-06-30",
-      "index": 56,
-      "netDollars": 27767775
-    },
-    {
-      "date": "2025-07-01",
-      "index": 57,
-      "netDollars": 29195299
-    },
-    {
-      "date": "2025-07-02",
-      "index": 58,
-      "netDollars": 33507262
-    },
-    {
-      "date": "2025-07-03",
-      "index": 58,
-      "netDollars": 32986619
-    },
-    {
-      "date": "2025-07-04",
-      "index": 56,
-      "netDollars": 26870839
-    },
-    {
-      "date": "2025-07-05",
-      "index": 57,
-      "netDollars": 28280810
-    },
-    {
-      "date": "2025-07-06",
-      "index": 59,
-      "netDollars": 35505772
-    },
-    {
-      "date": "2025-07-07",
-      "index": 57,
-      "netDollars": 24256437
-    },
-    {
-      "date": "2025-07-08",
-      "index": 59,
-      "netDollars": 34488460
-    },
-    {
-      "date": "2025-07-09",
-      "index": 60,
-      "netDollars": 35402979
-    },
-    {
-      "date": "2025-07-10",
-      "index": 58,
-      "netDollars": 35928120
-    },
-    {
-      "date": "2025-07-11",
-      "index": 59,
-      "netDollars": 37824389
-    },
-    {
-      "date": "2025-07-12",
-      "index": 59,
-      "netDollars": 41659532
-    },
-    {
-      "date": "2025-07-13",
-      "index": 60,
-      "netDollars": 45913295
-    },
-    {
-      "date": "2025-07-14",
-      "index": 61,
-      "netDollars": 47188622
-    },
-    {
-      "date": "2025-07-15",
-      "index": 62,
-      "netDollars": 43602332
-    },
-    {
-      "date": "2025-07-16",
-      "index": 60,
-      "netDollars": 43814676
-    },
-    {
-      "date": "2025-07-17",
-      "index": 59,
-      "netDollars": 33001563
-    },
-    {
-      "date": "2025-07-18",
-      "index": 59,
-      "netDollars": 29199432
-    },
-    {
-      "date": "2025-07-19",
-      "index": 60,
-      "netDollars": 42453887
-    },
-    {
-      "date": "2025-07-20",
-      "index": 60,
-      "netDollars": 37954002
-    },
-    {
-      "date": "2025-07-21",
-      "index": 59,
-      "netDollars": 37598060
-    },
-    {
-      "date": "2025-07-22",
-      "index": 58,
-      "netDollars": 32466729
-    },
-    {
-      "date": "2025-07-23",
-      "index": 57,
-      "netDollars": 23984585
-    },
-    {
-      "date": "2025-07-24",
-      "index": 58,
-      "netDollars": 28371154
-    },
-    {
-      "date": "2025-07-25",
-      "index": 60,
-      "netDollars": 41054009
-    },
-    {
-      "date": "2025-07-26",
-      "index": 59,
-      "netDollars": 38834926
-    },
-    {
-      "date": "2025-07-27",
-      "index": 58,
-      "netDollars": 34841056
-    },
-    {
-      "date": "2025-07-28",
-      "index": 59,
-      "netDollars": 34918799
-    },
-    {
-      "date": "2025-07-29",
-      "index": 59,
-      "netDollars": 31495589
-    },
-    {
-      "date": "2025-07-30",
-      "index": 61,
-      "netDollars": 46865195
-    },
-    {
-      "date": "2025-07-31",
-      "index": 63,
-      "netDollars": 49555692
-    },
-    {
-      "date": "2025-08-01",
-      "index": 62,
-      "netDollars": 46371644
-    },
-    {
-      "date": "2025-08-02",
-      "index": 61,
-      "netDollars": 38861988
-    },
-    {
-      "date": "2025-08-03",
-      "index": 59,
-      "netDollars": 32348681
-    },
-    {
-      "date": "2025-08-04",
-      "index": 59,
-      "netDollars": 35852148
-    },
-    {
-      "date": "2025-08-05",
-      "index": 60,
-      "netDollars": 35563177
-    },
-    {
-      "date": "2025-08-06",
-      "index": 60,
-      "netDollars": 46136954
-    },
-    {
-      "date": "2025-08-07",
-      "index": 61,
-      "netDollars": 37348784
-    },
-    {
-      "date": "2025-08-08",
-      "index": 61,
-      "netDollars": 42952127
-    },
-    {
-      "date": "2025-08-09",
-      "index": 59,
-      "netDollars": 34711180
-    },
-    {
-      "date": "2025-08-10",
-      "index": 57,
-      "netDollars": 31324725
-    },
-    {
-      "date": "2025-08-11",
-      "index": 56,
-      "netDollars": 27417877
-    },
-    {
-      "date": "2025-08-12",
-      "index": 55,
-      "netDollars": 14452348
-    },
-    {
-      "date": "2025-08-13",
-      "index": 55,
-      "netDollars": 25765230
-    },
-    {
-      "date": "2025-08-14",
-      "index": 54,
-      "netDollars": 12855221
-    },
-    {
-      "date": "2025-08-15",
-      "index": 54,
-      "netDollars": 12146498
-    },
-    {
-      "date": "2025-08-16",
-      "index": 56,
-      "netDollars": 25298170
-    },
-    {
-      "date": "2025-08-17",
-      "index": 57,
-      "netDollars": 25707376
-    },
-    {
-      "date": "2025-08-18",
-      "index": 58,
-      "netDollars": 31150389
-    },
-    {
-      "date": "2025-08-19",
-      "index": 57,
-      "netDollars": 24529574
-    },
-    {
-      "date": "2025-08-20",
-      "index": 56,
-      "netDollars": 26863577
-    },
-    {
-      "date": "2025-08-21",
-      "index": 55,
-      "netDollars": 19135624
-    },
-    {
-      "date": "2025-08-22",
-      "index": 55,
-      "netDollars": 22758031
-    },
-    {
-      "date": "2025-08-23",
-      "index": 56,
-      "netDollars": 25191952
-    },
-    {
-      "date": "2025-08-24",
-      "index": 55,
-      "netDollars": 14999377
-    },
-    {
-      "date": "2025-08-25",
-      "index": 56,
-      "netDollars": 25523453
-    },
-    {
-      "date": "2025-08-26",
-      "index": 57,
-      "netDollars": 29292386
-    },
-    {
-      "date": "2025-08-27",
-      "index": 57,
-      "netDollars": 29410136
-    },
-    {
-      "date": "2025-08-28",
-      "index": 58,
-      "netDollars": 30887136
-    },
-    {
-      "date": "2025-08-29",
-      "index": 58,
-      "netDollars": 27694505
-    },
-    {
-      "date": "2025-08-30",
-      "index": 56,
-      "netDollars": 25335252
-    },
-    {
-      "date": "2025-08-31",
-      "index": 58,
-      "netDollars": 27762431
-    },
-    {
-      "date": "2025-09-01",
-      "index": 58,
-      "netDollars": 28142751
-    },
-    {
-      "date": "2025-09-02",
-      "index": 58,
-      "netDollars": 38021918
-    },
-    {
-      "date": "2025-09-03",
-      "index": 58,
-      "netDollars": 33361997
-    },
-    {
-      "date": "2025-09-04",
-      "index": 57,
-      "netDollars": 29671250
-    },
-    {
-      "date": "2025-09-05",
-      "index": 55,
-      "netDollars": 20860751
-    },
-    {
-      "date": "2025-09-06",
-      "index": 54,
-      "netDollars": 15296481
-    },
-    {
-      "date": "2025-09-07",
-      "index": 56,
-      "netDollars": 24907203
-    },
-    {
-      "date": "2025-09-08",
-      "index": 55,
-      "netDollars": 26660143
-    },
-    {
-      "date": "2025-09-09",
-      "index": 54,
-      "netDollars": 14493678
-    },
-    {
-      "date": "2025-09-10",
-      "index": 55,
-      "netDollars": 16019021
-    },
-    {
-      "date": "2025-09-11",
-      "index": 57,
-      "netDollars": 30527800
-    },
-    {
-      "date": "2025-09-12",
-      "index": 58,
-      "netDollars": 37177850
-    },
-    {
-      "date": "2025-09-13",
-      "index": 56,
-      "netDollars": 25240324
-    },
-    {
-      "date": "2025-09-14",
-      "index": 57,
-      "netDollars": 33614051
-    },
-    {
-      "date": "2025-09-15",
-      "index": 58,
-      "netDollars": 30285751
-    },
-    {
-      "date": "2025-09-16",
-      "index": 57,
-      "netDollars": 32994203
-    },
-    {
-      "date": "2025-09-17",
-      "index": 58,
-      "netDollars": 28987593
-    },
-    {
-      "date": "2025-09-18",
-      "index": 59,
-      "netDollars": 34039012
-    },
-    {
-      "date": "2025-09-19",
-      "index": 58,
-      "netDollars": 25939874
-    },
-    {
-      "date": "2025-09-20",
-      "index": 60,
-      "netDollars": 40945579
-    },
-    {
-      "date": "2025-09-21",
-      "index": 61,
-      "netDollars": 46525923
-    },
-    {
-      "date": "2025-09-22",
-      "index": 61,
-      "netDollars": 45881837
-    },
-    {
-      "date": "2025-09-23",
-      "index": 60,
-      "netDollars": 39198600
-    },
-    {
-      "date": "2025-09-24",
-      "index": 61,
-      "netDollars": 45978177
-    },
-    {
-      "date": "2025-09-25",
-      "index": 59,
-      "netDollars": 31447051
-    },
-    {
-      "date": "2025-09-26",
-      "index": 57,
-      "netDollars": 33371536
-    },
-    {
-      "date": "2025-09-27",
-      "index": 58,
-      "netDollars": 28534127
-    },
-    {
-      "date": "2025-09-28",
-      "index": 59,
-      "netDollars": 32544575
-    },
-    {
-      "date": "2025-09-29",
-      "index": 59,
-      "netDollars": 29689025
-    },
-    {
-      "date": "2025-09-30",
-      "index": 57,
-      "netDollars": 22497054
-    },
-    {
-      "date": "2025-10-01",
-      "index": 57,
-      "netDollars": 32331259
-    },
-    {
-      "date": "2025-10-02",
-      "index": 59,
-      "netDollars": 37889131
-    },
-    {
-      "date": "2025-10-03",
-      "index": 57,
-      "netDollars": 34368677
-    },
-    {
-      "date": "2025-10-04",
-      "index": 56,
-      "netDollars": 27238219
-    },
-    {
-      "date": "2025-10-05",
-      "index": 54,
-      "netDollars": 13664715
-    },
-    {
-      "date": "2025-10-06",
-      "index": 55,
-      "netDollars": 23483063
-    },
-    {
-      "date": "2025-10-07",
-      "index": 56,
-      "netDollars": 22539773
-    },
-    {
-      "date": "2025-10-08",
-      "index": 56,
-      "netDollars": 27240598
-    },
-    {
-      "date": "2025-10-09",
-      "index": 56,
-      "netDollars": 17483415
-    },
-    {
-      "date": "2025-10-10",
-      "index": 56,
-      "netDollars": 28639940
-    },
-    {
-      "date": "2025-10-11",
-      "index": 58,
-      "netDollars": 35667266
-    },
-    {
-      "date": "2025-10-12",
-      "index": 59,
-      "netDollars": 36826819
-    },
-    {
-      "date": "2025-10-13",
-      "index": 58,
-      "netDollars": 30815351
-    },
-    {
-      "date": "2025-10-14",
-      "index": 60,
-      "netDollars": 35299053
-    },
-    {
-      "date": "2025-10-15",
-      "index": 58,
-      "netDollars": 28115260
-    },
-    {
-      "date": "2025-10-16",
-      "index": 56,
-      "netDollars": 17398940
-    },
-    {
-      "date": "2025-10-17",
-      "index": 55,
-      "netDollars": 22127112
-    },
-    {
-      "date": "2025-10-18",
-      "index": 57,
-      "netDollars": 22109388
-    },
-    {
-      "date": "2025-10-19",
-      "index": 57,
-      "netDollars": 26680065
-    },
-    {
-      "date": "2025-10-20",
-      "index": 57,
-      "netDollars": 30792976
-    },
-    {
-      "date": "2025-10-21",
-      "index": 56,
-      "netDollars": 26503534
-    },
-    {
-      "date": "2025-10-22",
-      "index": 57,
-      "netDollars": 22973030
-    },
-    {
-      "date": "2025-10-23",
-      "index": 58,
-      "netDollars": 32975588
-    },
-    {
-      "date": "2025-10-24",
-      "index": 57,
-      "netDollars": 31474730
-    },
-    {
-      "date": "2025-10-25",
-      "index": 59,
-      "netDollars": 31477745
-    },
-    {
-      "date": "2025-10-26",
-      "index": 57,
-      "netDollars": 22729950
-    },
-    {
-      "date": "2025-10-27",
-      "index": 56,
-      "netDollars": 19986193
-    },
-    {
-      "date": "2025-10-28",
-      "index": 55,
-      "netDollars": 15658926
-    },
-    {
-      "date": "2025-10-29",
-      "index": 54,
-      "netDollars": 16692781
-    },
-    {
-      "date": "2025-10-30",
-      "index": 54,
-      "netDollars": 12713556
-    },
-    {
-      "date": "2025-10-31",
-      "index": 53,
-      "netDollars": 13809119
-    },
-    {
-      "date": "2025-11-01",
-      "index": 55,
-      "netDollars": 18223494
-    },
-    {
-      "date": "2025-11-02",
-      "index": 54,
-      "netDollars": 16837896
-    },
-    {
-      "date": "2025-11-03",
-      "index": 53,
-      "netDollars": 11605685
-    },
-    {
-      "date": "2025-11-04",
-      "index": 51,
-      "netDollars": 4080846
-    },
-    {
-      "date": "2025-11-05",
-      "index": 50,
-      "netDollars": -2321529
-    },
-    {
-      "date": "2025-11-06",
-      "index": 51,
-      "netDollars": 4556448
-    },
-    {
-      "date": "2025-11-07",
-      "index": 51,
-      "netDollars": 3760959
-    },
-    {
-      "date": "2025-11-08",
-      "index": 51,
-      "netDollars": 7495623
-    },
-    {
-      "date": "2025-11-09",
-      "index": 52,
-      "netDollars": 9353648
-    },
-    {
-      "date": "2025-11-10",
-      "index": 50,
-      "netDollars": 2687839
-    },
-    {
-      "date": "2025-11-11",
-      "index": 50,
-      "netDollars": 3189348
-    },
-    {
-      "date": "2025-11-12",
-      "index": 49,
-      "netDollars": -8996863
-    },
-    {
-      "date": "2025-11-13",
-      "index": 51,
-      "netDollars": -2913956
-    },
-    {
-      "date": "2025-11-14",
-      "index": 52,
-      "netDollars": 8781794
-    },
-    {
-      "date": "2025-11-15",
-      "index": 53,
-      "netDollars": 14905856
-    },
-    {
-      "date": "2025-11-16",
-      "index": 51,
-      "netDollars": 8077116
-    },
-    {
-      "date": "2025-11-17",
-      "index": 51,
-      "netDollars": 4385133
-    },
-    {
-      "date": "2025-11-18",
-      "index": 49,
-      "netDollars": -8986902
-    },
-    {
-      "date": "2025-11-19",
-      "index": 47,
-      "netDollars": -6295841
-    },
-    {
-      "date": "2025-11-20",
-      "index": 49,
-      "netDollars": -48845
-    },
-    {
-      "date": "2025-11-21",
-      "index": 49,
-      "netDollars": -786895
-    },
-    {
-      "date": "2025-11-22",
-      "index": 50,
-      "netDollars": 3052730
-    },
-    {
-      "date": "2025-11-23",
-      "index": 50,
-      "netDollars": -3845430
-    },
-    {
-      "date": "2025-11-24",
-      "index": 50,
-      "netDollars": 2344124
-    },
-    {
-      "date": "2025-11-25",
-      "index": 51,
-      "netDollars": 8857314
-    },
-    {
-      "date": "2025-11-26",
-      "index": 52,
-      "netDollars": 14527760
-    },
-    {
-      "date": "2025-11-27",
-      "index": 53,
-      "netDollars": 13052389
-    },
-    {
-      "date": "2025-11-28",
-      "index": 53,
-      "netDollars": 7948957
-    },
-    {
-      "date": "2025-11-29",
-      "index": 52,
-      "netDollars": 7905978
-    },
-    {
-      "date": "2025-11-30",
-      "index": 50,
-      "netDollars": -989038
-    },
-    {
-      "date": "2025-12-01",
-      "index": 51,
-      "netDollars": 9238165
-    },
-    {
-      "date": "2025-12-02",
-      "index": 53,
-      "netDollars": 7817130
-    },
-    {
-      "date": "2025-12-03",
-      "index": 54,
-      "netDollars": 18908108
-    },
-    {
-      "date": "2025-12-04",
-      "index": 56,
-      "netDollars": 20085316
-    },
-    {
-      "date": "2025-12-05",
-      "index": 57,
-      "netDollars": 31529596
-    },
-    {
-      "date": "2025-12-06",
-      "index": 57,
-      "netDollars": 24411168
-    },
-    {
-      "date": "2025-12-07",
-      "index": 56,
-      "netDollars": 27282292
-    },
-    {
-      "date": "2025-12-08",
-      "index": 58,
-      "netDollars": 28072374
-    },
-    {
-      "date": "2025-12-09",
-      "index": 57,
-      "netDollars": 33308167
-    },
-    {
-      "date": "2025-12-10",
-      "index": 57,
-      "netDollars": 30702833
-    },
-    {
-      "date": "2025-12-11",
-      "index": 59,
-      "netDollars": 30988188
-    },
-    {
-      "date": "2025-12-12",
-      "index": 57,
-      "netDollars": 29573219
-    },
-    {
-      "date": "2025-12-13",
-      "index": 58,
-      "netDollars": 27407733
-    },
-    {
-      "date": "2025-12-14",
-      "index": 59,
-      "netDollars": 36847750
-    },
-    {
-      "date": "2025-12-15",
-      "index": 59,
-      "netDollars": 38356211
-    },
-    {
-      "date": "2025-12-16",
-      "index": 57,
-      "netDollars": 28723512
-    },
-    {
-      "date": "2025-12-17",
-      "index": 57,
-      "netDollars": 23857577
-    },
-    {
-      "date": "2025-12-18",
-      "index": 56,
-      "netDollars": 19863453
-    },
-    {
-      "date": "2025-12-19",
-      "index": 56,
-      "netDollars": 22548089
-    },
-    {
-      "date": "2025-12-20",
-      "index": 55,
-      "netDollars": 23710624
-    },
-    {
-      "date": "2025-12-21",
-      "index": 54,
-      "netDollars": 9672408
-    },
-    {
-      "date": "2025-12-22",
-      "index": 53,
-      "netDollars": 8771402
-    },
-    {
-      "date": "2025-12-23",
-      "index": 55,
-      "netDollars": 23944258
-    },
-    {
-      "date": "2025-12-24",
-      "index": 55,
-      "netDollars": 14335833
-    },
-    {
-      "date": "2025-12-25",
-      "index": 53,
-      "netDollars": 13834485
-    },
-    {
-      "date": "2025-12-26",
-      "index": 53,
-      "netDollars": 9956711
-    },
-    {
-      "date": "2025-12-27",
-      "index": 54,
-      "netDollars": 17684290
-    },
-    {
-      "date": "2025-12-28",
-      "index": 53,
-      "netDollars": 9955508
-    },
-    {
-      "date": "2025-12-29",
-      "index": 53,
-      "netDollars": 8828439
-    },
-    {
-      "date": "2025-12-30",
-      "index": 52,
-      "netDollars": 9152544
-    },
-    {
-      "date": "2025-12-31",
-      "index": 53,
-      "netDollars": 16283245
-    },
-    {
-      "date": "2026-01-01",
-      "index": 51,
-      "netDollars": 3344976
-    },
-    {
-      "date": "2026-01-02",
-      "index": 49,
-      "netDollars": -8022957
-    },
-    {
-      "date": "2026-01-03",
-      "index": 47,
-      "netDollars": -8815052
-    },
-    {
-      "date": "2026-01-04",
-      "index": 46,
-      "netDollars": -15551654
-    },
-    {
-      "date": "2026-01-05",
-      "index": 47,
-      "netDollars": -16241797
-    },
-    {
-      "date": "2026-01-06",
-      "index": 49,
-      "netDollars": -10241651
-    },
-    {
-      "date": "2026-01-07",
-      "index": 49,
-      "netDollars": 1426739
-    },
-    {
-      "date": "2026-01-08",
-      "index": 51,
-      "netDollars": 2645128
-    },
-    {
-      "date": "2026-01-09",
-      "index": 53,
-      "netDollars": 12726951
-    },
-    {
-      "date": "2026-01-10",
-      "index": 54,
-      "netDollars": 18852395
-    },
-    {
-      "date": "2026-01-11",
-      "index": 54,
-      "netDollars": 16291169
-    },
-    {
-      "date": "2026-01-12",
-      "index": 53,
-      "netDollars": 15990462
-    },
-    {
-      "date": "2026-01-13",
-      "index": 51,
-      "netDollars": 3291046
-    },
-    {
-      "date": "2026-01-14",
-      "index": 49,
-      "netDollars": -7797781
-    },
-    {
-      "date": "2026-01-15",
-      "index": 49,
-      "netDollars": -2512755
-    },
-    {
-      "date": "2026-01-16",
-      "index": 49,
-      "netDollars": -2992876
-    },
-    {
-      "date": "2026-01-17",
-      "index": 49,
-      "netDollars": -3770931
-    },
-    {
-      "date": "2026-01-18",
-      "index": 48,
-      "netDollars": -11077208
-    },
-    {
-      "date": "2026-01-19",
-      "index": 49,
-      "netDollars": -9158002
-    },
-    {
-      "date": "2026-01-20",
-      "index": 51,
-      "netDollars": 6157130
-    },
-    {
-      "date": "2026-01-21",
-      "index": 49,
-      "netDollars": -5272468
-    },
-    {
-      "date": "2026-01-22",
-      "index": 49,
-      "netDollars": -6798452
-    },
-    {
-      "date": "2026-01-23",
-      "index": 50,
-      "netDollars": 4541931
-    },
-    {
-      "date": "2026-01-24",
-      "index": 50,
-      "netDollars": -1342431
-    },
-    {
-      "date": "2026-01-25",
-      "index": 50,
-      "netDollars": -2172772
-    },
-    {
-      "date": "2026-01-26",
-      "index": 52,
-      "netDollars": 5565816
-    },
-    {
-      "date": "2026-01-27",
-      "index": 51,
-      "netDollars": 615194
-    },
-    {
-      "date": "2026-01-28",
-      "index": 50,
-      "netDollars": 462259
-    },
-    {
-      "date": "2026-01-29",
-      "index": 52,
-      "netDollars": 11221235
-    },
-    {
-      "date": "2026-01-30",
-      "index": 53,
-      "netDollars": 10585891
-    },
-    {
-      "date": "2026-01-31",
-      "index": 52,
-      "netDollars": 6482552
-    },
-    {
-      "date": "2026-02-01",
-      "index": 53,
-      "netDollars": 16248993
-    },
-    {
-      "date": "2026-02-02",
-      "index": 52,
-      "netDollars": 3175969
-    },
-    {
-      "date": "2026-02-03",
-      "index": 51,
-      "netDollars": 867424
-    },
-    {
-      "date": "2026-02-04",
-      "index": 53,
-      "netDollars": 5392270
-    },
-    {
-      "date": "2026-02-05",
-      "index": 54,
-      "netDollars": 19679378
-    },
-    {
-      "date": "2026-02-06",
-      "index": 52,
-      "netDollars": 5059588
-    },
-    {
-      "date": "2026-02-07",
-      "index": 50,
-      "netDollars": -3857408
-    },
-    {
-      "date": "2026-02-08",
-      "index": 50,
-      "netDollars": -6839710
-    },
-    {
-      "date": "2026-02-09",
-      "index": 48,
-      "netDollars": -7641595
-    },
-    {
-      "date": "2026-02-10",
-      "index": 48,
-      "netDollars": -4639350
-    },
-    {
-      "date": "2026-02-11",
-      "index": 47,
-      "netDollars": -10085891
-    },
-    {
-      "date": "2026-02-12",
-      "index": 45,
-      "netDollars": -17894770
-    },
-    {
-      "date": "2026-02-13",
-      "index": 47,
-      "netDollars": -10865604
-    },
-    {
-      "date": "2026-02-14",
-      "index": 47,
-      "netDollars": -15538782
-    },
-    {
-      "date": "2026-02-15",
-      "index": 49,
-      "netDollars": -1696347
-    },
-    {
-      "date": "2026-02-16",
-      "index": 48,
-      "netDollars": -7276755
-    },
-    {
-      "date": "2026-02-17",
-      "index": 49,
-      "netDollars": -1881088
-    },
-    {
-      "date": "2026-02-18",
-      "index": 51,
-      "netDollars": 7100255
-    },
-    {
-      "date": "2026-02-19",
-      "index": 50,
-      "netDollars": -2788827
-    },
-    {
-      "date": "2026-02-20",
-      "index": 51,
-      "netDollars": 2668162
-    },
-    {
-      "date": "2026-02-21",
-      "index": 52,
-      "netDollars": 6016386
-    },
-    {
-      "date": "2026-02-22",
-      "index": 52,
-      "netDollars": 9491119
-    },
-    {
-      "date": "2026-02-23",
-      "index": 54,
-      "netDollars": 20599253
-    },
-    {
-      "date": "2026-02-24",
-      "index": 54,
-      "netDollars": 17802924
-    },
-    {
-      "date": "2026-02-25",
-      "index": 53,
-      "netDollars": 14801845
-    },
-    {
-      "date": "2026-02-26",
-      "index": 54,
-      "netDollars": 15071193
-    },
-    {
-      "date": "2026-02-27",
-      "index": 53,
-      "netDollars": 11400796
-    },
-    {
-      "date": "2026-02-28",
-      "index": 52,
-      "netDollars": 12665620
-    },
-    {
-      "date": "2026-03-01",
-      "index": 51,
-      "netDollars": 4096580
-    },
-    {
-      "date": "2026-03-02",
-      "index": 51,
-      "netDollars": 7169958
-    },
-    {
-      "date": "2026-03-03",
-      "index": 51,
-      "netDollars": 1833461
-    },
-    {
-      "date": "2026-03-04",
-      "index": 51,
-      "netDollars": 9525697
-    },
-    {
-      "date": "2026-03-05",
-      "index": 50,
-      "netDollars": 1965594
-    },
-    {
-      "date": "2026-03-06",
-      "index": 48,
-      "netDollars": -5347852
-    },
-    {
-      "date": "2026-03-07",
-      "index": 50,
-      "netDollars": 314487
-    },
-    {
-      "date": "2026-03-08",
-      "index": 51,
-      "netDollars": -1634900
-    },
-    {
-      "date": "2026-03-09",
-      "index": 53,
-      "netDollars": 18649235
-    },
-    {
-      "date": "2026-03-10",
-      "index": 53,
-      "netDollars": 5512211
-    },
-    {
-      "date": "2026-03-11",
-      "index": 53,
-      "netDollars": 7940015
-    },
-    {
-      "date": "2026-03-12",
-      "index": 64,
-      "netDollars": 2407153690428974.5
-    },
     {
       "date": "2026-03-13",
       "index": 65,
@@ -2559,27 +1651,27 @@
     },
     {
       "date": "2026-05-12",
-      "index": 40,
-      "netDollars": -127173343.74238798
+      "index": 48,
+      "netDollars": -1375649361.7169096
     }
   ],
   "indicators": [
     {
       "label": "Cluster buys (30d)",
-      "value": "0",
-      "sub": "No clusters in the last 30 days",
-      "tone": "warning"
+      "value": "2",
+      "sub": "Across 2 sectors",
+      "tone": "neutral"
     },
     {
       "label": "Net buy/sell ($)",
-      "value": "−$127.2M",
-      "sub": "22 buys vs 67 sells",
+      "value": "−$1.38B",
+      "sub": "87 buys vs 328 sells",
       "tone": "negative"
     },
     {
       "label": "Top conviction (this week)",
-      "value": "AGBK",
-      "sub": "CEO · $200k",
+      "value": "PLSE",
+      "sub": "CEO · $295k",
       "tone": "neutral"
     },
     {
@@ -2593,7 +1685,7 @@
     {
       "name": "SEC EDGAR Form 4",
       "ok": true,
-      "note": "Live · 567 filings parsed"
+      "note": "Live · 2,177 filings parsed"
     },
     {
       "name": "EDGAR ticker map",
@@ -2608,11 +1700,11 @@
   ],
   "isDemo": false,
   "filtered": {
-    "grantsAndAwards": 147,
-    "optionExercises": 76,
-    "taxWithholding": 59,
-    "preScheduledSales": 116,
-    "belowThreshold": 25
+    "grantsAndAwards": 592,
+    "optionExercises": 265,
+    "taxWithholding": 173,
+    "preScheduledSales": 407,
+    "belowThreshold": 98
   },
   "recentActivity": [
     {
@@ -2652,21 +1744,21 @@
       "transactionDate": "2026-05-11"
     },
     {
-      "ticker": "ABEO",
-      "company": "ABEONA THERAPEUTICS INC.",
-      "insiderName": "Vasanthavada Madhav",
-      "role": "Officer",
-      "isBuy": false,
-      "dollars": 33073.2924,
+      "ticker": "WGS",
+      "company": "GeneDx Holdings Corp.",
+      "insiderName": "Meister Keith A.",
+      "role": "10%Owner",
+      "isBuy": true,
+      "dollars": 9600419.94,
       "transactionDate": "2026-05-11"
     },
     {
-      "ticker": "DOCN",
-      "company": "DigitalOcean Holdings, Inc.",
-      "insiderName": "Access Industries Holdings LLC",
-      "role": "Other",
-      "isBuy": false,
-      "dollars": 456179.62799999997,
+      "ticker": "WGS",
+      "company": "GeneDx Holdings Corp.",
+      "insiderName": "Meister Keith A.",
+      "role": "10%Owner",
+      "isBuy": true,
+      "dollars": 10020903.1,
       "transactionDate": "2026-05-11"
     }
   ]

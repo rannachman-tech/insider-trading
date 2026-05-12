@@ -1,0 +1,11 @@
+name: Runner smoke test
+on:
+  workflow_dispatch: {}
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Hello
+        run: echo "Runner allocated successfully on $(uname -a)"

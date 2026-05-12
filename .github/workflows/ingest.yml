@@ -19,7 +19,11 @@ jobs:
       - name: Ingest live EDGAR Form 4 filings
         env:
           EDGAR_CONTACT: ${{ secrets.EDGAR_CONTACT || 'ranna@etoro.com' }}
-          EDGAR_COUNT: "400"
+          # Tuned for tight Actions minute budgets — only pull yesterday's
+          # filings (history accumulates across runs anyway). Bump these
+          # back up to 5 days / 6,000 once you confirm runners allocate.
+          EDGAR_DAYS: "1"
+          EDGAR_MAX: "1500"
         run: npm run ingest
       - name: Commit snapshot if changed
         run: |
