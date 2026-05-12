@@ -59,6 +59,13 @@ export function SectorHeatmap({ sectors }: Props) {
           const confidence = Math.min(1, total / 10);
           // Below ~0.5 confidence (≤5 trades), we'd render the tile faded.
           const tileOpacity = 0.55 + 0.45 * confidence;
+          // Low-confidence tiles also get a diagonal-stripe overlay on
+          // the bar so the eye reads "this signal is provisional" before
+          // it processes the +100% number. CSS-only, no extra DOM.
+          const lowConfidence = total < 5;
+          const stripePattern = lowConfidence
+            ? `repeating-linear-gradient(135deg, transparent 0 4px, rgb(var(--bg) / 0.65) 4px 6px)`
+            : "none";
           return (
             <li
               key={s.sector}
@@ -90,12 +97,24 @@ export function SectorHeatmap({ sectors }: Props) {
                   {s.netRatio >= 0 ? (
                     <div
                       className="absolute top-0 h-full rounded-full"
-                      style={{ background: `rgb(var(--emerald))`, left: "50%", width: `${(s.netRatio * 50).toFixed(1)}%`, opacity: 0.55 + 0.45 * confidence }}
+                      style={{
+                        background: `rgb(var(--emerald))`,
+                        backgroundImage: stripePattern,
+                        left: "50%",
+                        width: `${(s.netRatio * 50).toFixed(1)}%`,
+                        opacity: 0.55 + 0.45 * confidence,
+                      }}
                     />
                   ) : (
                     <div
                       className="absolute top-0 h-full rounded-full"
-                      style={{ background: `rgb(var(--crimson))`, right: "50%", width: `${(Math.abs(s.netRatio) * 50).toFixed(1)}%`, opacity: 0.55 + 0.45 * confidence }}
+                      style={{
+                        background: `rgb(var(--crimson))`,
+                        backgroundImage: stripePattern,
+                        right: "50%",
+                        width: `${(Math.abs(s.netRatio) * 50).toFixed(1)}%`,
+                        opacity: 0.55 + 0.45 * confidence,
+                      }}
                     />
                   )}
                 </div>

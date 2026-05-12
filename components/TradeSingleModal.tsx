@@ -18,25 +18,31 @@ interface Props {
 const PRESETS = [50, 100, 250, 500, 1000];
 
 type Step =
-  | { kind: "review" }
+  | { kind: "intel" }
+  | { kind: "amount" }
   | { kind: "confirm" }
   | { kind: "executing" }
   | { kind: "result"; ok: boolean; message?: string };
 
 /**
- * One-click trade modal for a SINGLE TICKER (vs TradeBasketModal which
- * allocates across multiple holdings). Same Review → Confirm → Executing
- * → Result flow, same eToro Public API integration.
+ * Trade modal for a SINGLE TICKER. Four-step flow:
  *
- * Falls back to a "view on eToro" link when:
- *   - The ticker isn't in our verified instrumentId catalog
- *   - The user isn't connected to eToro (we can still link out as a fallback,
- *     but for trade execution we require the session)
+ *   1. intel    — "what you're trading on": shows the rationale that brought
+ *                 the user here (cluster headline / accumulation summary /
+ *                 single-name framing). Reframes the modal as research-led
+ *                 instead of brokerage-led — reviewer feedback that the
+ *                 jump from intelligence → amount felt too abrupt.
+ *   2. amount   — amount selector + presets
+ *   3. confirm  — order summary
+ *   4. executing → result
+ *
+ * Same eToro Public API integration — server resolves instrumentId from
+ * the public catalog at request time.
  */
 export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
   const [mounted, setMounted] = useState(false);
   const [amount, setAmount] = useState<number>(100);
-  const [step, setStep] = useState<Step>({ kind: "review" });
+  const [step, setStep] = useState<Step>({ kind: "intel" });
   const [session, setSession] = useState<EtoroSession | null>(null);
 
   useEffect(() => setMounted(true), []);
@@ -60,7 +66,7 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
 
   useEffect(() => {
     if (!open) {
-      setStep({ kind: "review" });
+      setStep({ kind: "intel" });
       setAmount(100);
     }
   }, [open]);
@@ -106,9 +112,9 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
       <div className="relative w-full max-w-md bg-surface border border-border rounded-xl shadow-2xl max-h-[92vh] overflow-y-auto">
         <header className="px-5 py-4 border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
-            {step.kind === "confirm" && (
+            {(step.kind === "amount" || step.kind === "confirm") && (
               <button
-                onClick={() => setStep({ kind: "review" })}
+                onClick={() => setStep({ kind: step.kind === "confirm" ? "amount" : "intel" })}
                 className="p-1 -m-1 text-fg-muted hover:text-fg"
                 aria-label="Back"
               >
@@ -120,11 +126,21 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
               <span className="text-fg-subtle text-[13px] font-normal">on eToro</span>
             </h2>
           </div>
-          {step.kind !== "executing" && (
-            <button onClick={onClose} className="p-1 -m-1 text-fg-muted hover:text-fg" aria-label="Close">
-              <X className="h-5 w-5" />
-            </button>
-          )}
+          <div className="flex items-center gap-3">
+            {/* Step indicator — 3 dots showing intel/amount/confirm progress */}
+            {(step.kind === "intel" || step.kind === "amount" || step.kind === "confirm") && session && (
+              <div className="flex items-center gap-1" aria-hidden>
+                <Dot active={step.kind === "intel"} />
+                <Dot active={step.kind === "amount"} />
+                <Dot active={step.kind === "confirm"} />
+              </div>
+            )}
+            {step.kind !== "executing" && (
+              <button onClick={onClose} className="p-1 -m-1 text-fg-muted hover:text-fg" aria-label="Close">
+                <X className="h-5 w-5" />
+              </button>
+            )}
+          </div>
         </header>
 
         {/* Any ticker, in-app: instrumentId is resolved server-side against
@@ -153,16 +169,44 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
           </div>
         )}
 
-        {session && step.kind === "review" && (
+        {/* Step 1 — intel: read the signal before picking an amount. The
+            modal opens here when launched from any card; user must tap
+            Continue to advance to the amount selector. */}
+        {session && step.kind === "intel" && (
+          <div className="px-5 py-4 space-y-4">
+            <div>
+              <div className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
+                What you're trading on
+              </div>
+              <div className="mt-1.5 text-[16px] sm:text-[17px] font-semibold text-fg leading-snug">
+                {displayName}
+              </div>
+              {rationale && (
+                <p className="mt-2 text-[13px] text-fg-muted leading-relaxed">{rationale}</p>
+              )}
+            </div>
+
+            <div className="rounded-md border border-border bg-surface-2 px-3.5 py-2.5 text-[12px] text-fg-muted leading-relaxed">
+              <strong className="text-fg-muted font-medium">Educational signal — not personalised advice.</strong>{" "}
+              Insider activity tends to play out over 6–12 months, not days. Treat this as a thesis check, not a trigger.
+            </div>
+
+            <p className="text-[11.5px] text-fg-subtle leading-relaxed">
+              Connected as <strong className="text-fg-muted">@{session.username}</strong>
+              {" "}on your <strong className="text-fg-muted">{session.env === "demo" ? "Virtual" : "Real"}</strong> portfolio.
+            </p>
+          </div>
+        )}
+
+        {/* Step 2 — amount selector. */}
+        {session && step.kind === "amount" && (
           <div className="px-5 py-4 space-y-4">
             <div>
               <div className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
                 Buying
               </div>
-              <div className="mt-1 text-[15px] text-fg">{displayName}</div>
-              {rationale && (
-                <p className="mt-1.5 text-[12.5px] text-fg-muted leading-relaxed">{rationale}</p>
-              )}
+              <div className="mt-1 text-[15px] text-fg font-medium">{displayName}</div>
+              <div className="text-[12px] font-mono text-fg-subtle">{ticker}</div>
             </div>
 
             <div>
@@ -193,8 +237,7 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
             </div>
 
             <p className="text-[11.5px] text-fg-subtle leading-relaxed">
-              Connected as <strong className="text-fg-muted">@{session.username}</strong>
-              {" "}on your <strong className="text-fg-muted">{session.env === "demo" ? "Virtual" : "Real"}</strong> portfolio.
+              On your <strong className="text-fg-muted">{session.env === "demo" ? "Virtual" : "Real"}</strong> portfolio.
             </p>
           </div>
         )}
@@ -243,10 +286,23 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
         )}
 
         <footer className="px-5 py-4 border-t border-border flex items-center justify-end gap-2">
-          {session && step.kind === "review" && (
+          {session && step.kind === "intel" && (
             <>
               <button onClick={onClose} className="px-3 py-2 rounded-md text-[13px] text-fg-muted hover:text-fg">
                 Cancel
+              </button>
+              <button
+                onClick={() => setStep({ kind: "amount" })}
+                className="px-4 py-2 rounded-md bg-fg text-bg text-[13px] font-semibold hover:opacity-90 transition-opacity"
+              >
+                Continue to order
+              </button>
+            </>
+          )}
+          {session && step.kind === "amount" && (
+            <>
+              <button onClick={() => setStep({ kind: "intel" })} className="px-3 py-2 rounded-md text-[13px] text-fg-muted hover:text-fg">
+                Back
               </button>
               <button
                 onClick={() => setStep({ kind: "confirm" })}
@@ -259,7 +315,7 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
           )}
           {session && step.kind === "confirm" && (
             <>
-              <button onClick={() => setStep({ kind: "review" })} className="px-3 py-2 rounded-md text-[13px] text-fg-muted hover:text-fg">
+              <button onClick={() => setStep({ kind: "amount" })} className="px-3 py-2 rounded-md text-[13px] text-fg-muted hover:text-fg">
                 Back
               </button>
               <button
@@ -278,7 +334,7 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
               Done
             </button>
           )}
-          {!session && step.kind === "review" && (
+          {!session && (step.kind === "intel" || step.kind === "amount") && (
             <button onClick={onClose} className="px-3 py-2 rounded-md text-[13px] text-fg-muted hover:text-fg">
               Close
             </button>
@@ -289,4 +345,15 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
   );
 
   return createPortal(body, document.body);
+}
+
+/** Tiny progress dot for the step indicator in the modal header. */
+function Dot({ active }: { active: boolean }) {
+  return (
+    <span
+      className={`block w-1.5 h-1.5 rounded-full transition-colors ${
+        active ? "bg-fg" : "bg-border-strong"
+      }`}
+    />
+  );
 }

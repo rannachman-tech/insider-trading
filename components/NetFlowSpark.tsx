@@ -42,10 +42,12 @@ export function NetFlowSpark({ points, days = 60 }: Props) {
 
   const slice = points.slice(-days);
   const w = 440;
-  const h = 80;
+  // Reduced from 80px → 64px so the hero feels less vertically compressed.
+  // Same data, lighter footprint — reviewer's hero-density feedback.
+  const h = 64;
   const padX = 32;
-  const padTop = 8;
-  const padBottom = 16;
+  const padTop = 6;
+  const padBottom = 14;
   const max = Math.max(1, ...slice.map((p) => Math.abs(p.netDollars)));
   const innerW = w - padX * 2;
   const innerH = h - padTop - padBottom;

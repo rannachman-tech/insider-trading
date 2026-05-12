@@ -118,9 +118,11 @@ export function ConvictionMeter({ snapshot }: Props) {
         </div>
       </div>
 
-      {/* Layer 3 — Percentile context vs 60d history */}
+      {/* Layer 3 — Percentile context vs 60d history. Lighter footprint
+          than the previous design (no border, smaller bar height) so the
+          hero column doesn't feel vertically dense. */}
       {hasPercentile && (
-        <div className="mt-5 pt-4 border-t border-border">
+        <div className="mt-4">
           <div className="flex items-baseline justify-between gap-2">
             <div className="text-[10px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
               Vs last {lookback}
