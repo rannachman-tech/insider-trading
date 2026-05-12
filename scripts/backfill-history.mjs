@@ -160,6 +160,13 @@ function parseForm4(xml, meta) {
     const sharesAfter = xmlNum(block, "sharesOwnedFollowingTransaction") ?? 0;
     const transactionDate = xmlValue(block, "transactionDate") ?? meta.filingDate;
     const dollars = shares * price;
+    // Sanity filter — no real Form 4 has had a single transaction with
+    // shares >1B or dollars >$1B. Anything beyond is a parser miss or an
+    // edge-case filing (e.g. stock split notification) we don't want
+    // bleeding into the historical net-flow display.
+    if (shares > 1_000_000_000) continue;
+    if (dollars > 1_000_000_000) continue;
+    if (!Number.isFinite(dollars) || dollars < 0) continue;
     const stakePctChange = sharesAfter > 0 ? (shares / sharesAfter) * 100 : 0;
     out.push({
       accession: meta.accession, ticker, insiderName, role,
@@ -342,9 +349,11 @@ function indexForDay(allTxs, anchorIso, clusterMin = 3) {
   const roleSig = Math.min(1, roleIntensity / 400);
   const blended = 0.30 * dollarSig + 0.30 * clusterSig + 0.20 * roleSig + 0.20 * countSig;
   const index = Math.max(0, Math.min(100, Math.round(50 + blended * 50)));
-  // Display-scale netDollars (uncapped) for the spark visualization
-  const buyDollars = realBuys.reduce((s, t) => s + t.dollars, 0);
-  const sellDollars = realSells.reduce((s, t) => s + t.dollars, 0);
+  // Display-scale netDollars — capped per-tx so one outlier filing can't
+  // dominate the spark visualization. Matches the cap used in the index
+  // computation.
+  const buyDollars = realBuys.reduce((s, t) => s + capDollars(t.dollars), 0);
+  const sellDollars = realSells.reduce((s, t) => s + capDollars(t.dollars), 0);
   return { index, netDollars: buyDollars - sellDollars };
 }
 

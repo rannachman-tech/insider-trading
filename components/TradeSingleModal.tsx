@@ -121,14 +121,24 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
           )}
         </header>
 
-        {/* Ticker not in our verified catalog → fall back to a link */}
+        {/* Ticker not in our pre-verified instrumentId catalog → open the
+            full eToro trade ticket on etoro.com as the primary CTA. Same
+            destination the user would land on if they searched in eToro
+            directly; just framed as a positive action, not a fallback. */}
         {!stock && (
           <div className="px-5 py-5 space-y-4">
-            <div className="flex items-start gap-2 rounded-md border border-amber/30 bg-amber-soft px-3 py-2.5 text-[13px] text-fg leading-relaxed">
-              <AlertCircle className="h-4 w-4 text-amber mt-0.5 flex-shrink-0" />
-              <span>
-                <strong className="text-fg font-medium">{ticker}</strong> isn't in our verified eToro instrument catalog yet, so we can't place an in-app order. You can still view and trade it directly on eToro.
-              </span>
+            <div>
+              <div className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
+                Trade ticket
+              </div>
+              <p className="mt-1.5 text-[13.5px] text-fg leading-relaxed">
+                Open <span className="font-mono font-semibold">{ticker}</span> on eToro to set your amount and place the order. You'll land on the live ticker page with the buy modal one click away.
+              </p>
+              {rationale && (
+                <p className="mt-2 text-[12.5px] text-fg-muted leading-relaxed border-l-2 border-border pl-3">
+                  {rationale}
+                </p>
+              )}
             </div>
             <a
               href={`https://www.etoro.com/markets/${ticker.toLowerCase()}`}
@@ -136,9 +146,12 @@ export function TradeSingleModal({ ticker, rationale, open, onClose }: Props) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-md bg-fg text-bg px-4 py-2.5 text-[13px] font-semibold hover:opacity-90 transition-opacity"
             >
-              View {ticker} on eToro
+              Trade {ticker} on eToro
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
+            <p className="text-[11px] text-fg-subtle leading-relaxed">
+              We only place in-app orders for tickers in our pre-verified instrumentId catalog. For everything else, the eToro market page is the canonical place to trade — same execution path, same prices.
+            </p>
           </div>
         )}
 
