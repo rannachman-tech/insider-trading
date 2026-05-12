@@ -3,7 +3,12 @@ import path from "node:path";
 import { Header } from "@/components/Header";
 import { RiskBanner } from "@/components/RiskBanner";
 import { Footer } from "@/components/Footer";
-import { ConvictionDial } from "@/components/ConvictionDial";
+// ConvictionDial retired — replaced by ConvictionMeter, a horizontal
+// regime spectrum that reads better on mobile and feels less analog-clock,
+// more modern-fintech. The dial component file is retained in repo
+// (commented out) in case we want to A/B it later.
+// import { ConvictionDial } from "@/components/ConvictionDial";
+import { ConvictionMeter } from "@/components/ConvictionMeter";
 import { NetFlowSpark } from "@/components/NetFlowSpark";
 import { FilterTransparency } from "@/components/FilterTransparency";
 import { ScoreExplainer } from "@/components/ScoreExplainer";
@@ -11,7 +16,8 @@ import { ReadingCautions } from "@/components/ReadingCautions";
 import { StrongestSignal } from "@/components/StrongestSignal";
 import { WhyItMatters } from "@/components/WhyItMatters";
 import { ScoreDrivers } from "@/components/ScoreDrivers";
-import { HistoryPercentile } from "@/components/HistoryPercentile";
+// HistoryPercentile folded into ConvictionMeter's bottom layer.
+// import { HistoryPercentile } from "@/components/HistoryPercentile";
 // TopSignals removed — the leaderboard's significance ranking + HIGH/MED/LOW
 // badges + LOW-hidden default now provide the same prioritization with no
 // duplication. Component file kept in repo for a future v2 reincarnation
@@ -121,17 +127,11 @@ export default async function HomePage() {
               stack on the left can be much taller without leaving white
               space below the InsightsCard on the right. */}
           <section className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-4 lg:gap-6 items-start">
-            <div className="rounded-lg border border-border bg-surface px-5 pt-4 pb-5 sm:px-6 sm:pt-5 sm:pb-6 flex flex-col items-center hero-glow">
-              <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-fg-subtle text-center">
-                Insider Conviction Index · S&amp;P 1500 · last 7 days
-              </div>
-              {/* Dial sized down ~20% from the original 440px so the gauge
-                  supports rather than dominates the hero. ScoreDrivers and
-                  the spark below stay at 440px width. */}
-              <div className="mt-1 sm:mt-2 w-full max-w-[360px]">
-                <ConvictionDial value={snapshot.index} phase={snapshot.phase} />
-              </div>
-              <HistoryPercentile snapshot={snapshot} />
+            <div className="rounded-lg border border-border bg-surface px-5 pt-5 pb-5 sm:px-6 sm:pt-6 sm:pb-6 flex flex-col items-center hero-glow">
+              {/* ConvictionMeter — replaces the dial. Horizontal regime
+                  spectrum with phase + score hero, named-band bar with
+                  "today" pin, and a folded-in percentile context strip. */}
+              <ConvictionMeter snapshot={snapshot} />
               <ScoreDrivers snapshot={snapshot} />
               <NetFlowSpark points={snapshot.history} />
             </div>
