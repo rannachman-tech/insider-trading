@@ -1,49 +1,40 @@
-import { ExternalLink } from "lucide-react";
-
 export function Footer() {
   return (
     <footer className="mt-12 border-t border-border bg-surface-2">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div>
             <h4 className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
               About
             </h4>
             <p className="mt-2 text-[13px] text-fg-muted leading-relaxed">
-              Insiders Activity Compass surfaces the small slice of insider filings that historically carry signal — open-market personal-cash purchases by company officers and directors. Built on free SEC EDGAR data.
+              When a CEO, CFO or director buys their own company's stock with personal cash on the open market, they're signalling something the market hasn't priced in yet. Insiders Activity Compass watches those filings live from the SEC, throws out the routine noise — grants, options, pre-scheduled sales — and ranks who's really buying and how strongly.
             </p>
           </div>
           <div>
             <h4 className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
               What we filter out
             </h4>
-            <ul className="mt-2 text-[13px] text-fg-muted space-y-1 leading-relaxed">
-              <li>Stock grants and bonuses</li>
-              <li>Option exercises</li>
-              <li>Pre-scheduled sales</li>
-              <li>Tax-withholding sales</li>
-              <li>Anything below $25,000</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-[11px] uppercase tracking-[0.18em] font-mono text-fg-subtle">
-              More from Compass
-            </h4>
-            <ul className="mt-2 text-[13px] space-y-1">
+            <ul className="mt-2 text-[13px] text-fg-muted space-y-1.5 leading-relaxed">
               <li>
-                <a href="https://compass.etoro.com/recession" target="_blank" rel="noopener noreferrer" className="text-fg-muted hover:text-emerald inline-flex items-center gap-1">
-                  Recession Compass <ExternalLink className="h-3 w-3" />
-                </a>
+                <span className="text-fg">Stock grants and bonuses</span>
+                <span className="text-fg-subtle"> — compensation, not conviction</span>
               </li>
               <li>
-                <a href="https://compass.etoro.com/stock-cycle" target="_blank" rel="noopener noreferrer" className="text-fg-muted hover:text-emerald inline-flex items-center gap-1">
-                  Stock Cycle Compass <ExternalLink className="h-3 w-3" />
-                </a>
+                <span className="text-fg">Option exercises</span>
+                <span className="text-fg-subtle"> — cash-out moves, not new buying</span>
               </li>
               <li>
-                <a href="https://compass.etoro.com/bondspace" target="_blank" rel="noopener noreferrer" className="text-fg-muted hover:text-emerald inline-flex items-center gap-1">
-                  BondSpace <ExternalLink className="h-3 w-3" />
-                </a>
+                <span className="text-fg">Pre-scheduled sales (10b5-1)</span>
+                <span className="text-fg-subtle"> — set months ahead, no timing signal</span>
+              </li>
+              <li>
+                <span className="text-fg">Tax-withholding sales</span>
+                <span className="text-fg-subtle"> — triggered automatically by RSU vests</span>
+              </li>
+              <li>
+                <span className="text-fg">Anything below $25,000</span>
+                <span className="text-fg-subtle"> — too small to matter</span>
               </li>
             </ul>
           </div>
