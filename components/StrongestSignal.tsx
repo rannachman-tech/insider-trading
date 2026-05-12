@@ -233,7 +233,9 @@ function initialsFor(name: string): string {
 
 function compactUsd(n: number): string {
   if (n >= 1e9) return `$${(n / 1e9).toFixed(1)}B`;
-  if (n >= 1e6) return `$${(n / 1e6).toFixed(1)}M`;
+  // Use a slightly-below-1M threshold so e.g. $999,500 rolls cleanly to
+  // "$1.0M" instead of the visually weird "$1000k".
+  if (n >= 950_000) return `$${(n / 1e6).toFixed(1)}M`;
   if (n >= 1e3) return `$${Math.round(n / 1e3)}k`;
   return `$${Math.round(n)}`;
 }
