@@ -1,24 +1,443 @@
 {
-  "generatedAt": "2026-05-10T10:50:36.595Z",
-  "windowDays": 30,
-  "index": 25,
+  "generatedAt": "2026-05-11T10:03:07.329Z",
+  "windowDays": 7,
+  "index": 32,
   "phase": "heavy-selling",
   "verdict": "More insiders are selling than buying — and not just on pre-scheduled plans. When the people who run companies trim their personal stakes, it's usually about diversification, but it's worth watching where the selling is concentrated.",
-  "netDollars": -108685471.76610003,
-  "buyDollars": 0,
-  "sellDollars": 108685471.76610003,
-  "buyCount": 0,
-  "sellCount": 52,
-  "clusterCount": 0,
-  "leaderboard": [],
-  "clusters": [],
-  "sectors": [],
-  "history": [
+  "netDollars": -267344608.54639998,
+  "buyDollars": 6151495.3549999995,
+  "sellDollars": 273496103.90139997,
+  "buyCount": 10,
+  "sellCount": 155,
+  "clusterCount": 1,
+  "leaderboard": [
     {
-      "date": "2025-05-11",
-      "index": 47,
-      "netDollars": -13098726
+      "rank": 1,
+      "ticker": "SRAD",
+      "company": "Sportradar Group AG",
+      "sector": "Communication Services",
+      "insiderName": "Koerl Carsten",
+      "role": "CEO",
+      "officerTitle": "Chief Executive Officer",
+      "dollars": 2117200,
+      "shares": 158000,
+      "avgPricePerShare": 13.4,
+      "stakePctChange": 6.034514366727368,
+      "significance": 71,
+      "transactions": [
+        {
+          "accession": "0001104659-26-056245",
+          "ticker": "SRAD",
+          "company": "Sportradar Group AG",
+          "issuerCik": "0001836470",
+          "sector": "Communication Services",
+          "insiderName": "Koerl Carsten",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "transactionDate": "2026-05-05",
+          "filingDate": "2026-05-06",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 158000,
+          "pricePerShare": 13.4,
+          "dollars": 2117200,
+          "sharesOwnedAfter": 2618272,
+          "stakePctChange": 6.034514366727368,
+          "ownership": "D"
+        }
+      ]
     },
+    {
+      "rank": 2,
+      "ticker": "PATK",
+      "company": "PATRICK INDUSTRIES INC",
+      "sector": "Unclassified",
+      "insiderName": "NEMETH ANDY L",
+      "role": "CEO",
+      "officerTitle": "Chief Executive Officer",
+      "dollars": 880000,
+      "shares": 10000,
+      "avgPricePerShare": 88,
+      "stakePctChange": 3.475299310153087,
+      "significance": 61,
+      "transactions": [
+        {
+          "accession": "0001209929-26-000006",
+          "ticker": "PATK",
+          "company": "PATRICK INDUSTRIES INC",
+          "issuerCik": "0000076605",
+          "sector": "Unclassified",
+          "insiderName": "NEMETH ANDY L",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "transactionDate": "2026-05-05",
+          "filingDate": "2026-05-06",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 10000,
+          "pricePerShare": 88,
+          "dollars": 880000,
+          "sharesOwnedAfter": 287745,
+          "stakePctChange": 3.475299310153087,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "ticker": "PATK",
+      "company": "PATRICK INDUSTRIES INC",
+      "sector": "Unclassified",
+      "insiderName": "Roeder Charles R",
+      "role": "President",
+      "officerTitle": "President - RV",
+      "dollars": 505018.47500000003,
+      "shares": 5750,
+      "avgPricePerShare": 87.8293,
+      "stakePctChange": 13.642726647210951,
+      "significance": 52,
+      "transactions": [
+        {
+          "accession": "0002015612-26-000006",
+          "ticker": "PATK",
+          "company": "PATRICK INDUSTRIES INC",
+          "issuerCik": "0000076605",
+          "sector": "Unclassified",
+          "insiderName": "Roeder Charles R",
+          "role": "President",
+          "officerTitle": "President - RV",
+          "transactionDate": "2026-05-05",
+          "filingDate": "2026-05-06",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 5750,
+          "pricePerShare": 87.8293,
+          "dollars": 505018.47500000003,
+          "sharesOwnedAfter": 42147,
+          "stakePctChange": 13.642726647210951,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "ticker": "WTW",
+      "company": "WILLIS TOWERS WATSON PLC",
+      "sector": "Financials",
+      "insiderName": "Clarke Lucy",
+      "role": "President",
+      "officerTitle": "President of Risk & Broking",
+      "dollars": 499340.04000000004,
+      "shares": 1896,
+      "avgPricePerShare": 263.365,
+      "stakePctChange": 8.346006042138614,
+      "significance": 50,
+      "transactions": [
+        {
+          "accession": "0001140536-26-000141",
+          "ticker": "WTW",
+          "company": "WILLIS TOWERS WATSON PLC",
+          "issuerCik": "0001140536",
+          "sector": "Financials",
+          "insiderName": "Clarke Lucy",
+          "role": "President",
+          "officerTitle": "President of Risk & Broking",
+          "transactionDate": "2026-05-06",
+          "filingDate": "2026-05-06",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 1896,
+          "pricePerShare": 263.365,
+          "dollars": 499340.04000000004,
+          "sharesOwnedAfter": 22717.453,
+          "stakePctChange": 8.346006042138614,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "ticker": "GTE",
+      "company": "GRAN TIERRA ENERGY INC.",
+      "sector": "Materials",
+      "insiderName": "LM Asset Management Inc.",
+      "role": "10%Owner",
+      "officerTitle": "",
+      "dollars": 418437,
+      "shares": 45000,
+      "avgPricePerShare": 9.2986,
+      "stakePctChange": 1.0916500897578962,
+      "significance": 32,
+      "transactions": [
+        {
+          "accession": "0000935836-26-000226",
+          "ticker": "GTE",
+          "company": "GRAN TIERRA ENERGY INC.",
+          "issuerCik": "0001273441",
+          "sector": "Materials",
+          "insiderName": "LM Asset Management Inc.",
+          "role": "10%Owner",
+          "officerTitle": "",
+          "transactionDate": "2026-05-05",
+          "filingDate": "2026-05-05",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 45000,
+          "pricePerShare": 9.2986,
+          "dollars": 418437,
+          "sharesOwnedAfter": 4122200,
+          "stakePctChange": 1.0916500897578962,
+          "ownership": "I"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "ticker": "CLX",
+      "company": "CLOROX CO /DE/",
+      "sector": "Health Care",
+      "insiderName": "Breber Pierre R",
+      "role": "Director",
+      "dollars": 429124,
+      "shares": 5000,
+      "avgPricePerShare": 85.8248,
+      "stakePctChange": 27.77777777777778,
+      "significance": 30,
+      "transactions": [
+        {
+          "accession": "0001225208-26-004962",
+          "ticker": "CLX",
+          "company": "CLOROX CO /DE/",
+          "issuerCik": "0000021076",
+          "sector": "Health Care",
+          "insiderName": "Breber Pierre R",
+          "role": "Director",
+          "transactionDate": "2026-05-05",
+          "filingDate": "2026-05-05",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 5000,
+          "pricePerShare": 85.8248,
+          "dollars": 429124,
+          "sharesOwnedAfter": 18000,
+          "stakePctChange": 27.77777777777778,
+          "ownership": "I"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "ticker": "MSBI",
+      "company": "Midland States Bancorp, Inc.",
+      "sector": "Financials",
+      "insiderName": "Franklin Travis",
+      "role": "Director",
+      "dollars": 248988.13999999998,
+      "shares": 9400,
+      "avgPricePerShare": 26.4881,
+      "stakePctChange": 100,
+      "significance": 30,
+      "transactions": [
+        {
+          "accession": "0001466026-26-000053",
+          "ticker": "MSBI",
+          "company": "Midland States Bancorp, Inc.",
+          "issuerCik": "0001466026",
+          "sector": "Financials",
+          "insiderName": "Franklin Travis",
+          "role": "Director",
+          "transactionDate": "2026-05-05",
+          "filingDate": "2026-05-06",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 9400,
+          "pricePerShare": 26.4881,
+          "dollars": 248988.13999999998,
+          "sharesOwnedAfter": 9400,
+          "stakePctChange": 100,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "ticker": "PATK",
+      "company": "PATRICK INDUSTRIES INC",
+      "sector": "Unclassified",
+      "insiderName": "WELCH M SCOTT",
+      "role": "Director",
+      "dollars": 882250,
+      "shares": 10000,
+      "avgPricePerShare": 88.225,
+      "stakePctChange": 6.41025641025641,
+      "significance": 28,
+      "transactions": [
+        {
+          "accession": "0001189422-26-000019",
+          "ticker": "PATK",
+          "company": "PATRICK INDUSTRIES INC",
+          "issuerCik": "0000076605",
+          "sector": "Unclassified",
+          "insiderName": "WELCH M SCOTT",
+          "role": "Director",
+          "transactionDate": "2026-05-05",
+          "filingDate": "2026-05-06",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 10000,
+          "pricePerShare": 88.225,
+          "dollars": 882250,
+          "sharesOwnedAfter": 156000,
+          "stakePctChange": 6.41025641025641,
+          "ownership": "I"
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "ticker": "WSBK",
+      "company": "Winchester Bancorp, Inc./MD/",
+      "sector": "Financials",
+      "insiderName": "Snow John Ingalls III",
+      "role": "Director",
+      "dollars": 78635.7,
+      "shares": 6110,
+      "avgPricePerShare": 12.87,
+      "stakePctChange": 32.83181085437937,
+      "significance": 23,
+      "transactions": [
+        {
+          "accession": "0001437749-26-015135",
+          "ticker": "WSBK",
+          "company": "Winchester Bancorp, Inc./MD/",
+          "issuerCik": "0002047235",
+          "sector": "Financials",
+          "insiderName": "Snow John Ingalls III",
+          "role": "Director",
+          "transactionDate": "2026-05-05",
+          "filingDate": "2026-05-06",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 6110,
+          "pricePerShare": 12.87,
+          "dollars": 78635.7,
+          "sharesOwnedAfter": 18610,
+          "stakePctChange": 32.83181085437937,
+          "ownership": "D"
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "ticker": "RRBI",
+      "company": "RED RIVER BANCSHARES INC",
+      "sector": "Financials",
+      "insiderName": "Price Teddy Ray",
+      "role": "Director",
+      "dollars": 92502,
+      "shares": 1080,
+      "avgPricePerShare": 85.65,
+      "stakePctChange": 0.2865238292317978,
+      "significance": 18,
+      "transactions": [
+        {
+          "accession": "0001770071-26-000008",
+          "ticker": "RRBI",
+          "company": "RED RIVER BANCSHARES INC",
+          "issuerCik": "0001071236",
+          "sector": "Financials",
+          "insiderName": "Price Teddy Ray",
+          "role": "Director",
+          "transactionDate": "2026-05-05",
+          "filingDate": "2026-05-05",
+          "code": "P",
+          "acquiredDisposed": "A",
+          "is10b5One": false,
+          "shares": 1080,
+          "pricePerShare": 85.65,
+          "dollars": 92502,
+          "sharesOwnedAfter": 376932,
+          "stakePctChange": 0.2865238292317978,
+          "ownership": "D"
+        }
+      ]
+    }
+  ],
+  "clusters": [
+    {
+      "ticker": "PATK",
+      "company": "PATRICK INDUSTRIES INC",
+      "sector": "Unclassified",
+      "insiderCount": 3,
+      "insiders": [
+        {
+          "name": "NEMETH ANDY L",
+          "role": "CEO",
+          "officerTitle": "Chief Executive Officer",
+          "dollars": 880000
+        },
+        {
+          "name": "Roeder Charles R",
+          "role": "President",
+          "officerTitle": "President - RV",
+          "dollars": 505018.47500000003
+        },
+        {
+          "name": "WELCH M SCOTT",
+          "role": "Director",
+          "dollars": 882250
+        }
+      ],
+      "totalDollars": 2267268.475,
+      "windowDays": 30,
+      "latestDate": "2026-05-05",
+      "strength": 62
+    }
+  ],
+  "sectors": [
+    {
+      "sector": "Financials",
+      "buyDollars": 919465.88,
+      "sellDollars": 0,
+      "netRatio": 1,
+      "buyCount": 4,
+      "sellCount": 0
+    },
+    {
+      "sector": "Communication Services",
+      "buyDollars": 2117200,
+      "sellDollars": 0,
+      "netRatio": 1,
+      "buyCount": 1,
+      "sellCount": 0
+    },
+    {
+      "sector": "Health Care",
+      "buyDollars": 429124,
+      "sellDollars": 0,
+      "netRatio": 1,
+      "buyCount": 1,
+      "sellCount": 0
+    },
+    {
+      "sector": "Materials",
+      "buyDollars": 418437,
+      "sellDollars": 0,
+      "netRatio": 1,
+      "buyCount": 1,
+      "sellCount": 0
+    }
+  ],
+  "history": [
     {
       "date": "2025-05-12",
       "index": 45,
@@ -1838,31 +2257,36 @@
       "date": "2026-05-10",
       "index": 54,
       "netDollars": -2764034388.706138
+    },
+    {
+      "date": "2026-05-11",
+      "index": 32,
+      "netDollars": -267344608.54639998
     }
   ],
   "indicators": [
     {
       "label": "Cluster buys (30d)",
-      "value": "0",
-      "sub": "No clusters in the last 30 days",
+      "value": "1",
+      "sub": "Across 1 sectors",
       "tone": "warning"
     },
     {
       "label": "Net buy/sell ($)",
-      "value": "−$108.7M",
-      "sub": "0 buys vs 52 sells",
+      "value": "−$267.3M",
+      "sub": "10 buys vs 155 sells",
       "tone": "negative"
     },
     {
       "label": "Top conviction (this week)",
-      "value": "—",
-      "sub": "Tape is quiet",
+      "value": "SRAD",
+      "sub": "CEO · $2.1M",
       "tone": "neutral"
     },
     {
       "label": "Sector tilt",
-      "value": "—",
-      "sub": "Too few sector trades to draw a tilt",
+      "value": "Financials",
+      "sub": "Net ratio 100%",
       "tone": "neutral"
     }
   ],
@@ -1870,7 +2294,7 @@
     {
       "name": "SEC EDGAR Form 4",
       "ok": true,
-      "note": "Live · 362 filings parsed"
+      "note": "Live · 2,806 filings parsed"
     },
     {
       "name": "EDGAR ticker map",
@@ -1885,11 +2309,11 @@
   ],
   "isDemo": false,
   "filtered": {
-    "grantsAndAwards": 128,
-    "optionExercises": 56,
-    "taxWithholding": 35,
-    "preScheduledSales": 29,
-    "belowThreshold": 17
+    "grantsAndAwards": 567,
+    "optionExercises": 500,
+    "taxWithholding": 433,
+    "preScheduledSales": 657,
+    "belowThreshold": 84
   },
   "recentActivity": [
     {
